@@ -12,7 +12,7 @@ The provisional storyboard spans 46 slides. Part I gives the Two Generals and By
 
 ## Development status
 
-M0 is approved. The owner approved D — Expressive Minimalism on pure white. M1 merged in PR #3. The M2 illustration library and review gallery await PR review before M3. The other treatments remain archived for comparison. The project preserves the three-slide engineering diagnostic deck. The framework uses Reveal.js, TypeScript, Vite, Playwright, and npm. M2 uses deterministic authored SVG paths. GSAP playback is planned for a later milestone.
+M0 is approved. The owner approved D — Expressive Minimalism on pure white. M1 merged in PR #3. The M2 illustration library merged in PR #5. The M3 playback engine and diagnostic deck await review before M4. The other treatments remain archived for comparison. The project preserves the three-slide engineering diagnostic deck. The framework uses Reveal.js, TypeScript, Vite, Playwright, and npm. M2 uses deterministic authored SVG paths. M3 uses a local GSAP clock for presenter-paced diagnostics.
 
 The target is a 16:9 deck with responsive scaling, classroom-projector readability, independent slide and animation controls, and offline operation using bundled assets. A static PDF fallback is an M8 deliverable.
 
@@ -62,6 +62,17 @@ Run `npm test` to regenerate ignored screenshots in `test-results/visual-review/
 Start the production preview using the commands below. Open [the M2 gallery](http://127.0.0.1:4173/library/) or use [the development gallery](http://127.0.0.1:5173/library/) with the Vite development server. Use the gallery links to compare the cast, all 21 principal pose examples, props and variants, the ledger and server compositions, and the articulation check. In [Articulation](http://127.0.0.1:4173/library/#articulation), choose a pose and expression, move the head or right arm, then use **Reset** to return to the baseline.
 
 The Firefox suite captures `cast.png`, `poses.png`, `props.png`, `ledger.png`, `failure.png`, and `articulation.png` under each of `test-results/visual-review/m2/1920x1080/`, `1280x720/`, and `1024x768/`. These files stay local. The [library API](ARCHITECTURE.md#m2-illustration-api) describes part names and prop placement.
+
+## M3 playback review
+
+From the repository root, run `npm ci`, `npm run build`, and `npm run preview -- --port 4173 --strictPort`. Open [the playback diagnostic](http://127.0.0.1:4173/engine/) in desktop Firefox. For development, use [port 5173](http://127.0.0.1:5173/engine/) with `npm run dev`. The existing root diagnostics, visual review, and illustration gallery remain at their original paths.
+
+1. Press Space to play and pause Envelope delivery. Use J/K to step through beats and the seek slider to go backward. Watch the pose, envelope, and speech return to the earlier state.
+2. Change speed with Minus or Plus, then use Right twice to visit the static slide and Ledger inspection. The active scene resets to zero and inherits the speed. Complete a scene, then use R or seek back before replaying.
+3. Open overview with Escape while playing, then exit overview and check that playback stays paused. Hide or restore the controls with H or the control button. Use Tab and arrow keys to exercise the slider and use F and S to check fullscreen and speaker notes. Click the slide or tab out of the control bar to use deck shortcuts again.
+4. Check speaker notes on a separate window or monitor. The preview follows slide navigation and shows each scene at its initial frame. Playback stays in the main window.
+
+The Firefox suite captures `envelope-beat.png`, `static.png`, and `ledger-beat.png` under each of `test-results/visual-review/m3/1920x1080/`, `1280x720/`, and `1024x768/`. See [scene authoring and controls](ARCHITECTURE.md#m3-playback-engine).
 
 ## Desktop Firefox verification
 

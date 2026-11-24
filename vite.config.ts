@@ -3,7 +3,8 @@ import { defineConfig } from 'vite';
 export default defineConfig({
   build: {
     rolldownOptions: {
-      input: ['index.html', 'review/index.html', 'library/index.html'],
+      output: { comments: { legal: true } },
+      input: ['index.html', 'review/index.html', 'library/index.html', 'engine/index.html'],
     },
   },
 });

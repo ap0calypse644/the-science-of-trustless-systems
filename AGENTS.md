@@ -5,7 +5,7 @@
 - Implement and test the work explicitly approved by the project owner. Creative direction, architecture approval, technical review, and milestone planning are coordinated separately by the owner.
 - Read the README, roadmap, and relevant design, architecture, and storyboard sections before editing. The roadmap defines approval boundaries. Treat architectural proposals and storyboard choices as provisional until reviewed.
 - Complete and verify the authorized scope, report the files changed, tests or checks run, assumptions, unresolved decisions, and Git status, then stop for explicit review. Approval of one milestone does not authorize implementation of the next.
-- M1 is approved and merged. M2 authorizes the reusable D illustration library and its gallery. Playback and lecture slide implementation require their respective approved milestones.
+- M2 is approved and merged. M3 authorizes the playback library and its standalone diagnostic deck. M4 requires explicit owner approval before prototype work begins.
 - Commit, push, and create remote branches only when explicitly authorized. Keep employer information, secrets, and private credentials out of code, docs, assets, examples, and tool output.
 
 ## Implementation standards
