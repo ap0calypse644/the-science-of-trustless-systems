@@ -1,6 +1,6 @@
-# Provisional storyboard
+# Living storyboard
 
-The sequence assumes a college audience with mixed familiarity with distributed systems and cryptography. Times include setup, speaker explanation, and brief audience responses. A static slide can still prompt discussion. Animated slides use presenter-controlled checkpoints. Interactive slides give the presenter an input that changes the model while the audience predicts the outcome. All timings and scene treatments are provisional until rehearsal. Use the audience beats within each allocation to leave room for interruptions and spontaneous explanations.
+The sequence assumes a college audience with mixed familiarity with distributed systems and cryptography. Times include setup, speaker explanation, and brief audience responses. A static slide can still prompt discussion. Animated slides use presenter-controlled checkpoints. Interactive slides give the presenter an input that changes the model while the audience predicts the outcome. The owner accepted this sequence as a flexible starting point on 25 November 2026. Slide count, order, treatment and timing may evolve; the times are rough guides, not hard acceptance criteria. Make room for audience questions and understanding. [CONTINUATION.md](CONTINUATION.md) records approved visual decisions for slides 1–6 and the restart point.
 
 ## Part I — The Problem of Trust (45 minutes)
 
@@ -16,12 +16,12 @@ The sequence assumes a college audience with mixed familiarity with distributed 
 
 | # | Topic | Purpose | Visual idea | Speaker objective | Type | Min |
 | ---: | --- | --- | --- | --- | --- | ---: |
-| 1 | The Science of Trustless Systems | Introduce the two halves | Title flanked by a shared notebook and a sealed envelope | Ask what people must agree on and what they should be allowed to see | Static | 1 |
-| 2 | A single point of failure | Motivate distribution | Three-panel comic about a campus club whose only ledger keeper is absent | Elicit what stops working when a service depends on one component | Static | 2 |
-| 3 | Why distribute? | Show practical motivations | Service desks across a campus share load and cover a closure | Explain latency, capacity, and fault tolerance as reasons to distribute | Static | 2 |
-| 4 | Centralized, distributed, decentralized | Separate deployment from control | Identical server maps overlaid with different decision-making lines | Show how multiple machines can still answer to one operator | Static | 2 |
-| 5 | CAP during a partition | Introduce the trade-off | A broken bridge between two replica desks interrupts a read after a write | Explain the tension between linearizable consistency and the theorem's availability requirement during a partition | Animated | 2 |
-| 6 | Replica decision | Let students predict outcomes | Presenter chooses to return a local value or wait after a scripted write | Trace what each policy sacrifices in this scenario | Interactive | 2 |
+| 1 | The Science of Trustless Systems | Introduce the two halves | Approved original diagonal handshake contraption: enormous hands never touch, miniature cast operates ropes, gears, ledger, envelope and verification mechanism | Ask what people must agree on and what they should be allowed to see | Static | 1 |
+| 2 | Single Point of Failure | Motivate distribution | One plug to rule them all: Charlie unplugs a shared power strip to charge his phone at the wall; all dependent devices fail | Elicit what stops working when a service depends on one component | Static | 2 |
+| 3 | Why distribute? | Show practical motivations | Charlie accidentally trips over a cable; one independently powered cluster goes down, but redundant service survives on two others | Explain resilience, workload sharing and latency; distribution alone does not guarantee fault tolerance | Static | 2 |
+| 4 | Centralized, Distributed, Decentralized | Separate deployment from control | Three panels: crowned Charlie owns one server; crowned Charlie owns three linked servers; Alice, Bob and Charlie independently operate the same three-server topology | Show how multiple machines can still answer to one operator; distinguish governance from topology | Static | 2 |
+| 5 | The CAP Theorem | Introduce three properties | Actual three-Spider-Man pointing meme, overlaid Consistency, Availability and Partition Tolerance labels; verify rights before bundling | Introduce terms without implying pick-any-two; transition to the partition scenario | Static | 2 |
+| 6 | Consistency or Availability? | Let students predict outcomes | Animated bank branches: Charlie withdraws ₹1,000 at A after partition, then asks B for balance; presenter chooses stale reply or wait, explores both, restores connection | Trace read-after-write consistency vs CAP availability; state assumptions and alternative write blocking | Interactive | 2 |
 | 7 | Two Generals Problem | Explain why guaranteed coordinated action fails under unreliable communication | Presenter-paced comedy with two hilltops and an increasingly absurd queue of couriers | Ask who knows what after each delivery or loss and use the final-message argument to introduce common knowledge | Animated | 5 |
 | 8 | Byzantine Generals Problem | Shift from messages failing to arrive to participants saying contradictory things | Honest generals compare their local reports with messages from a general who tells different stories | Introduce equivocation, agreement, validity, and the assumptions behind the classical fault threshold | Interactive | 5 |
 | 9 | A shared ledger | Give the students a common record | Campus café receipts, coffee cups, and a pile of small repayments give way to Alice's notebook | Explain why recording payments and obligations is useful before introducing any blockchain machinery | Static | 1 |
@@ -114,7 +114,7 @@ Speaker notes and later demonstrations should preserve these details.
 
 ## Review notes
 
-The provisional deck has 46 slides: 28 static, 12 animated, and 6 interactive. The title, single-point-of-failure comic, and Two Generals animation remain the M4 prototypes. Detailed timing, demo controls, and the technical models are subject to rehearsal and milestone review.
+The current planning baseline has 46 slides: 29 static, 11 animated, and 6 interactive. These counts are not targets. The title, single-point-of-failure comic, and Two Generals animation remain the M4 prototypes. Detailed timing, demo controls, and technical models are subject to review. Slides 1–6 have approved creative directions; slide 7 onward remain open for visual development. See CONTINUATION.md for detailed implementation briefs and asset caveats.
 
 Confirm the precise CAP failure model, the Two Generals progress requirement, the oral-message protocol and boundary examples, Bitcoin's security assumptions, the CometBFT example, IBC client assumptions, and the privacy guarantees of later toy models. The complete lecture bibliography belongs to M7.
 
