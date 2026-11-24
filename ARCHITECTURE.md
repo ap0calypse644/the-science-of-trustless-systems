@@ -25,11 +25,11 @@ Reveal.js owns the slide index. Timeline changes never advance slides, and end-o
 
 ## Keyboard and presenter workflow
 
-The main presentation window owns playback. Presenter controls must be hideable. The proposed controls include labeled buttons and a focusable seek slider. Mirroring playback status in speaker view remains open.
+The main presentation window owns playback. Presenter controls must be hideable. The M3 diagnostic provides labeled controls and a focusable seek slider. Speaker previews show their scene’s initial frame.
 
-The following preferred bindings are proposals for M3. Test conflicts with Reveal.js defaults, browser shortcuts, keyboard layouts, overview, and focused controls before adopting them.
+The M3 route disables Reveal’s default keyboard listener and delegates slide navigation, overview, and notes to Reveal’s API. Reveal 6.0.2 normally binds Space to slide navigation. The scoped adapter preserves browser modifiers, ignores repeats, and leaves focused widgets to their native behavior.
 
-| Key | Proposed action |
+| Key | Action |
 | --- | --- |
 | Left / Right | Previous / next slide |
 | Space | Play / pause |
@@ -41,11 +41,11 @@ The following preferred bindings are proposals for M3. Test conflicts with Revea
 | S | Speaker view |
 | Escape | Overview |
 
-M0.2 uses Reveal.js defaults with no custom playback shortcuts. Preserve normal interaction in editable fields and widgets. Test keyboard focus after navigation and fullscreen transitions.
+Escape is reserved for the browser when fullscreen is active. Shift+Equals is accepted as Plus. The root diagnostic continues to use Reveal defaults.
 
 ## M1 visual review
 
-Vite builds the diagnostic deck at `/` and the separate review deck at `/review/`. Review-only CSS, local fonts, and fixed inline SVG samples belong to the review entry point. The archived A–C deck is the default review entry. The `?set=refined` view opens on approved D and retains E and F as archived references, with one pose sheet per style. Both use the same Reveal configuration. The style picker selects the corresponding sample or pose sheet in another candidate using ordinary Reveal navigation. The authoring scope is visual comparison. The approved D review shares character and prop geometry with the M2 gallery. The scene registry and playback remain later milestone work.
+Vite builds the diagnostic deck at `/` and the separate review deck at `/review/`. Review-only CSS, local fonts, and fixed inline SVG samples belong to the review entry point. The archived A–C deck is the default review entry. The `?set=refined` view opens on approved D and retains E and F as archived references, with one pose sheet per style. Both use the same Reveal configuration. The style picker selects the corresponding sample or pose sheet in another candidate using ordinary Reveal navigation. The authoring scope is visual comparison. The approved D review shares character and prop geometry with the M2 gallery. The M3 playback diagnostics use a separate entry and typed scene registry.
 
 ## M2 illustration API
 
@@ -71,6 +71,34 @@ Coordinates are SVG units with x increasing right and y increasing down. A chara
 - `data-pivot` stores a local neck, shoulder or hip pair. Pose-specific hand anchors are inside their arm groups, so attached props move with arm rotation. Neck and shoulders support relative angle overrides. The original authored head tilt still applies. Body paths draw first, then head, costume and the facepalm overlay.
 - The seven principal poses reuse the approved paths. Point and hold add authored curves. Pose changes swap paths and anchors. Expression overrides swap the face while keeping the pose intact. Large arbitrary rotations can cause overlaps or visibly separate joints. This is a pose library with no inverse kinematics or morphing.
 - `props.ts` also exposes envelope, ledger, laptop, server, flag, headwear, bubble and hand fan. Placement is in scene coordinates. The ledger, envelope, laptop and server are centered around their pose-independent drawing origins. The flag is based at the foot of its pole, and headwear uses the character head origin. Bubble width is author-selected and text stays on one line.
+
+## M3 playback engine
+
+- `src/engine/main.ts` registers stable slide IDs, speaker notes, and optional scene factories. It connects Reveal slide and overview events to the controller, or mounts static scene previews when the Notes plugin supplies the `receiver` parameter. Page exit removes handlers and disposes the current view. A cached page reconnects with fresh scene state.
+- `playback.ts` owns one paused GSAP timeline and a session-wide speed selection. At completion it stays at the final beat until reset or seek. Speeds are 0.5×, 0.75×, 1×, 1.25×, 1.5×, and 2×. Nonfinite seeks and unsupported rates are ignored. Finite seeks clamp and pause. A 1 µs tolerance excludes the current beat when stepping. Checkpoints include the initial and final frames.
+- `scenes.ts` keeps diagnostic time-to-state functions separate from their SVG view. The view mounts once, updates cached SVG nodes, and selects among pre-authored poses. Reset is a paused seek to zero. The diagnostics have no independent educational inputs. Future interactive scenes must define how their inputs reset and affect rendering.
+- `controls.ts`, `navigation.ts`, and `shell.ts` handle the presenter panel, shortcut dispatch, and Reveal configuration. Static slides hide the playback panel and Space leaves slide navigation unchanged.
+
+An animated scene declares its timing and returns a view with an absolute render function.
+
+```ts
+const scene: AnimatedScene = {
+  duration: 2,
+  checkpoints: [{ time: 0, label: 'Ready' }, { time: 2, label: 'At the desk' }],
+  mount(root, signal) {
+    const mark = document.createElement('span');
+    mark.textContent = '●';
+    root.append(mark);
+    // Use signal with any scene-owned listeners and asynchronous work.
+    mark.style.display = 'inline-block';
+    return { render: (time) => { mark.style.transform = `translateX(${time * 60}px)`; } };
+  },
+};
+```
+
+Give each factory a fresh view on entry. Write transforms, visibility, text, pose, and prop state from the supplied time. Use the abort signal to cancel pending scene work and optional `dispose()` for resources the controller cannot release. Timeline callbacks are scoped to the active scene instance. The controller removes its mount contents on exit. The current previews do not mirror live playback. Print-still selection remains future work.
+
+GSAP **3.15.1** is pinned and bundled locally. The installed npm metadata identifies the Standard “No Charge” license. The build retains the upstream notice. GSAP provides the linear clock, time scaling, pause and seeking, while scene-specific visual state remains in TypeScript. [Upstream source](https://github.com/greensock/GSAP) · [Standard license](https://gsap.com/standard-license/)
 
 ## Offline and print
 
