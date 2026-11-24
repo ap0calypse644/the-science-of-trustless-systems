@@ -12,7 +12,7 @@ The provisional storyboard spans 46 slides. Part I gives the Two Generals and By
 
 ## Development status
 
-M0.1 is approved. M0.2 provides a three-slide engineering diagnostic deck and is pending review. The framework uses Reveal.js, TypeScript, Vite, Playwright, and npm. Rough.js, SVG illustrations, and GSAP playback are planned for later milestones.
+M0 is approved. The owner approved D — Expressive Minimalism on pure white. M1 finalization awaits PR review before M2. The other treatments remain archived for comparison. The project preserves the three-slide engineering diagnostic deck. The framework uses Reveal.js, TypeScript, Vite, Playwright, and npm. Rough.js, SVG illustrations, and GSAP playback are planned for later milestones.
 
 The target is a 16:9 deck with responsive scaling, classroom-projector readability, independent slide and animation controls, and offline operation using bundled assets. A static PDF fallback is an M8 deliverable.
 
@@ -38,6 +38,24 @@ On Linux, if Playwright reports missing system libraries and you have permission
 | `npm test` | Build and run the shared smoke tests in Playwright Firefox and Chromium against a local production preview. Keep port 4173 free. |
 
 Firefox is the primary browser for presentation and development. Playwright's bundled Firefox build is the primary automated target, with Chromium as the secondary compatibility target. The Playwright build is separate from the owner's installed desktop Firefox. To run only the primary project, use `npm test -- --project=firefox`.
+
+## M1 visual review
+
+| Deck | Development | Production preview |
+| --- | --- | --- |
+| Three engineering diagnostics | [`/`](http://127.0.0.1:5173/) | [`/`](http://127.0.0.1:4173/) |
+| Archive A–C, nine visual samples | [`/review/`](http://127.0.0.1:5173/review/) | [`/review/`](http://127.0.0.1:4173/review/) |
+| Archive typography specimens | [`/review/?type=1`](http://127.0.0.1:5173/review/?type=1) | [`/review/?type=1`](http://127.0.0.1:4173/review/?type=1) |
+| Approved D and archived E–F | [`/review/?set=refined`](http://127.0.0.1:5173/review/?set=refined) | [`/review/?set=refined`](http://127.0.0.1:4173/review/?set=refined) |
+
+For development, run `npm ci` followed by `npm run dev -- --port 5173 --strictPort`. For production review, use the preview commands below. Open the approved review URL in desktop Firefox. It starts on D’s title slide. Left and Right navigate, the style buttons switch treatments while keeping the current sample, and **Character poses** jumps to the active candidate’s Isha sheet. **Archive A–C** and **Approved D** switch decks. The E and F buttons open archived references for the same sample. Escape opens overview, F opens fullscreen, and S opens speaker view. Add `&type=1` to the refined URL to show title glyph specimens.
+
+Run `npm test` to regenerate ignored screenshots in `test-results/visual-review/<browser>/<width>x<height>/` at 1920×1080, 1280×720, and 1024×768. If the local preview already uses port 4173, run `PLAYWRIGHT_PORT=4174 npm test`. The Firefox 1920×1080 run also writes these labeled comparisons using full-size source slides.
+
+- `test-results/visual-review/m1.1-comparisons/title-comparison.png`
+- `test-results/visual-review/m1.1-comparisons/failure-comparison.png`
+- `test-results/visual-review/m1.1-comparisons/message-comparison.png`
+- `test-results/visual-review/m1.1-comparisons/character-comparison.png`
 
 ## Desktop Firefox verification
 

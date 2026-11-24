@@ -1,6 +1,7 @@
 import { defineConfig, devices } from '@playwright/test';
 
-const baseURL = 'http://127.0.0.1:4173';
+const port = process.env.PLAYWRIGHT_PORT ?? '4173';
+const baseURL = `http://127.0.0.1:${port}`;
 
 export default defineConfig({
   testDir: './tests',
@@ -13,7 +14,7 @@ export default defineConfig({
     { name: 'chromium', use: devices['Desktop Chrome'] },
   ],
   webServer: {
-    command: 'npm run preview -- --port 4173 --strictPort',
+    command: `npm run preview -- --port ${port} --strictPort`,
     url: baseURL,
   },
 });

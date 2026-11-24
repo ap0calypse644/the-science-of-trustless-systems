@@ -8,7 +8,7 @@ M0.2 establishes the Reveal.js shell, local build, and shared Firefox and Chromi
 | --- | --- |
 | Deck shell | Configure Reveal.js, register slides and speaker notes, and own navigation, overview, and fullscreen integration. |
 | Slide registry | Map stable slide IDs to slide content, optional scene factories, and print compositions. |
-| Illustration | Provide reusable SVG characters and props, Rough.js rendering with deterministic seeds, and shared theme tokens. |
+| Illustration | Develop reusable SVG characters and props from approved Expressive Minimalism, with deterministic rendering and shared theme tokens. |
 | Scene models | Represent educational state and input rules without browser or timeline dependencies where practical. |
 | Scene views | Render the model and expose local interactions, descriptions, and accessible status. |
 | Playback | Coordinate a single active GSAP timeline, presenter commands, time, speed, and named checkpoints. |
@@ -42,6 +42,10 @@ The following preferred bindings are proposals for M3. Test conflicts with Revea
 | Escape | Overview |
 
 M0.2 uses Reveal.js defaults with no custom playback shortcuts. Preserve normal interaction in editable fields and widgets. Test keyboard focus after navigation and fullscreen transitions.
+
+## M1 visual review
+
+Vite builds the diagnostic deck at `/` and the separate review deck at `/review/`. Review-only CSS, local fonts, and fixed inline SVG samples belong to the review entry point. The archived A–C deck is the default review entry. The `?set=refined` view opens on approved D and retains E and F as archived references, with one pose sheet per style. Both use the same Reveal configuration. The style picker selects the corresponding sample or pose sheet in another candidate using ordinary Reveal navigation. The authoring scope is visual comparison. The scene registry, production illustration library, and playback remain later milestone work.
 
 ## Offline and print
 

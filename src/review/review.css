@@ -1,0 +1,304 @@
+@font-face {
+  font-family: 'Patrick Hand';
+  src: url('./fonts/PatrickHand-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Kalam;
+  src: url('./fonts/Kalam-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Balsamiq Sans';
+  src: url('./fonts/BalsamiqSans-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Balsamiq Sans';
+  src: url('./fonts/BalsamiqSans-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
+
+.review {
+  background: #252729;
+}
+
+.review-slide {
+  --safe-x: 144px;
+  --safe-y: 100px;
+  --gap: 44px;
+  --bubble: var(--paper);
+  --title-weight: 400;
+  --support: system-ui, sans-serif;
+  --fine: calc(var(--stroke) * .55);
+  --heavy: calc(var(--stroke) * 1.45);
+}
+
+.whiteboard {
+  --paper: #fafbf9;
+  --ink: #202421;
+  --ink-secondary: #46534c;
+  --accent: #e4eee8;
+  --accent-alt: #edf0ed;
+  --honest: #246353;
+  --adversarial: #913e33;
+  --neutral: #4d5e58;
+  --success: #28614d;
+  --failure: #963a31;
+  --muted: #58675f;
+  --font: 'Patrick Hand', var(--support);
+  --display: 112px;
+  --heading: 92px;
+  --bubble-size: 44px;
+  --label: 40px;
+  --stroke: 5.5px;
+}
+
+.notebook {
+  --paper: #f7efda;
+  --ink: #272520;
+  --ink-secondary: #554937;
+  --accent: #eddfb4;
+  --accent-alt: #e3e9d0;
+  --honest: #3e5c45;
+  --adversarial: #86442e;
+  --neutral: #5c5647;
+  --success: #3f6044;
+  --failure: #873c2e;
+  --muted: #665c49;
+  --rule: #a697722b;
+  --font: Kalam, var(--support);
+  --display: 105px;
+  --heading: 88px;
+  --bubble-size: 43px;
+  --label: 40px;
+  --stroke: 5.5px;
+  --bubble: #fff7e6;
+}
+
+.comic {
+  --paper: #fff9ed;
+  --ink: #241e29;
+  --ink-secondary: #493f50;
+  --accent: #ffdf95;
+  --accent-alt: #dcebe5;
+  --honest: #245d57;
+  --adversarial: #8a3b52;
+  --neutral: #513e61;
+  --success: #295b43;
+  --failure: #982f50;
+  --muted: #635665;
+  --font: 'Balsamiq Sans', var(--support);
+  --display: 105px;
+  --heading: 84px;
+  --bubble-size: 42px;
+  --label: 39px;
+  --stroke: 7px;
+  --title-weight: 700;
+  --bubble: #fffdf8;
+}
+
+.review .reveal .slides > .review-slide {
+  padding: 0;
+  text-align: left;
+}
+
+.sheet {
+  position: relative;
+  box-sizing: border-box;
+  width: 1920px;
+  height: 1080px;
+  padding: var(--safe-y) var(--safe-x);
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: var(--label);
+}
+
+.sheet h1,
+.sheet h2 {
+  margin: 0 0 var(--gap);
+  font-weight: var(--title-weight);
+  line-height: 1.15;
+  letter-spacing: -.025em;
+}
+
+.sheet h1 { font-size: var(--display); }
+.sheet h2 { font-size: var(--heading); }
+
+.whiteboard .sheet { text-align: center; }
+
+.notebook .sheet::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 calc(var(--safe-x) - 57px);
+  border-left: 3px solid var(--rule);
+}
+
+.notebook .sheet h1,
+.notebook .sheet h2 { transform: rotate(-1deg); }
+.notebook .sheet { --gap: 26px; }
+
+.comic .sheet h1,
+.comic .sheet h2 { max-width: 1180px; }
+.comic[data-sample="title"] .art,
+.notebook[data-sample="title"] .art { margin-top: -40px; }
+
+.art {
+  display: block;
+  width: 100%;
+  height: auto;
+  color: var(--ink);
+  stroke: currentColor;
+  stroke-width: var(--stroke);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+.art text {
+  fill: currentColor;
+  stroke: none;
+  text-anchor: middle;
+  font-size: var(--label);
+}
+
+.art .bubble-text { font-size: var(--bubble-size); }
+.art .fine { stroke-width: var(--fine); }
+.art .heavy { stroke-width: var(--heavy); }
+.art .paper { fill: var(--paper); }
+.art .bubble { fill: var(--bubble); }
+.art .accent { fill: var(--accent); }
+.art .accent-alt { fill: var(--accent-alt); }
+.art .ink { fill: var(--ink); }
+.art .secondary { color: var(--ink-secondary); }
+.art .honest { color: var(--honest); }
+.art .adversarial { color: var(--adversarial); }
+.art .neutral { color: var(--neutral); }
+.art .success { color: var(--success); }
+.art .failure { color: var(--failure); }
+.art .muted { color: var(--muted); }
+
+.type-sample {
+  position: absolute;
+  inset: auto var(--safe-x) var(--safe-y);
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  color: var(--ink-secondary);
+  border-top: 2px solid currentColor;
+  padding-top: 12px;
+}
+
+.math { font-family: var(--support); }
+
+.style-picker {
+  position: fixed;
+  z-index: 30;
+  inset: auto 0 10px;
+  width: max-content;
+  max-width: calc(100% - 16px);
+  margin-inline: auto;
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid #655e54;
+  border-radius: 6px;
+  background: #252729;
+}
+
+.style-picker button {
+  border: 1px solid transparent;
+  border-radius: 3px;
+  color: #ece8df;
+  background: transparent;
+  padding: 5px 8px;
+  cursor: pointer;
+  font: 500 14px/1.2 system-ui, sans-serif;
+}
+
+.style-picker button[aria-pressed="true"] {
+  background: #f6f1e6;
+  color: #252729;
+}
+
+.style-picker button:focus-visible { outline: 2px solid #f6cf7f; }
+
+/* Leave a clean gutter between the two-line comic cover and the optional specimen. */
+.comic .sheet:has(.type-sample) .art { transform: translateY(-32px); }
+
+.style-group:not([hidden]) { display: flex; flex-wrap: wrap; gap: 4px; }
+
+.style-picker .compare-set {
+  align-self: center;
+  padding: 5px 8px;
+  color: #f3ece0;
+  font: 500 14px/1.2 system-ui, sans-serif;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.refined {
+  --paper: #fff;
+  --ink: #222;
+  --ink-secondary: #484a50;
+  --blue: #527da8;
+  --green: #62966b;
+  --red: #c95650;
+  --yellow: #e9b949;
+  --purple: #9276b5;
+  --neutral: #e5e7eb;
+  --safe-x: 104px;
+  --safe-y: 72px;
+  --gap: 7px;
+  --font: 'Patrick Hand', var(--support);
+  --display: 106px;
+  --heading: 91px;
+  --bubble-size: 42px;
+  --label: 40px;
+  --stroke: 5.4px;
+}
+
+.refined .sheet h1,
+.refined .sheet h2 {
+  font-family: Kalam, var(--support);
+  text-align: center;
+}
+
+.refined .art .prop { fill: var(--prop-fill, var(--paper)); }
+.refined .blue { --prop-fill: var(--blue); }
+.refined .green { --prop-fill: var(--green); }
+.refined .red { --prop-fill: var(--red); }
+.refined .yellow { --prop-fill: var(--yellow); }
+.refined .purple { --prop-fill: var(--purple); }
+.refined .neutral { --prop-fill: var(--neutral); color: var(--ink); }
+.refined .head, .refined .hand { fill: var(--paper); }
+.refined .pupil { fill: var(--ink); stroke-width: 3.6px; }
+.refined .detail { stroke-width: 3.6px; }
+.refined .outline { stroke-width: 6px; }
+.refined .ground, .refined .panel-rule {
+  stroke: #888d95;
+  stroke-width: 3px;
+}
+.refined .signal { stroke: #3e7350; }
+.refined .alarm { stroke: #a13933; }
+.refined .broken { stroke: #6b6e74; stroke-dasharray: 12 15; }
+.refined .fort { stroke: #686a71; stroke-width: 3.6px; }
+.refined .smoke { stroke: #51535a; stroke-width: 4.3px; fill: #f4f4f5; }
+.refined .ledger-number { font-size: 45px; }
+.refined .question { font: 64px var(--support); }
+.refined .sleeves, .refined .torso { fill: #f7f7f8; }
+.refined .hand { stroke-width: 3.7px; }
+.refined .hatch { stroke-width: 2.5px; stroke: #56595f; }
+.refined .person { stroke-width: 4.8px; }
+.refined.cartoon .person { stroke-width: 5.3px; }
+.refined.sketch .person { stroke-width: 3.8px; }
+.refined .type-sample { font-size: 35px; }
