@@ -135,7 +135,9 @@
 .comic .sheet h1,
 .comic .sheet h2 { max-width: 1180px; }
 .comic[data-sample="title"] .art,
-.notebook[data-sample="title"] .art .fine { stroke-width: var(--fine); }
+.notebook[data-sample="title"] .art { margin-top: -40px; }
+
+.art .fine { stroke-width: var(--fine); }
 .art .heavy { stroke-width: var(--heavy); }
 .art .paper { fill: var(--paper); }
 .art .bubble { fill: var(--bubble); }

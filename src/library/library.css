@@ -41,6 +41,7 @@ body {
 .plate .art {
   position: absolute;
   inset: 13% 4% auto;
+  margin-top: -40px;
   width: 92%;
   height: 82%;
 }

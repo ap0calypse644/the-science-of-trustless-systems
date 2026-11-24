@@ -111,6 +111,39 @@ test('the review deck and local fonts work with external network blocked', async
   expect(unexpected).toEqual([]);
 });
 
+test('archive strokes and title spacing match M1 without shifting refined slides', async ({ page }) => {
+  const contours = [['whiteboard', 5.5], ['notebook', 5.5], ['comic', 7]] as const;
+  await page.goto('/review/');
+  for (const [candidate, mainWidth] of contours) {
+    for (const sample of samples) {
+      const slide = currentSlide(page);
+      await expect(slide).toHaveAttribute('data-candidate', candidate);
+      await expect(slide).toHaveAttribute('data-sample', sample);
+      const art = slide.locator('.art');
+      await expect(art).toHaveCSS('margin-top', sample === 'title' && candidate !== 'whiteboard' ? '-40px' : '0px');
+      const widths = await art.evaluate((svg) => ({
+        contour: parseFloat(getComputedStyle(svg.querySelector('g path.paper')!).strokeWidth),
+        fine: [...svg.querySelectorAll('path.fine')].map((path) => parseFloat(getComputedStyle(path).strokeWidth)),
+      }));
+      expect(widths.contour).toBeCloseTo(mainWidth, 2);
+      expect(widths.fine.length).toBeGreaterThan(0);
+      for (const width of widths.fine) expect(width).toBeCloseTo(mainWidth * .55, 2);
+      await page.keyboard.press('ArrowRight');
+    }
+  }
+
+  await page.goto('/review/?set=refined');
+  for (const candidate of ['expressive', 'cartoon', 'sketch']) {
+    for (const sample of [...samples, 'characters']) {
+      const slide = currentSlide(page);
+      await expect(slide).toHaveAttribute('data-candidate', candidate);
+      await expect(slide).toHaveAttribute('data-sample', sample);
+      await expect(slide.locator('.art')).toHaveCSS('margin-top', '0px');
+      await page.keyboard.press('ArrowRight');
+    }
+  }
+});
+
 async function checkGeometry(slide: ReturnType<typeof currentSlide>, size: { width: number; height: number }): Promise<void> {
   const geometry = await slide.evaluate((element) => {
     const sheet = element.querySelector('.sheet')!.getBoundingClientRect();
