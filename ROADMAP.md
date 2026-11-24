@@ -1,0 +1,16 @@
+# Roadmap
+
+Explicit owner review gates each milestone. A dependency means an approved deliverable from the preceding work. The active scope is M0.1. Review M0.1 before M0.2 and review the completed M0 foundation before M1.
+
+| Milestone | Dependencies | Deliverables | Acceptance criteria |
+| --- | --- | --- | --- |
+| M0.1 — Documentation | Project brief | README, agent instructions, design, architecture, storyboard, roadmap | All six files agree on scope and constraints. Storyboard accounts for 120 minutes. Provisional choices are identified. Changes are documentation only. |
+| M0.2 — Framework initialization | Approved M0.1 | Minimal Reveal.js, TypeScript, Vite, and npm foundation, lockfile, build and test entry points, setup instructions | A clean setup builds and runs a minimal 16:9 deck shell. A browser smoke check passes. Production shell runs locally without external requests. |
+| M1 — Visual identity | Approved M0 | Paper and ink theme, typography, spacing and color tokens, representative theme samples | Fonts are bundled with license records. Legibility, contrast, safe areas, and non-color cues are demonstrated at representative resolutions and reviewed for projection. |
+| M2 — Illustration library | Approved M1 | Reusable SVG characters, poses, expressions, speech bubbles, and diagram props with seeded sketch rendering | Original artwork uses consistent roles and line weights. Fixed inputs render repeatably. Components can be composed into representative lecture scenes. |
+| M3 — Controls and animation engine | Approved M2 | Scene lifecycle, playback controller, keyboard bindings, seek and checkpoint UI, notes and navigation integration | Playback starts paused and supports all presenter commands. Navigation remains independent. Revisits reset predictably. Browser checks cover lifecycle, focus, and shortcut conflicts. |
+| M4 — Three prototypes | Approved M3 | Title slide, static single-point-of-failure comic, animated Two Generals slide, speaker notes, representative print stills | Prototypes meet theme and readability goals. Two Generals distinguishes lost delivery from uncertainty about acknowledgment, and its playback and checkpoints support live explanation. All three run offline. |
+| M5 — Part I | Approved M4 | Trust slides, demonstrations, speaker notes, and source notes | All Part I topics are covered and technical wording is reviewed. Part I fits a 45-minute rehearsal including audience beats. Demos reset cleanly. |
+| M6 — Part II | Approved M5 | Privacy history, MPC, FHE, and ZKP slides and demonstrations with speaker and source notes | All Part II topics are covered and claims, assumptions, and toy labels are reviewed. Part II fits a 45-minute rehearsal. Interactions work offline and reset cleanly. |
+| M7 — AMA, closing, references | Approved M6 | AMA prompt and notes, closing slide, readable references | Audience questions, closing, and references fit the 30-minute block. Citations are traceable without live network access. |
+| M8 — Rehearsal and delivery | Approved M7 | Browser test results, rehearsal and projector checks, offline package and launch instructions, static PDF | Full 120-minute run is rehearsed. The package starts with internet disconnected on the presentation machine. Presenter workflow and projector readability are verified. Every slide has a readable PDF counterpart. |
