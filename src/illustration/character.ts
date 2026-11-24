@@ -51,8 +51,10 @@ export function character(identity: Character | 'generic', options: CharacterOpt
   const face = expressions[expression];
   const features = identity === 'generic' ? null : hairAndGlasses[identity];
   const mirrored = facing === 'left';
+  // The raised forearm crosses the cheek. Redraw only the end of its original
+  // curve in front of the head so the shoulder and scarf keep their layering.
   const facepalm = pose === 'facepalm'
-    ? '<path class="hand" d="M-24 11 Q-11 6-10-5 l11-7 q4 1 0 6 l-6 7 l12-6 q4 2 1 6 l-11 8 l8-3 q4 3 0 6 l-16 9 q-8 2-13-7Z"/>'
+    ? '<path data-part="facepalm-forearm" d="M-31 43.28 Q-31.8 38.4-31 32 L-20 7"/><path class="hand" d="M-24 11 Q-11 6-10-5 l11-7 q4 1 0 6 l-6 7 l12-6 q4 2 1 6 l-11 8 l8-3 q4 3 0 6 l-16 9 q-8 2-13-7Z"/>'
     : '';
   return `<g class="person ${identity}" data-character="${identity}"${instance === undefined ? '' : ` data-instance="${svgText(instance)}"`}
     transform="translate(${x} ${y}) scale(${mirrored ? -scale : scale} ${scale})">

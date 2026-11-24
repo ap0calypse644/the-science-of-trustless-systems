@@ -37,6 +37,35 @@ test('authored SVG is deterministic, scoped, and escapes labels', async ({ page 
   await expect(page.locator('svg note, svg proof')).toHaveCount(0);
 });
 
+test('the raised forearm crosses the face and meets the palm under articulation', async ({ page }) => {
+  const figures = (['alice', 'bob', 'charlie'] as const).map((identity) =>
+    character(identity, { pose: 'facepalm', facing: 'left', angles: { leftArm: 12 } }),
+  ).join('');
+  await page.setContent(`<svg>${figures}</svg>`);
+
+  const connections = await page.locator('[data-character]').evaluateAll((characters) => characters.map((figure) => {
+    const arm = figure.querySelector<SVGGElement>('[data-part="left-arm"]')!;
+    const head = figure.querySelector('[data-part="head"]')!;
+    const forearm = figure.querySelector<SVGPathElement>('[data-part="facepalm-forearm"]')!;
+    const palm = figure.querySelector<SVGPathElement>('[data-part="facepalm-hand"] .hand')!;
+    const length = forearm.getTotalLength();
+    const wrist = forearm.getPointAtLength(length);
+    const handAnchor = arm.querySelector<SVGGElement>('[data-anchor="left-hand"]')!;
+    const wristOnScreen = wrist.matrixTransform(forearm.getCTM()!);
+    const anchorOnScreen = new DOMPoint().matrixTransform(handAnchor.getCTM()!);
+    return {
+      forearmAboveHead: Boolean(head.compareDocumentPosition(forearm) & Node.DOCUMENT_POSITION_FOLLOWING),
+      forearmBelowPalm: Boolean(forearm.compareDocumentPosition(palm) & Node.DOCUMENT_POSITION_FOLLOWING),
+      contactsPalm: palm.isPointInFill(forearm.getPointAtLength(length - 6)),
+      wristError: Math.hypot(wristOnScreen.x - anchorOnScreen.x, wristOnScreen.y - anchorOnScreen.y),
+    };
+  }));
+  for (const connection of connections) {
+    expect(connection).toMatchObject({ forearmAboveHead: true, forearmBelowPalm: true, contactsPalm: true });
+    expect(connection.wristError).toBeLessThan(0.01);
+  }
+});
+
 test('the gallery works offline and the articulation reset restores its SVG', async ({ page, context, baseURL }) => {
   const unexpected: string[] = [];
   const fonts = new Set<string>();
