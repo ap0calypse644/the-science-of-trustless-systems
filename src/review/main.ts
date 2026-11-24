@@ -5,6 +5,7 @@ import { drawSample, type Candidate } from './samples';
 import { drawRefinedSample } from './refined-scenes';
 import type { RefinedStyle } from './refined-characters';
 import './review.css';
+import '../illustration/theme.css';
 
 const parameters = new URLSearchParams(location.search);
 const refined = parameters.get('set') === 'refined';
@@ -34,14 +35,14 @@ const samples = [
 
 const characterSample = {
   id: 'characters',
-  title: 'Isha in seven poses',
-  description: 'Isha stands, celebrates, shrugs, schemes, loses patience, facepalms, and runs with an envelope.',
-  note: 'Compare Isha’s body language and silhouette across the seven poses.',
+  title: 'Alice in seven poses',
+  description: 'Alice stands, celebrates, shrugs, schemes, loses patience, facepalms, and runs with an envelope.',
+  note: 'Compare Alice’s body language and silhouette across the seven poses.',
 } as const;
 
 const refinedDescriptions = {
-  title: 'Isha and Noor compare conflicting ledger copies while Dev guards a sealed envelope.',
-  failure: 'Two students lose their connections when their shared server starts smoking. Isha arrives with a hand fan.',
+  title: 'Alice and Bob compare conflicting ledger copies while Charlie guards a sealed envelope.',
+  failure: 'Two students lose their connections when their shared server starts smoking. Alice arrives with a hand fan.',
   message: 'Generals wait on opposite ridges while a courier struggles in the valley with an oversized envelope.',
   characters: characterSample.description,
 };
@@ -63,7 +64,7 @@ for (const candidate of candidates) {
     const slide = document.createElement('section');
     slide.dataset.candidate = candidate;
     slide.dataset.sample = sample.id;
-    slide.className = `review-slide ${candidate}${refined ? ' refined' : ''}`;
+    slide.className = `review-slide ${candidate}${refined ? ' refined expressive-theme' : ''}`;
     const heading = sample.id === 'title' && candidate === 'comic'
       ? 'The Science of <br>Trustless Systems'
       : sample.title;

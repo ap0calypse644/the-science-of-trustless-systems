@@ -12,7 +12,7 @@ The provisional storyboard spans 46 slides. Part I gives the Two Generals and By
 
 ## Development status
 
-M0 is approved. The owner approved D — Expressive Minimalism on pure white. M1 finalization awaits PR review before M2. The other treatments remain archived for comparison. The project preserves the three-slide engineering diagnostic deck. The framework uses Reveal.js, TypeScript, Vite, Playwright, and npm. Rough.js, SVG illustrations, and GSAP playback are planned for later milestones.
+M0 is approved. The owner approved D — Expressive Minimalism on pure white. M1 merged in PR #3. The M2 illustration library and review gallery await PR review before M3. The other treatments remain archived for comparison. The project preserves the three-slide engineering diagnostic deck. The framework uses Reveal.js, TypeScript, Vite, Playwright, and npm. M2 uses deterministic authored SVG paths. GSAP playback is planned for a later milestone.
 
 The target is a 16:9 deck with responsive scaling, classroom-projector readability, independent slide and animation controls, and offline operation using bundled assets. A static PDF fallback is an M8 deliverable.
 
@@ -48,7 +48,7 @@ Firefox is the primary browser for presentation and development. Playwright's bu
 | Archive typography specimens | [`/review/?type=1`](http://127.0.0.1:5173/review/?type=1) | [`/review/?type=1`](http://127.0.0.1:4173/review/?type=1) |
 | Approved D and archived E–F | [`/review/?set=refined`](http://127.0.0.1:5173/review/?set=refined) | [`/review/?set=refined`](http://127.0.0.1:4173/review/?set=refined) |
 
-For development, run `npm ci` followed by `npm run dev -- --port 5173 --strictPort`. For production review, use the preview commands below. Open the approved review URL in desktop Firefox. It starts on D’s title slide. Left and Right navigate, the style buttons switch treatments while keeping the current sample, and **Character poses** jumps to the active candidate’s Isha sheet. **Archive A–C** and **Approved D** switch decks. The E and F buttons open archived references for the same sample. Escape opens overview, F opens fullscreen, and S opens speaker view. Add `&type=1` to the refined URL to show title glyph specimens.
+For development, run `npm ci` followed by `npm run dev -- --port 5173 --strictPort`. For production review, use the preview commands below. Open the approved review URL in desktop Firefox. It starts on D’s title slide. Left and Right navigate, the style buttons switch treatments while keeping the current sample, and **Character poses** jumps to the active candidate’s Alice sheet. **Archive A–C** and **Approved D** switch decks. The E and F buttons open archived references for the same sample. Escape opens overview, F opens fullscreen, and S opens speaker view. Add `&type=1` to the refined URL to show title glyph specimens.
 
 Run `npm test` to regenerate ignored screenshots in `test-results/visual-review/<browser>/<width>x<height>/` at 1920×1080, 1280×720, and 1024×768. If the local preview already uses port 4173, run `PLAYWRIGHT_PORT=4174 npm test`. The Firefox 1920×1080 run also writes these labeled comparisons using full-size source slides.
 
@@ -56,6 +56,12 @@ Run `npm test` to regenerate ignored screenshots in `test-results/visual-review/
 - `test-results/visual-review/m1.1-comparisons/failure-comparison.png`
 - `test-results/visual-review/m1.1-comparisons/message-comparison.png`
 - `test-results/visual-review/m1.1-comparisons/character-comparison.png`
+
+## M2 illustration review
+
+Start the production preview using the commands below. Open [the M2 gallery](http://127.0.0.1:4173/library/) or use [the development gallery](http://127.0.0.1:5173/library/) with the Vite development server. Use the gallery links to compare the cast, all 21 principal pose examples, props and variants, the ledger and server compositions, and the articulation check. In [Articulation](http://127.0.0.1:4173/library/#articulation), choose a pose and expression, move the head or right arm, then use **Reset** to return to the baseline.
+
+The Firefox suite captures `cast.png`, `poses.png`, `props.png`, `ledger.png`, `failure.png`, and `articulation.png` under each of `test-results/visual-review/m2/1920x1080/`, `1280x720/`, and `1024x768/`. These files stay local. The [library API](ARCHITECTURE.md#m2-illustration-api) describes part names and prop placement.
 
 ## Desktop Firefox verification
 

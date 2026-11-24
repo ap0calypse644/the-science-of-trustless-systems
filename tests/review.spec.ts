@@ -103,7 +103,7 @@ test('the review deck and local fonts work with external network blocked', async
   const refinedPopup = page.waitForEvent('popup');
   await page.keyboard.press('s');
   const refinedSpeaker = await refinedPopup;
-  await expect(refinedSpeaker.getByText('Compare Isha’s body language and silhouette across the seven poses.')).toBeVisible();
+  await expect(refinedSpeaker.getByText('Compare Alice’s body language and silhouette across the seven poses.')).toBeVisible();
   await refinedSpeaker.close();
   await page.bringToFront();
   await page.keyboard.press('f');

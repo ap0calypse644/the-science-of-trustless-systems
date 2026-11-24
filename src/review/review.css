@@ -1,18 +1,4 @@
 @font-face {
-  font-family: 'Patrick Hand';
-  src: url('./fonts/PatrickHand-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: Kalam;
-  src: url('./fonts/Kalam-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-display: swap;
-}
-
-@font-face {
   font-family: 'Balsamiq Sans';
   src: url('./fonts/BalsamiqSans-Regular.woff2') format('woff2');
   font-weight: 400;
@@ -149,29 +135,7 @@
 .comic .sheet h1,
 .comic .sheet h2 { max-width: 1180px; }
 .comic[data-sample="title"] .art,
-.notebook[data-sample="title"] .art { margin-top: -40px; }
-
-.art {
-  display: block;
-  width: 100%;
-  height: auto;
-  color: var(--ink);
-  stroke: currentColor;
-  stroke-width: var(--stroke);
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  fill: none;
-}
-
-.art text {
-  fill: currentColor;
-  stroke: none;
-  text-anchor: middle;
-  font-size: var(--label);
-}
-
-.art .bubble-text { font-size: var(--bubble-size); }
-.art .fine { stroke-width: var(--fine); }
+.notebook[data-sample="title"] .art .fine { stroke-width: var(--fine); }
 .art .heavy { stroke-width: var(--heavy); }
 .art .paper { fill: var(--paper); }
 .art .bubble { fill: var(--bubble); }
@@ -246,59 +210,6 @@
   text-underline-offset: 3px;
 }
 
-.refined {
-  --paper: #fff;
-  --ink: #222;
-  --ink-secondary: #484a50;
-  --blue: #527da8;
-  --green: #62966b;
-  --red: #c95650;
-  --yellow: #e9b949;
-  --purple: #9276b5;
-  --neutral: #e5e7eb;
-  --safe-x: 104px;
-  --safe-y: 72px;
-  --gap: 7px;
-  --font: 'Patrick Hand', var(--support);
-  --display: 106px;
-  --heading: 91px;
-  --bubble-size: 42px;
-  --label: 40px;
-  --stroke: 5.4px;
-}
-
-.refined .sheet h1,
-.refined .sheet h2 {
-  font-family: Kalam, var(--support);
-  text-align: center;
-}
-
-.refined .art .prop { fill: var(--prop-fill, var(--paper)); }
-.refined .blue { --prop-fill: var(--blue); }
-.refined .green { --prop-fill: var(--green); }
-.refined .red { --prop-fill: var(--red); }
-.refined .yellow { --prop-fill: var(--yellow); }
-.refined .purple { --prop-fill: var(--purple); }
-.refined .neutral { --prop-fill: var(--neutral); color: var(--ink); }
-.refined .head, .refined .hand { fill: var(--paper); }
-.refined .pupil { fill: var(--ink); stroke-width: 3.6px; }
-.refined .detail { stroke-width: 3.6px; }
-.refined .outline { stroke-width: 6px; }
-.refined .ground, .refined .panel-rule {
-  stroke: #888d95;
-  stroke-width: 3px;
-}
-.refined .signal { stroke: #3e7350; }
-.refined .alarm { stroke: #a13933; }
-.refined .broken { stroke: #6b6e74; stroke-dasharray: 12 15; }
-.refined .fort { stroke: #686a71; stroke-width: 3.6px; }
-.refined .smoke { stroke: #51535a; stroke-width: 4.3px; fill: #f4f4f5; }
-.refined .ledger-number { font-size: 45px; }
-.refined .question { font: 64px var(--support); }
-.refined .sleeves, .refined .torso { fill: #f7f7f8; }
-.refined .hand { stroke-width: 3.7px; }
-.refined .hatch { stroke-width: 2.5px; stroke: #56595f; }
-.refined .person { stroke-width: 4.8px; }
 .refined.cartoon .person { stroke-width: 5.3px; }
 .refined.sketch .person { stroke-width: 3.8px; }
 .refined .type-sample { font-size: 35px; }

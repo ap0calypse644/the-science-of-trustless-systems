@@ -1,0 +1,90 @@
+@font-face {
+  font-family: 'Patrick Hand';
+  src: url('../review/fonts/PatrickHand-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Kalam;
+  src: url('../review/fonts/Kalam-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+
+.art { margin-top: -40px; }
+
+.art {
+  display: block;
+  width: 100%;
+  height: auto;
+  color: var(--ink);
+  stroke: currentColor;
+  stroke-width: var(--stroke);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+.art text {
+  fill: currentColor;
+  stroke: none;
+  text-anchor: middle;
+  font-size: var(--label);
+}
+
+.art .bubble-text { font-size: var(--bubble-size); }
+.expressive-theme {
+  --support: system-ui, sans-serif;
+  --paper: #fff;
+  --ink: #222;
+  --ink-secondary: #484a50;
+  --blue: #527da8;
+  --green: #62966b;
+  --red: #c95650;
+  --yellow: #e9b949;
+  --purple: #9276b5;
+  --neutral: #e5e7eb;
+  --safe-x: 104px;
+  --safe-y: 72px;
+  --gap: 7px;
+  --font: 'Patrick Hand', var(--support);
+  --display: 106px;
+  --heading: 91px;
+  --bubble-size: 42px;
+  --label: 40px;
+  --stroke: 5.4px;
+}
+
+.expressive-theme .sheet h1,
+.expressive-theme .sheet h2 {
+  font-family: Kalam, var(--support);
+  text-align: center;
+}
+
+.expressive-theme .art .prop { fill: var(--prop-fill, var(--paper)); }
+.expressive-theme .blue { --prop-fill: var(--blue); }
+.expressive-theme .green { --prop-fill: var(--green); }
+.expressive-theme .red { --prop-fill: var(--red); }
+.expressive-theme .yellow { --prop-fill: var(--yellow); }
+.expressive-theme .purple { --prop-fill: var(--purple); }
+.expressive-theme .neutral { --prop-fill: var(--neutral); color: var(--ink); }
+.expressive-theme .head, .expressive-theme .hand { fill: var(--paper); }
+.expressive-theme .pupil { fill: var(--ink); stroke-width: 3.6px; }
+.expressive-theme .detail { stroke-width: 3.6px; }
+.expressive-theme .outline { stroke-width: 6px; }
+.expressive-theme .ground, .expressive-theme .panel-rule {
+  stroke: #888d95;
+  stroke-width: 3px;
+}
+.expressive-theme .signal { stroke: #3e7350; }
+.expressive-theme .alarm { stroke: #a13933; }
+.expressive-theme .broken { stroke: #6b6e74; stroke-dasharray: 12 15; }
+.expressive-theme .fort { stroke: #686a71; stroke-width: 3.6px; }
+.expressive-theme .smoke { stroke: #51535a; stroke-width: 4.3px; fill: #f4f4f5; }
+.expressive-theme .ledger-number { font-size: 45px; }
+.expressive-theme .question { font: 64px var(--support); }
+.expressive-theme .sleeves, .expressive-theme .torso { fill: #f7f7f8; }
+.expressive-theme .hand { stroke-width: 3.7px; }
+.expressive-theme .hatch { stroke-width: 2.5px; stroke: #56595f; }
+.expressive-theme .person { stroke-width: 4.8px; }

@@ -45,7 +45,32 @@ M0.2 uses Reveal.js defaults with no custom playback shortcuts. Preserve normal 
 
 ## M1 visual review
 
-Vite builds the diagnostic deck at `/` and the separate review deck at `/review/`. Review-only CSS, local fonts, and fixed inline SVG samples belong to the review entry point. The archived A–C deck is the default review entry. The `?set=refined` view opens on approved D and retains E and F as archived references, with one pose sheet per style. Both use the same Reveal configuration. The style picker selects the corresponding sample or pose sheet in another candidate using ordinary Reveal navigation. The authoring scope is visual comparison. The scene registry, production illustration library, and playback remain later milestone work.
+Vite builds the diagnostic deck at `/` and the separate review deck at `/review/`. Review-only CSS, local fonts, and fixed inline SVG samples belong to the review entry point. The archived A–C deck is the default review entry. The `?set=refined` view opens on approved D and retains E and F as archived references, with one pose sheet per style. Both use the same Reveal configuration. The style picker selects the corresponding sample or pose sheet in another candidate using ordinary Reveal navigation. The authoring scope is visual comparison. The approved D review shares character and prop geometry with the M2 gallery. The scene registry and playback remain later milestone work.
+
+## M2 illustration API
+
+Use `src/illustration/theme.css` and put the SVG inside an `.expressive-theme` container with an `.art` SVG. The theme shares the existing local Kalam and Patrick Hand files and their SIL OFL notices. The palette and fine stroke widths remain subject to projection checks.
+
+```ts
+import { character } from './illustration/character';
+import { bubble } from './illustration/props';
+
+const artwork = character('alice', {
+  instance: 'ledger-alice',
+  x: 300, y: 200, scale: 1.4, facing: 'left',
+  pose: 'point', expression: 'confused',
+  hands: { right: { kind: 'ledger', label: '24' } },
+}) + bubble(340, 100, 250, 'This copy?', 1);
+```
+
+The API returns SVG fragments from authored paths. Use plain strings for bubble and ledger text. The helpers escape markup and attribute metacharacters. A character has no global SVG IDs. Set an optional `instance` label to find its root by `data-instance`, then scope part queries to that root.
+
+Coordinates are SVG units with x increasing right and y increasing down. A character is placed at its head center and scaled about that origin. Left facing reflects only the character and attached props. Independently placed dialogue stays readable, and an attached ledger compensates for the reflected character. Left and right part names refer to the sides of the unmirrored artwork.
+
+- `data-part` identifies torso, head, hair, head-accessory, eyes, brows, mouth, costume, left/right arms, legs and hands. The forward facepalm hand has its own `facepalm-hand` layer.
+- `data-pivot` stores a local neck, shoulder or hip pair. Pose-specific hand anchors are inside their arm groups, so attached props move with arm rotation. Neck and shoulders support relative angle overrides. The original authored head tilt still applies. Body paths draw first, then head, costume and the facepalm overlay.
+- The seven principal poses reuse the approved paths. Point and hold add authored curves. Pose changes swap paths and anchors. Expression overrides swap the face while keeping the pose intact. Large arbitrary rotations can cause overlaps or visibly separate joints. This is a pose library with no inverse kinematics or morphing.
+- `props.ts` also exposes envelope, ledger, laptop, server, flag, headwear, bubble and hand fan. Placement is in scene coordinates. The ledger, envelope, laptop and server are centered around their pose-independent drawing origins. The flag is based at the foot of its pole, and headwear uses the character head origin. Bubble width is author-selected and text stays on one line.
 
 ## Offline and print
 
