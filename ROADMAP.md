@@ -1,6 +1,6 @@
 # Roadmap
 
-Explicit owner review gates each milestone. A dependency means an approved deliverable from the preceding work. M0 is approved. The owner approved D — Expressive Minimalism and a pure-white canvas. M1 is merged. M2 is merged. M3 is approved and merged (PR #7); desktop Firefox manual checks passed. M4 is next. See [CONTINUATION.md](CONTINUATION.md) for slide 1–6 approvals and the restart point. Milestone scope gates remain in force; slide count and time allocations are approximate, not rigid pass/fail targets.
+Explicit owner review gates each milestone. A dependency means an approved deliverable from the preceding work. M0 is approved. The owner approved D — Expressive Minimalism and a pure-white canvas. M1 is merged. M2 is merged. M3 is approved and merged (PR #7); desktop Firefox manual checks passed. M4 is next. See [CONTINUATION.md](CONTINUATION.md) for slide 1–10 approvals and the restart point. Owner chose to finish Part I creative prototyping before authorizing any production slide implementation; issue #8 remains pending. This planning decision does not change the M4 prototype gate or later milestone acceptance criteria. Milestone scope gates remain in force; slide count and time allocations are approximate, not rigid pass/fail targets.
 
 | Milestone | Dependencies | Deliverables | Acceptance criteria |
 | --- | --- | --- | --- |

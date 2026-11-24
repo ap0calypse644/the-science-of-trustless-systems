@@ -20,12 +20,12 @@ Use this progression where it helps the lecture flow, from agreement and replica
 - Draw original stick figures with readable silhouettes, simple poses, expressive faces, and concise speech bubbles. Take inspiration from the general educational explainer aesthetic of MinuteEarth, MinutePhysics, and XKCD. Create original poses, characters, compositions, and jokes.
 - Use the M2 reusable SVG character parts and props derived from the approved organic stick-figure direction. Preserve recognizable head shapes, weight shifts, and body language. Preserve stable visual roles within a scene, especially for senders, recipients, validators, and adversarial actors.
 - Use movement to show a meaningful change such as message delivery, a split history, or a computation step. Pause at states worth discussing. Give interactive demonstrations one clear task and a visible reset.
-- Use fictional names, transactions, and scenarios. Optional pop-culture references generally use original imagery. Slide 5 is a specific owner-approved exception: the actual three-Spider-Man pointing meme, subject to provenance and redistribution rights; see CONTINUATION.md. Keep toy cryptography labels visible wherever students operate the demonstration.
+- Use fictional names, transactions, and scenarios. Use internationally relatable examples, neutral currency units, and no demographic-specific localization or samosas. Optional pop-culture references generally use original imagery. Slide 5 is a specific owner-approved exception: the actual three-Spider-Man pointing meme, subject to provenance and redistribution rights; see CONTINUATION.md. Keep toy cryptography labels visible wherever students operate the demonstration.
 - Plan a print composition for each slide. Comics can use their full panel sequence. Animated and interactive scenes need an informative still or compact sequence that preserves the teaching point.
 
 ## Production slide decisions
 
-[CONTINUATION.md](CONTINUATION.md) records the owner-approved slide 1–6 directions, superseding the historical review compositions below for production slides. Keep pure white and the approved M2 characters; vary heading treatment and composition to suit each slide. The title's bold integrated lettering is not a mandatory template for later slides.
+[CONTINUATION.md](CONTINUATION.md) records the owner-approved slide 1–10 directions, superseding the historical review compositions below for production slides. Keep pure white and the approved M2 characters; vary heading treatment and composition to suit each slide. The title's bold integrated lettering is not a mandatory template for later slides.
 
 ## M1 archive · Candidates A–C
 
