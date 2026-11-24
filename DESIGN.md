@@ -2,6 +2,12 @@
 
 The slides support a live speaker. Give each slide one visual question, reveal, or takeaway. Put derivations, caveats, and extended explanations in speaker notes. Use a comic beat or pop-culture reference when it reinforces the concept and works for students unfamiliar with the reference.
 
+## Problem-driven storytelling
+
+Give a technical concept a reason to exist before naming it. Start with a relatable problem, let the audience propose an intuitive solution, then show its limits. A recurring character can expose a weakness where it helps the explanation. Introduce the mechanism that addresses it and let the consequence lead to the next question.
+
+Use this progression where it helps the lecture flow, from agreement and replicated ledgers to privacy and controlled disclosure. Keep the speaker free to follow student suggestions and let simpler explanations stand on their own. Use original recurring characters, examples, dialogue, and staging. Pop-culture references are optional Easter eggs.
+
 ## Canvas and typography
 
 - Design for a 16:9 canvas and responsive scaling. Keep labels and speech bubbles inside safe margins, with room for presenter controls and browser or projector cropping.
