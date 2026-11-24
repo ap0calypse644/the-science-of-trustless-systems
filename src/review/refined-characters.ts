@@ -1,29 +1,26 @@
-export type RefinedStyle = 'expressive' | 'cartoon' | 'sketch';
-type Person = 'isha' | 'noor' | 'dev';
-type Pose = 'stand' | 'excited' | 'confused' | 'suspicious' | 'frustrated' | 'facepalm' | 'run';
+import { character, costume } from '../illustration/character';
+import { headwear, type Headwear } from '../illustration/props';
+import type { Character as Person, Expression as Pose } from '../illustration/geometry';
 
-const faces: Record<RefinedStyle, Record<Person, string>> = {
-  expressive: {
-    isha: 'M-34 14 Q-48-8-32-38 Q-15-56 9-48 Q38-42 37-16 Q42 8 26 33 Q8 48-16 40 Q-29 35-34 14Z',
-    noor: 'M-39-12 Q-37-42-12-47 Q22-52 39-26 Q50 0 34 30 Q19 44-5 40 Q-36 36-39-12Z',
-    dev: 'M-42-11 Q-50-33-21-44 Q6-51 36-32 Q50-16 36 10 L24 31 Q9 46-21 32 Q-37 26-42-11Z',
-  },
+export type RefinedStyle = 'expressive' | 'cartoon' | 'sketch';
+
+const faces: Record<Exclude<RefinedStyle, 'expressive'>, Record<Person, string>> = {
   cartoon: {
-    isha: 'M-53-28 C-43-62-8-72 27-56 Q62-46 60-9 Q61 7 69 11 Q66 22 53 21 Q42 55 5 55 Q-49 62-57 13 Q-65 4-61-7Z',
-    noor: 'M-56 6 Q-68-7-56-26 Q-62-49-32-59 Q-18-76 4-65 Q26-74 39-53 Q63-50 62-21 Q76-6 62 9 Q61 45 34 54 Q-7 67-41 47 Q-56 32-56 6Z',
-    dev: 'M-59-15 Q-58-57-20-63 Q13-68 52-42 Q66-29 54-5 L64 6 Q65 17 48 19 Q39 46 14 58 Q-36 56-54 33 Q-66 21-59-15Z',
+    alice: 'M-53-28 C-43-62-8-72 27-56 Q62-46 60-9 Q61 7 69 11 Q66 22 53 21 Q42 55 5 55 Q-49 62-57 13 Q-65 4-61-7Z',
+    bob: 'M-56 6 Q-68-7-56-26 Q-62-49-32-59 Q-18-76 4-65 Q26-74 39-53 Q63-50 62-21 Q76-6 62 9 Q61 45 34 54 Q-7 67-41 47 Q-56 32-56 6Z',
+    charlie: 'M-59-15 Q-58-57-20-63 Q13-68 52-42 Q66-29 54-5 L64 6 Q65 17 48 19 Q39 46 14 58 Q-36 56-54 33 Q-66 21-59-15Z',
   },
   sketch: {
-    isha: 'M-31-38 Q-16-57 10-49 Q35-44 37-20 L35-4 L49 7 L37 15 Q37 32 25 44 L4 51 Q-23 45-32 29 L-39 4 Q-49-14-31-38Z',
-    noor: 'M-45-9 Q-52-26-32-44 Q-13-58 9-51 Q35-48 43-26 L43-5 Q57 8 43 16 L36 35 L14 46 Q-18 42-34 26 Q-43 10-45-9Z',
-    dev: 'M-47-22 Q-37-55-4-48 Q30-47 41-25 Q38-8 48-2 L45 12 L35 15 Q33 32 12 39 L-21 41 Q-48 31-49 7Z',
+    alice: 'M-31-38 Q-16-57 10-49 Q35-44 37-20 L35-4 L49 7 L37 15 Q37 32 25 44 L4 51 Q-23 45-32 29 L-39 4 Q-49-14-31-38Z',
+    bob: 'M-45-9 Q-52-26-32-44 Q-13-58 9-51 Q35-48 43-26 L43-5 Q57 8 43 16 L36 35 L14 46 Q-18 42-34 26 Q-43 10-45-9Z',
+    charlie: 'M-47-22 Q-37-55-4-48 Q30-47 41-25 Q38-8 48-2 L45 12 L35 15 Q33 32 12 39 L-21 41 Q-48 31-49 7Z',
   },
 };
 
 const hair: Record<Person, string> = {
-  isha: '<path d="M-34 1 Q-26-32-4-36 Q11-16 33-20 M-32-21 Q-57-42-62-16 Q-67 0-51 9 L-38 3"/>',
-  noor: '<path d="M-35-26 q-4-13 11-13 q-1-14 15-10 q12-12 23-1 q15-7 22 10 M-31-6 q10-7 21 0 l-2 17 q-12 7-20-2Z M7-6 q12-8 25-1 l-3 17 q-12 8-22-1Z M-10-3 Q-1-7 7-3"/>',
-  dev: '<path d="M-43-14 Q-48-31-34-37 L-42-51 Q-17-51-7-38 L-4-55 Q14-53 24-38 L39-40 Q47-28 37-14 Q9-27-20-23Z"/>',
+  alice: '<path d="M-34 1 Q-26-32-4-36 Q11-16 33-20 M-32-21 Q-57-42-62-16 Q-67 0-51 9 L-38 3"/>',
+  bob: '<path d="M-35-26 q-4-13 11-13 q-1-14 15-10 q12-12 23-1 q15-7 22 10 M-31-6 q10-7 21 0 l-2 17 q-12 7-20-2Z M7-6 q12-8 25-1 l-3 17 q-12 8-22-1Z M-10-3 Q-1-7 7-3"/>',
+  charlie: '<path d="M-43-14 Q-48-31-34-37 L-42-51 Q-17-51-7-38 L-4-55 Q14-53 24-38 L39-40 Q47-28 37-14 Q9-27-20-23Z"/>',
 };
 
 const expressions: Record<Pose, string> = {
@@ -34,17 +31,6 @@ const expressions: Record<Pose, string> = {
   frustrated: '<path d="M-24-16 l15 8 M8-8 l17-9 M-19-1 l10 3 M9 1 l11-2"/><path class="pupil" d="M-15 22 Q-4 5 13 15 L17 25 Q-1 20-15 22Z"/>',
   facepalm: '<path d="M-21-4 q8 6 14 2 M8 0 q8 6 14 1 M-10 24 q10-7 20 0"/>',
   run: '<path d="M-22-13 l13-5 M9-12 l15 5 M-16-2 l8 3 M9 2 l10-4"/><path class="pupil" d="M-13 17 Q0 8 16 17 L14 23 L-11 23Z"/>',
-};
-
-// The rows describe authored full-body poses, from relaxed weight shifts to an asymmetric sprint.
-const stick: Record<Pose, string> = {
-  stand: 'M1 43 Q8 77-1 115 M2 54 Q-14 77-39 97 M3 55 Q26 66 36 96 M-1 115 Q-13 141-31 170 l-15 1 M-1 115 Q17 140 20 173 l16 0',
-  excited: 'M2 42 Q-4 76 7 105 M2 55 Q-27 58-45 23 l-10-18 M2 58 Q42 53 56 14 l3-13 M7 105 Q-13 122-19 151 l-30-8 M7 105 Q37 122 32 151 l23 0',
-  confused: 'M4 43 Q-3 80 8 116 M3 56 Q-19 79-42 70 l-8-10 M5 55 Q28 70 53 60 l5-8 M8 116 Q-21 141-29 171 l-13 1 M8 116 Q22 142 23 172 l19 0',
-  suspicious: 'M0 43 Q14 70 17 115 M7 60 Q31 78 49 55 l4-13 M6 60 Q-20 73-40 98 M17 115 Q-9 151-38 158 l-17-2 M17 115 Q35 140 42 161 l15-3',
-  frustrated: 'M1 43 Q-15 73-2 112 M0 58 Q-30 53-47 30 l-7-13 M0 57 Q28 60 55 32 l6-15 M-2 112 Q-9 148-38 167 l-16-1 M-2 112 Q31 134 38 164 l18 0',
-  facepalm: 'M4 43 Q-10 67 9 112 M1 58 Q-35 64-31 32 L-20 7 M2 60 Q24 73 27 111 M9 112 Q-2 147-15 168 l-18 3 M9 112 Q25 141 23 170 l17 1',
-  run: 'M6 39 Q-9 68-26 99 M-4 58 Q26 77 48 51 l10-16 M-5 59 Q-56 71-72 44 M-26 99 Q10 100 30 118 l-12 30 M-26 99 Q-41 129-68 135 l-36-14',
 };
 
 const sleeves: Record<Pose, string> = {
@@ -91,32 +77,24 @@ const lean: Record<Pose, number> = {
   stand: -3, excited: -9, confused: 16, suspicious: 18, frustrated: -12, facepalm: 20, run: 23,
 };
 
-function costume(person: Person): string {
-  if (person === 'isha') return '<path class="prop blue" d="M-13 43 q17 6 34-4 l2 10 q-17 9-36 3 l-15 18 l1-14Z"/>';
-  if (person === 'noor') return '<path class="prop green" d="M-17 45 q9 4 18 12 q7-9 21-15 l-3 12 l-17 12 l-19-9Z"/>';
-  return '<path class="prop purple" d="M-15 43 q22 5 35-2 l0 10 l-13 7 l-17-4Z"/>';
-}
-
-export function personAt(style: RefinedStyle, person: Person, pose: Pose, x: number, y: number, size: number, helmet = ''): string {
+export function personAt(style: RefinedStyle, person: Person, pose: Pose, x: number, y: number, size: number, helmet?: Headwear): string {
+  if (style === 'expressive') return character(person, { pose, x, y, scale: size, headwear: helmet });
   const running = pose === 'run';
-  const body = style === 'expressive'
-    ? '<path d="' + stick[pose] + '"/>'
-    : '<path class="sleeves" d="' + sleeves[pose] + '"/><path class="prop neutral" d="' + (style === 'cartoon' ? trousers[pose] : sketchLegs[pose]) + '"/>'
+  const body = '<path class="sleeves" d="' + sleeves[pose] + '"/><path class="prop neutral" d="' + (style === 'cartoon' ? trousers[pose] : sketchLegs[pose]) + '"/>'
       + (style === 'cartoon'
         ? '<path class="torso" d="M-17 50 Q0 45 18 50 Q28 73 23 113 Q0 122-24 113 Q-23 78-17 50Z"/>'
         : '<path class="torso" d="M-23 47 Q-3 42 18 51 Q24 67 21 82 L30 110 Q4 127-28 114 L-20 87 Q-31 67-23 47Z"/><path class="hatch" d="M-17 99 l-4 13 m10-14-4 16 m28-50 8 11 M-10 62 q6 15 20 8 M-12 75 l13 3"/>');
   const headScale = style === 'sketch' ? 0.92 : 1;
-  const adultProportion = style === 'sketch' && person === 'noor' ? ' scale(.88 1.05)' : '';
+  const adultProportion = style === 'sketch' && person === 'bob' ? ' scale(.88 1.05)' : '';
   return `<g class="person ${person}" transform="translate(${x} ${y}) scale(${size})${adultProportion}">
-    <g ${running && style !== 'expressive' ? 'transform="rotate(15 0 62)"' : ''}>${body}</g>
+    <g ${running ? 'transform="rotate(15 0 62)"' : ''}>${body}</g>
     <g transform="rotate(${lean[pose]}) scale(${headScale})">
       <path class="head" d="${faces[style][person]}"/>
-      ${helmet || hair[person]}
+      ${helmet ? headwear(helmet) : hair[person]}
       ${expressions[pose]}
       ${style === 'sketch' ? '<path class="hatch" d="M-29 20 l4 8 m2-7 4 9 M26 22 l-4 9"/>' : ''}
     </g>
     ${costume(person)}
-    ${style !== 'expressive' ? '<path class="hand" d="' + hands[pose] + '"/>'
-      : pose === 'facepalm' ? '<path class="hand" d="M-24 11 Q-11 6-10-5 l11-7 q4 1 0 6 l-6 7 l12-6 q4 2 1 6 l-11 8 l8-3 q4 3 0 6 l-16 9 q-8 2-13-7Z"/>' : ''}
+    ${'<path class="hand" d="' + hands[pose] + '"/>'}
   </g>`;
 }
