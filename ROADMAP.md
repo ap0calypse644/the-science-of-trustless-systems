@@ -1,6 +1,6 @@
 # Roadmap
 
-Explicit owner review gates each milestone. A dependency means an approved deliverable from the preceding work. M0 is approved. The owner approved D — Expressive Minimalism and a pure-white canvas. M1 is merged. M2 is merged. M3 is approved and merged (PR #7); desktop Firefox manual checks passed. M4 is complete. M5a is approved and merged. M5b is approved and merged. The owner approved M5c visual staging and production; PR #17 is merged. M5d requires separate authorization. See [CONTINUATION.md](CONTINUATION.md) for all 25 Part I approvals and restart point. Creative prototyping for Part I is complete. The owner approved M4a for slides 1–2 and PR #9 is merged. The owner approved M4b and PR #11 is merged. This planning checkpoint does not change M4 or later milestone gates. Milestone scope gates remain in force; slide count and time allocations are approximate, not rigid pass/fail targets.
+Explicit owner review gates each milestone. A dependency means an approved deliverable from the preceding work. M0 is approved. The owner approved D — Expressive Minimalism and a pure-white canvas. M1 is merged. M2 is merged. M3 is approved and merged (PR #7); desktop Firefox manual checks passed. M4 is complete. M5a is approved and merged. M5b is approved and merged. The owner approved M5c visual staging and production; PR #17 is merged. M5d staging authorized in issue #20; production requires separate approval. See [CONTINUATION.md](CONTINUATION.md) for all 25 Part I approvals and restart point. Creative prototyping for Part I is complete. The owner approved M4a for slides 1–2 and PR #9 is merged. The owner approved M4b and PR #11 is merged. This planning checkpoint does not change M4 or later milestone gates. Milestone scope gates remain in force; slide count and time allocations are approximate, not rigid pass/fail targets.
 
 | Milestone | Dependencies | Deliverables | Acceptance criteria |
 | --- | --- | --- | --- |
@@ -17,7 +17,7 @@ Explicit owner review gates each milestone. A dependency means an approved deliv
 
 ## Presentation scope update
 
-Owner decision (25 Nov 2026): the lecture uses static or presenter-paced scripted animated slides only. No live audience/presenter inputs that change the educational model, branching buttons, live cryptographic computations or worker searches are required. Preserve ordinary playback/navigation/seek/reset controls, verbal audience predictions, local offline operation and editable art. Use fixed internally consistent illustrative examples, clearly label simulated hashes/proofs/results, never imply they are actual computed cryptographic outputs. This supersedes earlier interactive and real-computation requirements. Existing interactive slide 6 must be converted in a separately reviewed correction; preserve archived diagnostic/staging routes. Future M5d and M6 implementation remain separately gated.
+Owner decision (25 Nov 2026): the lecture uses static or presenter-paced scripted animated slides only. No live audience/presenter inputs that change the educational model, branching buttons, live cryptographic computations or worker searches are required. Preserve ordinary playback/navigation/seek/reset controls, verbal audience predictions, local offline operation and editable art. Use fixed internally consistent illustrative examples, clearly label simulated hashes/proofs/results, never imply they are actual computed cryptographic outputs. This supersedes earlier interactive and real-computation requirements. Slide 6 scripted correction merged in PR #19; preserve archived diagnostic/staging routes. M5d production and M6 remain separately gated.
 
 ## Proposed issue-sized implementation queue
 
@@ -31,7 +31,7 @@ These are planning briefs, not open issues or implementation authorization. Keep
 | M5b (#14) | 8 | Owner-approved and merged in PR #15 |
 | M5c (#16) | 9–13 | Owner-approved and merged in PR #17 |
 | Slide 6 correction (#18) | 6 | Owner-approved scripted CAP sequence, merged in PR #19 |
-| M5d | 14–16 | Scripted hash/avalanche example, illustrative binary mining, linked pages |
+| M5d (#20) | 14–16 | Staging authorized; scripted hash/avalanche, illustrative binary mining, linked pages; production waits for owner approval |
 | M5e | 17–21 | Separate economic beats, valid greatest-work fork selection, subtle reveal |
 | M5f | 22–25 | Bill/cameo, BFT threshold, fictional AI credits, IBC verification |
 | M5g | Integrated 1–25 | Full Part I rehearsal, notes, source/asset audit, browser tests, print stills |
