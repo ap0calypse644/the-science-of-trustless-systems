@@ -12,7 +12,7 @@ The planning storyboard spans 48 slides (25 approved Part I concepts; 23 provisi
 
 ## Development status
 
-M0 is approved. The owner approved D — Expressive Minimalism on pure white. M1 merged in PR #3. The M2 illustration library merged in PR #5. The M3 playback engine and diagnostic deck merged in PR #7 after owner review. The owner approved M4a and PR #9 is merged. M4b is owner-approved and merged in PR #11, completing M4. The owner approved M5a and PR #13 is merged. The owner approved M5b staging. Scripted slide 8 is at owner production review in PR #15. All 25 Part I creative directions are approved. The other treatments remain archived for comparison. The project preserves the three-slide engineering diagnostic deck. The framework uses Reveal.js, TypeScript, Vite, Playwright, and npm. M2 uses deterministic authored SVG paths. M3 uses a local GSAP clock for presenter-paced diagnostics.
+M0 is approved. The owner approved D — Expressive Minimalism on pure white. M1 merged in PR #3. The M2 illustration library merged in PR #5. The M3 playback engine and diagnostic deck merged in PR #7 after owner review. The owner approved M4a and PR #9 is merged. M4b is owner-approved and merged in PR #11, completing M4. The owner approved M5a and PR #13 is merged. The owner approved M5b and PR #15 is merged. M5c visual staging is at owner review. All 25 Part I creative directions are approved. The other treatments remain archived for comparison. The project preserves the three-slide engineering diagnostic deck. The framework uses Reveal.js, TypeScript, Vite, Playwright, and npm. M2 uses deterministic authored SVG paths. M3 uses a local GSAP clock for presenter-paced diagnostics.
 
 The target is a 16:9 deck with responsive scaling, classroom-projector readability, independent slide and animation controls, and offline operation using bundled assets. A static PDF fallback is an M8 deliverable.
 
@@ -134,6 +134,17 @@ Firefox production captures are under
 Open [the slide 8 staging deck](http://127.0.0.1:4173/talk/m5b/) in desktop Firefox. Use Left and Right to review the battlefield, Bob’s direct order and Mallory’s report, the three-general tie, Charlie arriving in the foreground, and the [four-general report table](http://127.0.0.1:4173/talk/m5b/#/08-four-generals). These stills stage a scripted animation.
 
 Firefox screenshots are under `test-results/visual-review/m5b-scripted-staging/<width>x<height>/`. The 1920×1080 directory contains all six revised stills. The two smaller directories contain the three- and four-general report tables.
+
+## M5c staging review
+
+Open [the café and ledger stills](http://127.0.0.1:4173/talk/m5c/) in desktop
+Firefox. Use Left and Right to step through all 18 stills. The slide 13
+sequence starts with [a fresh 20-unit balance](http://127.0.0.1:4173/talk/m5c/#/13-fresh-balance),
+then shows [conflicting local histories](http://127.0.0.1:4173/talk/m5c/#/13-conflicting-histories),
+the [morph midpoint](http://127.0.0.1:4173/talk/m5c/#/13-morph-keyframe),
+and the [battlefield callback](http://127.0.0.1:4173/talk/m5c/#/13-battlefield).
+Firefox captures are under `test-results/visual-review/m5c-staging/<width>x<height>/`.
+Production remains at slides 1–8 during staging review.
 
 ## Desktop Firefox verification
 

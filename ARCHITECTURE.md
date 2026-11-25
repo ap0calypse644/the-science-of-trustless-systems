@@ -175,3 +175,18 @@ receiver shows the opening still. The 16:9 print override compares the
 three-general tie and four-general decisions side by side.
 
 Reference: [Lamport, Shostak and Pease, The Byzantine Generals Problem, §§2–3](https://lamport.azurewebsites.net/pubs/byz.pdf).
+
+## M5c café and ledger staging
+
+The independent `/talk/m5c/` route uses the static review shell. Its frames
+share original SVG café artwork, cast positions, a blue notebook and a
+signature motif. The staging ledger uses neutral units and checks
+authorization, replay of recorded IDs and available balance before posting.
+Slide 9 uses IOUs. Slides 10–12 share the café balance example and slide 13
+opens a separate run with Charlie holding 20 units.
+
+Slide 13 stages two independent local histories, the folding notebook shapes
+at a midpoint, and the final battlefield. The left and right notebook anchors
+line up with the same envelope geometry used in slides 7 and 8. The hills and
+castle reuse the slide 7 art. Moving props, timed morphs and production
+integration follow owner approval.
