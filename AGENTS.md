@@ -5,7 +5,7 @@
 - Implement and test the work explicitly approved by the project owner. Creative direction, architecture approval, technical review, and milestone planning are coordinated separately by the owner.
 - Read CONTINUATION.md, the README, roadmap, and relevant design, architecture, and storyboard sections before editing. The storyboard and timings are flexible planning guides; respect approved concepts and scope. The roadmap defines approval boundaries. Treat architectural proposals and storyboard choices as provisional until reviewed.
 - Complete and verify the authorized scope, report the files changed, tests or checks run, assumptions, unresolved decisions, and Git status, then stop for explicit review. Approval of one milestone does not authorize implementation of the next.
-- M4 is owner-approved and merged. The owner approved M5a and PR #13 is merged. The owner approved M5b and PR #15 is merged. Issue #16 authorizes M5c visual staging for slides 9–13. Owner approval gates production integration and animation. M5d requires separate authorization. Use original approved concept images as direct references whenever available.
+- M4 is owner-approved and merged. The owner approved M5a and PR #13 is merged. The owner approved M5b and PR #15 is merged. The owner approved M5c production slides 9–13; PR #17 is merged and #16 closed. M5d requires separate authorization. Use original approved concept images as direct references whenever available.
 - Commit, push, and create remote branches only when explicitly authorized. Keep employer information, secrets, and private credentials out of code, docs, assets, examples, and tool output.
 
 ## Implementation standards
