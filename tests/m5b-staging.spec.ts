@@ -25,10 +25,15 @@ test('M5b shows one local view before forwarding and uses scripted receipts and 
       const rear = current.locator('[data-depth="rear"] [data-actor="mallory"]');
       const fortress = current.locator('[data-depth="middle-ground"]');
       await expect(rear).toHaveCount(1);
-      await expect(fortress).toHaveAttribute('transform', 'translate(208 64) scale(.74 .72)');
+      await expect(fortress).toHaveAttribute('transform', 'translate(208 90) scale(.74 .72)');
+      await expect(current.locator('[data-hill]')).toHaveCount(4);
+      await expect(current.locator('[data-terrain="valley-floor"]')).toHaveCount(1);
+      await expect(current.locator('.crag')).toHaveCount(0);
+      const rearHillBounds = (await current.locator('[data-hill="rear"]').boundingBox())!;
       const malloryBounds = (await rear.boundingBox())!;
       const fortressBounds = (await fortress.boundingBox())!;
       expect(malloryBounds.y + malloryBounds.height).toBeLessThan(fortressBounds.y);
+      expect(rearHillBounds.y + rearHillBounds.height).toBeLessThan(fortressBounds.y);
       await expect(current.locator('[data-actor="alice"] .role-label')).toHaveText('Commander');
     }
     if (index === 1 || index === 2) {
