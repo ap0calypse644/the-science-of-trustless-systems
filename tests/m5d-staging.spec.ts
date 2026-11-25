@@ -62,7 +62,8 @@ for (const [width, height] of [[1920, 1080], [1280, 720], [1024, 768]]) {
     for (const [index, id] of ids.entries()) {
       if (index) await page.keyboard.press('ArrowRight');
       await expect(current).toHaveAttribute('id', id);
-      await expect(current.locator('.fixture-caption')).toHaveText('Illustrative example · Fixed data');
+      await expect(current.locator('.talk-sheet')).not.toContainText(/illustrative|fixed data/i);
+      await expect(current.locator('.notes')).toContainText('fixed, authored data');
       const { sheet, heading, drawing } = await current.evaluate((slide) => {
         const bounds = (selector: string) => {
           const box = slide.querySelector(selector)!.getBoundingClientRect();
@@ -85,6 +86,9 @@ for (const [width, height] of [[1920, 1080], [1280, 720], [1024, 768]]) {
 
       if (['14-greeting', '14-ledger', '14-library'].includes(id)) {
         await expect(current.locator('[data-grid] .bit')).toHaveCount(256);
+      }
+      if (id === '14-library') {
+        await expect(current.locator('[data-prop="shelf-book"] .book-pages')).toHaveCount(24);
       }
       if (id === '14-identical-copies') {
         const outputs = await current.locator('.monospace').allTextContents();

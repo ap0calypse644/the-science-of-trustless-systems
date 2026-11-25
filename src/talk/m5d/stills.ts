@@ -13,7 +13,8 @@ const proofOfWork = 'Source: Bitcoin whitepaper, §4, for the proof-of-work sear
 const inspiration = 'Pedagogical reference: 3Blue1Brown, But how does bitcoin actually work? The layout and artwork here are original. https://www.3blue1brown.com/lessons/bitcoin';
 
 function still(id: string, title: string, description: string, art: string, notes: string) {
-  return { id, composition: sheet(title, description, art), notes };
+  const disclosure = 'The examples in this sequence use fixed, authored data. The digest and nonce outputs are not computed SHA-256 results.';
+  return { id, composition: sheet(title, description, art), notes: `${notes}\n\n${disclosure}` };
 }
 
 function inputFlow(input: string, caption?: { kind: string; encoding: string }): string {
@@ -31,14 +32,25 @@ function output(pattern?: string): string {
 const greeting = panel(155, 396, 300, 130, 'yellow-paper')
   + label(305, 480, '“Hello!”', 'large');
 
+function shelfBook(x: number, base: number, width: number, height: number, color: string, tilt = 0): string {
+  return `<g data-prop="shelf-book" transform="translate(${x} ${base}) rotate(${tilt})">
+    <path class="book-spine ${color}" d="M0 0V${-height + 5}Q0 ${-height} 5 ${-height}H${width}V0Z"/>
+    <path class="book-pages" d="M${width - 7} ${-height + 3}H${width}V-3H${width - 7}Z"/>
+    <path class="book-detail" d="M4 ${-height + 10}H${width - 10}M4 ${-height + 16}H${width - 10}
+      M4 -9H${width - 10}M${(width - 7) / 2} ${-height / 2 - 8}v16"/>
+  </g>`;
+}
+
 const shelves = `<g transform="translate(122 260)">
   ${panel(0, 0, 367, 280, 'yellow-paper')}
-  ${[14, 101, 188].map((y, row) => `<path class="rule" d="M10 ${y + 75}h347"/>
-    ${[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((book) => {
-      const height = 40 + (row * 7 + book * 13) % 30;
-      const colors = ['blue-paper', 'green-paper', 'pink-paper', 'plain'];
-      return panel(23 + book * 33, y + 75 - height, 27, height, colors[(row + book) % colors.length]);
-    }).join('')}`).join('')}
+  ${[89, 176, 263].map((base, row) => {
+    const colors = ['blue-paper', 'green-paper', 'pink-paper', 'plain'];
+    return [26, 64, 96, 138, 178, 215, 255, 299].map((x, index) => {
+      const width = [32, 26, 35, 34, 31, 30, 34, 30][index];
+      const height = 45 + (row * 11 + index * 13) % 27;
+      return shelfBook(x, base, width, height, colors[(row + index) % colors.length], index === 7 ? 15 : 0);
+    }).join('') + `<path class="book-shelf" d="M14 ${base + 2}h339"/>`;
+  }).join('')}
 </g>`;
 
 const copyLane = (y: number, who: 'alice' | 'bob', name: string): string =>
@@ -54,10 +66,10 @@ const slide14 = [
   still('14-machine', fingerprint, 'Bytes enter a hash machine that produces a fixed 256-bit output.',
     inputFlow(panel(155, 396, 300, 130) + label(305, 474, 'Input data', 'strong')) + output(),
     'Introduce the hash as a function on data. Ask whether the output will get larger with the input. SHA-256 produces a 256-bit digest for permitted message lengths. The drawing omits padding and compression. ' + secureHash),
-  still('14-greeting', fingerprint, 'A greeting encoded as bytes yields an illustrative 256-bit digest.',
+  still('14-greeting', fingerprint, 'A greeting encoded as bytes yields a 256-bit digest.',
     inputFlow(greeting, { kind: 'A greeting', encoding: '6 bytes in UTF-8' }) + output(digests.greeting),
     'Use the six ASCII characters in Hello! as bytes in UTF-8. The displayed pattern is authored to illustrate the fixed size. ' + secureHash),
-  still('14-ledger', fingerprint, 'A ledger encoded as bytes yields a different illustrative digest of the same size.',
+  still('14-ledger', fingerprint, 'A ledger encoded as bytes yields a different digest of the same size.',
     inputFlow(ledgerPage(305, 443, [originalRow]), { kind: 'A ledger', encoding: 'An agreed byte encoding' }) + output(digests.ledger),
     'Both sides must agree on the serialized ledger bytes. A differently encoded record can hash differently even when it reads the same to a person. The pattern is illustrative. ' + secureHash),
   still('14-library', fingerprint, 'A huge library encoded as bytes still yields a 256-bit digest.',
@@ -100,7 +112,7 @@ const slide15 = [
     + bitRow(580, 296, digitBytes[0], [7], false, 65) + bitRow(580, 457, digitBytes[1], [7], false, 65)
     + label(840, 655, '1 bit changed', 'large') + label(840, 713, 'ASCII bytes · same in UTF-8', 'body'),
     'The two eight-bit code units are 00110000 and 00110001. Leading zeroes are shown to give the full byte. The other digit in 10 and 11 stays unchanged.'),
-  still('15-avalanche', oneBit, 'Aligned illustrative 256-bit grids differ in 132 positions, identified with outlines.',
+  still('15-avalanche', oneBit, 'Aligned 256-bit grids differ in 132 positions, identified with outlines.',
     comparison(),
     `Both bit grids use the same row-major order. The count comes from the fixed patterns. An avalanche effect is a design goal, and this example illustrates the idea. It gives no exact flip-count guarantee for a particular input pair. ${secureHash}`),
   still('15-detected', oneBit, 'Alice detects the edit by comparing against her separately trusted original digest.',
@@ -129,8 +141,7 @@ function ledgerAndNonce(nonce?: number): string {
 
 function pipeline(nonce: number | undefined, prefix: string, success = false): string {
   return targetLabel() + ledgerAndNonce(nonce) + arrow(525, 412, 634) + machine(790, 412)
-    + arrow(942, 412, 1016) + attemptCard(1038, 339, prefix, success)
-    + label(1276, 537, 'Illustrative digest prefix', 'small');
+    + arrow(942, 412, 1016) + attemptCard(1038, 339, prefix, success);
 }
 
 function attemptStrip(from: number, through: number, y: number): string {

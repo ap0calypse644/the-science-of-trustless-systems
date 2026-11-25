@@ -179,7 +179,7 @@ includes one evidence sheet per slide. Firefox captures are under
 
 Build and start the preview, then open [the 18 hash and proof-of-work stills](http://127.0.0.1:4173/talk/m5d/)
 in desktop Firefox. Left and Right move between keyframes. S opens speaker
-notes. The hash patterns and nonce attempts are labeled illustrative fixtures.
+notes, which identify the hash patterns and nonce attempts as authored examples.
 The production route continues to contain slides 1–13.
 
 | Slide | Planned checkpoints in staging order | Planned print evidence |

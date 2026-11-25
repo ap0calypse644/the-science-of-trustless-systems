@@ -71,7 +71,6 @@ export function sheet(title: string, description: string, art: string): string {
     <h1>${svgText(title)}</h1>
     <svg class="art" viewBox="0 0 1600 900" role="img" aria-label="${svgText(description)}">
       ${art}
-      ${label(800, 856, 'Illustrative example · Fixed data', 'fixture-caption')}
     </svg>
   </div>`;
 }
