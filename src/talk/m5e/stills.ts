@@ -12,9 +12,10 @@ const histories = 'Conflicting Histories';
 const source = 'Source: Bitcoin whitepaper, §§2–5. https://bitcoin.org/bitcoin.pdf';
 const hashSource = 'Source: NIST FIPS 180-4, Secure Hash Standard. https://csrc.nist.gov/pubs/fips/180-4/upd1/final';
 
+export const disclosure = 'Tell the audience that the data and any digest prefixes shown are authored teaching examples.';
+
 function still(id: string, heading: string, description: string, art: string, notes: string) {
-  const disclosure = 'Tell the audience that the data and any digest prefixes shown are authored teaching examples.';
-  return { id, composition: sheet(heading, description, art), notes: `${notes}\n\n${disclosure}` };
+  return { id, heading, art, composition: sheet(heading, description, art), teachingNotes: notes, notes: `${notes}\n\n${disclosure}` };
 }
 
 const entries = pages.flatMap(({ rows }) => rows);
@@ -38,7 +39,7 @@ function ledgerList(count: number, expression: 'excited' | 'stand' | 'confused' 
     <path class="paper-grip" d="M716 415q10-11 16-7q3 4-3 8l-10 6Z"/>`;
 }
 
-const slide18 = [
+export const slide18 = [
   still('18-short-list', growing, 'Alice happily holds a short list of transactions.', ledgerList(2, 'excited'),
     'Start with two appended transactions. Alice can comfortably hold and inspect the paper. This running list records payments in neutral units.'),
   still('18-growing-list', growing, 'The same paper grows as new transactions are appended.', ledgerList(4, 'stand'),
@@ -49,7 +50,8 @@ const slide18 = [
     'The visible entries are representative of the continuing roll. A history-only ledger must replay relevant transactions to reconstruct balances from its opening state. Implementations may maintain current state or use authenticated snapshots. Nothing on this slide carries a balance forward.'),
 ];
 
-const xs = [83, 452, 821, 1190] as const;
+export const xs = [83, 452, 821, 1190] as const;
+export const pageTilts = [-7, -3, 4, 6] as const;
 
 function blockRow(blocks: readonly Block[], y: number, mode: 'plain' | 'link' = 'plain'): string {
   return blocks.map((block, i) => blockArt(xs[i], y, block, 1, mode)).join('');
@@ -57,7 +59,7 @@ function blockRow(blocks: readonly Block[], y: number, mode: 'plain' | 'link' = 
 
 const independentBlocks = `<g data-independent-composition>${blockRow(pages, 362)}</g>`;
 
-function notebook(left: Block, right?: Block): string {
+export function notebook(left: Block, right?: Block): string {
   return `<path class="notebook-cover" d="M436 267Q612 225 800 267Q963 229 1165 269L1161 690
     Q977 660 800 695Q618 664 431 689Z"/>
     <path class="paper" d="M802 274Q960 241 1148 278V674Q975 641 802 682Z"/>
@@ -66,7 +68,7 @@ function notebook(left: Block, right?: Block): string {
     <path class="paper-rule" d="M800 273V684"/>`;
 }
 
-const slide19 = [
+export const slide19 = [
   still('19-first-page', growing, 'The ledger fills its first notebook page.', notebook(pages[0]),
     'Introduce a page as a group of ordered transactions. When staging this motion in production, write each line before turning the page.'),
   still('19-next-page', growing, 'The notebook turns to a second page, where a new transaction appears.',
@@ -77,7 +79,7 @@ const slide19 = [
     + text(800, 711, 'Four completed pages', 'body'),
     'The spread makes four completed pages visible at once. Page numbers preserve order. Grouping makes the record easier to discuss and does not itself remove the cost of replaying history.'),
   still('19-detach-pages', growing, 'Four numbered pages are torn from the notebook and lift into separate positions.',
-    pages.map((page, i) => `<g transform="rotate(${[-7, -3, 4, 6][i]} ${xs[i] + 145} 474)">${pageArt(xs[i] + 8, 303 - (i % 2) * 33, page, 1, true)}</g>`).join('')
+    pages.map((page, i) => `<g transform="rotate(${pageTilts[i]} ${xs[i] + 145} 474)">${pageArt(xs[i] + 8, 303 - (i % 2) * 33, page, 1, true)}</g>`).join('')
     + '<path class="motion-mark" d="M139 720v-28m-13 14 13-14 13 14 M668 696v-28m-13 14 13-14 13 14 M1118 716v-28m-13 14 13-14 13 14"/>',
     'Detach pages in order. The planning gesture marks lift rather than a link between the pages.'),
   still('19-independent-blocks', notebookTitle, 'Four independent blue blocks preserve the four pages and their transactions.',
@@ -85,7 +87,7 @@ const slide19 = [
     'Fold each page into its matching block face, preserving the number and row identities. Each block is a separate container here. There are no hash references yet. Hold for the next slide, which opens on this exact arrangement. ' + source),
 ];
 
-function chain(blocks: readonly Block[], options: { y: number; links?: number; unchecked?: number; marked?: readonly number[] }): string {
+export function chain(blocks: readonly Block[], options: { y: number; links?: number; unchecked?: number; marked?: readonly number[] }): string {
   const { y, links = 3, unchecked, marked = [] } = options;
   return blockRow(blocks, y, 'link')
     + blocks.slice(1, links + 1).map((child, i) => {
@@ -103,7 +105,7 @@ function editCaption(words: string): string {
 
 const firstLink = [linked[0], { ...linked[1], digest: undefined }, ...pages.slice(2)];
 
-const slide20 = [
+export const slide20 = [
   still('20-independent-blocks', historyTitle, 'The four independent blocks from the previous slide are unchanged.',
     independentBlocks, 'Start with exactly the previous arrangement. Ask what Alice can compare if someone changes an old record.'),
   still('20-unlinked-edit', historyTitle, 'Charlie changes, adds and removes entries in block 1 while the blocks are still unlinked.',
@@ -148,8 +150,9 @@ function historyLane(y: number, candidate?: Block): string {
 }
 
 function paymentCard(x: number, y: number, candidate: Block): string {
-  return panel(x, y, 358, 112) + text(x + 179, y + 45, transaction(candidate.rows[0]), 'strong')
-    + text(x + 179, y + 87, 'Signed by Charlie', 'small');
+  return `<g data-payment-card>${panel(x, y, 358, 112)}
+    ${text(x + 179, y + 45, transaction(candidate.rows[0]), 'strong')}
+    ${text(x + 179, y + 87, 'Signed by Charlie', 'small')}</g>`;
 }
 
 const laneLabel = (index: number, y: number) => {
@@ -174,7 +177,7 @@ function forkDiagram(): string {
     + text(1339, 183, 'Alice’s candidate', 'body') + text(1339, 510, 'Bob’s candidate', 'body');
 }
 
-const slide21 = [
+export const slide21 = [
   still('21-common-history', histories, 'A common three-block history ends with Alice and Bob at zero and Charlie at twenty.',
     historyLane(338) + panel(376, 654, 848, 92)
     + text(800, 713, `Alice ${commonState.Alice} · Bob ${commonState.Bob} · Charlie ${commonState.Charlie} units`, 'strong'),

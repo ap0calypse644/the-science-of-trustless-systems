@@ -4,7 +4,7 @@ M0.2 establishes the Reveal.js shell, local build, and shared Firefox and Chromi
 
 ## Presentation policy
 
-Owner decision (25 Nov 2026): the lecture uses static or presenter-paced scripted animated slides only. No live audience/presenter inputs that change the educational model, branching buttons, live cryptographic computations or worker searches are required. Preserve ordinary playback/navigation/seek/reset controls, verbal audience predictions, local offline operation and editable art. Use internally consistent authored examples. Identify simulated outputs in speaker notes and prompt the presenter to disclose them verbally. Keep substantive technical labels and essential toy-model caveats on slides. This supersedes earlier interactive and real-computation requirements. Issue #18 covers the separately reviewed scripted conversion of slide 6 and preserves archived diagnostic and staging routes. M5d is approved and merged in PR #21; #20 closed. M5e visual staging only (18–21) is authorized under #22. Production and later batches require separate authorization.
+Owner decision (25 Nov 2026): the lecture uses static or presenter-paced scripted animated slides only. No live audience/presenter inputs that change the educational model, branching buttons, live cryptographic computations or worker searches are required. Preserve ordinary playback/navigation/seek/reset controls, verbal audience predictions, local offline operation and editable art. Use internally consistent authored examples. Identify simulated outputs in speaker notes and prompt the presenter to disclose them verbally. Keep substantive technical labels and essential toy-model caveats on slides. This supersedes earlier interactive and real-computation requirements. Issue #18 covers the separately reviewed scripted conversion of slide 6 and preserves archived diagnostic and staging routes. M5d is approved and merged in PR #21; #20 closed. M5e staging is approved under #22 and production awaits final review in draft PR #23. Later batches require separate authorization.
 
 ## Responsibilities
 
@@ -232,3 +232,11 @@ prefixes with the immediate parent’s authored digest. The input identity inclu
 the ordered rows and predecessor reference. The fork uses the existing pure
 café ledger rules and the same two signed transfers. The staging deck never
 computes a digest.
+
+### M5e production on the review branch
+
+The production scenes use the same staged SVG at the 22 holds. Between stops
+they derive the growing sheet path, page geometry, moving reference text, link
+and expression states, and converging fork from absolute playback time.
+The shared controller owns pauses, reset and teardown. Four print compositions
+preserve the teaching evidence, and the final fork question is in the notes.

@@ -8,6 +8,7 @@ const ids = [
   '09-shared-ledger', '10-unauthorized-transactions', '11-infinite-money-glitch',
   '12-who-controls-the-ledger', '13-double-spend-problem',
   '14-data-fingerprint', '15-one-bit', '16-proof-of-work', '17-easy-verification',
+  '18-growing-ledger', '19-pages-to-blocks', '20-changing-history', '21-conflicting-histories',
 ];
 
 async function openTalk(page: Page): Promise<void> {
