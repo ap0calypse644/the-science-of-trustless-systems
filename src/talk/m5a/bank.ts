@@ -1,7 +1,7 @@
 import { character } from '../../illustration/character';
 import { svgText } from '../../illustration/svg';
 import { stagingSheet } from './art';
-import type { Response } from './bank-model';
+import type { BankResponse } from './bank-model';
 
 interface BankArt {
   label: string;
@@ -11,7 +11,7 @@ interface BankArt {
   charlie: 'a' | 'b';
   dialogue?: string;
   cash?: boolean;
-  response?: Response;
+  response?: BankResponse | 'choice' | 'print';
   walking?: boolean;
 }
 
@@ -97,7 +97,7 @@ function response(kind: BankStill['response']): string {
     stale: ['Returned: 1,000 units', 'Stale answer'],
     wait: ['Read pending', 'No answer while the link is down'],
     reconnected: ['Returned: 0 units', 'Waiting read completes'],
-    'reconnected-stale': ['Earlier answer: 1,000 units', 'Both stored balances now synced'],
+    alternative: ['Alternative run', 'Back to the same inquiry before any reply'],
   }[kind];
   return `<g data-response="${kind}">
     <path class="proposal ${kind === 'stale' ? 'gold-wash' : 'blue-wash'}" d="M494 743 Q771 731 1111 742

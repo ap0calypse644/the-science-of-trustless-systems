@@ -1,57 +1,54 @@
 export const checkpoints = [
   { id: 'synced', time: 0, label: 'Synced' },
   { id: 'partition', time: 3, label: 'Partition' },
-  { id: 'withdrawal', time: 6, label: 'Withdrawal' },
-  { id: 'balance-inquiry', time: 11, label: 'Balance inquiry' },
-  { id: 'choose-response', time: 14, label: 'Choose response' },
-  { id: 'outcome', time: 17, label: 'Outcome' },
-  { id: 'reconnect', time: 21, label: 'Reconnect' },
+  { id: 'withdrawal', time: 6, label: 'Withdrawal at A' },
+  { id: 'balance-inquiry', time: 11, label: 'Balance inquiry · Predict' },
+  { id: 'outcome-stale', time: 14, label: 'Stale reply' },
+  { id: 'alternative', time: 17, label: 'Alternative run' },
+  { id: 'outcome-wait', time: 20, label: 'Wait for sync' },
+  { id: 'reconnect', time: 24, label: 'Reconnect' },
 ] as const;
 
-export const choiceTime = checkpoints[4].time;
-export const duration = checkpoints[6].time;
-export type Choice = 'stale' | 'wait';
+export const inquiryTime = checkpoints[3].time;
+export const duration = checkpoints[checkpoints.length - 1].time;
 type Beat = typeof checkpoints[number]['id'];
-export type Response = 'choice' | 'stale' | 'wait' | 'reconnected' | 'reconnected-stale' | 'print';
+export type BankResponse = 'stale' | 'alternative' | 'wait' | 'reconnected';
 
-export interface BankFrame {
-  id: Beat;
-  label: string;
+interface BankState {
   partition: boolean;
   a: 0 | 1000;
   b: 0 | 1000;
   charlie: 'a' | 'b';
   dialogue?: string;
   cash?: boolean;
-  response?: Response;
+  response?: BankResponse;
   read: 'none' | 'requested' | 'pending' | 'complete';
   returned?: 0 | 1000;
 }
 
-export function frameAt(time: number, choice: Choice | null): BankFrame {
-  const elapsed = Math.min(time, choice === null ? choiceTime : duration);
-  const next = checkpoints.findIndex((checkpoint) => checkpoint.time > elapsed + 0.000001);
-  const { id, label } = checkpoints[next === -1 ? checkpoints.length - 1 : Math.max(0, next - 1)];
-  const withdrawn = elapsed >= checkpoints[2].time - 0.000001;
-  const requested = elapsed >= checkpoints[3].time - 0.000001;
-  const outcome = id === 'outcome' || id === 'reconnect';
-  const reconnected = id === 'reconnect';
-  const returned = outcome && choice === 'stale' ? 1000
-    : reconnected && choice === 'wait' ? 0 : undefined;
+export interface BankFrame extends BankState {
+  id: Beat;
+  label: string;
+}
 
-  return {
-    id,
-    label,
-    partition: id !== 'synced' && !reconnected,
-    a: withdrawn ? 0 : 1000,
-    b: reconnected ? 0 : 1000,
-    charlie: requested ? 'b' : 'a',
-    dialogue: id === 'balance-inquiry' || id === 'choose-response' ? 'What’s my balance?' : undefined,
-    cash: id === 'withdrawal',
-    response: id === 'choose-response' ? 'choice'
-      : reconnected ? (choice === 'wait' ? 'reconnected' : 'reconnected-stale')
-        : outcome ? choice ?? undefined : undefined,
-    read: returned !== undefined ? 'complete' : outcome ? 'pending' : requested ? 'requested' : 'none',
-    returned,
-  };
+const synced = { partition: false, a: 1000, b: 1000, charlie: 'a', read: 'none' } as const;
+const partitioned = { ...synced, partition: true } as const;
+const withdrawn = { ...partitioned, a: 0 } as const;
+const inquiry = { ...withdrawn, charlie: 'b', read: 'requested', dialogue: 'What’s my balance?' } as const;
+
+const states: Record<Beat, BankState> = {
+  synced,
+  partition: partitioned,
+  withdrawal: { ...withdrawn, cash: true },
+  'balance-inquiry': inquiry,
+  'outcome-stale': { ...withdrawn, charlie: 'b', response: 'stale', read: 'complete', returned: 1000 },
+  alternative: { ...inquiry, response: 'alternative' },
+  'outcome-wait': { ...withdrawn, charlie: 'b', response: 'wait', read: 'pending' },
+  reconnect: { partition: false, a: 0, b: 0, charlie: 'b', response: 'reconnected', read: 'complete', returned: 0 },
+};
+
+export function frameAt(time: number): BankFrame {
+  const next = checkpoints.findIndex((checkpoint) => checkpoint.time > time + 0.000001);
+  const { id, label } = checkpoints[next === -1 ? checkpoints.length - 1 : Math.max(0, next - 1)];
+  return { id, label, ...states[id] };
 }
