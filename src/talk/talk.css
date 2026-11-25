@@ -1,0 +1,65 @@
+body { background: var(--paper); }
+.reveal .slides > section { padding: 0; }
+
+.talk-sheet {
+  position: relative;
+  width: 1920px;
+  height: 1080px;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font);
+  text-align: left;
+}
+
+.talk-sheet .art { position: absolute; inset: 0; }
+.talk-sheet .art .cable { stroke-width: 8px; }
+.talk-sheet .art .rope { stroke-width: 4px; stroke: #6e563c; }
+.talk-sheet .art .steel { stroke: #646b75; }
+.talk-sheet .art .skin { fill: #fff9ef; stroke-width: 7px; }
+.talk-sheet .art .crease { stroke: #574b43; stroke-width: 4px; }
+.talk-sheet .art .gold { stroke: var(--yellow); stroke-width: 11px; }
+.talk-sheet .art .down-label { font: 34px var(--font); }
+.talk-sheet .art .gear { stroke-width: 4.5px; }
+
+.talk-sheet h1 {
+  position: absolute;
+  z-index: 1;
+  margin: 0;
+  font: 400 94px/1.08 Kalam, var(--support);
+}
+
+.title-sheet h1 {
+  left: 1030px;
+  top: 737px;
+  font-size: 101px;
+  font-synthesis: weight;
+  font-weight: 700;
+  letter-spacing: -2.5px;
+  transform: rotate(-3deg);
+}
+
+.failure-sheet h1 { left: 110px; top: 88px; }
+.failure-sheet p {
+  position: absolute;
+  top: 195px;
+  left: 115px;
+  margin: 0;
+  font: 44px/1.15 var(--font);
+}
+
+.print-deck > .slides > section {
+  container-type: inline-size;
+  width: min(1920px, 100%);
+  aspect-ratio: 16 / 9;
+  margin: 0 auto;
+}
+
+.print-deck .talk-sheet { transform: scale(calc(100cqw / 1920px)); transform-origin: top left; }
+.print-deck > .slides > section { overflow: hidden; }
+
+@page { size: 16in 9in; margin: 0; }
+@media print {
+  body { margin: 0; print-color-adjust: exact; }
+  .print-deck > .slides > section { break-inside: avoid; break-after: page; }
+  .print-deck > .slides > section:last-child { break-after: auto; }
+}

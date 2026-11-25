@@ -12,7 +12,7 @@ The planning storyboard spans 48 slides (25 approved Part I concepts; 23 provisi
 
 ## Development status
 
-M0 is approved. The owner approved D — Expressive Minimalism on pure white. M1 merged in PR #3. The M2 illustration library merged in PR #5. The M3 playback engine and diagnostic deck merged in PR #7 after owner review. M4 is next; all 25 Part I creative directions are approved. Issue #8 (slides 1–2) remains pending explicit implementation authorization; M4 retains its separate slide 7 prototype and review gate. No M4 implementation has begun. The other treatments remain archived for comparison. The project preserves the three-slide engineering diagnostic deck. The framework uses Reveal.js, TypeScript, Vite, Playwright, and npm. M2 uses deterministic authored SVG paths. M3 uses a local GSAP clock for presenter-paced diagnostics.
+M0 is approved. The owner approved D — Expressive Minimalism on pure white. M1 merged in PR #3. The M2 illustration library merged in PR #5. The M3 playback engine and diagnostic deck merged in PR #7 after owner review. M4 is next; all 25 Part I creative directions are approved. The owner authorized issue #8 for slides 1–2, and the M4a deck is ready for visual and technical review. M4 retains its separate slide 7 prototype and review gate. The other treatments remain archived for comparison. The project preserves the three-slide engineering diagnostic deck. The framework uses Reveal.js, TypeScript, Vite, Playwright, and npm. M2 uses deterministic authored SVG paths. M3 uses a local GSAP clock for presenter-paced diagnostics.
 
 The target is a 16:9 deck with responsive scaling, classroom-projector readability, independent slide and animation controls, and offline operation using bundled assets. A static PDF fallback is an M8 deliverable.
 
@@ -73,6 +73,17 @@ From the repository root, run `npm ci`, `npm run build`, and `npm run preview --
 4. Check speaker notes on a separate window or monitor. The preview follows slide navigation and shows each scene at its initial frame. Playback stays in the main window.
 
 The Firefox suite captures `envelope-beat.png`, `static.png`, and `ledger-beat.png` under each of `test-results/visual-review/m3/1920x1080/`, `1280x720/`, and `1024x768/`. See [scene authoring and controls](ARCHITECTURE.md#m3-playback-engine).
+
+## M4a production slide review
+
+Run `npm ci`, `npm run build`, and `npm run preview -- --port 4173 --strictPort`. Open [the production lecture](http://127.0.0.1:4173/talk/) in desktop Firefox. The [development route](http://127.0.0.1:5173/talk/) is available with `npm run dev`.
+
+- Check that the huge hands approach on a diagonal with clear space between them. Alice, Bob and Charlie operate the mechanism, and the title sits in the lower-right open space.
+- Trace each computer cable into its own receptacle in the shared strip. Follow the strip's single supply cord to the loose plug, then trace the phone cable to the charger in the wall. The crosses and NO POWER labels show why the computers stopped together.
+- Use Left and Right to navigate, Escape for overview, F for fullscreen and S for speaker notes. Space leaves the current slide in place.
+- Open [the print compositions](http://127.0.0.1:4173/talk/?print) to print the two static slides on separate 16:9 pages.
+
+The Firefox tests write review screenshots to `test-results/visual-review/m4a/<width>x<height>/`. The approved reference image files are absent from the repository. The editable artwork follows the descriptions in CONTINUATION.md.
 
 ## Desktop Firefox verification
 
