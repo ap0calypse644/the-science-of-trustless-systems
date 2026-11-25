@@ -65,7 +65,7 @@ Reuse the slide 7 battlefield from a slightly elevated viewpoint. The upright fo
 
 In the three-general run, Bob receives Attack directly and hears Mallory report Retreat. The tie defaults to Retreat and fails loyal-commander validity in this run. Compare with a fresh four-general run. Charlie forwards Alice’s Attack honestly, so Bob and Charlie each have a majority even when Mallory tailors reports to them. Read the evidence and decisions from tables.
 
-In the classical oral-message model, sent messages arrive, immediate sender identity is known, and omissions are detectable. Agreement is a condition on loyal participants’ decisions and validity requires following a loyal commander. Explain the `n ≥ 3f + 1` bound under these assumptions in notes, with the Lamport, Shostak and Pease result. The sequence is scripted and presenter-paced. Full animation awaits owner approval of the revised staging.
+In the classical oral-message model, sent messages arrive, immediate sender identity is known, and omissions are detectable. Agreement is a condition on loyal participants’ decisions and validity requires following a loyal commander. Explain the `n ≥ 3f + 1` bound under these assumptions in notes, with the Lamport, Shostak and Pease result. The sequence is scripted and presenter-paced. The owner approved the revised staging. The scripted production sequence is at owner review.
 
 ### Inventing Bitcoin (slides 9–21)
 

@@ -1,6 +1,7 @@
 import { character, type Character } from '../../illustration/character';
 import { envelope } from '../../illustration/props';
 import { castle, thought } from '../two-generals/art';
+import { localReports, three } from './model';
 
 type General = Extract<Character, 'alice' | 'bob' | 'charlie'>;
 
@@ -89,21 +90,29 @@ const frontHill = `<g data-hill="front">
   <path class="hatch" d="m678 781 16-13 m-6 17 17-13 m253 35 15 13 m-5-16 16 13"/>
 </g>`;
 
+// Route geometry is shared between the approved stills and the moving envelopes.
+export const routes = {
+  aliceBob: 'M349 465 C532 458 636 573 814 580 C1000 589 1161 567 1255 469',
+  aliceMallory: 'M351 453 C514 448 567 390 606 353 C649 313 711 306 768 285',
+  aliceCharlie: 'M349 465 C484 473 531 593 737 669',
+  malloryBob: 'M856 269 C970 269 1019 336 1048 423 C1086 538 1182 549 1274 483',
+  malloryCharlie: 'M856 269 C974 279 1045 383 1057 490 C1066 588 956 668 865 677',
+  bobCharlie: 'M1257 475 C1174 579 1062 659 869 679',
+  charlieBob: 'M860 683 C1022 667 1174 584 1255 480',
+} as const;
+
 // Paths take the open ground beside the fortress and across the near side of the valley.
 const direct = `<g class="byz-message" data-message="direct">
-  <path d="M349 465 C532 458 636 573 814 580 C1000 589 1161 567 1255 469
-    m-27 8 27-8-9 28
-    M351 453 C514 448 567 390 606 353 C649 313 711 306 768 285 m-26-1 26 1-15 21"/>
+  <path d="${routes.aliceBob} m-27 8 27-8-9 28 ${routes.aliceMallory} m-26-1 26 1-15 21"/>
   ${envelope(630, 548, .26, 20)}${envelope(647, 329, .26, -26)}
 </g>`;
 
 const forwarded = `<g class="byz-message forwarded" data-message="forwarded">
-  <path d="M856 269 C970 269 1019 336 1048 423 C1086 538 1182 549 1274 483
-    m-25 7 25-7-11 24"/>
+  <path d="${routes.malloryBob} m-25 7 25-7-11 24"/>
   ${envelope(1069, 479, .26, 45)}
 </g>`;
 
-function battlefield(dispatching = false, joined = false, messages = '', privateView = ''): string {
+export function battlefield(dispatching = false, joined = false, messages = '', privateView = ''): string {
   return `<svg class="art" viewBox="0 0 1600 900" role="img"
       aria-label="An elevated view of the valley. Alice and Bob are on the near side, Mallory is on a rear hill, and the upright fortress is between them.${joined ? ' Charlie stands on his own front hill.' : ''}">
     ${valleyFloor}
@@ -117,7 +126,9 @@ function battlefield(dispatching = false, joined = false, messages = '', private
   </svg>`;
 }
 
+const [directEvidence, forwardedEvidence] = localReports(three, 'Bob');
+
 export const opening = battlefield();
-export const orders = battlefield(false, false, direct, thought(1300, 'bob', ['From Alice', 'Attack']));
-export const lie = battlefield(true, false, direct + forwarded, thought(1300, 'bob', ['Mallory reports', '“I received Retreat.”']));
+export const orders = battlefield(false, false, direct, thought(1300, 'bob', ['From Alice', directEvidence.order]));
+export const lie = battlefield(true, false, direct + forwarded, thought(1300, 'bob', ['Mallory reports', `“I received ${forwardedEvidence.order}.”`]));
 export const arrival = battlefield(false, true, direct);

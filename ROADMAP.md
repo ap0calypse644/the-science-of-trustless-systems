@@ -1,6 +1,6 @@
 # Roadmap
 
-Explicit owner review gates each milestone. A dependency means an approved deliverable from the preceding work. M0 is approved. The owner approved D — Expressive Minimalism and a pure-white canvas. M1 is merged. M2 is merged. M3 is approved and merged (PR #7); desktop Firefox manual checks passed. M4 is complete. M5a is approved and merged. M5b scripted visual staging is at owner review. See [CONTINUATION.md](CONTINUATION.md) for all 25 Part I approvals and restart point. Creative prototyping for Part I is complete. The owner approved M4a for slides 1–2 and PR #9 is merged. The owner approved M4b and PR #11 is merged. This planning checkpoint does not change M4 or later milestone gates. Milestone scope gates remain in force; slide count and time allocations are approximate, not rigid pass/fail targets.
+Explicit owner review gates each milestone. A dependency means an approved deliverable from the preceding work. M0 is approved. The owner approved D — Expressive Minimalism and a pure-white canvas. M1 is merged. M2 is merged. M3 is approved and merged (PR #7); desktop Firefox manual checks passed. M4 is complete. M5a is approved and merged. M5b scripted production is at owner review. See [CONTINUATION.md](CONTINUATION.md) for all 25 Part I approvals and restart point. Creative prototyping for Part I is complete. The owner approved M4a for slides 1–2 and PR #9 is merged. The owner approved M4b and PR #11 is merged. This planning checkpoint does not change M4 or later milestone gates. Milestone scope gates remain in force; slide count and time allocations are approximate, not rigid pass/fail targets.
 
 | Milestone | Dependencies | Deliverables | Acceptance criteria |
 | --- | --- | --- | --- |
@@ -24,7 +24,7 @@ These are planning briefs, not open issues or implementation authorization. Keep
 | M4a (#8) | 1–2 | Owner-approved and merged in PR #9 |
 | M4b (#10) | 7 | Owner-approved and merged in PR #11 |
 | M5a (#12) | 3–6 | Owner-approved and merged in PR #13 |
-| M5b (#14) | 8 | Owner visual approval before scripted animation |
+| M5b (#14) | 8 | Approved staging; scripted animation at owner production review |
 | M5c | 9–13 | Café continuity, ledger arithmetic, medieval note/castle transformation |
 | M5d | 14–16 | SHA-256 vectors, avalanche count, responsive real binary mining, linked pages |
 | M5e | 17–21 | Separate economic beats, valid greatest-work fork selection, subtle reveal |

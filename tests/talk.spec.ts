@@ -4,7 +4,7 @@ import { expect, test, type Page } from '@playwright/test';
 const ids = [
   '01-title', '02-single-point-of-failure', '03-why-distribute',
   '04-centralized-distributed-decentralized', '05-cap-theorem',
-  '06-consistency-or-availability', '07-two-generals',
+  '06-consistency-or-availability', '07-two-generals', '08-byzantine-generals',
 ];
 
 async function openTalk(page: Page): Promise<void> {
@@ -81,7 +81,7 @@ test('local fonts, assets and synchronized speaker notes work with external traf
   await expect(speaker.getByText(/why the devices stopped together/)).toBeVisible();
   await expect(speaker.frameLocator('iframe').first().locator('section.present')).toHaveAttribute('id', ids[1]);
   const preview = speaker.frameLocator('iframe').first();
-  for (const id of ids.slice(2)) {
+  for (const id of ids.slice(2, -1)) {
     await page.keyboard.press('ArrowRight');
     await expect(preview.locator('section.present')).toHaveAttribute('id', id);
   }
@@ -109,7 +109,7 @@ test('print view shows all representative 16:9 compositions', async ({ page }) =
     const bounds = (await sheet.boundingBox())!;
     expect(bounds.width).toBeLessThanOrEqual(page.viewportSize()!.width);
     expect(bounds.width / bounds.height).toBeCloseTo(16 / 9);
-    await expect(sheet.locator('svg, img')).toBeVisible();
+    await expect(sheet.locator(id === '08-byzantine-generals' ? '.byz-print' : 'svg, img')).toBeVisible();
   }
 });
 

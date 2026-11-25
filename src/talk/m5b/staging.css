@@ -1,4 +1,4 @@
-.byz-sheet {
+.talk-sheet.byz-sheet {
   font-family: var(--font);
   text-align: center;
 }
@@ -74,3 +74,30 @@
 .byz-majority { top: 700px; font-size: 56px; }
 .byz-foot { top: 825px; font-size: 43px; color: #59436a; }
 .byz-sheet .art .floor-trace { stroke: #bab0af; stroke-width: 2.4px; }
+
+.byz-sheet .art .script-route { stroke-width: 3.5px; stroke-dasharray: 11 9; }
+.byz-print {
+  position: absolute;
+  inset: 270px 110px 105px;
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  grid-template-rows: 1fr auto;
+  gap: 25px 55px;
+  text-align: left;
+  font-size: 35px;
+}
+.byz-print > div { border-top: 3px solid #887d8e; }
+.byz-print h2 { margin: 15px 0 25px; font: 48px/1 var(--font); }
+.byz-print .byz-table {
+  position: static;
+  width: 100%;
+  font-size: 33px;
+}
+.byz-print .byz-table caption { font-size: 38px; }
+.byz-print .byz-table :is(th, td) { padding: 11px 13px; }
+.byz-print .byz-majority, .byz-print .byz-foot {
+  position: static;
+  margin: 18px 0 0;
+  font-size: 33px;
+}
+.byz-print > p { grid-column: 1 / -1; margin: 0; text-align: center; }
