@@ -1,0 +1,44 @@
+.talk-sheet.hash-sheet h1 {
+  top: 39px;
+  left: 50%;
+  width: max-content;
+  transform: translateX(-50%);
+  font: 400 82px/1 Kalam, var(--support);
+}
+
+.hash-sheet .art { --stroke: 3.4px; font-family: var(--font); }
+.hash-sheet .art .strong { font-size: 37px; }
+.hash-sheet .art .body { font-size: 31px; }
+.hash-sheet .art .small { font-size: 28px; }
+.hash-sheet .art .large { font-size: 54px; }
+.hash-sheet .art .bit,
+.hash-sheet .art .digit,
+.hash-sheet .art .monospace { font-family: ui-monospace, monospace; }
+.hash-sheet .art .bit { font-size: 16px; }
+.hash-sheet .art .digit { font-size: 28px; }
+.hash-sheet .art .monospace { font-size: 29px; }
+.hash-sheet .art .paper-panel { fill: #fff; stroke: #687280; stroke-width: 2px; }
+.hash-sheet .art .grid-paper,
+.hash-sheet .art .blue-paper { fill: #f0f6fb; }
+.hash-sheet .art .yellow-paper { fill: #fff7de; }
+.hash-sheet .art .green-paper { fill: #edf6ed; }
+.hash-sheet .art .pink-paper { fill: #fff1ee; }
+.hash-sheet .art .ledger-cover { fill: #a5bbd0; }
+.hash-sheet .art .ledger-paper { fill: #fffdf5; }
+.hash-sheet .art .machine-box { fill: #e9eff5; }
+.hash-sheet .art .machine-slot { fill: #b7c9db; }
+.hash-sheet .art .machine-dial { fill: #fff; }
+.hash-sheet .art .rule { stroke: #a3aab4; stroke-width: 2px; }
+.hash-sheet .art .flow { stroke: #527da8; stroke-width: 4px; }
+.hash-sheet .art .ink-mark { stroke: #365979; }
+.hash-sheet .art .rejected { fill: #943d36; }
+.hash-sheet .art .passed { fill: #326044; }
+.hash-sheet .art .cross { stroke: #a4463f; }
+.hash-sheet .art .bit-cell { fill: white; stroke: #9aa4af; stroke-width: 1.6px; }
+.hash-sheet .art .changed-bit { fill: #ffe8b1; stroke: #895a22; stroke-width: 1.6px; }
+.hash-sheet .art .target-bit { fill: #e4f1e5; stroke: #487357; stroke-width: 2.5px; }
+.hash-sheet .art .discard { font-size: 23px; }
+.hash-sheet .art .book-spine { stroke: #687280; stroke-width: 2px; }
+.hash-sheet .art .book-pages { fill: #fffdf5; stroke: #687280; stroke-width: 1.6px; }
+.hash-sheet .art .book-detail { stroke: #687280; stroke-width: 1.6px; }
+.hash-sheet .art .book-shelf { stroke: #8c754c; stroke-width: 4px; }

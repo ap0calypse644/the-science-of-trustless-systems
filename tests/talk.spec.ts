@@ -7,6 +7,7 @@ const ids = [
   '06-consistency-or-availability', '07-two-generals', '08-byzantine-generals',
   '09-shared-ledger', '10-unauthorized-transactions', '11-infinite-money-glitch',
   '12-who-controls-the-ledger', '13-double-spend-problem',
+  '14-data-fingerprint', '15-one-bit', '16-proof-of-work', '17-easy-verification',
 ];
 
 async function openTalk(page: Page): Promise<void> {
@@ -111,7 +112,7 @@ test('print view shows all representative 16:9 compositions', async ({ page }) =
     const bounds = (await sheet.boundingBox())!;
     expect(bounds.width).toBeLessThanOrEqual(page.viewportSize()!.width);
     expect(bounds.width / bounds.height).toBeCloseTo(16 / 9);
-    await expect(sheet.locator(id === '08-byzantine-generals' ? '.byz-print' : 'svg, img')).toBeVisible();
+    await expect(sheet.locator(id === '08-byzantine-generals' ? '.byz-print' : 'svg.art, img')).toBeVisible();
   }
 });
 

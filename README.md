@@ -12,11 +12,11 @@ The current planning baseline is 62 provisional slides: 26 approved concepts, 13
 
 ## Presentation policy
 
-Owner decision (25 Nov 2026): the lecture uses static or presenter-paced scripted animated slides only. No live audience/presenter inputs that change the educational model, branching buttons, live cryptographic computations or worker searches are required. Preserve ordinary playback/navigation/seek/reset controls, verbal audience predictions, local offline operation and editable art. Use fixed internally consistent illustrative examples, clearly label simulated hashes/proofs/results, never imply they are actual computed cryptographic outputs. This supersedes earlier interactive and real-computation requirements. Issue #18 covers the separately reviewed scripted conversion of slide 6 and preserves archived diagnostic and staging routes. M5d revised visual staging (14–17) is authorized under issue #20; production and later batches remain separately gated.
+Owner decision (25 Nov 2026): the lecture uses static or presenter-paced scripted animated slides only. No live audience/presenter inputs that change the educational model, branching buttons, live cryptographic computations or worker searches are required. Preserve ordinary playback/navigation/seek/reset controls, verbal audience predictions, local offline operation and editable art. Use internally consistent authored examples. Identify simulated outputs in speaker notes and prompt the presenter to disclose them verbally. Keep substantive technical labels and essential toy-model caveats on slides. This supersedes earlier interactive and real-computation requirements. Issue #18 covers the separately reviewed scripted conversion of slide 6 and preserves archived diagnostic and staging routes. M5d staging is approved and production slides 14–17 are in draft PR #21 for final review under issue #20. Later batches require separate authorization.
 
 ## Development status
 
-M0 is approved. The owner approved D — Expressive Minimalism on pure white. M1 merged in PR #3. The M2 illustration library merged in PR #5. The M3 playback engine and diagnostic deck merged in PR #7 after owner review. The owner approved M4a and PR #9 is merged. M4b is owner-approved and merged in PR #11, completing M4. The owner approved M5a and PR #13 is merged. The owner approved M5b and PR #15 is merged. The owner approved M5c staging and production, and PR #17 is merged. Main contains production slides 1–13. Revised M5d visual staging (14–17) authorized in #20; production separately gated. Slides 1–26 creative directions approved, later concepts pending individual review. The other treatments remain archived for comparison. The project preserves the three-slide engineering diagnostic deck. The framework uses Reveal.js, TypeScript, Vite, Playwright, and npm. M2 uses deterministic authored SVG paths. M3 uses a local GSAP clock for presenter-paced diagnostics.
+M0 is approved. The owner approved D — Expressive Minimalism on pure white. M1 merged in PR #3. The M2 illustration library merged in PR #5. The M3 playback engine and diagnostic deck merged in PR #7 after owner review. The owner approved M4a and PR #9 is merged. M4b is owner-approved and merged in PR #11, completing M4. The owner approved M5a and PR #13 is merged. The owner approved M5b and PR #15 is merged. The owner approved M5c staging and production, and PR #17 is merged. Main contains production slides 1–13. M5d staging is owner-approved. Production slides 14–17 are in draft PR #21. Slides 1–26 creative directions approved, later concepts pending individual review. The other treatments remain archived for comparison. The project preserves the three-slide engineering diagnostic deck. The framework uses Reveal.js, TypeScript, Vite, Playwright, and npm. M2 uses deterministic authored SVG paths. M3 uses a local GSAP clock for presenter-paced diagnostics.
 
 The target is a 16:9 deck with responsive scaling, classroom-projector readability, independent slide and animation controls, and offline operation using bundled assets. A static PDF fallback is an M8 deliverable.
 
@@ -85,7 +85,7 @@ Run `npm ci`, `npm run build`, and `npm run preview -- --port 4173 --strictPort`
 - Check that the huge hands approach on a diagonal with clear space between them. Alice, Bob and Charlie operate the mechanism, and the title sits in the lower-right open space.
 - Trace each computer cable into its own receptacle in the shared strip. Follow the strip's single supply cord to the loose plug, then trace the phone cable to the charger in the wall. The large crosses show the simultaneous outages.
 - Use Left and Right to navigate, Escape for overview, F for fullscreen and S for speaker notes. Space leaves the current slide in place.
-- Open [the print compositions](http://127.0.0.1:4173/talk/?print) to print thirteen 16:9 sheets, including the CAP, final-reply and Byzantine report comparisons.
+- Open [the print compositions](http://127.0.0.1:4173/talk/?print) to print seventeen 16:9 sheets, including the CAP, final-reply and Byzantine report comparisons.
 
 The Firefox tests write review screenshots to `test-results/visual-review/m4a-reference-pass/<width>x<height>/`. The editable artwork was revised against the owner-supplied concept images, which are kept outside the repository.
 
@@ -174,6 +174,44 @@ the messenger notes. Seek backward from the reveal to see the café and its
 opening title return. The [print view](http://127.0.0.1:4173/talk/?print)
 includes one evidence sheet per slide. Firefox captures are under
 `test-results/visual-review/m5c-production/<width>x<height>/`.
+
+## M5d staging review
+
+Build and start the preview, then open [the 18 hash and proof-of-work stills](http://127.0.0.1:4173/talk/m5d/)
+in desktop Firefox. Left and Right move between keyframes. S opens speaker
+notes, which identify the hash patterns and nonce attempts as authored examples.
+These approved stills remain available as a reference for production review.
+
+| Slide | Planned checkpoints in staging order | Planned print evidence |
+| --- | --- | --- |
+| [14 Giving Data a Fingerprint](http://127.0.0.1:4173/talk/m5d/#/14-machine) | Machine, greeting, ledger, library, identical ledger copies | Greeting, ledger and library feeding equal-size outputs, with the identical-copy result |
+| [15 What If We Change Just One Bit?](http://127.0.0.1:4173/talk/m5d/#/15-original) | Save original, edit amount, isolate the bit, compare grids, detect edit | Side-by-side grids with 132 outlined positions on each and a caption about the trusted original |
+| [16 Prove That You Have Done Some Work](http://127.0.0.1:4173/talk/m5d/#/16-target) | Target and initial miss, signature failure and undo, nonce 0, failed attempts, nonce 7 success | Signed ledger, nonce 7, highlighted target bits and representative misses |
+| [17 Hard to Solve, Easy to Verify](http://127.0.0.1:4173/talk/m5d/#/17-handoff) | Handoff, verify once, compare expected search work | Expected-attempts table next to one hash and target check |
+
+Firefox writes all 18 captures by still ID under
+`test-results/visual-review/m5d-staging/1920x1080/`. The 1280×720 and
+1024×768 folders contain the library, avalanche, successful nonce and work
+comparison stills. Run `npm test -- tests/m5d-staging.spec.ts --project=firefox`
+to regenerate them.
+
+## M5d production review
+
+Use the usual playback controls in desktop Firefox. Space plays to the next
+checkpoint. J/K step, R resets, Minus/Plus adjust speed, H hides controls and S
+opens notes with the baseline preview. Present the hash outputs as authored
+examples before showing them.
+
+| Slide | Duration at 1× | Checkpoints |
+| --- | ---: | --- |
+| [14 Giving Data a Fingerprint](http://127.0.0.1:4173/talk/#/14-data-fingerprint) | 12 s | Machine, Greeting, Ledger, Library, Identical copies |
+| [15 What If We Change Just One Bit?](http://127.0.0.1:4173/talk/#/15-one-bit) | 13 s | Save original, Edit amount, One bit, Avalanche, Edit detected |
+| [16 Prove That You Have Done Some Work](http://127.0.0.1:4173/talk/#/16-proof-of-work) | 15 s | Target and first miss, Signature failure, Undo and nonce 0, Failed attempts, Nonce 7 succeeds |
+| [17 Hard to Solve, Easy to Verify](http://127.0.0.1:4173/talk/#/17-easy-verification) | 9 s | Handoff, Verify once, Expected work |
+
+Firefox captures are in `test-results/visual-review/m5d-production/<width>x<height>/`.
+The [17-sheet print view](http://127.0.0.1:4173/talk/?print) includes the proof
+and hash evidence. Production motion awaits final owner review.
 
 ## Desktop Firefox verification
 

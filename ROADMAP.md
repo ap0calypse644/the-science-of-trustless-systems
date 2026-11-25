@@ -1,6 +1,6 @@
 # Roadmap
 
-Explicit owner review gates each milestone. A dependency means an approved deliverable from the preceding work. M0 is approved. The owner approved D — Expressive Minimalism and a pure-white canvas. M1 is merged. M2 is merged. M3 is approved and merged (PR #7); desktop Firefox manual checks passed. M4 is complete. M5a is approved and merged. M5b is approved and merged. The owner approved M5c visual staging and production; PR #17 is merged. Revised M5d staging authorized in issue #20 (14–17); production requires separate approval. See [CONTINUATION.md](CONTINUATION.md) for approved 1–26 and provisional later outline. Creative planning resumes at 27. The owner approved M4a for slides 1–2 and PR #9 is merged. The owner approved M4b and PR #11 is merged. This planning checkpoint does not change M4 or later milestone gates. Milestone scope gates remain in force; slide count and time allocations are approximate, not rigid pass/fail targets.
+Explicit owner review gates each milestone. A dependency means an approved deliverable from the preceding work. M0 is approved. The owner approved D — Expressive Minimalism and a pure-white canvas. M1 is merged. M2 is merged. M3 is approved and merged (PR #7); desktop Firefox manual checks passed. M4 is complete. M5a is approved and merged. M5b is approved and merged. The owner approved M5c visual staging and production; PR #17 is merged. M5d staging is owner-approved. Production slides 14–17 await final review in draft PR #21. See [CONTINUATION.md](CONTINUATION.md) for approved 1–26 and provisional later outline. Creative planning resumes at 27. The owner approved M4a for slides 1–2 and PR #9 is merged. The owner approved M4b and PR #11 is merged. This planning checkpoint does not change M4 or later milestone gates. Milestone scope gates remain in force; slide count and time allocations are approximate, not rigid pass/fail targets.
 
 | Milestone | Dependencies | Deliverables | Acceptance criteria |
 | --- | --- | --- | --- |
@@ -17,7 +17,7 @@ Explicit owner review gates each milestone. A dependency means an approved deliv
 
 ## Presentation scope update
 
-Owner decision (25 Nov 2026): the lecture uses static or presenter-paced scripted animated slides only. No live audience/presenter inputs that change the educational model, branching buttons, live cryptographic computations or worker searches are required. Preserve ordinary playback/navigation/seek/reset controls, verbal audience predictions, local offline operation and editable art. Use fixed internally consistent illustrative examples, clearly label simulated hashes/proofs/results, never imply they are actual computed cryptographic outputs. This supersedes earlier interactive and real-computation requirements. Slide 6 scripted correction merged in PR #19; preserve archived diagnostic/staging routes. M5d production and later batches remain separately gated.
+Owner decision (25 Nov 2026): the lecture uses static or presenter-paced scripted animated slides only. No live audience/presenter inputs that change the educational model, branching buttons, live cryptographic computations or worker searches are required. Preserve ordinary playback/navigation/seek/reset controls, verbal audience predictions, local offline operation and editable art. Use internally consistent authored examples. Identify simulated outputs in speaker notes and prompt the presenter to disclose them verbally. Keep substantive technical labels and essential toy-model caveats on slides. This supersedes earlier interactive and real-computation requirements. Slide 6 scripted correction merged in PR #19; preserve archived diagnostic/staging routes. M5d production awaits final review. Later batches require separate authorization.
 
 ## Proposed issue-sized implementation queue
 
@@ -31,11 +31,11 @@ These are planning briefs, not open issues or implementation authorization. Keep
 | M5b (#14) | 8 | Owner-approved and merged in PR #15 |
 | M5c (#16) | 9–13 | Owner-approved and merged in PR #17 |
 | Slide 6 correction (#18) | 6 | Owner-approved scripted CAP sequence, merged in PR #19 |
-| M5d (#20) | 14–17 | Revised staging authorized: hash, avalanche, nonce, verification; separate production approval |
+| M5d (#20) | 14–17 | Staging approved. Production motion and code review pending in draft PR #21 |
 | M5e | 18–21 | Growing ledger, pages, hash links, competing histories; not authorized |
 | M5f | 22–26 | PoW, race/confirmations, Alice buried, subsidy, reveal; not authorized |
 | M5g | 27–31 provisional | Stake/BFT; individual creative review |
 | M5h | 32–39 provisional | State, contracts, Merkle, interoperability; individual creative review |
 | M5i | Integrated Part I | Full rehearsal, notes, source/asset audit, browser tests, print stills |
 
-Shared acceptance: preserve diagnostics and presenter engine; offline local assets; deterministic playback, clean reset/seek/navigation; fixed example consistency, explicit illustrative labels, no simulated outputs presented as real; print compositions and desktop Firefox screenshots for owner review. Parts II/III retain provisional scope and shifted numbering 26–45/46–48. Timing remains flexible within nominal two-hour talk.
+Shared acceptance: preserve diagnostics and presenter engine; offline local assets; deterministic playback, clean reset/seek/navigation; fixed example consistency and disclosure of authored outputs in notes and verbally; print compositions and desktop Firefox screenshots for owner review. Parts II/III retain provisional scope and shifted numbering 26–45/46–48. Timing remains flexible within nominal two-hour talk.
