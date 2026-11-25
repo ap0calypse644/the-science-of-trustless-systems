@@ -30,7 +30,7 @@ These are planning briefs, not open issues or implementation authorization. Keep
 | M5a (#12) | 3–6 | Owner-approved and merged in PR #13 |
 | M5b (#14) | 8 | Owner-approved and merged in PR #15 |
 | M5c (#16) | 9–13 | Owner-approved and merged in PR #17 |
-| Slide 6 correction | 6 | Convert interactive CAP choice into fixed sequential outcomes; owner review before merge |
+| Slide 6 correction (#18) | 6 | Owner-approved scripted CAP sequence, merged in PR #19 |
 | M5d | 14–16 | Scripted hash/avalanche example, illustrative binary mining, linked pages |
 | M5e | 17–21 | Separate economic beats, valid greatest-work fork selection, subtle reveal |
 | M5f | 22–25 | Bill/cameo, BFT threshold, fictional AI credits, IBC verification |
