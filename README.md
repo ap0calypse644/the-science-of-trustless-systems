@@ -175,6 +175,27 @@ opening title return. The [print view](http://127.0.0.1:4173/talk/?print)
 includes one evidence sheet per slide. Firefox captures are under
 `test-results/visual-review/m5c-production/<width>x<height>/`.
 
+## M5d staging review
+
+Build and start the preview, then open [the 18 hash and proof-of-work stills](http://127.0.0.1:4173/talk/m5d/)
+in desktop Firefox. Left and Right move between keyframes. S opens speaker
+notes. The hash patterns and nonce attempts are labeled illustrative fixtures.
+The production route continues to contain slides 1–13.
+
+| Slide | Planned checkpoints in staging order | Planned print evidence |
+| --- | --- | --- |
+| [14 Giving Data a Fingerprint](http://127.0.0.1:4173/talk/m5d/#/14-machine) | Machine, greeting, ledger, library, identical ledger copies | Greeting, ledger and library feeding equal-size outputs, with the identical-copy result |
+| [15 What If We Change Just One Bit?](http://127.0.0.1:4173/talk/m5d/#/15-original) | Save original, edit amount, isolate the bit, compare grids, detect edit | Side-by-side grids with 132 outlined positions on each and a caption about the trusted original |
+| [16 Prove That You Have Done Some Work](http://127.0.0.1:4173/talk/m5d/#/16-target) | Target and initial miss, signature failure and undo, nonce 0, failed attempts, nonce 7 success | Signed ledger, nonce 7, highlighted target bits and representative misses |
+| [17 Hard to Solve, Easy to Verify](http://127.0.0.1:4173/talk/m5d/#/17-handoff) | Handoff, verify once, compare expected search work | Expected-attempts table next to one hash and target check |
+
+Firefox writes all 18 captures by still ID under
+`test-results/visual-review/m5d-staging/1920x1080/`. The 1280×720 and
+1024×768 folders contain the library, avalanche, successful nonce and work
+comparison stills. Run `npm test -- tests/m5d-staging.spec.ts --project=firefox`
+to regenerate them. Production motion and print compositions are future
+work after visual approval.
+
 ## Desktop Firefox verification
 
 From the repository root, run these commands and leave preview running.

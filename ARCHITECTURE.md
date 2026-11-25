@@ -204,3 +204,13 @@ contracts to the shared messenger-note outline while the café fades, the
 terrain rises and the generals arrive. Only the terminal frame changes the
 heading. The print composition holds on the two local histories. The
 accounting model remains independent of playback and the DOM.
+
+## M5d hash foundations staging
+
+The independent `/talk/m5d/` entry uses the static review shell. It shares
+authored SVG panels, M2 characters and local fonts across 18 review frames
+for slides 14–17. The pure fixtures module expands four fixed hexadecimal
+patterns for display and compares their bits. It also supplies the scripted
+nonce prefixes, the exact candidate repeated by the verifier and the
+expected-work table. No hash or search runs in the browser. The production
+registry and playback engine are unchanged.

@@ -224,3 +224,5 @@ Read this checkpoint and issue #20. Slides 1–26 concept-approved, production 1
 ## Active handover - 26 November 2026
 
 Owner requested design checkpoint and resumed Codex generation. Revised #20 supersedes the paused old scope; staging only for 14–17, not production. Preserve 1–13, prior diagnostics, visual review gate and PR workflow. Subsequent batches require individual authorization. Earlier handovers are historical where they conflict. No actual crypto computation, only fixed illustrative examples. Read the revised issue for exact scope. 
+
+- Issue #20 staging is implemented on `feature/m5d-hash-foundations` for owner visual and technical review. The `/talk/m5d/` route has 18 stills. The fixed examples show a 132-of-256 bit difference, nonce 7 meeting the leading-four-zero-bit target, and the same candidate at verification. See README for the review links, capture paths, planned checkpoints and print evidence. Production remains at 1–13. Production integration and later batches require separate approval.
