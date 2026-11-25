@@ -14,7 +14,8 @@ const list = root.querySelector<HTMLElement>('.slides')!;
 const params = new URLSearchParams(location.search);
 const staging = root.hasAttribute('data-staging');
 const print = !staging && params.has('print');
-const review = staging ? await import('./two-generals/stills') : undefined;
+const m5a = root.dataset.staging === 'm5a' ? await import('./m5a/stills') : undefined;
+const review = staging ? m5a ?? await import('./two-generals/stills') : undefined;
 const registry = new Map<string, SceneRegistration>();
 const entries: readonly TalkSlide[] = review?.stills ?? slides;
 
@@ -50,6 +51,7 @@ if (print) {
   const notes = Notes();
   const deck = createDeck(notes);
   await deck.initialize();
+  m5a?.connectLocalMeme(root);
   if (!staging) {
     connectPresenter(deck, notes, root, createPresenterBar(), registry, params.has('receiver'), false);
   } else if (!params.has('receiver')) {

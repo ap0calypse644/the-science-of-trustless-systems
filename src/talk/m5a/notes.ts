@@ -1,0 +1,5 @@
+export const distributionNotes = 'The two surviving clusters have independent power and replicas. Alice’s request is rerouted by the configured failover path while Bob continues working. Independent failure domains and replication make this possible. Distribution can also help spread load or reduce latency when serving from locations closer to users.';
+
+export const governanceNotes = 'The dashed lines represent management. Solid blue lines represent network links. The same deployment can be governed centrally or by independent operators; operating separate servers alone does not settle who sets the rules or how control is distributed.';
+
+export const capNotes = 'Use the meme to name the three terms. CAP is not “pick any two.” With a partition, an asynchronous read/write service cannot guarantee both linearizability and availability to every request at a non-failing node. Availability here is a property of responses in the model, rather than uptime. See Gilbert and Lynch, DOI 10.1145/564585.564601.';

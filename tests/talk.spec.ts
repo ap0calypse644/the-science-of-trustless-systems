@@ -1,7 +1,11 @@
 import { mkdir } from 'node:fs/promises';
 import { expect, test, type Page } from '@playwright/test';
 
-const ids = ['01-title', '02-single-point-of-failure', '07-two-generals'];
+const ids = [
+  '01-title', '02-single-point-of-failure', '03-why-distribute',
+  '04-centralized-distributed-decentralized', '05-cap-theorem',
+  '06-consistency-or-availability', '07-two-generals',
+];
 
 async function openTalk(page: Page): Promise<void> {
   await page.goto('/talk/');
@@ -76,9 +80,11 @@ test('local fonts, assets and synchronized speaker notes work with external traf
   await page.keyboard.press('ArrowRight');
   await expect(speaker.getByText(/why the devices stopped together/)).toBeVisible();
   await expect(speaker.frameLocator('iframe').first().locator('section.present')).toHaveAttribute('id', ids[1]);
-  await page.keyboard.press('ArrowRight');
   const preview = speaker.frameLocator('iframe').first();
-  await expect(preview.locator('section.present')).toHaveAttribute('id', ids[2]);
+  for (const id of ids.slice(2)) {
+    await page.keyboard.press('ArrowRight');
+    await expect(preview.locator('section.present')).toHaveAttribute('id', id);
+  }
   await expect(speaker.getByText(/Final-message argument/)).toBeVisible();
   await page.keyboard.press('k');
   await expect(page.locator('.playback-state')).toContainText('Send the plan');
@@ -103,7 +109,7 @@ test('print view shows all representative 16:9 compositions', async ({ page }) =
     const bounds = (await sheet.boundingBox())!;
     expect(bounds.width).toBeLessThanOrEqual(page.viewportSize()!.width);
     expect(bounds.width / bounds.height).toBeCloseTo(16 / 9);
-    await expect(sheet.locator('svg')).toBeVisible();
+    await expect(sheet.locator('svg, img')).toBeVisible();
   }
 });
 

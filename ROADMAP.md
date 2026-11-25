@@ -1,6 +1,6 @@
 # Roadmap
 
-Explicit owner review gates each milestone. A dependency means an approved deliverable from the preceding work. M0 is approved. The owner approved D — Expressive Minimalism and a pure-white canvas. M1 is merged. M2 is merged. M3 is approved and merged (PR #7); desktop Firefox manual checks passed. M4 is next. See [CONTINUATION.md](CONTINUATION.md) for all 25 Part I approvals and restart point. Creative prototyping for Part I is complete. The owner approved M4a for slides 1–2 and PR #9 is merged. The owner approved M4b staging (issue #10). The slide 7 production prototype is at owner review. This planning checkpoint does not change M4 or later milestone gates. Milestone scope gates remain in force; slide count and time allocations are approximate, not rigid pass/fail targets.
+Explicit owner review gates each milestone. A dependency means an approved deliverable from the preceding work. M0 is approved. The owner approved D — Expressive Minimalism and a pure-white canvas. M1 is merged. M2 is merged. M3 is approved and merged (PR #7); desktop Firefox manual checks passed. M4 is complete. M5a production is at owner review. See [CONTINUATION.md](CONTINUATION.md) for all 25 Part I approvals and restart point. Creative prototyping for Part I is complete. The owner approved M4a for slides 1–2 and PR #9 is merged. The owner approved M4b and PR #11 is merged. This planning checkpoint does not change M4 or later milestone gates. Milestone scope gates remain in force; slide count and time allocations are approximate, not rigid pass/fail targets.
 
 | Milestone | Dependencies | Deliverables | Acceptance criteria |
 | --- | --- | --- | --- |
@@ -22,8 +22,8 @@ These are planning briefs, not open issues or implementation authorization. Keep
 | Batch | Scope | Specific gate |
 | --- | --- | --- |
 | M4a (#8) | 1–2 | Owner-approved and merged in PR #9 |
-| M4b (#10) | 7 | Staging approved; production animation, notes and print at owner review |
-| M5a | 3–6 | Distribution, control, rights-cleared CAP visual and both interactive bank outcomes |
+| M4b (#10) | 7 | Owner-approved and merged in PR #11 |
+| M5a (#12) | 3–6 | Staging approved; production deck and interactive CAP at owner review in PR #13 |
 | M5b | 8 | OM model and three/four-general cases; fault assumptions and reset |
 | M5c | 9–13 | Café continuity, ledger arithmetic, medieval note/castle transformation |
 | M5d | 14–16 | SHA-256 vectors, avalanche count, responsive real binary mining, linked pages |

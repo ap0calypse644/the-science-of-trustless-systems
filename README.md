@@ -12,7 +12,7 @@ The planning storyboard spans 48 slides (25 approved Part I concepts; 23 provisi
 
 ## Development status
 
-M0 is approved. The owner approved D — Expressive Minimalism on pure white. M1 merged in PR #3. The M2 illustration library merged in PR #5. The M3 playback engine and diagnostic deck merged in PR #7 after owner review. The owner approved M4a and PR #9 is merged. The owner approved M4b staging and the slide 7 production prototype is at owner review. All 25 Part I creative directions are approved. The other treatments remain archived for comparison. The project preserves the three-slide engineering diagnostic deck. The framework uses Reveal.js, TypeScript, Vite, Playwright, and npm. M2 uses deterministic authored SVG paths. M3 uses a local GSAP clock for presenter-paced diagnostics.
+M0 is approved. The owner approved D — Expressive Minimalism on pure white. M1 merged in PR #3. The M2 illustration library merged in PR #5. The M3 playback engine and diagnostic deck merged in PR #7 after owner review. The owner approved M4a and PR #9 is merged. M4b is owner-approved and merged in PR #11, completing M4. The owner approved M5a staging and the production implementation is at owner review in PR #13. All 25 Part I creative directions are approved. The other treatments remain archived for comparison. The project preserves the three-slide engineering diagnostic deck. The framework uses Reveal.js, TypeScript, Vite, Playwright, and npm. M2 uses deterministic authored SVG paths. M3 uses a local GSAP clock for presenter-paced diagnostics.
 
 The target is a 16:9 deck with responsive scaling, classroom-projector readability, independent slide and animation controls, and offline operation using bundled assets. A static PDF fallback is an M8 deliverable.
 
@@ -81,19 +81,42 @@ Run `npm ci`, `npm run build`, and `npm run preview -- --port 4173 --strictPort`
 - Check that the huge hands approach on a diagonal with clear space between them. Alice, Bob and Charlie operate the mechanism, and the title sits in the lower-right open space.
 - Trace each computer cable into its own receptacle in the shared strip. Follow the strip's single supply cord to the loose plug, then trace the phone cable to the charger in the wall. The large crosses show the simultaneous outages.
 - Use Left and Right to navigate, Escape for overview, F for fullscreen and S for speaker notes. Space leaves the current slide in place.
-- Open [the print compositions](http://127.0.0.1:4173/talk/?print) to print the two static slides and the final-reply comparison on separate 16:9 pages.
+- Open [the print compositions](http://127.0.0.1:4173/talk/?print) to print seven 16:9 sheets, including the CAP and final-reply comparisons.
 
 The Firefox tests write review screenshots to `test-results/visual-review/m4a-reference-pass/<width>x<height>/`. The editable artwork was revised against the owner-supplied concept images, which are kept outside the repository.
 
 ## M4b production review
 
-The prototype deck temporarily orders slides 1, 2 and 7. Open [slide 7](http://127.0.0.1:4173/talk/#/07-two-generals) in desktop Firefox. Space plays or pauses, and playback stops at the next named beat. J and K step backward and forward, R resets, and Minus and Plus adjust speed. H hides the controls. S opens notes with a baseline preview. The final checkpoint holds on both outcomes, with Charlie’s audience-only reaction in the lost-reply panel. The [print view](http://127.0.0.1:4173/talk/?print) shows the two outcomes and the generals’ evidence.
+The production deck orders slides 1–7. Open [slide 7](http://127.0.0.1:4173/talk/#/07-two-generals) in desktop Firefox. Space plays or pauses, and playback stops at the next named beat. J and K step backward and forward, R resets, and Minus and Plus adjust speed. H hides the controls. S opens notes with a baseline preview. The final checkpoint holds on both outcomes, with Charlie’s audience-only reaction in the lost-reply panel. The [print view](http://127.0.0.1:4173/talk/?print) shows the two outcomes and the generals’ evidence.
 
 Firefox captures all eight beats and the print comparison at 1920×1080 under `test-results/visual-review/m4b-production/`, plus the final comparison at 1280×720 and 1024×768.
 
 ## M4b approved staging reference
 
 With the production preview running, open [the staging stills](http://127.0.0.1:4173/talk/staging/) in desktop Firefox. Use Left and Right to compare the opening, courier escalation, and the two possible outcomes of the final reply. Firefox captures are in `test-results/visual-review/m4b-staging/1920x1080/`.
+
+## M5a production review
+
+Use desktop Firefox with production preview running. Open [the production bank scene](http://127.0.0.1:4173/talk/#/06-consistency-or-availability), [Why distribute?](http://127.0.0.1:4173/talk/#/03-why-distribute), [the governance comparison](http://127.0.0.1:4173/talk/#/04-centralized-distributed-decentralized), or [the CAP meme](http://127.0.0.1:4173/talk/#/05-cap-theorem).
+
+1. Press Space to play to the next beat, or K to jump there. Let Charlie walk from A to B between Withdrawal and Balance inquiry.
+2. At Choose response, use Tab or the mouse to select **Return 1,000** or **Wait for sync**. The selection keeps the scene paused. Click **Next beat**, press Space after returning focus to the deck, or use the seek slider. Seeking ahead before making a choice stops at the choice.
+3. Review both outcomes. J returns to the choice, where the selected branch can be replaced. R clears the choice and resets the scenario. Leaving and revisiting starts a fresh scene.
+4. At Reconnect, both stored balances become 0. The waiting read returns 0. The stale path retains its earlier answer of 1,000 without issuing a new read. S opens notes and a baseline preview. The [print view](http://127.0.0.1:4173/talk/?print) shows the partitioned balances and both potential responses.
+
+Firefox production captures are under `test-results/visual-review/m5a-production/<width>x<height>/`.
+
+## M5a approved staging reference
+
+With production preview running, open [the M5a stills](http://127.0.0.1:4173/talk/m5a/) in desktop Firefox. Use Left and Right to review the distribution, governance, and CAP scenes. The CAP bank scene has eight stills, including both responses and reconnection after the waiting outcome. This independent route preserves the approved stills.
+
+Firefox screenshots are in `test-results/visual-review/m5a-staging/<width>x<height>/`. The 1920×1080 directory contains all eleven stills, named by their review IDs. The smaller directories contain the distribution, governance, asset-placeholder, and bank-choice stills.
+
+### Slide 5 asset provenance
+
+[Know Your Meme traces the original two-character frame](https://knowyourmeme.com/memes/spider-man-pointing-at-spider-man/) to the 1967 animated episode “Double Identity.” Production slide 5 bundles the distinct [three-character Imgflip template 206014687](https://imgflip.com/memetemplate/206014687/3-Spidermen-Pointing-at-each-other), served as [3enly7.jpg](https://i.imgflip.com/3enly7.jpg), a 600×551 JPEG listed as a user upload. The inspected file has SHA-256 `44e3d3465eea6ea9e51656ff0b7f5e326a3edd7f5d778aa43c4bb3db269ae823`. Its editor, first publication, and permission to redistribute the composited image and underlying cartoon art are unverified. The template page and [Imgflip’s terms](https://imgflip.com/terms) do not establish permission for this project to bundle it.
+
+The project owner authorized the exact file for this repository in issue #12. Public access to the template is distinct from a free license. This third-party image is excluded from the project’s original-art license claims. The production and print views load the local bundle. The historical staging route retains its labeled placeholder and local-only picker.
 
 ## Desktop Firefox verification
 

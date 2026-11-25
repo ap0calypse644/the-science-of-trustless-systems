@@ -16,9 +16,10 @@ export function presenterControls(root: HTMLElement, deck: HTMLElement, signal: 
     if (!scene && root.contains(document.activeElement)) deck.focus({ preventScroll: true });
     root.hidden = !scene;
     if (!scene) return;
-    const verb = scene.status === 'playing' ? 'Pause' : scene.status === 'ended' ? 'Play (at end)' : 'Play';
+    const verb = scene.status === 'blocked' ? 'Choose a response to play'
+      : scene.status === 'playing' ? 'Pause' : scene.status === 'ended' ? 'Play (at end)' : 'Play';
     if (play.textContent !== verb) play.textContent = verb;
-    play.disabled = scene.status === 'ended';
+    play.disabled = scene.status === 'ended' || scene.status === 'blocked';
     if (play.disabled && document.activeElement === play) slider.focus({ preventScroll: true });
     const label = `${scene.status[0].toUpperCase()}${scene.status.slice(1)} · ${scene.beat} · ${scene.time.toFixed(2)} / ${scene.duration.toFixed(2)} s`;
     status.textContent = label;

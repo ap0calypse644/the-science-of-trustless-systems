@@ -31,7 +31,7 @@ test('the final runs differ only in delivery and the sender cannot distinguish t
 test('all teaching beats restore identical rendered evidence on exact seek', async ({ page, browserName }) => {
   await page.setViewportSize({ width: 1920, height: 1080 });
   await openScene(page);
-  const scene = page.locator('.scene-root');
+  const scene = page.locator('[id="07-two-generals"] .scene-root');
   const status = page.locator('.playback-state');
   const expected = [
     ['We have to move', 'When should we move?'],
@@ -110,7 +110,7 @@ test('all teaching beats restore identical rendered evidence on exact seek', asy
 test('play moves Charlie, pauses for predictions, and cleans up on navigation', async ({ page }) => {
   await openScene(page);
   const status = page.locator('.playback-state');
-  const scene = page.locator('.scene-root');
+  const scene = page.locator('[id="07-two-generals"] .scene-root');
   await page.keyboard.press('+');
   await expect(page.locator('.playback-speed')).toHaveText('1.25×');
   await page.keyboard.press('Space');
@@ -132,7 +132,9 @@ test('play moves Charlie, pauses for predictions, and cleans up on navigation', 
   await page.locator('.reveal').focus();
   await page.keyboard.press('ArrowLeft');
   await expect(scene).toBeEmpty();
+  await page.keyboard.press('ArrowLeft');
   await expect(page.locator('.presenter')).toBeHidden();
+  await page.keyboard.press('ArrowRight');
   await page.keyboard.press('ArrowRight');
   await page.keyboard.press('ArrowLeft');
   await page.keyboard.press('ArrowRight');
