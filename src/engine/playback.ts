@@ -7,6 +7,7 @@ export interface SceneView {
 }
 
 export interface AnimatedScene extends Timing {
+  readonly pauseAtCheckpoints?: boolean;
   mount(root: HTMLElement, signal: AbortSignal): SceneView;
 }
 
@@ -26,6 +27,7 @@ interface ActiveScene {
   lifetime: AbortController;
   view: SceneView;
   timeline: gsap.core.Timeline;
+  stopAt?: number;
 }
 
 export class Playback {
@@ -42,11 +44,17 @@ export class Playback {
     const lifetime = new AbortController();
     const view = definition.mount(root, lifetime.signal);
     const timeline = gsap.timeline({ paused: true });
-    const active = { definition, root, lifetime, view, timeline };
+    const active: ActiveScene = { definition, root, lifetime, view, timeline };
     timeline.to({ elapsed: 0 }, { elapsed: definition.duration, duration: definition.duration, ease: 'none' });
     timeline.timeScale(SPEEDS[this.speedIndex]);
     timeline.eventCallback('onUpdate', () => {
-      if (this.active === active) this.render();
+      if (this.active !== active) return;
+      const stop = active.stopAt;
+      if (stop !== undefined && timeline.time() >= stop - TIME_EPSILON) {
+        active.stopAt = undefined;
+        timeline.pause().time(stop, true);
+      }
+      this.render();
     });
     timeline.eventCallback('onComplete', () => {
       if (this.active !== active) return;
@@ -80,6 +88,9 @@ export class Playback {
   play(): void {
     const active = this.active;
     if (!active || this.overview || active.timeline.time() >= active.definition.duration - TIME_EPSILON) return;
+    if (active.definition.pauseAtCheckpoints) {
+      active.stopAt = stepBeat(active.definition, active.timeline.time(), 1).time;
+    }
     active.timeline.play();
     this.report();
   }
@@ -97,6 +108,7 @@ export class Playback {
   seek(time: number): void {
     const active = this.active;
     if (!active || !Number.isFinite(time)) return;
+    active.stopAt = undefined;
     active.timeline.pause().time(Math.max(0, Math.min(active.definition.duration, time)), true);
     this.render();
   }

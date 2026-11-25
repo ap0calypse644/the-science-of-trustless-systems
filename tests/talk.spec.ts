@@ -1,7 +1,7 @@
 import { mkdir } from 'node:fs/promises';
 import { expect, test, type Page } from '@playwright/test';
 
-const ids = ['01-title', '02-single-point-of-failure'];
+const ids = ['01-title', '02-single-point-of-failure', '07-two-generals'];
 
 async function openTalk(page: Page): Promise<void> {
   await page.goto('/talk/');
@@ -16,7 +16,8 @@ test('static talk navigates, revisits and preserves native focus', async ({ page
   const baseline = await current.locator('.talk-sheet').innerHTML();
   for (const key of ['Space', 'r', 'j', 'k', '=', '+', '-', 'h']) await page.keyboard.press(key);
   await expect(current).toHaveAttribute('id', ids[0]);
-  await expect(page.locator('.presenter, #playback-panel')).toHaveCount(0);
+  await expect(page.locator('.presenter')).toBeHidden();
+  await expect(page.locator('#playback-panel')).toBeHidden();
   await page.keyboard.press('ArrowRight');
   await expect(current).toHaveAttribute('id', ids[1]);
   await page.keyboard.press('Space');
@@ -38,7 +39,7 @@ test('static talk navigates, revisits and preserves native focus', async ({ page
   });
   await page.keyboard.press('ArrowRight');
   await expect(current).toHaveAttribute('id', ids[0]);
-  expect(await page.locator('input').evaluate((input: HTMLInputElement) => input.selectionStart)).toBe(1);
+  expect(await page.getByRole('textbox').evaluate((input: HTMLInputElement) => input.selectionStart)).toBe(1);
   await page.locator('.reveal').focus();
   await page.keyboard.press('f');
   await expect.poll(() => page.evaluate(() => Boolean(document.fullscreenElement))).toBe(true);
@@ -75,6 +76,14 @@ test('local fonts, assets and synchronized speaker notes work with external traf
   await page.keyboard.press('ArrowRight');
   await expect(speaker.getByText(/why the devices stopped together/)).toBeVisible();
   await expect(speaker.frameLocator('iframe').first().locator('section.present')).toHaveAttribute('id', ids[1]);
+  await page.keyboard.press('ArrowRight');
+  const preview = speaker.frameLocator('iframe').first();
+  await expect(preview.locator('section.present')).toHaveAttribute('id', ids[2]);
+  await expect(speaker.getByText(/Final-message argument/)).toBeVisible();
+  await page.keyboard.press('k');
+  await expect(page.locator('.playback-state')).toContainText('Send the plan');
+  await expect(preview.locator('section.present .scene-root .scene-caption')).toHaveText('Both together, or neither.');
+  await expect(preview.locator('.presenter')).toBeHidden();
   await page.evaluate(() => document.fonts.ready);
   expect(fonts).toEqual(expect.arrayContaining([
     expect.stringContaining('Kalam-Regular'), expect.stringContaining('PatrickHand-Regular'),
@@ -82,11 +91,11 @@ test('local fonts, assets and synchronized speaker notes work with external traf
   expect(failures).toEqual([]);
 });
 
-test('print view shows both representative 16:9 compositions', async ({ page }) => {
+test('print view shows all representative 16:9 compositions', async ({ page }) => {
   await page.goto('/talk/?print');
   await page.emulateMedia({ media: 'print' });
   const sheets = page.locator('.print-deck .talk-sheet');
-  await expect(sheets).toHaveCount(2);
+  await expect(sheets).toHaveCount(ids.length);
   await expect(page.locator('.notes, .slide-number')).toHaveCount(0);
   for (const [index, id] of ids.entries()) {
     const sheet = sheets.nth(index);
@@ -107,8 +116,8 @@ for (const size of [{ width: 1920, height: 1080 }, { width: 1280, height: 720 },
       const current = page.locator('section.present');
       await expect(current).toHaveAttribute('id', id);
       await page.evaluate(() => document.fonts.ready);
-      const sheet = (await current.locator('.talk-sheet').boundingBox())!;
-      const heading = (await current.locator('h1').boundingBox())!;
+      const sheet = (await current.locator('.talk-sheet:visible').boundingBox())!;
+      const heading = (await current.locator('h1:visible').boundingBox())!;
       expect(sheet.x).toBeGreaterThanOrEqual(0);
       expect(sheet.y).toBeGreaterThanOrEqual(0);
       expect(sheet.x + sheet.width).toBeLessThanOrEqual(size.width);
@@ -116,7 +125,7 @@ for (const size of [{ width: 1920, height: 1080 }, { width: 1280, height: 720 },
       expect(sheet.width / sheet.height).toBeCloseTo(16 / 9);
       expect(heading.x + heading.width).toBeLessThan(sheet.x + sheet.width);
       expect(heading.y + heading.height).toBeLessThan(sheet.y + sheet.height);
-      if (browserName === 'firefox') {
+      if (browserName === 'firefox' && index < 2) {
         const dir = `test-results/visual-review/m4a-reference-pass/${size.width}x${size.height}`;
         await mkdir(dir, { recursive: true });
         await page.screenshot({ path: `${dir}/${id}.png` });

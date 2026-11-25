@@ -13,7 +13,7 @@ Use this progression where it helps the lecture flow, from agreement and replica
 - Design for a 16:9 canvas and responsive scaling. Keep labels and speech bubbles inside safe margins, with room for presenter controls and browser or projector cropping.
 - Use pure white (#FFFFFF) for the presentation canvas, as required by the owner. Use near-black ink and selective accents. Pair color with labels, line patterns, shapes, or position when encoding states such as a dropped message or a conflicting vote.
 - Use legible handwritten typography for short text and a readable supporting face where appropriate. Use local Kalam for titles and major headings and Patrick Hand for speech and short annotations. Use system sans-serif where technical symbols need broader glyph coverage. Establish size and stroke-width targets through projected trials.
-- Favor a few large labels, clear reading order, and generous whitespace. Keep equations sparse and large. Verify critical text and linework on a classroom projector from typical audience distances.
+- Place titles high on the canvas by default, keeping the main content area clear. Favor a few large labels, clear reading order, and generous whitespace. Keep equations sparse and large. Verify critical text and linework on a classroom projector from typical audience distances.
 
 ## Illustration and motion
 

@@ -94,3 +94,18 @@ body { background: var(--paper); }
   .print-deck > .slides > section { break-inside: avoid; break-after: page; }
   .print-deck > .slides > section:last-child { break-after: auto; }
 }
+
+.scene-root:not(:empty) + .scene-baseline { display: none; }
+
+@media (min-aspect-ratio: 16/10) {
+  .talk-production:has(.presenter:not([hidden]) .playback-panel:not([hidden])) .scene-root .talk-sheet {
+    transform: scale(.86);
+    transform-origin: center top;
+  }
+}
+
+.talk-production .presenter:has(.playback-panel[hidden]) {
+  left: auto;
+  right: 18px;
+  transform: none;
+}
