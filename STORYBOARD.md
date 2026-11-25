@@ -57,7 +57,7 @@ The sequence assumes a college audience with mixed familiarity with distributed 
 | 38 | Why Should I Trust the Messenger? | Provisional | Authenticated light client and packet proof | Individual creative review pending | TBD | TBD |
 | 39 | An Internet of Blockchains | Provisional | Sovereign IBC network | Individual creative review pending | TBD | TBD |
 
-Individual approved checkpoints, staging and acceptance criteria for slides 11–25 are in [CONTINUATION.md](CONTINUATION.md#approved-slide-decisions-1125-final-part-i-numbering). Timing remains flexible; fit and rehearse rather than enforcing a slide quota.
+Individual approved checkpoints, staging and acceptance criteria for slides 11–26 are in [CONTINUATION.md](CONTINUATION.md#approved-slide-decisions-1126-current-numbering). Timing remains flexible; fit and rehearse rather than enforcing a slide quota.
 
 ### Two Generals checkpoints (slide 7)
 
@@ -132,7 +132,7 @@ Speaker notes and later demonstrations should preserve these details.
 
 ## Review notes
 
-Owner decision (25 Nov 2026): the lecture uses static or presenter-paced scripted animated slides only. No live audience/presenter inputs that change the educational model, branching buttons, live cryptographic computations or worker searches are required. Preserve ordinary playback/navigation/seek/reset controls, verbal audience predictions, local offline operation and editable art. Use internally consistent authored examples. Identify simulated outputs in speaker notes and prompt the presenter to disclose them verbally. Keep substantive technical labels and essential toy-model caveats on slides. This supersedes earlier interactive and real-computation requirements. Slide 6 scripted correction merged in PR #19; preserve archived diagnostic/staging routes. M5d staging is approved and production slides 14–17 are in draft PR #21 for final review under issue #20. Later batches require separate authorization.
+Owner decision (25 Nov 2026): the lecture uses static or presenter-paced scripted animated slides only. No live audience/presenter inputs that change the educational model, branching buttons, live cryptographic computations or worker searches are required. Preserve ordinary playback/navigation/seek/reset controls, verbal audience predictions, local offline operation and editable art. Use internally consistent authored examples. Identify simulated outputs in speaker notes and prompt the presenter to disclose them verbally. Keep substantive technical labels and essential toy-model caveats on slides. This supersedes earlier interactive and real-computation requirements. Slide 6 scripted correction merged in PR #19; preserve archived diagnostic/staging routes. M5d is approved and merged in PR #21; #20 closed. M5e visual staging only (18–21) is authorized under #22. Production and later batches require separate authorization.
 
 Current provisional planning baseline: 62 slides if later scope remains unchanged, with slides 1–26 concept-approved, 27–39 provisional and Parts II/III provisional (40–59, 60–62). No interactive production slides. M4 prototype gate unchanged. See CONTINUATION.md for canonical briefs and issue #20 for staging authorization.
 
