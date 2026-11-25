@@ -2,6 +2,10 @@
 
 M0.2 establishes the Reveal.js shell, local build, and shared Firefox and Chromium smoke tests. The scene and playback behavior below records approved requirements for later milestones. Module boundaries and implementation details remain proposals. Desktop Firefox is the primary presentation and development browser. Playwright's bundled Firefox build is the primary automated target. Chromium is the secondary compatibility target. Desktop Firefox on the presentation machine requires its own manual checks.
 
+## Presentation policy
+
+Owner decision (25 Nov 2026): the lecture uses static or presenter-paced scripted animated slides only. No live audience/presenter inputs that change the educational model, branching buttons, live cryptographic computations or worker searches are required. Preserve ordinary playback/navigation/seek/reset controls, verbal audience predictions, local offline operation and editable art. Use fixed internally consistent illustrative examples, clearly label simulated hashes/proofs/results, never imply they are actual computed cryptographic outputs. This supersedes earlier interactive and real-computation requirements. Existing interactive slide 6 must be converted in a separately reviewed correction; preserve archived diagnostic/staging routes. Future M5d and M6 implementation remain separately gated.
+
 ## Responsibilities
 
 | Proposed area | Responsibility |
@@ -18,7 +22,7 @@ M0.2 establishes the Reveal.js shell, local build, and shared Firefox and Chromi
 
 1. On initial entry or revisit, mount a fresh scene in its named initial state. Initialize its timeline paused at time zero. Any deliberate exception must be documented and reviewed for that scene.
 2. While active, expose play, pause, resume, restart, absolute seek, speed control, and previous/next checkpoint. Use ordered, named timeline positions with labels tied to speaker beats. Clamp seeks to the timeline range. Seeking and checkpoint jumps pause playback. Reset returns to the initial paused state.
-3. Render each animated state from timeline position and explicit model inputs. Avoid irreversible callback side effects during seeks. Give interactive scenes an explicit reset and define how their inputs interact with any timeline they own.
+3. Render each animated state from timeline position and explicit model inputs. Avoid irreversible callback side effects during seeks. Production scenes use only fixed scripted state and timeline controls.
 4. On exit, pause and dispose of the timeline, listeners, pending work, and scene-owned DOM. Drop work from stale scene instances. Static slides expose only applicable commands. Re-entering from either direction uses the same baseline state.
 
 Reveal.js owns the slide index. Timeline changes never advance slides, and end-of-timeline playback remains on the current slide. Opening overview pauses playback, and returning leaves it paused. Playback speed defaults to 1× and persists globally across scenes.
@@ -76,7 +80,7 @@ Coordinates are SVG units with x increasing right and y increasing down. A chara
 
 - `src/engine/main.ts` registers stable slide IDs, speaker notes, and optional scene factories. It connects Reveal slide and overview events to the controller, or mounts static scene previews when the Notes plugin supplies the `receiver` parameter. Page exit removes handlers and disposes the current view. A cached page reconnects with fresh scene state.
 - `playback.ts` owns one paused GSAP timeline and a session-wide speed selection. At completion it stays at the final beat until reset or seek. Speeds are 0.5×, 0.75×, 1×, 1.25×, 1.5×, and 2×. Nonfinite seeks and unsupported rates are ignored. Finite seeks clamp and pause. A 1 µs tolerance excludes the current beat when stepping. Checkpoints include the initial and final frames.
-- `scenes.ts` keeps diagnostic time-to-state functions separate from their SVG view. The view mounts once, updates cached SVG nodes, and selects among pre-authored poses. Reset is a paused seek to zero. The diagnostics have no independent educational inputs. Future interactive scenes must define how their inputs reset and affect rendering.
+- `scenes.ts` keeps diagnostic time-to-state functions separate from their SVG view. The view mounts once, updates cached SVG nodes, and selects among pre-authored poses. Reset is a paused seek to zero. The diagnostics have no independent educational inputs. Retain diagnostic APIs; production scenes do not require independent educational input.
 - `controls.ts`, `navigation.ts`, and `shell.ts` handle the presenter panel, shortcut dispatch, and Reveal configuration. Static slides hide the playback panel and Space leaves slide navigation unchanged.
 
 An animated scene declares its timing and returns a view with an absolute render function.
@@ -149,7 +153,7 @@ The optional slide 5 picker uses a local object URL for a selected image, with
 no asset path in the build or remote fetch. Production loads the bundled image and retains attribution in speaker notes.
 The asset provenance and rights status are recorded in README.md.
 
-Slide 6 uses the shared playback clock, with a scene-owned time limit at
+Historical implementation (pending scripted conversion): Slide 6 uses the shared playback clock, with a scene-owned time limit at
 Choose response until the presenter selects a branch. Playback, next beat, and
 seek use the same limit. Selection refreshes the view while retaining time and
 focus. The selected branch survives seeking, changes only at the choice, and
