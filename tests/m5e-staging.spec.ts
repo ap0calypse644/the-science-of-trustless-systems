@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 import { fresh, history } from '../src/talk/m5c/ledger-model';
 import {
   blockInput, common, commonState, edited, fork, forkViews, linked, linkMatches, pages, repaired, unlinkedEdit,
-  type Block,
+  transaction, type Block,
 } from '../src/talk/m5e/fixtures';
 
 const route = '/talk/m5e/';
@@ -105,7 +105,16 @@ for (const [width, height] of [[1920, 1080], [1280, 720], [1024, 768]]) {
       expect(bounds.art[2], id).toBeLessThan(1572);
       expect(bounds.art[3], id).toBeLessThan(890);
 
+      if (id === '18-overwhelmed') {
+        const ledger = current.locator('[data-ledger-list]');
+        await expect(ledger.locator('[data-ledger-overflow]')).toHaveCount(1);
+        await expect(ledger.locator('.tx')).toHaveText(
+          pages.flatMap(({ rows }) => rows).slice(0, 8).map(transaction),
+        );
+      }
       if (id.startsWith('19')) {
+        await expect(current.locator('h1')).toHaveText(id === '19-independent-blocks'
+          ? 'From Pages to Blocks' : 'The Growing Ledger');
         await expect(current.locator('[data-character], [data-link]')).toHaveCount(0);
         await expect(slide).not.toContainText(/hash|balance/i);
       }
@@ -122,10 +131,16 @@ for (const [width, height] of [[1920, 1080], [1280, 720], [1024, 768]]) {
           ? ['mismatch', 'match', 'match'] : ['match', 'mismatch', 'match']);
       }
       if (id === '20-repaired-link') await expect(current.locator('[data-link="unchecked"]')).toHaveCount(1);
+      if (id === '21-disagreement') {
+        await expect(current.locator('[data-speech="alice"] .bubble-text')).toHaveText('I saw mine first.');
+        await expect(current.locator('[data-speech="bob"] .bubble-text')).toHaveText('So did I.');
+      }
       if (id === '21-fork') {
         await expect(current.locator('[data-block="4"] .previous')).toHaveText(['Prev b3427d', 'Prev b3427d']);
         await expect(current.locator('[data-block]')).toHaveCount(5);
-        await expect(slide).toContainText('Which history do we believe?');
+        await expect(slide).not.toContainText('Each candidate fits the common tip');
+        await expect(slide).not.toContainText('Which history do we believe?');
+        await expect(current.locator('.notes')).toContainText('Which history do we believe?');
       }
 
       if (browserName === 'firefox' && (width === 1920 || representative.includes(id))) {

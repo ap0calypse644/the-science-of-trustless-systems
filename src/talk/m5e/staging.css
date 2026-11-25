@@ -37,4 +37,5 @@
 .history-sheet .art .correction { fill: #963f37; }
 .history-sheet .art .motion-mark { stroke: #8b7352; stroke-width: 3px; }
 .history-sheet .art .paper-grip { fill: white; stroke: var(--ink); stroke-width: 3.4px; }
+.history-sheet .art .bubble-text { font-size: 36px; }
 .history-sheet .art .fork-junction { fill: #426b91; stroke: none; }

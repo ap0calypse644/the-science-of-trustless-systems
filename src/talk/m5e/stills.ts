@@ -1,3 +1,4 @@
+import { bubble } from '../../illustration/props';
 import { blockArt, connection, pageArt, panel, person, sheet, text } from './art';
 import {
   common, commonState, edited, fork, forkViews, linked, linkMatches, pages, repaired, transaction, unlinkedEdit,
@@ -19,21 +20,22 @@ function still(id: string, heading: string, description: string, art: string, no
 const entries = pages.flatMap(({ rows }) => rows);
 
 function ledgerList(count: number, expression: 'excited' | 'stand' | 'confused' | 'frustrated', long = false): string {
-  const height = 108 + count * 45;
-  return person('alice', 594, 365, long ? 'confused' : 'point', expression, 'right', 1.67)
-    + `<g data-ledger-list><path class="paper" d="M718 317Q855 307 986 320V${317 + height}
-      Q846 ${306 + height} 719 ${321 + height}Z"/>
+  const bottom = 425 + count * 45;
+  const face = long
+    ? 'M718 317Q855 307 986 320V693Q986 725 1046 738L1507 802Q1531 805 1534 830L1266 851L846 793Q719 774 719 725Z'
+    : `M718 317Q855 307 986 320V${bottom}Q846 ${bottom - 11} 719 ${bottom + 4}Z`;
+  return person('alice', 594, 365, 'point', expression, 'right', 1.67)
+    + `<g data-ledger-list>
+      <path class="paper" d="${face}"/>
       ${text(855, 368, 'Ledger', 'strong')}
       ${entries.slice(0, count).map((tx, i) => text(855, 416 + i * 45, transaction(tx), 'tx')).join('')}
-    </g>`
-    + (long ? '' : '<path class="paper-grip" d="M716 415q10-11 16-7q3 4-3 8l-10 6Z"/>')
-    + (long ? `<path class="paper-back" d="M719 786Q717 829 787 829H1255Q1301 829 1301 784H1063
-      Q990 784 986 786Z"/>
-      <path class="paper" d="M735 797Q784 812 856 813H1255Q1296 813 1296 779L1295 753H1057
-      Q1023 782 986 786Z"/>
-      <path class="paper-rule" d="M1066 772h193m-215 15h198"/>
-      <path class="paper-back" d="M1295 753q45 6 28 39q-18 26-68 21q32 -5 40 -34Z"/>
-      <path class="motion-mark" d="M1307 722l23-24m-8 44l33-10 M684 791l-31 8"/>` : '');
+      ${long ? `<g data-ledger-overflow>
+        <path class="paper-rule" d="M946 755l-118 29m221-15-115 32m222-17-108 32m222-16-107 32m223-18-106 27"/>
+        <path class="paper-back" d="M1266 851Q1254 829 1272 815L1507 802Q1531 805 1534 830Z"/>
+        <path class="paper-rule" d="M1279 826l226-14m-218 24 222-14"/>
+      </g>` : ''}
+    </g>
+    <path class="paper-grip" d="M716 415q10-11 16-7q3 4-3 8l-10 6Z"/>`;
 }
 
 const slide18 = [
@@ -65,16 +67,16 @@ function notebook(left: Block, right?: Block): string {
 }
 
 const slide19 = [
-  still('19-first-page', notebookTitle, 'The ledger fills its first notebook page.', notebook(pages[0]),
+  still('19-first-page', growing, 'The ledger fills its first notebook page.', notebook(pages[0]),
     'Introduce a page as a group of ordered transactions. When staging this motion in production, write each line before turning the page.'),
-  still('19-next-page', notebookTitle, 'The notebook turns to a second page, where a new transaction appears.',
+  still('19-next-page', growing, 'The notebook turns to a second page, where a new transaction appears.',
     notebook(pages[0], { ...pages[1], rows: pages[1].rows.slice(0, 1) }),
     'The first page stays available. Begin the second page and fill it in the same order as the running list.'),
-  still('19-four-pages', notebookTitle, 'Four numbered notebook pages contain the ordered payment record.',
+  still('19-four-pages', growing, 'Four numbered notebook pages contain the ordered payment record.',
     pages.map((page, i) => pageArt(xs[i] + 8, 297, page)).join('')
     + text(800, 711, 'Four completed pages', 'body'),
     'The spread makes four completed pages visible at once. Page numbers preserve order. Grouping makes the record easier to discuss and does not itself remove the cost of replaying history.'),
-  still('19-detach-pages', notebookTitle, 'Four numbered pages are torn from the notebook and lift into separate positions.',
+  still('19-detach-pages', growing, 'Four numbered pages are torn from the notebook and lift into separate positions.',
     pages.map((page, i) => `<g transform="rotate(${[-7, -3, 4, 6][i]} ${xs[i] + 145} 474)">${pageArt(xs[i] + 8, 303 - (i % 2) * 33, page, 1, true)}</g>`).join('')
     + '<path class="motion-mark" d="M139 720v-28m-13 14 13-14 13 14 M668 696v-28m-13 14 13-14 13 14 M1118 716v-28m-13 14 13-14 13 14"/>',
     'Detach pages in order. The planning gesture marks lift rather than a link between the pages.'),
@@ -168,9 +170,8 @@ function forkDiagram(): string {
         + connection(i === 0 ? 'M1065 582Q1090 582 1090 553V290Q1090 258 1125 258H1216'
           : 'M1065 582Q1090 582 1103 569Q1111 564 1130 564H1216', 1216, branchY + 28);
     }).join('')
-    + text(488, 689, 'Common history', 'strong') + text(1058, 778, 'Each candidate fits the common tip', 'body')
-    + text(1339, 183, 'Alice’s candidate', 'body') + text(1339, 510, 'Bob’s candidate', 'body')
-    + text(795, 851, 'Which history do we believe?', 'question');
+    + text(488, 689, 'Common history', 'strong')
+    + text(1339, 183, 'Alice’s candidate', 'body') + text(1339, 510, 'Bob’s candidate', 'body');
 }
 
 const slide21 = [
@@ -194,11 +195,12 @@ const slide21 = [
     + person('bob', 1351, 359, 'point', 'frustrated', 'left', 1.31)
     + person('charlie', 801, 284, 'hold', 'suspicious', 'right', .86)
     + blockArt(388, 478, fork[0], 1, 'link') + blockArt(924, 478, fork[1], 1, 'link')
-    + text(530, 789, 'Alice: “I saw mine first.”', 'body') + text(1065, 789, 'Bob: “So did I.”', 'body'),
+    + `<g data-speech="alice">${bubble(314, 240, 325, 'I saw mine first.', -1)}</g>
+      <g data-speech="bob">${bubble(1285, 240, 255, 'So did I.', 1)}</g>`,
     'Both observers truthfully report what they saw first. Charlie deliberately authorized two competing payments. Their local checks provide no shared ordering rule.'),
   still('21-fork', histories, 'The duplicate common prefix folds into one fork with two valid candidates and no winner.',
     forkDiagram(),
-    'Merge the repeated common prefix into one three-block chain. Both candidate links point back to the same tip and each spends the same funds independently. Leave the choice unanswered. The example ends before a consensus rule or proof of work is used. ' + source),
+    'Merge the repeated common prefix into one three-block chain. Both candidate links point back to the same tip and each spends the same funds independently. Ask “Which history do we believe?” aloud and leave the choice unanswered. The example ends before a consensus rule or proof of work is used. ' + source),
 ];
 
 export const stills = [...slide18, ...slide19, ...slide20, ...slide21];

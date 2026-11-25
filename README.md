@@ -223,9 +223,9 @@ assumptions to explain aloud. Production remains at slides 1–17.
 | Slide | Planned production transitions | Planned print evidence |
 | --- | --- | --- |
 | [18 The Growing Ledger](http://127.0.0.1:4173/talk/m5e/#/18-short-list) | Append transactions one at a time, extend the same sheet, then unroll the excess as Alice’s expression changes | Short list beside the final overflowing list |
-| [19 From Pages to Blocks](http://127.0.0.1:4173/talk/m5e/#/19-first-page) | Write each row, turn through four pages, detach them and fold each into a blue block | Four detached pages beside their matching independent blocks |
+| [19 From Pages to Blocks](http://127.0.0.1:4173/talk/m5e/#/19-first-page) | Write each row, turn through four pages, detach them and fold each into a blue block before revealing the new title | Four detached pages beside their matching independent blocks |
 | [20 What If Charlie Changes History?](http://127.0.0.1:4173/talk/m5e/#/20-independent-blocks) | Start on the exact block layout from 19, edit and restore, write predecessor hashes in order, then show the immediate mismatch, repair and next mismatch | First mismatch and repaired first link beside the next mismatch, with the last matching link visible |
-| [21 Conflicting Histories](http://127.0.0.1:4173/talk/m5e/#/21-common-history) | Show common history and signed payments, extend both views, let Alice and Bob react, and merge the duplicated prefix into one fork | Shared prefix and both candidate blocks, ending on the unresolved question |
+| [21 Conflicting Histories](http://127.0.0.1:4173/talk/m5e/#/21-common-history) | Show common history and signed payments, extend both views, let Alice and Bob react, and merge the duplicated prefix into one fork | Shared prefix and both candidate blocks, with the unresolved question posed aloud |
 
 Firefox captures all 22 stills by ID in
 `test-results/visual-review/m5e-staging/1920x1080/`. The 1280×720 and
