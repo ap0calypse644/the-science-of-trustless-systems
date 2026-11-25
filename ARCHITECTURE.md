@@ -113,27 +113,29 @@ For PDF, propose a print mode driven by reviewed stills or compact sequences fro
 - Serve the production bundle locally during offline tests. Allow only the production preview origin for page requests, reject unexpected WebSockets, and fail on runtime errors or failed asset loads while exercising the deck and speaker view. Extend coverage to bundled fonts, animations, and interactions when available. Repeat with internet disconnected on the presentation machine.
 - Compare representative SVG states with fixed seeds, viewport, and timeline positions. Verify text, contrast, clipping, and PDF output visually and assess readability on classroom hardware.
 
-## M4a production lecture
+## Production lecture
 
-Vite builds the independent lecture at `/talk/`. Its ordered registry in
-`src/talk/slides.ts` supplies stable IDs, editable compositions and speaker notes.
-The static sheets reuse M2 artwork and fonts, and have no scene lifecycle or
-playback panel. The entry reuses the M3 Reveal shell and shortcut adapter,
-registering only the note command alongside navigation, fullscreen and overview.
-Reveal loads the same baseline compositions in the notes receiver.
+Vite builds the independent lecture at `/talk/`. Its ordered registry supplies
+stable IDs, compositions, speaker notes, and optional scene definitions and
+print overrides. During M4b review the order is temporarily 1, 2, 7. M4a
+retains its static artwork and applicable shortcuts.
 
-The `?print` view uses the same compositions with print layout applied before
-Reveal initializes. Each 16:9 sheet occupies one page. The two prototype stills
-are available for review here. Lecture-wide PDF delivery remains part of M8.
+The production route and `/engine/` share the presenter lifecycle, controls,
+keyboard adapter and GSAP playback. Only the active animated scene mounts.
+Slide 7 opts into pausing at each checkpoint so the presenter can ask for
+predictions. Its overview fallback and notes receiver both show the opening
+battlefield. The notes receiver has no playback ownership. Navigation disposes
+the live scene, and revisiting starts at time zero.
 
-## M4b staging review
+The slide 7 model defines message deliveries and derives each general’s view
+from that general’s sends and receipts. The renderer keeps the battlefield
+mounted while updating that evidence and positioning Charlie from timeline time.
+The alternate run is identified on the slide. The paired final runs share the
+same prefix and differ in the delivery of Alice’s last reply.
 
-The separate `/talk/staging/` entry uses the same static shell to review four
-authored frames. They share the battlefield and keep Alice and Bob's evidence in
-separate thought bubbles. The last two frames pair the same final send with
-different delivery outcomes. The production deck and its print view continue to
-use the two M4a sheets. The M3 playback integration and slide 7 print composition
-follow the staging approval gate.
+The `?print` view uses one 16:9 sheet per slide. Slide 7 substitutes the
+final-reply comparison. The separate `/talk/staging/` entry retains the four
+approved artwork stills. Lecture-wide PDF delivery remains part of M8.
 
-Teaching reference for the later animation is Halpern and Moses,
+Teaching reference: Halpern and Moses,
 [Knowledge and Common Knowledge in a Distributed Environment](https://arxiv.org/abs/cs/0006009).

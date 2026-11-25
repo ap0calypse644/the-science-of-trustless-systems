@@ -9,6 +9,7 @@ interface PresenterCommands {
   adjustSpeed?(direction: -1 | 1): void;
   toggleVisibility?(): void;
   openNotes(): void;
+  playbackAvailable?(): boolean;
 }
 
 export function bindShortcuts(deck: Deck, commands: PresenterCommands, signal: AbortSignal): void {
@@ -39,8 +40,10 @@ export function bindShortcuts(deck: Deck, commands: PresenterCommands, signal: A
     )) return;
     const action = Object.hasOwn(actions, key) ? actions[key] : undefined;
     if (!action) return;
+    const playbackKey = [' ', 'r', 'j', 'k', '+', '-'].includes(key);
+    if ((playbackKey || key === 'h') && commands.playbackAvailable?.() === false) return;
     event.preventDefault();
-    if (deck.isOverview() && [' ', 'r', 'j', 'k', '+', '-'].includes(key)) return;
+    if (deck.isOverview() && playbackKey) return;
     action();
   }, { signal });
 }

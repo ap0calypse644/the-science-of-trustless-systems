@@ -23,6 +23,7 @@ test('staging stills preserve the battlefield and separate local views', async (
     }
     if (index > 1) {
       const evidence = index === 2 ? 'She just confirmed it.' : 'Did Alice get';
+      if (index === 3) await expect(current.locator(".messenger-speech")).toContainText("I give up…");
       await expect(current.locator('[data-view="bob"]')).toContainText(evidence);
     }
     if (browserName === 'firefox') {

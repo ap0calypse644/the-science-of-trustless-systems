@@ -1,18 +1,11 @@
 import { character } from '../../illustration/character';
 import { envelope } from '../../illustration/props';
 import { svgText } from '../../illustration/svg';
-import './staging.css';
+import './art.css';
 
-interface Scene {
-  id: string;
-  label: string;
-  alice: readonly [string, string];
-  bob: readonly [string, string];
-  valley: string;
-  notes: string;
-}
+export type Thought = readonly [string, string];
 
-function thought(x: number, person: 'alice' | 'bob', [first, second]: Scene['alice']): string {
+export function thought(x: number, person: 'alice' | 'bob', [first, second]: Thought): string {
   const alice = person === 'alice';
   const fill = alice ? 'blue-wash' : 'green-wash';
   return `<g data-view="${person}" transform="translate(${x} 169)">
@@ -116,7 +109,7 @@ const camps = `
   <text class="camp-name bob-name" x="1237" y="600">Bob</text>
 `;
 
-const opening = `
+export const opening = `
   <g transform="translate(557 633)">
     ${character('charlie', { scale: .62, pose: 'hold', hands: { right: { kind: 'envelope' } } })}
     <text class="courier-name" y="140">Charlie</text>
@@ -124,7 +117,7 @@ const opening = `
   <text class="scene-caption" x="800" y="848">Both together, or neither.</text>
 `;
 
-const late = `
+export const late = `
   <g transform="translate(535 635) rotate(-8)">
     ${character('charlie', { scale: .6, facing: 'left', pose: 'run', expression: 'suspicious',
       hands: { right: { kind: 'envelope' } } })}
@@ -147,13 +140,18 @@ const late = `
   <text class="scene-caption" x="800" y="856">An acknowledgment of the acknowledgment?</text>
 `;
 
-function outcome(arrived: boolean): string {
+export function outcome(arrived: boolean): string {
   return `
     ${character('charlie', { x: arrived ? 1162 : 879, y: 639, scale: .6,
       pose: arrived ? 'hold' : 'facepalm', expression: arrived ? 'stand' : 'facepalm',
       hands: arrived ? { right: { kind: 'envelope' } } : {},
     })}
-    ${arrived ? '' : envelope(907, 749, .27, -16)}
+    ${arrived ? '' : `${envelope(907, 749, .27, -16)}
+      <g class="messenger-speech">
+        <path class="head" d="M950 611 Q1028 601 1114 608 Q1132 608 1134 622 L1132 650
+          Q1131 667 1113 668 L963 667 L925 680 L942 653 Q926 634 938 620Z"/>
+        <text x="1036" y="652">I give up…</text>
+      </g>`}
     <g class="${arrived ? 'signal' : 'alarm'}" transform="translate(581 824)">
       <circle class="head" r="19"/>
       <path d="${arrived ? 'm-9 1 6 6 13-15' : 'm-7-7 14 14 m-14 0 14-14'}"/>
@@ -162,32 +160,16 @@ function outcome(arrived: boolean): string {
   `;
 }
 
-const scenes: readonly Scene[] = [
-  { id: 'opening', label: 'Opening battlefield', alice: ['We have to move', 'at the same time.'],
-    bob: ['We have to move', 'at the same time.'], valley: opening,
-    notes: 'Opening still. Each thought bubble is one general’s private view. The opposing camps cannot see or reliably signal to one another. Their pennants identify the camps to the audience.' },
-  { id: 'couriers', label: 'Late acknowledgment exchange', alice: ['Bob received', 'my plan.'], bob: ['Did Alice get', 'my reply?'], valley: late,
-    notes: 'Late still from an alternate exchange where Bob’s reply reached Alice. Bob has yet to receive confirmation of his reply. The repeated Charlie poses stage several trips as a visual shorthand.' },
-  { id: 'reply-arrives', label: 'Final reply arrives', alice: ['I sent my reply.', 'Did Bob get it?'],
-    bob: ['Alice got my reply.', 'She just confirmed it.'], valley: outcome(true),
-    notes: 'Paired comparison, delivery run. Alice sends the final reply confirming she received Bob’s acknowledgment. Bob learns that it arrived. Alice’s local evidence is the same in both runs.' },
-  { id: 'reply-lost', label: 'Final reply is lost', alice: ['I sent my reply.', 'Did Bob get it?'],
-    bob: ['Did Alice get', 'my reply?'], valley: outcome(false),
-    notes: 'Paired comparison, loss run. Alice sends the same final reply and lacks confirmation. Bob has no evidence that Alice received his acknowledgment. The audience can see the outcome; Alice cannot.' },
-];
-
-export const stills = scenes.map(({ id, label, alice, bob, valley, notes }) => ({
-  id,
-  notes,
-  composition: `<div class="talk-sheet generals-sheet">
+export function battlefield(label: string, alice: Thought, bob: Thought, valley: string): string {
+  return `<div class="talk-sheet generals-sheet">
     <h1>Two Generals Problem</h1>
     <svg class="art" viewBox="0 0 1600 900" role="img" aria-label="${label}">
       ${landscape}
       ${castle}
       ${camps}
-      ${thought(287, 'alice', alice)}
-      ${thought(1313, 'bob', bob)}
-      ${valley}
+      <g data-layer="alice">${thought(287, 'alice', alice)}</g>
+      <g data-layer="bob">${thought(1313, 'bob', bob)}</g>
+      <g data-layer="valley">${valley}</g>
     </svg>
-  </div>`,
-}));
+  </div>`;
+}

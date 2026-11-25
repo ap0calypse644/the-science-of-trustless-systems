@@ -1,6 +1,8 @@
 .generals-sheet h1 {
-  top: 55px;
-  width: 100%;
+  top: 37px;
+  left: 50%;
+  width: max-content;
+  transform: translateX(-50%);
   text-align: center;
   font: 400 93px/1 Kalam, var(--support);
 }
@@ -31,3 +33,10 @@
 .generals-sheet .art .bob-name { color: #386643; }
 .generals-sheet .art .courier-name { color: #634582; font-size: 34px; }
 .generals-sheet .art .scene-caption { font-size: 48px; }
+.generals-sheet .art .messenger-speech text { font-size: 39px; }
+.generals-sheet .art .run-label { fill: #594570; font-size: 39px; }
+.generals-sheet .art .message-note { fill: #fff7dc; stroke-width: 3px; }
+.generals-sheet .art .message-text { font-size: 36px; }
+.generals-sheet .art .outcome-panel { fill: #fff; stroke-width: 3px; }
+.generals-sheet .art .outcome-heading { font-size: 38px; }
+.generals-sheet .art .outcome-evidence { font-size: 33px; }

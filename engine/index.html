@@ -10,23 +10,6 @@
   <main class="reveal" tabindex="-1" aria-label="Playback diagnostic slides">
     <div class="slides"></div>
   </main>
-  <aside class="presenter" aria-label="Presenter controls" hidden>
-    <div id="playback-panel" class="playback-panel">
-      <output class="playback-state" aria-live="off"></output>
-      <span class="playback-announcement" role="status"></span>
-      <div class="playback-actions">
-        <button type="button" data-action="play">Play</button>
-        <button type="button" data-action="reset">Reset</button>
-        <button type="button" data-action="previous">Previous beat</button>
-        <button type="button" data-action="next">Next beat</button>
-        <label>Seek <input type="range" min="0" step="0.01" value="0" aria-label="Seek"></label>
-        <button type="button" data-action="slower" aria-label="Decrease speed">−</button>
-        <output class="playback-speed" aria-label="Playback speed"></output>
-        <button type="button" data-action="faster" aria-label="Increase speed">+</button>
-      </div>
-    </div>
-    <button class="visibility" type="button" aria-controls="playback-panel" aria-expanded="true">Hide controls</button>
-  </aside>
   <script type="module" src="/src/engine/main.ts"></script>
 </body>
 </html>
