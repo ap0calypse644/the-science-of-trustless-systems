@@ -21,9 +21,10 @@ const nine = [
   still('09-cafe', shared, 'Alice, Bob and Charlie meet for coffee and sandwiches.',
     cafeRoom + ordinary + cafeTable + coffee(1215, 549, .9) + sandwich(784, 543, .8) + receipt(862, 602, 13),
     'Opening café. Explain that the group has agreed to keep track of small IOUs over several visits.'),
-  still('09-receipt-chaos', shared, 'The group disagrees over who paid and receipts pile up.',
+  still('09-receipt-chaos', shared, 'Alice asks who paid, Bob says he paid yesterday, and receipts pile up.',
     cafeRoom + actor('alice', 'confused', 'confused') + actor('bob', 'frustrated', 'frustrated') + actor('charlie', 'confused', 'confused')
-    + cafeTable + speech(307, 260, 340, 'Who paid for coffee?') + speech(1300, 279, 330, 'I kept the receipt!')
+    + cafeTable + speech(307, 260, 340, 'Who paid for coffee?')
+    + speech(802, 267, 300, 'I paid yesterday') + speech(1300, 279, 330, 'I kept the receipt!')
     + [[575, 581, -15], [646, 646, 18], [773, 629, -8], [904, 660, 21], [1016, 604, -15], [723, 732, 29]]
       .map(([x, y, angle]) => receipt(x, y, angle)).join(''),
     'Ask who still remembers the earliest IOU. Receipts are scattered and nobody can reconstruct the sequence from memory.'),

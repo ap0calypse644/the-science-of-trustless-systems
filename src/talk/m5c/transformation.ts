@@ -6,7 +6,7 @@ import { actor, cafeRoom, cafeTable, sheet } from './art';
 import { aliceView, bobView, fresh, line, toAlice, toBob } from './ledger-model';
 import { notebook } from './notebook';
 
-const title = 'We Are Back to the Generals';
+const title = 'The Double-Spend Problem';
 const cafe = cafeRoom + actor('alice', 'point', 'stand') + actor('bob', 'point', 'suspicious', 1295)
   + actor('charlie', 'hold', 'suspicious', 800, 359) + cafeTable;
 
@@ -21,15 +21,11 @@ function message(x: number, y: number, angle: number, words: string): string {
 
 const positions = { alice: 406, bob: 1194 };
 
-function splitHistories(conflicts: boolean): string {
+function splitHistories(): string {
   return notebook(positions.alice, 691, .94, 'Alice’s local history', [{ text: line(aliceView.accepted[0]), signed: true }],
     `Alice ${aliceView.balances.Alice} · Charlie ${aliceView.balances.Charlie}`)
     + notebook(positions.bob, 691, .94, 'Bob’s local history', [{ text: line(bobView.accepted[0]), signed: true }],
-      `Bob ${bobView.balances.Bob} · Charlie ${bobView.balances.Charlie}`)
-    + (conflicts
-      ? `<text class="outside-entry" x="${positions.alice}" y="845">Rejected: ${svgText(line(aliceView.rejected[0].payment))}</text>
-         <text class="outside-entry" x="${positions.bob}" y="845">Rejected: ${svgText(line(bobView.rejected[0].payment))}</text>`
-      : '');
+      `Bob ${bobView.balances.Bob} · Charlie ${bobView.balances.Charlie}`);
 }
 
 // One authored midpoint, with stable left/right anchors for the later morph.
@@ -74,19 +70,16 @@ const stages = [
     ], 'Charlie starts with 20'),
     notes: 'Two distinct, genuinely authorized payment messages, each for 20 units. Each is affordable against the initial balance. Together they request 40 from 20.' },
   { id: '13-local-acceptance', description: 'Alice and Bob accept different payments because they receive them in different orders.',
-    art: cafe + splitHistories(false),
-    notes: 'Alice receives the Alice payment first and tentatively records it: Alice 20, Bob 0, Charlie 0. Bob receives the Bob payment first: Alice 0, Bob 20, Charlie 0. These are two independent local histories, not a globally settled record.' },
-  { id: '13-conflicting-histories', description: 'The later payment is rejected outside each accepted local ledger.',
-    art: cafe + splitHistories(true),
-    notes: 'Charlie has no balance left in either local view. Alice rejects the Bob payment, and Bob rejects the Alice payment. Neither rejected entry changes any balance. The presented notebook art keeps the rejected messages outside the accepted pages.' },
+    art: cafe + splitHistories(),
+    notes: 'Alice receives the Alice payment first and tentatively records it: Alice 20, Bob 0, Charlie 0. Bob receives the Bob payment first: Alice 0, Bob 20, Charlie 0. Each receives the other payment later and rejects it because Charlie has 0 units left in that local history. Neither rejection changes a balance. The two histories remain locally valid and globally unsettled.' },
   { id: '13-morph-keyframe', description: 'The café fades while the notebooks fold into messenger notes and the landscape rises.',
     art: rising,
     notes: 'Proposed midpoint. Fade the room and café tabletop, keep both notebook anchors aligned by side, fold their page silhouettes into the sealed messenger notes, and raise the shared hills and fortress from near the floor line. This is a still for staging review.' },
-  { id: '13-battlefield', description: 'Alice and Bob return as generals with contradictory payment notes while Charlie grins.',
+  { id: '13-battlefield', title: 'We Are Back to the Generals', description: 'Alice and Bob return as generals with contradictory payment notes while Charlie grins.',
     art: battlefield,
     notes: 'Visual callback only. The two contradictory messages are diegetic props. Do not imply that the earlier arbitrary-loss fault model is identical to the current history-selection problem. Leave the discussion to the presenter.' },
 ];
 
-export const transformationStills = stages.map(({ id, description, art, notes }) => ({
-  id, notes, composition: sheet(title, description, art),
+export const transformationStills = stages.map(({ id, title: heading = title, description, art, notes }) => ({
+  id, notes, composition: sheet(heading, description, art),
 }));

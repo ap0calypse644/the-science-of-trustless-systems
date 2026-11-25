@@ -138,11 +138,13 @@ Firefox screenshots are under `test-results/visual-review/m5b-scripted-staging/<
 ## M5c staging review
 
 Open [the café and ledger stills](http://127.0.0.1:4173/talk/m5c/) in desktop
-Firefox. Use Left and Right to step through all 18 stills. The slide 13
-sequence starts with [a fresh 20-unit balance](http://127.0.0.1:4173/talk/m5c/#/13-fresh-balance),
-then shows [conflicting local histories](http://127.0.0.1:4173/talk/m5c/#/13-conflicting-histories),
+Firefox. Use Left and Right to step through all 17 stills. Check Bob’s line in
+[Receipt chaos](http://127.0.0.1:4173/talk/m5c/#/09-receipt-chaos).
+**The Double-Spend Problem** starts with [a fresh 20-unit balance](http://127.0.0.1:4173/talk/m5c/#/13-fresh-balance),
+then shows [conflicting local histories](http://127.0.0.1:4173/talk/m5c/#/13-local-acceptance),
 the [morph midpoint](http://127.0.0.1:4173/talk/m5c/#/13-morph-keyframe),
-and the [battlefield callback](http://127.0.0.1:4173/talk/m5c/#/13-battlefield).
+and the [battlefield callback](http://127.0.0.1:4173/talk/m5c/#/13-battlefield),
+where the title changes to **We Are Back to the Generals**.
 Firefox captures are under `test-results/visual-review/m5c-staging/<width>x<height>/`.
 Production remains at slides 1–8 during staging review.
 

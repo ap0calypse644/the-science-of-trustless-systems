@@ -8,7 +8,7 @@ const ids = [
   '09-cafe', '09-receipt-chaos', '09-alice-idea', '09-notebook',
   '10-unsigned-entry', '10-bob-objects', '10-bob-signs', '10-authorization',
   '11-infinite-money-glitch', '12-missing-ledger', '12-access-monopoly', '12-replicated-copies',
-  '13-fresh-balance', '13-two-signatures', '13-local-acceptance', '13-conflicting-histories',
+  '13-fresh-balance', '13-two-signatures', '13-local-acceptance',
   '13-morph-keyframe', '13-battlefield',
 ];
 
@@ -24,38 +24,50 @@ test('toy accounting rejects unsigned and unaffordable entries and keeps both lo
   expect(bobView.rejected[0].payment.to).toBe('Alice');
 });
 
-test('all eighteen café and transformation stills use the approved narrative and shared props', async ({ page, browserName }) => {
+test('all seventeen café and transformation stills use the approved narrative and shared props', async ({ page, browserName }) => {
   await page.setViewportSize({ width: 1920, height: 1080 });
   await page.goto(route);
   await expect(page.locator('.reveal')).toHaveClass(/ready/);
   const current = page.locator('section.present');
   await expect(page.locator('.presenter')).toHaveCount(0);
+  await expect(page.locator('.slides > section')).toHaveCount(ids.length);
   let cafe: string | undefined;
   let castle: string | undefined;
 
   for (const [index, id] of ids.entries()) {
     await expect(current).toHaveAttribute('id', id);
-    if (index < 17) {
+    if (id !== '13-battlefield') {
       const set = await current.locator('[data-set="cafe"]').innerHTML();
       cafe ??= set;
       expect(set).toBe(cafe);
     }
+    if (id === '09-receipt-chaos') {
+      await expect(current.locator('.dialogue')).toHaveText([
+        'Who paid for coffee?', 'I paid yesterday', 'I kept the receipt!',
+      ]);
+    }
     if (id === '09-notebook') await expect(current.locator('[data-prop="blue-notebook"]')).toContainText('Café IOUs');
     if (id === '12-replicated-copies') await expect(current.locator('[data-prop="blue-notebook"]')).toHaveCount(3);
     if (id === '13-fresh-balance') await expect(current.locator('svg')).toContainText('Fresh toy run');
-    if (id === '13-conflicting-histories') {
-      await expect(current.locator('[data-prop="blue-notebook"] .outside-entry')).toHaveCount(0);
-      await expect(current.locator('.outside-entry')).toHaveText([
-        'Rejected: Charlie pays Bob 20', 'Rejected: Charlie pays Alice 20',
-      ]);
+    if (id === '13-local-acceptance') {
+      const notebooks = current.locator('[data-prop="blue-notebook"]');
+      await expect(notebooks).toHaveCount(2);
+      await expect(notebooks.nth(0)).toContainText('Charlie pays Alice 20');
+      await expect(notebooks.nth(1)).toContainText('Charlie pays Bob 20');
+      await expect(current.locator('aside.notes')).toContainText('rejects it because Charlie has 0 units left');
     }
-    if (index >= 16) {
+    if (id.startsWith('13-')) {
+      await expect(current.locator('h1')).toHaveText(
+        id === '13-battlefield' ? 'We Are Back to the Generals' : 'The Double-Spend Problem',
+      );
+    }
+    if (id === '13-morph-keyframe' || id === '13-battlefield') {
       const masonry = await current.locator('.castle').innerHTML();
       castle ??= masonry;
       expect(masonry).toBe(castle);
       await expect(current.locator('[data-prop="messenger-note"] .prop.yellow')).toHaveCount(2);
     }
-    if (index === 17) {
+    if (id === '13-battlefield') {
       await expect(current.locator('[data-set="cafe"]')).toHaveCount(0);
       await expect(current.locator('svg text')).toHaveText(['Charlie pays Alice 20', 'Charlie pays Bob 20']);
     }
@@ -76,8 +88,8 @@ for (const [width, height] of [[1280, 720], [1024, 768]]) {
   test(`notebook and transformation stills fit at ${width} × ${height}`, async ({ page, browserName }) => {
     await page.setViewportSize({ width, height });
     const current = page.locator('section.present');
-    for (const id of ['09-notebook', '10-authorization', '11-infinite-money-glitch', '12-replicated-copies',
-      '13-conflicting-histories', '13-morph-keyframe', '13-battlefield']) {
+    for (const id of ['09-receipt-chaos', '09-notebook', '10-authorization', '11-infinite-money-glitch', '12-replicated-copies',
+      '13-local-acceptance', '13-morph-keyframe', '13-battlefield']) {
       await page.goto(`${route}#/${id}`);
       await expect(current).toHaveAttribute('id', id);
       await page.evaluate(() => document.fonts.ready);
