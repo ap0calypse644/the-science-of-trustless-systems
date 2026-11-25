@@ -41,7 +41,7 @@ function soldier(x: number, y: number, side: 'blue' | 'green', facing: number, s
   </g>`;
 }
 
-const landscape = `
+export const landscape = `
   <path class="crag" d="M468 552 Q539 477 586 462 L613 424 L641 410 L669 372 L695 362
     L725 388 L763 402 L794 440 L836 446 L875 478 L922 554Z"/>
   <path class="crag" d="M735 552 L804 470 L832 454 L860 419 L894 408 L924 371 L959 403 L986 413
@@ -66,7 +66,7 @@ const landscape = `
   <path class="terrain" d="m533 772 45-9 m21 17 25-7 m425 2 26 8 m-50-15 10 3"/>
 `;
 
-const castle = `
+export const castle = `
   <g transform="translate(800 503)" class="castle">
     <ellipse class="castle-shadow" cy="130" rx="214" ry="20"/>
     <path class="castle-side" d="m-132-6 34-16 221 4 42 23 1 105-37 20-263-5Z"/>

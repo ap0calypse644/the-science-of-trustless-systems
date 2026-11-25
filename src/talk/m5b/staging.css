@@ -1,0 +1,103 @@
+.talk-sheet.byz-sheet {
+  font-family: var(--font);
+  text-align: center;
+}
+
+.byz-sheet h1 {
+  top: 37px;
+  left: 50%;
+  width: max-content;
+  transform: translateX(-50%);
+  font: 400 92px/1 Kalam, var(--support);
+}
+
+.byz-subtitle {
+  position: absolute;
+  z-index: 1;
+  top: 136px;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  font-size: 42px;
+}
+
+.byz-sheet .art { --stroke: 4.2px; }
+.byz-sheet .art .cape { fill: #883f4c; }
+.byz-sheet .art .visor { fill: #464053; }
+.byz-sheet .art .cape-fold { stroke: #b9828f; stroke-width: 2.8px; }
+.byz-sheet .art .mallory-limbs { stroke-width: 5px; }
+.byz-sheet .art .mallory-face { stroke-width: 3.7px; }
+.byz-sheet .art .actor-name { font-size: 43px; }
+.byz-sheet .art .actor-name.mallory { color: #803545; }
+.byz-sheet .art .alice { color: #315a80; }
+.byz-sheet .art .bob { color: #386643; }
+.byz-sheet .art .charlie { color: #674585; }
+.byz-sheet .art text { font-family: var(--font); }
+.byz-sheet .art .role-label { font-size: 32px; color: #57505b; }
+.byz-sheet .art .byz-message { stroke: #8f6438; }
+.byz-sheet .art .byz-message > path { stroke-width: 3.5px; stroke-dasharray: 11 9; }
+.byz-sheet .art .forwarded { stroke: #674585; }
+
+.byz-sheet .art .rear-hill { fill: #f3ebee; stroke: #82717c; stroke-width: 3.3px; }
+.byz-sheet .art .front-hill { fill: #f3eef7; stroke: #756782; stroke-width: 3.7px; }
+.byz-sheet .art .byz-ground { stroke: #b0a3a0; stroke-width: 3px; }
+
+.byz-table {
+  position: absolute;
+  inset: 286px 158px auto;
+  width: calc(100% - 316px);
+  border-collapse: collapse;
+  font: 44px/1.16 var(--font);
+  text-align: left;
+}
+.byz-table caption {
+  padding-bottom: 16px;
+  font-size: 54px;
+  text-align: left;
+}
+.byz-table :is(th, td) { padding: 15px 27px; }
+.byz-table th { font-weight: 400; }
+.byz-table thead { background: #eee8f1; }
+.byz-table tbody tr { border-bottom: 2px solid #ddd6e0; }
+.byz-table tbody th { width: 49%; }
+.byz-table tbody tr:nth-child(even) { background: #faf8fb; }
+.byz-table tfoot { background: #eaf2ea; }
+.byz-table tfoot td { font-weight: bold; }
+.byz-table .attack { color: #315a80; }
+.byz-table .retreat { color: #843746; }
+.byz-majority, .byz-foot {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  margin: 0;
+}
+.byz-majority { top: 700px; font-size: 56px; }
+.byz-foot { top: 825px; font-size: 43px; color: #59436a; }
+.byz-sheet .art .floor-trace { stroke: #bab0af; stroke-width: 2.4px; }
+
+.byz-sheet .art .script-route { stroke-width: 3.5px; stroke-dasharray: 11 9; }
+.byz-print {
+  position: absolute;
+  inset: 270px 110px 105px;
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  grid-template-rows: 1fr auto;
+  gap: 25px 55px;
+  text-align: left;
+  font-size: 35px;
+}
+.byz-print > div { border-top: 3px solid #887d8e; }
+.byz-print h2 { margin: 15px 0 25px; font: 48px/1 var(--font); }
+.byz-print .byz-table {
+  position: static;
+  width: 100%;
+  font-size: 33px;
+}
+.byz-print .byz-table caption { font-size: 38px; }
+.byz-print .byz-table :is(th, td) { padding: 11px 13px; }
+.byz-print .byz-majority, .byz-print .byz-foot {
+  position: static;
+  margin: 18px 0 0;
+  font-size: 33px;
+}
+.byz-print > p { grid-column: 1 / -1; margin: 0; text-align: center; }

@@ -117,7 +117,7 @@ For PDF, propose a print mode driven by reviewed stills or compact sequences fro
 
 Vite builds the independent lecture at `/talk/`. Its ordered registry supplies
 stable IDs, compositions, speaker notes, and optional scene definitions and
-print overrides. The production order is 1–7. M4a
+print overrides. The production order is 1–8. M4a
 retains its static artwork and applicable shortcuts.
 
 The production route and `/engine/` share the presenter lifecycle, controls,
@@ -158,3 +158,20 @@ completed read state, and returned value derive from time and the selected
 branch. Only the pending read completes after resynchronization. The notes
 preview always renders the synchronized baseline, and the 16:9 print override
 compares the two possible responses under partition.
+
+## M5b scripted production scene
+
+The separate `/talk/m5b/` route retains six approved stills. Production slide
+`08-byzantine-generals` uses the same elevated, four-hill composition. The
+upright fortress sits between Mallory’s rear hill and Charlie’s front hill;
+Alice and Bob’s message paths pass in front of it. Cosmetic refinements are
+deferred to final polish.
+
+The shared presenter clock runs 13 named stops. The renderer moves envelopes
+and Charlie from timeline position and reveals table rows and majority results
+at fixed checkpoints. The two example runs record ordered message paths and
+their orders. Local views and results derive from that fixed data. The notes
+receiver shows the opening still. The 16:9 print override compares the
+three-general tie and four-general decisions side by side.
+
+Reference: [Lamport, Shostak and Pease, The Byzantine Generals Problem, §§2–3](https://lamport.azurewebsites.net/pubs/byz.pdf).
