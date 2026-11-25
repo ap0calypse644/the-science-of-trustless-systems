@@ -91,7 +91,7 @@ Owner approved the medieval battlefield combined with split-perspective thought 
 
 ### 08 — Byzantine Generals Problem (scripted animation)
 
-- **There's a traitor among us** is a medieval sequel to slide 7. Set the shared fortress at a shallower angle in the middle ground. Draw the message paths between Alice and Bob in the foreground and introduce Charlie in front of the fortress.
+- **There's a traitor among us** is a medieval sequel to slide 7. Show the upright fortress in the middle ground from a slightly elevated viewpoint. Give Alice and Bob separate near-side hills, Mallory a rear hill, and Charlie a front hill with clear space below the fortress. Draw message paths between Alice and Bob in the foreground.
 - Alice is the loyal commander in the fixed example. Mallory is a malicious peer who misreports Alice’s order under Mallory’s own identity. Bob first reads Alice’s Attack order, then sees Mallory report Retreat.
 - After forwarding, show Bob’s reports in a three-general table. The tie defaults to Retreat, contrary to Alice’s order. In a separate four-general run, Charlie joins as a loyal general. Bob and Charlie each have a direct Attack and an honest forwarded Attack. Mallory tells Bob Retreat and Charlie Attack. Both loyal recipients decide Attack.
 - Explain the conditional oral-message bound and the distinction between agreement and validity in notes. The three-general tie illustrates a particular failure. The general impossibility requires the indistinguishability argument.

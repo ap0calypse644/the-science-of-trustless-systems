@@ -22,7 +22,13 @@ test('M5b shows one local view before forwarding and uses scripted receipts and 
       const stonework = await current.locator('.castle').innerHTML();
       castle ??= stonework;
       expect(stonework).toBe(castle);
-      await expect(current.locator('[data-depth="foreground-actors"] [data-actor="mallory"]')).toHaveCount(1);
+      const rear = current.locator('[data-depth="rear"] [data-actor="mallory"]');
+      const fortress = current.locator('[data-depth="middle-ground"]');
+      await expect(rear).toHaveCount(1);
+      await expect(fortress).toHaveAttribute('transform', 'translate(208 64) scale(.74 .72)');
+      const malloryBounds = (await rear.boundingBox())!;
+      const fortressBounds = (await fortress.boundingBox())!;
+      expect(malloryBounds.y + malloryBounds.height).toBeLessThan(fortressBounds.y);
       await expect(current.locator('[data-actor="alice"] .role-label')).toHaveText('Commander');
     }
     if (index === 1 || index === 2) {
@@ -33,7 +39,12 @@ test('M5b shows one local view before forwarding and uses scripted receipts and 
     }
     if (index === 3) await expect(current.locator('.byz-majority')).toContainText('tie defaults to Retreat');
     if (index === 4) {
-      await expect(current.locator('[data-depth="foreground-actors"] [data-actor="charlie"]')).toHaveCount(1);
+      const charlie = current.locator('[data-depth="foreground-actors"] [data-actor="charlie"]');
+      const fortress = current.locator('[data-depth="middle-ground"]');
+      await expect(current.locator('[data-hill="front"]')).toBeVisible();
+      const charlieBounds = (await charlie.boundingBox())!;
+      const fortressBounds = (await fortress.boundingBox())!;
+      expect(fortressBounds.y + fortressBounds.height).toBeLessThan(charlieBounds.y);
     }
     if (index === 5) {
       await expect(current.locator('tfoot td')).toHaveText(['Attack · 2 of 3', 'Attack · 3 of 3']);

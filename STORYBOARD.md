@@ -61,7 +61,7 @@ Speaker notes should state the model: honest generals, potentially lost messages
 
 ### Byzantine Generals scripted sequence (slide 8)
 
-Reuse the slide 7 battlefield from a shallower perspective. The fortress sits in the middle ground and communication between Alice and Bob runs in front. Charlie joins in the foreground. Alice is the loyal commander for the worked example. Peer Mallory lies about the order Alice sent. Reveal Bob’s private evidence before comparing reports.
+Reuse the slide 7 battlefield from a slightly elevated viewpoint. The upright fortress sits in the middle ground, with Mallory on a rear hill. Alice and Bob occupy separate near-side hills. Charlie joins on his own front hill, below the unobstructed fortress. Communication between Alice and Bob runs in front. Alice is the loyal commander for the worked example. Peer Mallory lies about the order Alice sent. Reveal Bob’s private evidence before comparing reports.
 
 In the three-general run, Bob receives Attack directly and hears Mallory report Retreat. The tie defaults to Retreat and fails loyal-commander validity in this run. Compare with a fresh four-general run. Charlie forwards Alice’s Attack honestly, so Bob and Charlie each have a majority even when Mallory tailors reports to them. Read the evidence and decisions from tables.
 

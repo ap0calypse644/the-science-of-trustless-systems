@@ -38,6 +38,8 @@
 .byz-sheet .art .byz-message > path { stroke-width: 3.5px; stroke-dasharray: 11 9; }
 .byz-sheet .art .forwarded { stroke: #674585; }
 
+.byz-sheet .art .rear-hill { fill: #f3ebee; stroke: #82717c; stroke-width: 3.3px; }
+.byz-sheet .art .front-hill { fill: #f3eef7; stroke: #756782; stroke-width: 3.7px; }
 .byz-sheet .art .byz-ground { stroke: #b0a3a0; stroke-width: 3px; }
 
 .byz-table {

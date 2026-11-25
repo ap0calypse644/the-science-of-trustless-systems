@@ -162,9 +162,9 @@ compares the two possible responses under partition.
 ## M5b scripted visual staging
 
 The separate `/talk/m5b/` review route contains six static frames for a later
-presenter-paced animation. It reuses the slide 7 terrain and fortress, sets the
-fortress farther back at a shallower angle, and puts messages and generals in
-the foreground. Production continues to use slides 1–7.
+presenter-paced animation. It reuses the slide 7 terrain and fortress, uses a slightly elevated four-hill composition. The upright
+fortress sits between Mallory’s rear hill and Charlie’s front hill, with Alice
+and Bob on the near side and their message paths in front of the fortress. Production continues to use slides 1–7.
 
 In the fixed example, Alice commands and Mallory sends dishonest reports as a
 peer. The sequence shows Bob’s private receipt before the report comparison.

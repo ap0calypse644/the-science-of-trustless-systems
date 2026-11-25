@@ -38,42 +38,58 @@ function general(person: General, x: number, y: number, scale = .9): string {
 
 const alice = general('alice', 286, 408);
 const bob = general('bob', 1314, 413);
-const charlie = general('charlie', 799, 579, .79);
+const charlie = general('charlie', 799, 638, .79);
 
 function peer(dispatching = false): string {
-  return `${mallory(1089, 510, .81, dispatching)}
-    <text class="actor-name mallory" x="1089" y="665">Mallory</text>`;
+  return `${mallory(807, 238, .68, dispatching)}
+    <text class="actor-name mallory" x="909" y="265">Mallory</text>`;
 }
 
-// These paths are painted after the middle-ground fortress and before the foreground cast.
+const rearHill = `<g data-hill="rear">
+  <path class="rear-hill" d="M518 410 C545 373 617 334 683 323 C719 317 754 330 800 323
+    C839 317 869 321 911 332 C997 349 1061 382 1091 428 C1041 453 963 453 884 444
+    Q782 432 691 450 C618 458 558 444 518 410Z"/>
+  <path class="byz-ground" d="M553 405 Q601 363 670 354 Q712 344 754 351
+    M855 348 Q933 350 998 390 M615 419 Q657 391 699 387 M953 394 Q993 405 1022 424"/>
+  <path class="hatch" d="m610 380 15-16 m-6 20 15-14 m341 17 14 11 m-2-14 16 14"/>
+</g>`;
+
+const frontHill = `<g data-hill="front">
+  <path class="front-hill" d="M517 845 C557 801 613 761 668 750 C731 737 770 750 817 743
+    C888 733 974 750 1032 796 Q1060 818 1085 860 C987 878 897 880 798 874 Q647 883 517 845Z"/>
+  <path class="byz-ground" d="M556 842 Q609 800 676 780 M611 849 Q665 827 720 817
+    M880 774 Q989 795 1032 841 M838 839 Q905 828 953 845"/>
+  <path class="hatch" d="m678 781 16-13 m-6 17 17-13 m253 35 15 13 m-5-16 16 13"/>
+</g>`;
+
+// Paths take the open ground beside the fortress and across the near side of the valley.
 const direct = `<g class="byz-message" data-message="direct">
-  <path d="M349 465 C545 450 676 605 826 613 C1016 623 1159 565 1255 469
+  <path d="M349 465 C532 458 636 573 814 580 C1000 589 1161 567 1255 469
     m-27 8 27-8-9 28
-    M347 480 C520 606 869 707 1038 578 m-27 5 27-5-12 25"/>
-  ${envelope(634, 548, .26, 19)}${envelope(903, 643, .26, -15)}
+    M351 453 C514 448 567 390 606 353 C649 313 711 306 768 285 m-26-1 26 1-15 21"/>
+  ${envelope(630, 548, .26, 20)}${envelope(647, 329, .26, -26)}
 </g>`;
 
 const forwarded = `<g class="byz-message forwarded" data-message="forwarded">
-  <path d="M1145 551 Q1208 536 1274 483 m-25 9 25-9-11 24"/>
-  ${envelope(1212, 522, .26, -13)}
+  <path d="M856 269 C970 269 1019 336 1048 423 C1086 538 1182 549 1274 483
+    m-25 7 25-7-11 24"/>
+  ${envelope(1069, 479, .26, 45)}
 </g>`;
 
-const foreground = `<path class="byz-ground" d="M603 753 Q788 721 950 744 M1008 695 Q1088 676 1172 688"/>
-  <path class="byz-ground detail" d="m627 766 52-13 m224 0 46 7 m89-59 43-10 m58 5 29 4"/>`;
-
-export function battlefield(actors: string, messages = '', privateView = ''): string {
-  return `<svg class="art" viewBox="0 0 1600 900" role="img" aria-label="Alice and Bob face each other across the valley. The fortress sits in the middle ground.">
+function battlefield(dispatching = false, joined = false, messages = '', privateView = ''): string {
+  return `<svg class="art" viewBox="0 0 1600 900" role="img"
+      aria-label="An elevated view of the valley. Alice and Bob are on the near side, Mallory is on a rear hill, and the upright fortress is between them.${joined ? ' Charlie stands on his own front hill.' : ''}">
     ${landscape}
-    <g data-depth="middle-ground" transform="matrix(.78 0 -.12 .81 247 22)">${castle}</g>
-    ${foreground}
+    <g data-depth="rear">${rearHill}${peer(dispatching)}</g>
+    <g data-depth="middle-ground" transform="translate(208 64) scale(.74 .72)">${castle}</g>
+    ${frontHill}
     <g data-depth="foreground-messages">${messages}</g>
-    <g data-depth="foreground-actors">${actors}</g>
+    <g data-depth="foreground-actors">${alice}${bob}${joined ? charlie : ''}</g>
     ${privateView}
   </svg>`;
 }
 
-const three = alice + bob;
-export const opening = battlefield(three + peer());
-export const orders = battlefield(three + peer(), direct, thought(1300, 'bob', ['From Alice', 'Attack']));
-export const lie = battlefield(three + peer(true), direct + forwarded, thought(1300, 'bob', ['Mallory reports', '“I received Retreat.”']));
-export const arrival = battlefield(three + peer() + charlie, direct);
+export const opening = battlefield();
+export const orders = battlefield(false, false, direct, thought(1300, 'bob', ['From Alice', 'Attack']));
+export const lie = battlefield(true, false, direct + forwarded, thought(1300, 'bob', ['Mallory reports', '“I received Retreat.”']));
+export const arrival = battlefield(false, true, direct);
