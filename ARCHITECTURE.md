@@ -159,26 +159,19 @@ branch. Only the pending read completes after resynchronization. The notes
 preview always renders the synchronized baseline, and the 16:9 print override
 compares the two possible responses under partition.
 
-## M5b visual and protocol UI staging
+## M5b scripted visual staging
 
-The separate `/talk/m5b/` route uses the static review shell and shares slide
-7’s landscape, castle and thought bubbles. It presents seven stills, including
-a disabled presenter UI proposal. The production deck continues to use slides
-1–7. The displayed histories are scripted review examples.
+The separate `/talk/m5b/` review route contains six static frames for a later
+presenter-paced animation. It reuses the slide 7 terrain and fortress, sets the
+fortress farther back at a shallower angle, and puts messages and generals in
+the foreground. Production continues to use slides 1–7.
 
-The proposed setup panel offers the scripted presets and optional settings for
-3–7 participants, OM depth 0–2 capped at one less than the number of lieutenants,
-and up to two actual faulty participants. Show configured tolerance and actual
-fault count separately. A faulty sender can report different values to distinct
-recipients or omit a send. Apply settings only at a clean start or explicit reset.
-
-The round panel proposes shared playback, Previous/Next round, Reset, a local
-view selector, and a comparison after the last message round. A report is tagged
-by its ordered path and immediate sender. For OM(2) the local view would expand
-one recursive subtree on request. The comparison shows loyal decisions and
-distinguishes agreement from loyal-commander validity. The bound indicator uses
-`n >= 3m + 1` and `f <= m` under the oral-message assumptions. Use Retreat
-for detectable omissions and for a tied majority. The owner will review this
-layout and its limits before any protocol implementation.
+In the fixed example, Alice commands and Mallory sends dishonest reports as a
+peer. The sequence shows Bob’s private receipt before the report comparison.
+The three-general table illustrates a validity failure under the Retreat tie
+default. Charlie joins in the four-general run, where Bob and Charlie receive
+different reports from Mallory and still follow Alice’s order. The planned
+animation will use the established presenter playback controls. The staging
+review gates that implementation.
 
 Reference: [Lamport, Shostak and Pease, The Byzantine Generals Problem, §§2–3](https://lamport.azurewebsites.net/pubs/byz.pdf).

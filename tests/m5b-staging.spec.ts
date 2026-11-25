@@ -2,13 +2,13 @@ import { mkdir } from 'node:fs/promises';
 import { expect, test } from '@playwright/test';
 
 const path = '/talk/m5b/';
-const screenshots = 'test-results/visual-review/m5b-staging';
+const screenshots = 'test-results/visual-review/m5b-scripted-staging';
 const ids = [
   '08-byzantine-generals', '08-orders-alice', '08-orders-bob', '08-forwarded-reports',
-  '08-four-generals', '08-loyal-commander', '08-protocol-layout',
+  '08-charlie-joins', '08-four-generals',
 ];
 
-test('M5b shows one local view before forwarding and keeps the protocol mock inert', async ({ page, browserName }) => {
+test('M5b shows one local view before forwarding and uses scripted receipts and tables', async ({ page, browserName }) => {
   await page.setViewportSize({ width: 1920, height: 1080 });
   await page.goto(path);
   await expect(page.locator('.reveal')).toHaveClass(/ready/);
@@ -18,36 +18,28 @@ test('M5b shows one local view before forwarding and keeps the protocol mock ine
 
   for (const [index, id] of ids.entries()) {
     await expect(current).toHaveAttribute('id', id);
-    if (index < 6) {
+    if (index === 0 || index === 1 || index === 2 || index === 4) {
       const stonework = await current.locator('.castle').innerHTML();
       castle ??= stonework;
       expect(stonework).toBe(castle);
-      await expect(current.locator('[data-actor="mallory"]')).toHaveCount(1);
+      await expect(current.locator('[data-depth="foreground-actors"] [data-actor="mallory"]')).toHaveCount(1);
+      await expect(current.locator('[data-actor="alice"] .role-label')).toHaveText('Commander');
     }
     if (index === 1 || index === 2) {
       await expect(current.locator('[data-view]')).toHaveCount(1);
-      const recipient = index === 1 ? 'alice' : 'bob';
-      await expect(current.locator(`[data-view="${recipient}"]`)).toContainText(index === 1 ? 'Attack' : 'Retreat');
-      await expect(current.locator('.byz-reports')).toHaveCount(0);
+      await expect(current.locator('[data-view="bob"]')).toContainText(index === 1 ? 'Attack' : 'Retreat');
+      await expect(current.locator('[data-depth="middle-ground"] ~ [data-depth="foreground-messages"] [data-message]')).not.toHaveCount(0);
+      await expect(current.locator('table')).toHaveCount(0);
     }
-    if (index === 3) await expect(current.locator('.byz-bound')).toContainText('Outside guarantee');
+    if (index === 3) await expect(current.locator('.byz-majority')).toContainText('tie defaults to Retreat');
     if (index === 4) {
-      await expect(current.locator('.byz-reports dt')).toHaveText([
-        'Direct · Mallory → Alice',
-        'Forwarded · Mallory → Bob → Alice',
-        'Forwarded · Mallory → Charlie → Alice',
-      ]);
-      await expect(current.locator('[data-actor="charlie"]')).toHaveCount(1);
+      await expect(current.locator('[data-depth="foreground-actors"] [data-actor="charlie"]')).toHaveCount(1);
     }
     if (index === 5) {
-      await expect(current.locator('.byz-bound')).toHaveText([
-        'Tie → Retreat · Validity fails', 'Majority → Attack · Validity holds',
-      ]);
+      await expect(current.locator('tfoot td')).toHaveText(['Attack · 2 of 3', 'Attack · 3 of 3']);
+      await expect(current.locator('tbody tr').last().locator('td')).toHaveText(['Retreat', 'Attack']);
     }
-    if (index === 6) {
-      await expect(current.getByRole('button', { name: 'Next round' })).toBeDisabled();
-      await expect(current.getByRole('combobox', { name: 'Local view' })).toBeDisabled();
-    }
+    await expect(current.locator('button, select, input')).toHaveCount(0);
     if (browserName === 'firefox') {
       const directory = `${screenshots}/1920x1080`;
       await mkdir(directory, { recursive: true });
@@ -56,20 +48,20 @@ test('M5b shows one local view before forwarding and keeps the protocol mock ine
     }
     if (index < ids.length - 1) await page.keyboard.press('ArrowRight');
   }
-  await expect(page).toHaveURL(/#\/08-protocol-layout$/);
+  await expect(page).toHaveURL(/#\/08-four-generals$/);
   await page.reload();
-  await expect(current).toHaveAttribute('id', '08-protocol-layout');
+  await expect(current).toHaveAttribute('id', '08-four-generals');
 });
 
 for (const [width, height] of [[1280, 720], [1024, 768]]) {
-  test(`M5b reports and proposed controls fit at ${width} × ${height}`, async ({ page, browserName }) => {
+  test(`M5b report tables fit at ${width} × ${height}`, async ({ page, browserName }) => {
     await page.setViewportSize({ width, height });
     const current = page.locator('section.present');
-    for (const id of ['08-four-generals', '08-loyal-commander', '08-protocol-layout']) {
+    for (const id of ['08-forwarded-reports', '08-four-generals']) {
       await page.goto(`${path}#/${id}`);
       await expect(current).toHaveAttribute('id', id);
       await page.evaluate(() => document.fonts.ready);
-      const content = (await current.locator('.byz-panel, .protocol-columns').boundingBox())!;
+      const content = (await current.locator('.byz-table').boundingBox())!;
       const sheet = (await current.locator('.talk-sheet').boundingBox())!;
       expect(content.y + content.height).toBeLessThan(sheet.y + sheet.height);
       expect(content.x + content.width).toBeLessThan(width);

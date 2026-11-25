@@ -120,9 +120,9 @@ The project owner authorized the exact file for this repository in issue #12. Pu
 
 ## M5b staging review
 
-Open [the slide 8 staging deck](http://127.0.0.1:4173/talk/m5b/) in desktop Firefox. Use Left and Right to review the battlefield, each private direct order, forwarding, the fourth lieutenant, and loyal-commander validity. The [last still](http://127.0.0.1:4173/talk/m5b/#/08-protocol-layout) shows the proposed presenter controls. The controls are disabled in the mock.
+Open [the slide 8 staging deck](http://127.0.0.1:4173/talk/m5b/) in desktop Firefox. Use Left and Right to review the battlefield, Bob’s direct order and Mallory’s report, the three-general tie, Charlie arriving in the foreground, and the [four-general report table](http://127.0.0.1:4173/talk/m5b/#/08-four-generals). These stills stage a scripted animation.
 
-Firefox screenshots are under `test-results/visual-review/m5b-staging/<width>x<height>/`. The 1920×1080 directory contains all seven stills. The two smaller directories contain the four-general result, loyal-commander comparison and protocol layout.
+Firefox screenshots are under `test-results/visual-review/m5b-scripted-staging/<width>x<height>/`. The 1920×1080 directory contains all six revised stills. The two smaller directories contain the three- and four-general report tables.
 
 ## Desktop Firefox verification
 

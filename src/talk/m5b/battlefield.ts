@@ -2,18 +2,7 @@ import { character, type Character } from '../../illustration/character';
 import { envelope } from '../../illustration/props';
 import { castle, landscape, thought } from '../two-generals/art';
 
-type Order = 'Attack' | 'Retreat';
-type Loyal = Extract<Character, 'alice' | 'bob' | 'charlie'>;
-
-interface StagingFrame {
-  id: string;
-  label: string;
-  subtitle: string;
-  notes: string;
-  actors: string;
-  messages?: string;
-  overlay?: string;
-}
+type General = Extract<Character, 'alice' | 'bob' | 'charlie'>;
 
 function mallory(x: number, y: number, scale: number, dispatching: boolean): string {
   return `<g data-actor="mallory" transform="translate(${x} ${y}) scale(${scale})">
@@ -36,153 +25,55 @@ function mallory(x: number, y: number, scale: number, dispatching: boolean): str
   </g>`;
 }
 
-function lieutenant(person: Loyal, x: number, y: number): string {
-  const names: Record<Loyal, string> = { alice: 'Alice', bob: 'Bob', charlie: 'Charlie' };
+function general(person: General, x: number, y: number, scale = .9): string {
+  const name = person[0].toUpperCase() + person.slice(1);
   return `<g data-actor="${person}">
-    ${character(person, { x, y, scale: .77, facing: person === 'alice' ? 'right' : 'left',
-      pose: person === 'charlie' ? 'hold' : 'suspicious', expression: 'stand' })}
-    <text class="actor-name ${person}" x="${x}" y="${y + 168}">${names[person]}</text>
+    ${character(person, { x, y, scale, facing: person === 'bob' ? 'left' : 'right',
+      pose: person === 'charlie' ? 'hold' : 'point', expression: 'stand',
+      angles: { rightArm: person === 'alice' ? 18 : 6 } })}
+    <text class="actor-name ${person}" x="${x}" y="${y + 158 * scale + 46}">${name}</text>
+    ${person === 'alice' ? `<text class="role-label" x="${x}" y="${y + 158 * scale + 83}">Commander</text>` : ''}
   </g>`;
 }
 
-function commander(person: 'mallory' | 'alice', dispatching = false): string {
-  return `
-    <path class="command-ledge" d="M722 421 Q799 414 880 421 l-7 13-149 3Z"/>
-    ${person === 'mallory' ? mallory(798, 311, .79, dispatching)
-      : character('alice', { x: 800, y: 303, scale: .72, pose: 'point' })}
-    <text class="commander-label ${person}" x="936" y="249">${person === 'mallory' ? 'Mallory' : 'Alice'}</text>
-    <text class="role-label" x="936" y="284">Commander</text>
-  `;
+const alice = general('alice', 286, 408);
+const bob = general('bob', 1314, 413);
+const charlie = general('charlie', 799, 579, .79);
+
+function peer(dispatching = false): string {
+  return `${mallory(1089, 510, .81, dispatching)}
+    <text class="actor-name mallory" x="1089" y="665">Mallory</text>`;
 }
 
-const alice = lieutenant('alice', 300, 398);
-const bob = lieutenant('bob', 1295, 394);
-const charlie = lieutenant('charlie', 1450, 416);
+// These paths are painted after the middle-ground fortress and before the foreground cast.
+const direct = `<g class="byz-message" data-message="direct">
+  <path d="M349 465 C545 450 676 605 826 613 C1016 623 1159 565 1255 469
+    m-27 8 27-8-9 28
+    M347 480 C520 606 869 707 1038 578 m-27 5 27-5-12 25"/>
+  ${envelope(634, 548, .26, 19)}${envelope(903, 643, .26, -15)}
+</g>`;
 
-const deliveries = `<g class="byz-message">
-    <path d="M742 355 Q580 308 365 416 m13-19-15 20 24-2 M859 354 Q1005 305 1231 412 m-24-5 24 6-12-20"/>
-    ${envelope(549, 353, .28, -14)}${envelope(1050, 350, .28, 13)}
-  </g>`;
+const forwarded = `<g class="byz-message forwarded" data-message="forwarded">
+  <path d="M1145 551 Q1208 536 1274 483 m-25 9 25-9-11 24"/>
+  ${envelope(1212, 522, .26, -13)}
+</g>`;
 
-const forwarding = `<g class="byz-message forwarded">
-    <path d="M362 539 C570 614 1021 602 1232 534 m-26 5 26-6-14 23
-      M1232 572 C1009 645 591 655 368 575 m25 1-26-3 13 22"/>
-    ${envelope(600, 586, .24, 8)}${envelope(1082, 615, .24, -10)}
-  </g>`;
+const foreground = `<path class="byz-ground" d="M603 753 Q788 721 950 744 M1008 695 Q1088 676 1172 688"/>
+  <path class="byz-ground detail" d="m627 766 52-13 m224 0 46 7 m89-59 43-10 m58 5 29 4"/>`;
 
-interface Report {
-  path: string;
-  order: Order;
+export function battlefield(actors: string, messages = '', privateView = ''): string {
+  return `<svg class="art" viewBox="0 0 1600 900" role="img" aria-label="Alice and Bob face each other across the valley. The fortress sits in the middle ground.">
+    ${landscape}
+    <g data-depth="middle-ground" transform="matrix(.78 0 -.12 .81 247 22)">${castle}</g>
+    ${foreground}
+    <g data-depth="foreground-messages">${messages}</g>
+    <g data-depth="foreground-actors">${actors}</g>
+    ${privateView}
+  </svg>`;
 }
 
-function reports(rows: readonly Report[]): string {
-  return `<dl class="byz-reports">${rows.map(({ path, order }) => `
-    <div><dt>${path}</dt><dd class="${order.toLowerCase()}">${order}</dd></div>`).join('')}
-  </dl>`;
-}
-
-const aliceReports = [
-  { path: 'Direct · Mallory → Alice', order: 'Attack' },
-  { path: 'Forwarded · Mallory → Bob → Alice', order: 'Retreat' },
-] as const;
-
-const openingActors = commander('mallory') + alice + bob;
-
-export const frames: readonly StagingFrame[] = [
-  {
-    id: '08-byzantine-generals', label: 'Opening battlefield',
-    subtitle: 'Sent messages arrive. Can you trust the order?',
-    actors: openingActors,
-    notes: 'Direct sequel to slide 7. Mallory is the faulty commander. Alice and Bob are loyal lieutenants. In the classical oral-message model a sent message arrives, the immediate sender is known, and an omitted message is detectable after its round. No transferable signatures. Ask what changes when the sender can lie. Lamport, Shostak and Pease, The Byzantine Generals Problem, §§2–3, https://lamport.azurewebsites.net/pubs/byz.pdf.',
-  },
-  {
-    id: '08-orders-alice', label: 'Direct orders, Alice’s local view',
-    subtitle: 'Round 1 · Alice’s view',
-    actors: commander('mallory', true) + alice + bob,
-    messages: deliveries + thought(300, 'alice', ['From Mallory', 'Attack']),
-    notes: 'Both of Mallory’s orders were delivered. Only Alice’s content is visible in this frame. Alice has a direct order to Attack and cannot see what Bob received.',
-  },
-  {
-    id: '08-orders-bob', label: 'Direct orders, Bob’s local view',
-    subtitle: 'Round 1 · Bob’s view',
-    actors: commander('mallory', true) + alice + bob,
-    messages: deliveries + thought(1295, 'bob', ['From Mallory', 'Retreat']),
-    notes: 'This is Bob’s private view of the same round. Bob has a direct order to Retreat and does not see what Alice received. The presenter can inspect each view before forwarding; the comparison belongs to the next round.',
-  },
-  {
-    id: '08-forwarded-reports', label: 'Forwarding with three generals',
-    subtitle: 'Round 2 · Alice and Bob forward their orders',
-    actors: openingActors,
-    messages: forwarding,
-    overlay: `<div class="byz-panel forwarding-panel">
-      <div>
-        <h2>Alice’s local reports</h2>
-        ${reports(aliceReports)}
-      </div>
-      <div class="byz-summary">
-        <p class="byz-decision">Tie → Retreat</p>
-        <p>Both decide Retreat in this run.</p>
-        <p class="byz-bound">3 generals · OM(1) · Outside guarantee</p>
-      </div>
-    </div>`,
-    notes: 'Bob has the mirror view: his own direct Retreat and the forwarded Attack. Both loyal lieutenants have one of each and default to Retreat. Agreement in this run does not establish the guarantee. The impossibility argument for one fault uses indistinguishable executions, not the tie alone. See the three-general argument in §2 of Lamport, Shostak and Pease.',
-  },
-  {
-    id: '08-four-generals', label: 'Four-general forwarding and outcome',
-    subtitle: 'Round 2 · Charlie joins the loyal lieutenants',
-    actors: openingActors + charlie,
-    messages: `${forwarding}<g class="byz-message forwarded">
-      <path d="M1414 535 Q1038 477 391 552 m23-12-24 12 24 6"/>
-      ${envelope(1146, 523, .22, 3)}
-    </g>`,
-    overlay: `<div class="byz-panel forwarding-panel">
-      <div>
-        <h2>Alice’s local reports</h2>
-        ${reports([...aliceReports, { path: 'Forwarded · Mallory → Charlie → Alice', order: 'Attack' }])}
-      </div>
-      <div class="byz-summary">
-        <p class="byz-decision">Majority → Attack</p>
-        <p>Alice, Bob and Charlie agree in this run.</p>
-        <p class="byz-bound">4 generals · OM(1) · Within guarantee</p>
-      </div>
-    </div>`,
-    notes: 'Mallory sends Attack to Alice and Charlie, and Retreat to Bob. Each loyal lieutenant includes their direct order and receives the other two lieutenant-origin reports. Each sees the same multiset {Attack, Retreat, Attack}. The agreement condition applies, but there is no requirement to follow a faulty commander or choose Attack specifically. With n = 4, m = 1 and one actual fault, the OM(1) bound holds.',
-  },
-  {
-    id: '08-loyal-commander', label: 'Loyal commander, faulty lieutenant',
-    subtitle: 'Alice orders Attack · Mallory forwards Retreat',
-    actors: commander('alice') + bob + charlie
-      + mallory(302, 400, .76, false)
-      + '<text class="actor-name mallory" x="303" y="567">Mallory</text>',
-    overlay: `<div class="byz-panel loyal-panel">
-      <div>
-        <h2>3 generals · Bob’s reports</h2>
-        ${reports([{ path: 'Direct · Alice → Bob', order: 'Attack' }, { path: 'Alice → Mallory → Bob', order: 'Retreat' }])}
-        <p class="byz-bound">Tie → Retreat · Validity fails</p>
-      </div>
-      <div>
-        <h2>4 generals · Bob’s reports</h2>
-        ${reports([{ path: 'Direct · Alice → Bob', order: 'Attack' }, { path: 'Alice → Mallory → Bob', order: 'Retreat' },
-          { path: 'Alice → Charlie → Bob', order: 'Attack' }])}
-        <p class="byz-bound">Majority → Attack · Validity holds</p>
-      </div>
-    </div>`,
-    notes: 'Compare the two configurations, not a change within one execution. Alice is the loyal commander in both. In the three-participant case, Bob is the only loyal lieutenant and defaults to Retreat after a tie, failing loyal-commander validity. With Charlie added, Bob has two Attack values and decides Attack; Charlie has the corresponding loyal majority. Mallory lies about her own report, without forging Alice’s immediate sender identity.',
-  },
-];
-
-export const battlefieldStills = frames.map(({ id, label, subtitle, notes, actors, messages, overlay }) => ({
-  id,
-  notes,
-  composition: `<div class="talk-sheet byz-sheet">
-    <h1>There's a traitor among us</h1>
-    <p class="byz-subtitle">${subtitle}</p>
-    <svg class="art" viewBox="0 0 1600 900" role="img" aria-label="${label}">
-      ${landscape}
-      ${messages ?? ''}
-      ${castle}
-      ${actors}
-    </svg>
-    ${overlay ?? ''}
-  </div>`,
-}));
+const three = alice + bob;
+export const opening = battlefield(three + peer());
+export const orders = battlefield(three + peer(), direct, thought(1300, 'bob', ['From Alice', 'Attack']));
+export const lie = battlefield(three + peer(true), direct + forwarded, thought(1300, 'bob', ['Mallory reports', '“I received Retreat.”']));
+export const arrival = battlefield(three + peer() + charlie, direct);
