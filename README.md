@@ -213,6 +213,26 @@ Firefox captures are in `test-results/visual-review/m5d-production/<width>x<heig
 The [17-sheet print view](http://127.0.0.1:4173/talk/?print) includes the proof
 and hash evidence. Production motion awaits final owner review.
 
+## M5e staging review
+
+Build and start the preview, then open [the 22 ledger-history stills](http://127.0.0.1:4173/talk/m5e/)
+in desktop Firefox. Left and Right step through the review stills. S opens notes,
+which identify the authored transactions and hash prefixes and give the
+assumptions to explain aloud. Production remains at slides 1–17.
+
+| Slide | Planned production transitions | Planned print evidence |
+| --- | --- | --- |
+| [18 The Growing Ledger](http://127.0.0.1:4173/talk/m5e/#/18-short-list) | Append transactions one at a time, extend the same sheet, then unroll the excess as Alice’s expression changes | Short list beside the final overflowing list |
+| [19 From Pages to Blocks](http://127.0.0.1:4173/talk/m5e/#/19-first-page) | Write each row, turn through four pages, detach them and fold each into a blue block | Four detached pages beside their matching independent blocks |
+| [20 What If Charlie Changes History?](http://127.0.0.1:4173/talk/m5e/#/20-independent-blocks) | Start on the exact block layout from 19, edit and restore, write predecessor hashes in order, then show the immediate mismatch, repair and next mismatch | First mismatch and repaired first link beside the next mismatch, with the last matching link visible |
+| [21 Conflicting Histories](http://127.0.0.1:4173/talk/m5e/#/21-common-history) | Show common history and signed payments, extend both views, let Alice and Bob react, and merge the duplicated prefix into one fork | Shared prefix and both candidate blocks, ending on the unresolved question |
+
+Firefox captures all 22 stills by ID in
+`test-results/visual-review/m5e-staging/1920x1080/`. The 1280×720 and
+1024×768 directories contain four representative stills. Regenerate with
+`npm test -- tests/m5e-staging.spec.ts --project=firefox`. The print and motion plans
+await owner visual approval before implementation.
+
 ## Desktop Firefox verification
 
 From the repository root, run these commands and leave preview running.

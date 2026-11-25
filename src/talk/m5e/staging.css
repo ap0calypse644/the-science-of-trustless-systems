@@ -1,0 +1,40 @@
+.talk-sheet.history-sheet h1 {
+  top: 40px;
+  left: 50%;
+  width: max-content;
+  transform: translateX(-50%);
+  font: 400 84px/1 Kalam, var(--support);
+}
+
+.history-sheet .art { --stroke: 3.6px; font-family: var(--font); }
+.history-sheet .art .strong { font-size: 43px; }
+.history-sheet .art .body { font-size: 34px; }
+.history-sheet .art .small { font-size: 30px; }
+.history-sheet .art .question { font-size: 60px; }
+.history-sheet .art .tx { font-size: 29px; }
+.history-sheet .art .code { font: 24px ui-monospace, monospace; }
+.history-sheet .art .changed-row { fill: #9a3d35; text-decoration: underline; }
+.history-sheet .art .card { fill: #f4f7fb; stroke: #647b94; stroke-width: 2.5px; }
+.history-sheet .art .warning { fill: #fceee9; stroke: #a24e48; }
+.history-sheet .art .paper { fill: #fffaf0; stroke: #6c6253; stroke-width: 3.2px; }
+.history-sheet .art .paper-back { fill: #ebd9ae; stroke: #6c6253; stroke-width: 3.2px; }
+.history-sheet .art .paper-rule { stroke: #a18e6e; stroke-width: 2px; }
+.history-sheet .art .notebook-cover { fill: #8ca9c4; stroke: #465e79; }
+.history-sheet .art .block-face { fill: #e5f0fa; stroke: #3a5978; }
+.history-sheet .art .block-top { fill: #f2f8fe; stroke: #3a5978; }
+.history-sheet .art .block-side { fill: #8caeca; stroke: #3a5978; }
+.history-sheet .art .block-rule { stroke: #708ca9; stroke-width: 2px; }
+.history-sheet .art .previous-field { fill: #fafdff; stroke: #839eb9; stroke-width: 2px; }
+.history-sheet .art .own-hash { fill: #355575; }
+.history-sheet .art .link { fill: none; stroke: #426b91; stroke-width: 4.5px; }
+.history-sheet .art .link.mismatch { stroke: #a24e48; stroke-dasharray: 8 9; }
+.history-sheet .art .link.unchecked { stroke: #666; stroke-dasharray: 3 9; }
+.history-sheet .art .link-marker { fill: white; stroke: #426b91; stroke-width: 2px; }
+.history-sheet .art .link-marker.mismatch { stroke: #a24e48; }
+.history-sheet .art .state-mark { font: 700 24px system-ui, sans-serif; }
+.history-sheet .art .state-mark.mismatch { fill: #a24e48; }
+.history-sheet .art .state-mark.match { fill: #36674a; }
+.history-sheet .art .correction { fill: #963f37; }
+.history-sheet .art .motion-mark { stroke: #8b7352; stroke-width: 3px; }
+.history-sheet .art .paper-grip { fill: white; stroke: var(--ink); stroke-width: 3.4px; }
+.history-sheet .art .fork-junction { fill: #426b91; stroke: none; }

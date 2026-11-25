@@ -222,3 +222,13 @@ scene-owned SVG groups move and reveal from normalized time. The fixed nonce
 sequence and verification candidate share the staging fixtures. Notes disclose
 the authored outputs and prompt verbal disclosure. The four print sheets
 hold on the teaching evidence, and the independent staging route stays available.
+
+## M5e ledger-history staging
+
+The independent `/talk/m5e/` route uses the static review shell. Pages and blocks
+carry the same ordered transaction rows. Slide 19’s closing SVG and slide 20’s
+opening SVG use one shared composition. The fixture compares stored predecessor
+prefixes with the immediate parent’s authored digest. The input identity includes
+the ordered rows and predecessor reference. The fork uses the existing pure
+café ledger rules and the same two signed transfers. The staging deck never
+computes a digest.
