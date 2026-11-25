@@ -8,15 +8,15 @@ A browser-based college guest lecture on how distributed systems reach agreement
 | II — The Problem of Privacy | 45 min | Privacy properties, cryptographic history, MPC, homomorphic encryption, and zero-knowledge proofs |
 | III — Ask Me Anything | 30 min | Audience questions, closing, and references |
 
-The planning storyboard spans 48 slides (25 approved Part I concepts; 23 provisional Part II/III slides). Part I gives the Two Generals and Byzantine Generals problems five minutes each and the Bitcoin reconstruction 16 minutes. These times and the slide count are flexible planning guides; prioritize the live teaching narrative and audience discussion.
+The current planning baseline is 62 provisional slides: 26 approved concepts, 13 provisional later Part I concepts and 23 provisional Part II/III slides. Timing remains flexible; see CONTINUATION.md.
 
 ## Presentation policy
 
-Owner decision (25 Nov 2026): the lecture uses static or presenter-paced scripted animated slides only. No live audience/presenter inputs that change the educational model, branching buttons, live cryptographic computations or worker searches are required. Preserve ordinary playback/navigation/seek/reset controls, verbal audience predictions, local offline operation and editable art. Use fixed internally consistent illustrative examples, clearly label simulated hashes/proofs/results, never imply they are actual computed cryptographic outputs. This supersedes earlier interactive and real-computation requirements. Issue #18 covers the separately reviewed scripted conversion of slide 6 and preserves archived diagnostic and staging routes. Future M5d and M6 implementation remain separately gated.
+Owner decision (25 Nov 2026): the lecture uses static or presenter-paced scripted animated slides only. No live audience/presenter inputs that change the educational model, branching buttons, live cryptographic computations or worker searches are required. Preserve ordinary playback/navigation/seek/reset controls, verbal audience predictions, local offline operation and editable art. Use fixed internally consistent illustrative examples, clearly label simulated hashes/proofs/results, never imply they are actual computed cryptographic outputs. This supersedes earlier interactive and real-computation requirements. Issue #18 covers the separately reviewed scripted conversion of slide 6 and preserves archived diagnostic and staging routes. M5d revised visual staging (14–17) is authorized under issue #20; production and later batches remain separately gated.
 
 ## Development status
 
-M0 is approved. The owner approved D — Expressive Minimalism on pure white. M1 merged in PR #3. The M2 illustration library merged in PR #5. The M3 playback engine and diagnostic deck merged in PR #7 after owner review. The owner approved M4a and PR #9 is merged. M4b is owner-approved and merged in PR #11, completing M4. The owner approved M5a and PR #13 is merged. The owner approved M5b and PR #15 is merged. The owner approved M5c staging and production, and PR #17 is merged. Main contains production slides 1–13. M5d requires separate authorization. All 25 Part I creative directions are approved. The other treatments remain archived for comparison. The project preserves the three-slide engineering diagnostic deck. The framework uses Reveal.js, TypeScript, Vite, Playwright, and npm. M2 uses deterministic authored SVG paths. M3 uses a local GSAP clock for presenter-paced diagnostics.
+M0 is approved. The owner approved D — Expressive Minimalism on pure white. M1 merged in PR #3. The M2 illustration library merged in PR #5. The M3 playback engine and diagnostic deck merged in PR #7 after owner review. The owner approved M4a and PR #9 is merged. M4b is owner-approved and merged in PR #11, completing M4. The owner approved M5a and PR #13 is merged. The owner approved M5b and PR #15 is merged. The owner approved M5c staging and production, and PR #17 is merged. Main contains production slides 1–13. Revised M5d visual staging (14–17) authorized in #20; production separately gated. Slides 1–26 creative directions approved, later concepts pending individual review. The other treatments remain archived for comparison. The project preserves the three-slide engineering diagnostic deck. The framework uses Reveal.js, TypeScript, Vite, Playwright, and npm. M2 uses deterministic authored SVG paths. M3 uses a local GSAP clock for presenter-paced diagnostics.
 
 The target is a 16:9 deck with responsive scaling, classroom-projector readability, independent slide and animation controls, and offline operation using bundled assets. A static PDF fallback is an M8 deliverable.
 
@@ -197,7 +197,7 @@ Desktop Firefox, dual-monitor operation, an internet-disconnected rehearsal, and
 
 ## Project documents
 
-- [Continuation / restart point](CONTINUATION.md) records current status, collaboration workflow, and approved creative directions for all 25 Part I slides. Start here when resuming in a new chat.
+- [Continuation / restart point](CONTINUATION.md) records current status, collaboration workflow, and approved creative directions for slides 1–26 and the provisional continuation. Start here when resuming in a new chat.
 
 - [Agent instructions](AGENTS.md) define scope, coding standards, and review gates.
 - [Design](DESIGN.md) defines the visual language and illustration constraints.
