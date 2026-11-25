@@ -1,6 +1,6 @@
 # The Science of Trustless Systems
 
-An interactive, browser-based college guest lecture on how distributed systems reach agreement and how cryptography changes what participants need to reveal. The deck supports a live speaker with hand-drawn diagrams, short comics, and presenter-paced demonstrations.
+A browser-based college guest lecture on how distributed systems reach agreement and how cryptography changes what participants need to reveal. The deck supports a live speaker with hand-drawn diagrams, short comics, and presenter-paced demonstrations.
 
 | Part | Time | Focus |
 | --- | ---: | --- |
@@ -9,6 +9,10 @@ An interactive, browser-based college guest lecture on how distributed systems r
 | III — Ask Me Anything | 30 min | Audience questions, closing, and references |
 
 The planning storyboard spans 48 slides (25 approved Part I concepts; 23 provisional Part II/III slides). Part I gives the Two Generals and Byzantine Generals problems five minutes each and the Bitcoin reconstruction 16 minutes. These times and the slide count are flexible planning guides; prioritize the live teaching narrative and audience discussion.
+
+## Presentation policy
+
+Owner decision (25 Nov 2026): the lecture uses static or presenter-paced scripted animated slides only. No live audience/presenter inputs that change the educational model, branching buttons, live cryptographic computations or worker searches are required. Preserve ordinary playback/navigation/seek/reset controls, verbal audience predictions, local offline operation and editable art. Use fixed internally consistent illustrative examples, clearly label simulated hashes/proofs/results, never imply they are actual computed cryptographic outputs. This supersedes earlier interactive and real-computation requirements. Existing interactive slide 6 must be converted in a separately reviewed correction; preserve archived diagnostic/staging routes. Future M5d and M6 implementation remain separately gated.
 
 ## Development status
 
@@ -95,7 +99,7 @@ Firefox captures all eight beats and the print comparison at 1920×1080 under `t
 
 With the production preview running, open [the staging stills](http://127.0.0.1:4173/talk/staging/) in desktop Firefox. Use Left and Right to compare the opening, courier escalation, and the two possible outcomes of the final reply. Firefox captures are in `test-results/visual-review/m4b-staging/1920x1080/`.
 
-## M5a production review
+## M5a production review (existing implementation; slide 6 scripted conversion pending)
 
 Use desktop Firefox with production preview running. Open [the production bank scene](http://127.0.0.1:4173/talk/#/06-consistency-or-availability), [Why distribute?](http://127.0.0.1:4173/talk/#/03-why-distribute), [the governance comparison](http://127.0.0.1:4173/talk/#/04-centralized-distributed-decentralized), or [the CAP meme](http://127.0.0.1:4173/talk/#/05-cap-theorem).
 
