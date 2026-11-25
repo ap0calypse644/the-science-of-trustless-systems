@@ -12,7 +12,7 @@ The planning storyboard spans 48 slides (25 approved Part I concepts; 23 provisi
 
 ## Presentation policy
 
-Owner decision (25 Nov 2026): the lecture uses static or presenter-paced scripted animated slides only. No live audience/presenter inputs that change the educational model, branching buttons, live cryptographic computations or worker searches are required. Preserve ordinary playback/navigation/seek/reset controls, verbal audience predictions, local offline operation and editable art. Use fixed internally consistent illustrative examples, clearly label simulated hashes/proofs/results, never imply they are actual computed cryptographic outputs. This supersedes earlier interactive and real-computation requirements. Existing interactive slide 6 must be converted in a separately reviewed correction; preserve archived diagnostic/staging routes. Future M5d and M6 implementation remain separately gated.
+Owner decision (25 Nov 2026): the lecture uses static or presenter-paced scripted animated slides only. No live audience/presenter inputs that change the educational model, branching buttons, live cryptographic computations or worker searches are required. Preserve ordinary playback/navigation/seek/reset controls, verbal audience predictions, local offline operation and editable art. Use fixed internally consistent illustrative examples, clearly label simulated hashes/proofs/results, never imply they are actual computed cryptographic outputs. This supersedes earlier interactive and real-computation requirements. Issue #18 covers the separately reviewed scripted conversion of slide 6 and preserves archived diagnostic and staging routes. Future M5d and M6 implementation remain separately gated.
 
 ## Development status
 
@@ -99,16 +99,16 @@ Firefox captures all eight beats and the print comparison at 1920×1080 under `t
 
 With the production preview running, open [the staging stills](http://127.0.0.1:4173/talk/staging/) in desktop Firefox. Use Left and Right to compare the opening, courier escalation, and the two possible outcomes of the final reply. Firefox captures are in `test-results/visual-review/m4b-staging/1920x1080/`.
 
-## M5a production review (existing implementation; slide 6 scripted conversion pending)
+## M5a production review
 
 Use desktop Firefox with production preview running. Open [the production bank scene](http://127.0.0.1:4173/talk/#/06-consistency-or-availability), [Why distribute?](http://127.0.0.1:4173/talk/#/03-why-distribute), [the governance comparison](http://127.0.0.1:4173/talk/#/04-centralized-distributed-decentralized), or [the CAP meme](http://127.0.0.1:4173/talk/#/05-cap-theorem).
 
-1. Press Space to play to the next beat, or K to jump there. Let Charlie walk from A to B between Withdrawal and Balance inquiry.
-2. At Choose response, use Tab or the mouse to select **Return 1,000** or **Wait for sync**. The selection keeps the scene paused. Click **Next beat**, press Space after returning focus to the deck, or use the seek slider. Seeking ahead before making a choice stops at the choice.
-3. Review both outcomes. J returns to the choice, where the selected branch can be replaced. R clears the choice and resets the scenario. Leaving and revisiting starts a fresh scene.
-4. At Reconnect, both stored balances become 0. The waiting read returns 0. The stale path retains its earlier answer of 1,000 without issuing a new read. S opens notes and a baseline preview. The [print view](http://127.0.0.1:4173/talk/?print) shows the partitioned balances and both potential responses.
+1. Press Space to play to the next beat or K to jump there. Watch Charlie walk from A to B after the withdrawal.
+2. Pause at **Balance inquiry · Predict** for a verbal prediction. Advance to **Stale reply** to see B return 1,000 while A stores 0.
+3. **Alternative run** restores the same partitioned inquiry before any reply. Continue to **Wait for sync**, then **Reconnect**. Both replicas store 0 on reconnection, and B completes the waiting read with 0.
+4. J steps backward, the seek slider can reach either outcome directly, and R resets to **Synced**. S opens notes with a baseline preview. The [print view](http://127.0.0.1:4173/talk/?print) compares both possible responses under partition.
 
-Firefox production captures are under `test-results/visual-review/m5a-production/<width>x<height>/`.
+The eight checkpoints span 24 seconds at 1×. Firefox production captures are under `test-results/visual-review/m5a-production/<width>x<height>/`.
 
 ## M5a approved staging reference
 

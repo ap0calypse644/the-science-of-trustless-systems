@@ -4,7 +4,7 @@ M0.2 establishes the Reveal.js shell, local build, and shared Firefox and Chromi
 
 ## Presentation policy
 
-Owner decision (25 Nov 2026): the lecture uses static or presenter-paced scripted animated slides only. No live audience/presenter inputs that change the educational model, branching buttons, live cryptographic computations or worker searches are required. Preserve ordinary playback/navigation/seek/reset controls, verbal audience predictions, local offline operation and editable art. Use fixed internally consistent illustrative examples, clearly label simulated hashes/proofs/results, never imply they are actual computed cryptographic outputs. This supersedes earlier interactive and real-computation requirements. Existing interactive slide 6 must be converted in a separately reviewed correction; preserve archived diagnostic/staging routes. Future M5d and M6 implementation remain separately gated.
+Owner decision (25 Nov 2026): the lecture uses static or presenter-paced scripted animated slides only. No live audience/presenter inputs that change the educational model, branching buttons, live cryptographic computations or worker searches are required. Preserve ordinary playback/navigation/seek/reset controls, verbal audience predictions, local offline operation and editable art. Use fixed internally consistent illustrative examples, clearly label simulated hashes/proofs/results, never imply they are actual computed cryptographic outputs. This supersedes earlier interactive and real-computation requirements. Issue #18 covers the separately reviewed scripted conversion of slide 6 and preserves archived diagnostic and staging routes. Future M5d and M6 implementation remain separately gated.
 
 ## Responsibilities
 
@@ -153,15 +153,16 @@ The optional slide 5 picker uses a local object URL for a selected image, with
 no asset path in the build or remote fetch. Production loads the bundled image and retains attribution in speaker notes.
 The asset provenance and rights status are recorded in README.md.
 
-Historical implementation (pending scripted conversion): Slide 6 uses the shared playback clock, with a scene-owned time limit at
-Choose response until the presenter selects a branch. Playback, next beat, and
-seek use the same limit. Selection refreshes the view while retaining time and
-focus. The selected branch survives seeking, changes only at the choice, and
-is cleared by reset or scene disposal. Stored balances, requested/pending/
-completed read state, and returned value derive from time and the selected
-branch. Only the pending read completes after resynchronization. The notes
-preview always renders the synchronized baseline, and the 16:9 print override
-compares the two possible responses under partition.
+### Slide 6 scripted production
+
+The shared clock pauses at eight fixed checkpoints. Absolute time selects a
+scripted bank state and drives Charlie’s existing walk from A to B. The
+initial inquiry and counterfactual rewind share one pre-response state.
+Stored balances, read status and returned value are separate fields. The
+stale run ends with its reply of 1,000. The alternative starts at the
+partitioned inquiry and completes its waiting read with 0 after
+resynchronization. The notes preview renders Synced and the 16:9 print
+override compares the two responses under partition.
 
 ## M5b scripted production scene
 
