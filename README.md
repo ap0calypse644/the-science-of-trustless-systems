@@ -79,11 +79,11 @@ The Firefox suite captures `envelope-beat.png`, `static.png`, and `ledger-beat.p
 Run `npm ci`, `npm run build`, and `npm run preview -- --port 4173 --strictPort`. Open [the production lecture](http://127.0.0.1:4173/talk/) in desktop Firefox. The [development route](http://127.0.0.1:5173/talk/) is available with `npm run dev`.
 
 - Check that the huge hands approach on a diagonal with clear space between them. Alice, Bob and Charlie operate the mechanism, and the title sits in the lower-right open space.
-- Trace each computer cable into its own receptacle in the shared strip. Follow the strip's single supply cord to the loose plug, then trace the phone cable to the charger in the wall. The crosses and NO POWER labels show why the computers stopped together.
+- Trace each computer cable into its own receptacle in the shared strip. Follow the strip's single supply cord to the loose plug, then trace the phone cable to the charger in the wall. The large crosses show the simultaneous outages.
 - Use Left and Right to navigate, Escape for overview, F for fullscreen and S for speaker notes. Space leaves the current slide in place.
 - Open [the print compositions](http://127.0.0.1:4173/talk/?print) to print the two static slides on separate 16:9 pages.
 
-The Firefox tests write review screenshots to `test-results/visual-review/m4a/<width>x<height>/`. The approved reference image files are absent from the repository. The editable artwork follows the descriptions in CONTINUATION.md.
+The Firefox tests write review screenshots to `test-results/visual-review/m4a-reference-pass/<width>x<height>/`. The editable artwork was revised against the owner-supplied concept images, which are kept outside the repository.
 
 ## Desktop Firefox verification
 

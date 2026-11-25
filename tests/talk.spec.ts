@@ -117,7 +117,7 @@ for (const size of [{ width: 1920, height: 1080 }, { width: 1280, height: 720 },
       expect(heading.x + heading.width).toBeLessThan(sheet.x + sheet.width);
       expect(heading.y + heading.height).toBeLessThan(sheet.y + sheet.height);
       if (browserName === 'firefox') {
-        const dir = `test-results/visual-review/m4a/${size.width}x${size.height}`;
+        const dir = `test-results/visual-review/m4a-reference-pass/${size.width}x${size.height}`;
         await mkdir(dir, { recursive: true });
         await page.screenshot({ path: `${dir}/${id}.png` });
       }
