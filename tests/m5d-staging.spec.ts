@@ -25,6 +25,8 @@ test('authored digests, digit bytes and highlighted avalanche positions agree', 
 });
 
 test('only nonce 7 meets the authored target and the verifier repeats that fixture', () => {
+  expect(initialPrefix).toMatch(/^[01]{8}$/);
+  expect(initialPrefix).not.toBe(originalBits.slice(0, 8));
   expect(initialPrefix.startsWith(target)).toBe(false);
   expect(attempts.map(({ nonce }) => nonce)).toEqual([0, 1, 2, 3, 4, 5, 6, 7]);
   expect(attempts.every(({ prefix }) => /^[01]{8}$/.test(prefix))).toBe(true);

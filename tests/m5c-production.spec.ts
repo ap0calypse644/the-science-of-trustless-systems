@@ -189,7 +189,7 @@ test('static slide, print evidence and representative smaller layouts are readab
 
   await page.goto('/talk/?print');
   const print = page.locator('.print-deck');
-  await expect(print.locator('section')).toHaveCount(13);
+  await expect(print.locator('section')).toHaveCount(17);
   const evidence = ['Café IOUs', 'Bob pays Alice 10', 'Signed · rejected · balance 5', 'Signature checked', 'Bob’s local history'];
   for (const [index, id] of [scenes[0].id, scenes[1].id, still, scenes[2].id, scenes[3].id].entries()) {
     await expect(print.locator(`section[id="${id}"]`)).toContainText(evidence[index]);

@@ -20,7 +20,8 @@ export const changedCount = changedBits.filter(Boolean).length;
 
 export const signedRows = [originalRow, 'Bob → Charlie · 5', 'Charlie → Alice · 2'] as const;
 export const target = '0000';
-export const initialPrefix = originalBits.slice(0, 8);
+// Separate authored prefix for the three-row signed batch before adding a nonce.
+export const initialPrefix = '10101101';
 export const attempts = [
   { nonce: 0, prefix: '10110100' },
   { nonce: 1, prefix: '01100010' },

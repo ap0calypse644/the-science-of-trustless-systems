@@ -4,7 +4,7 @@ M0.2 establishes the Reveal.js shell, local build, and shared Firefox and Chromi
 
 ## Presentation policy
 
-Owner decision (25 Nov 2026): the lecture uses static or presenter-paced scripted animated slides only. No live audience/presenter inputs that change the educational model, branching buttons, live cryptographic computations or worker searches are required. Preserve ordinary playback/navigation/seek/reset controls, verbal audience predictions, local offline operation and editable art. Use fixed internally consistent illustrative examples, clearly label simulated hashes/proofs/results, never imply they are actual computed cryptographic outputs. This supersedes earlier interactive and real-computation requirements. Issue #18 covers the separately reviewed scripted conversion of slide 6 and preserves archived diagnostic and staging routes. M5d revised visual staging (14–17) is authorized under issue #20; production and later batches remain separately gated.
+Owner decision (25 Nov 2026): the lecture uses static or presenter-paced scripted animated slides only. No live audience/presenter inputs that change the educational model, branching buttons, live cryptographic computations or worker searches are required. Preserve ordinary playback/navigation/seek/reset controls, verbal audience predictions, local offline operation and editable art. Use internally consistent authored examples. Identify simulated outputs in speaker notes and prompt the presenter to disclose them verbally. Keep substantive technical labels and essential toy-model caveats on slides. This supersedes earlier interactive and real-computation requirements. Issue #18 covers the separately reviewed scripted conversion of slide 6 and preserves archived diagnostic and staging routes. M5d staging is approved and production slides 14–17 are in draft PR #21 for final review under issue #20. Later batches require separate authorization.
 
 ## Responsibilities
 
@@ -214,3 +214,12 @@ patterns for display and compares their bits. It also supplies the scripted
 nonce prefixes, the exact candidate repeated by the verifier and the
 expected-work table. No hash or search runs in the browser. The production
 registry and playback engine are unchanged.
+
+### M5d production on the review branch
+
+The four production scenes use the existing absolute-time presenter engine.
+Each checkpoint displays approved staging geometry. Between checkpoints,
+scene-owned SVG groups move and reveal from normalized time. The fixed nonce
+sequence and verification candidate share the staging fixtures. Notes disclose
+the authored outputs and prompt verbal disclosure. The four print sheets
+hold on the teaching evidence, and the independent staging route stays available.
