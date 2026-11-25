@@ -87,7 +87,7 @@ The Firefox tests write review screenshots to `test-results/visual-review/m4a-re
 
 ## M4b production review
 
-The prototype deck temporarily orders slides 1, 2 and 7. Open [slide 7](http://127.0.0.1:4173/talk/#/07-two-generals) in desktop Firefox. Space plays or pauses, and playback stops at the next named beat. J and K step backward and forward, R resets, and Minus and Plus adjust speed. H hides the controls. S opens notes with a baseline preview. The [print view](http://127.0.0.1:4173/talk/?print) shows the final-reply comparison.
+The prototype deck temporarily orders slides 1, 2 and 7. Open [slide 7](http://127.0.0.1:4173/talk/#/07-two-generals) in desktop Firefox. Space plays or pauses, and playback stops at the next named beat. J and K step backward and forward, R resets, and Minus and Plus adjust speed. H hides the controls. S opens notes with a baseline preview. The final checkpoint holds on both outcomes, with Charlie’s audience-only reaction in the lost-reply panel. The [print view](http://127.0.0.1:4173/talk/?print) shows the two outcomes and the generals’ evidence.
 
 Firefox captures all eight beats and the print comparison at 1920×1080 under `test-results/visual-review/m4b-production/`, plus the final comparison at 1280×720 and 1024×768.
 

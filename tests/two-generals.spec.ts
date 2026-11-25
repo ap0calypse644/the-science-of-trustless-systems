@@ -58,7 +58,11 @@ test('all teaching beats restore identical rendered evidence on exact seek', asy
     if (index === 6) await expect(scene).toContainText('Alternate run');
     if (index === 7) {
       await expect(scene.locator('[data-outcome="delivered"]')).toContainText('She just confirmed it.');
-      await expect(scene.locator('[data-outcome="lost"]')).toContainText('my latest reply?');
+      const lost = scene.locator('[data-outcome="lost"]');
+      await expect(lost).toContainText('my latest reply?');
+      await expect(lost.locator('.messenger-speech')).toHaveText('I give up…');
+      await expect(lost.locator('[data-part="facepalm-hand"] path.hand')).toBeVisible();
+      await expect(scene.locator('[data-outcome="delivered"] .messenger-speech')).toHaveCount(0);
     }
     artwork.push(await scene.innerHTML());
     if (browserName === 'firefox') {
@@ -93,8 +97,14 @@ test('all teaching beats restore identical rendered evidence on exact seek', asy
   }
   await seek(page, 27);
   expect(await scene.innerHTML()).toBe(motion);
+  await expect(scene.locator('.messenger-speech')).toHaveCount(0);
+  await seek(page, 32);
+  expect(await scene.innerHTML()).toBe(artwork[7]);
   await page.keyboard.press('r');
+  await expect(scene.locator('.messenger-speech')).toHaveCount(0);
   expect(await scene.innerHTML()).toBe(artwork[0]);
+  await seek(page, 32);
+  expect(await scene.innerHTML()).toBe(artwork[7]);
 });
 
 test('play moves Charlie, pauses for predictions, and cleans up on navigation', async ({ page }) => {
@@ -140,9 +150,11 @@ test('final comparison is readable at smaller sizes and available in print', asy
   await seek(page, 32);
   for (const [width, height] of [[1280, 720], [1024, 768]]) {
     await page.setViewportSize({ width, height });
-    const caption = (await page.locator('.scene-root .scene-caption').boundingBox())!;
-    const controls = (await page.locator('.presenter').boundingBox())!;
-    expect(caption.y + caption.height).toBeLessThan(controls.y);
+    await expect.poll(async () => {
+      const caption = (await page.locator('.scene-root .scene-caption').boundingBox())!;
+      const controls = (await page.locator('.presenter').boundingBox())!;
+      return controls.y - caption.y - caption.height;
+    }).toBeGreaterThan(0);
     await page.keyboard.press('h');
     const final = page.locator('.scene-root [data-outcome="lost"]');
     await expect(final).toBeVisible();
@@ -166,6 +178,7 @@ test('final comparison is readable at smaller sizes and available in print', asy
   await page.emulateMedia({ media: 'print' });
   const sheet = page.locator('.print-deck [id="07-two-generals"]');
   await expect(sheet.locator('[data-outcome]')).toHaveCount(2);
+  await expect(sheet.locator('.messenger-speech')).toHaveCount(0);
   await expect(sheet.locator('[data-view="alice"]')).toContainText('Did Bob get it?');
   await expect(page.locator('.presenter')).toHaveCount(0);
   if (browserName === 'firefox') {

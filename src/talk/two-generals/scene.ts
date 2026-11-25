@@ -2,7 +2,7 @@ import type { AnimatedScene } from '../../engine/playback';
 import { character } from '../../illustration/character';
 import { envelope } from '../../illustration/props';
 import { svgText } from '../../illustration/svg';
-import { battlefield, late, opening, thought } from './art';
+import { battlefield, late, lostCourier, opening, thought } from './art';
 import { checkpoints, frameAt, type BattlefieldFrame } from './two-generals-model';
 
 const duration = checkpoints[checkpoints.length - 1].time;
@@ -22,10 +22,13 @@ function alternateLabel(final = false): string {
   return `<text class="run-label" x="800" y="181">${final ? 'Two possible endings' : 'Alternate run'}</text>`;
 }
 
-function finalPanel(frame: BattlefieldFrame): string {
+function finalPanel(frame: BattlefieldFrame, showCourier = false): string {
   const outcomes = frame.comparison!;
   return `${alternateLabel(true)}
-    ${(['delivered', 'lost'] as const).map((result, index) => `
+    ${(['delivered', 'lost'] as const).map((result, index) => {
+      const vignette = showCourier && result === 'lost';
+      const evidenceX = vignette ? -86 : 0;
+      return `
       <g data-outcome="${result}" transform="translate(${480 + 640 * index} 690)">
         <path class="outcome-panel" d="M-282-45 Q-102-49 277-43 Q291-42 292-27 L289 112
           Q12 121-289 112 L-291-24 Q-292-42-282-45Z"/>
@@ -34,9 +37,12 @@ function finalPanel(frame: BattlefieldFrame): string {
           <path d="${index ? 'm-7-7 14 14 m-14 0 14-14' : 'm-8 1 6 6 12-14'}"/>
         </g>
         <text class="outcome-heading" y="4">Final reply ${index ? 'is lost' : 'arrives'}</text>
-        <text class="outcome-evidence" y="50">Bob thinks “${svgText(outcomes[result][0])}</text>
-        <text class="outcome-evidence" y="88">${svgText(outcomes[result][1])}”</text>
-      </g>`).join('')}
+        <text class="outcome-evidence" x="${evidenceX}" y="50">Bob thinks “${svgText(outcomes[result][0])}</text>
+        <text class="outcome-evidence" x="${evidenceX}" y="88">${svgText(outcomes[result][1])}”</text>
+        ${vignette ? `<path class="terrain" d="M115 21 v72"/>
+          <g class="lost-courier" transform="translate(-352 -316) scale(.55)">${lostCourier}</g>` : ''}
+      </g>`;
+    }).join('')}
     ${caption(frame.caption)}`;
 }
 
@@ -52,7 +58,7 @@ function delivered(x: number): string {
 }
 
 function valley(frame: BattlefieldFrame, moving: boolean): string {
-  if (frame.ending) return finalPanel(frame);
+  if (frame.ending) return finalPanel(frame, true);
   if (frame.picture === 'opening') return opening;
   const label = frame.segment === 'alternate' ? alternateLabel() : '';
   if (moving && frame.trip) return `${label}${note(frame.trip.words)}

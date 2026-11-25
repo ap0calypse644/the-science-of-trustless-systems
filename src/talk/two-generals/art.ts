@@ -140,18 +140,21 @@ export const late = `
   <text class="scene-caption" x="800" y="856">An acknowledgment of the acknowledgment?</text>
 `;
 
+export const lostCourier = `
+  ${character('charlie', { x: 879, y: 639, scale: .6, pose: 'facepalm' })}
+  ${envelope(907, 749, .27, -16)}
+  <g class="messenger-speech">
+    <path class="head" d="M950 611 Q1028 601 1114 608 Q1132 608 1134 622 L1132 650
+      Q1131 667 1113 668 L963 667 L925 680 L942 653 Q926 634 938 620Z"/>
+    <text x="1036" y="652">I give up…</text>
+  </g>
+`;
+
 export function outcome(arrived: boolean): string {
   return `
-    ${character('charlie', { x: arrived ? 1162 : 879, y: 639, scale: .6,
-      pose: arrived ? 'hold' : 'facepalm', expression: arrived ? 'stand' : 'facepalm',
-      hands: arrived ? { right: { kind: 'envelope' } } : {},
-    })}
-    ${arrived ? '' : `${envelope(907, 749, .27, -16)}
-      <g class="messenger-speech">
-        <path class="head" d="M950 611 Q1028 601 1114 608 Q1132 608 1134 622 L1132 650
-          Q1131 667 1113 668 L963 667 L925 680 L942 653 Q926 634 938 620Z"/>
-        <text x="1036" y="652">I give up…</text>
-      </g>`}
+    ${arrived ? character('charlie', {
+      x: 1162, y: 639, scale: .6, pose: 'hold', hands: { right: { kind: 'envelope' } },
+    }) : lostCourier}
     <g class="${arrived ? 'signal' : 'alarm'}" transform="translate(581 824)">
       <circle class="head" r="19"/>
       <path d="${arrived ? 'm-9 1 6 6 13-15' : 'm-7-7 14 14 m-14 0 14-14'}"/>
