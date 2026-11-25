@@ -1,6 +1,6 @@
 # Roadmap
 
-Explicit owner review gates each milestone. A dependency means an approved deliverable from the preceding work. M0 is approved. The owner approved D — Expressive Minimalism and a pure-white canvas. M1 is merged. M2 is merged. M3 is approved and merged (PR #7); desktop Firefox manual checks passed. M4 is next. See [CONTINUATION.md](CONTINUATION.md) for slide 1–10 approvals and the restart point. Owner chose to finish Part I creative prototyping before authorizing any production slide implementation; issue #8 remains pending. This planning decision does not change the M4 prototype gate or later milestone acceptance criteria. Milestone scope gates remain in force; slide count and time allocations are approximate, not rigid pass/fail targets.
+Explicit owner review gates each milestone. A dependency means an approved deliverable from the preceding work. M0 is approved. The owner approved D — Expressive Minimalism and a pure-white canvas. M1 is merged. M2 is merged. M3 is approved and merged (PR #7); desktop Firefox manual checks passed. M4 is next. See [CONTINUATION.md](CONTINUATION.md) for all 25 Part I approvals and restart point. Creative prototyping for Part I is complete; issue #8 remains pending explicit implementation authorization. This planning checkpoint does not change M4 or later milestone gates. Milestone scope gates remain in force; slide count and time allocations are approximate, not rigid pass/fail targets.
 
 | Milestone | Dependencies | Deliverables | Acceptance criteria |
 | --- | --- | --- | --- |
@@ -10,7 +10,25 @@ Explicit owner review gates each milestone. A dependency means an approved deliv
 | M2 — Illustration library | Approved M1 | Reusable SVG characters, poses, expressions, speech bubbles, and diagram props using deterministic authored paths, plus an illustration review gallery | Original artwork uses consistent roles and line weights. Fixed inputs render repeatably. The gallery demonstrates pose changes, articulation pivots, prop contact, and two approved-style compositions. M2 was approved before M3 began. |
 | M3 — Controls and animation engine | Approved M2 | Standalone diagnostic deck, scene lifecycle, GSAP controller, keyboard bindings, seek and checkpoint UI, notes and navigation integration | Playback starts paused and supports all presenter commands. Navigation remains independent. Revisits reset predictably. Browser checks cover lifecycle, focus, and shortcut conflicts. |
 | M4 — Three prototypes | Approved M3 | Title slide, static single-point-of-failure comic, animated Two Generals slide, speaker notes, representative print stills | Prototypes meet theme and readability goals. The five-minute Two Generals comedy uses individually accessible teaching checkpoints and supports audience predictions about lost plans, lost acknowledgments, and the final-message argument. All three run offline. |
-| M5 — Part I | Approved M4 | Trust slides, speaker and source notes, an explicit-protocol Byzantine Generals demo, a real SHA-256 demo, and responsive educational mining | Part I follows the revised pacing and problem-driven Bitcoin sequence. Rehearsal includes audience beats and assesses flexible pacing. Demo rules, fault models, puzzle labels, playback, and resets are verified. |
+| M5 — Part I | Approved M4 | Remaining approved Part I slides (25 total including M4), speaker and source notes, an explicit-protocol Byzantine Generals demo, a real SHA-256 demo, and responsive binary leading-zero educational mining | Part I follows the revised pacing and problem-driven Bitcoin sequence. Rehearsal includes audience beats and assesses flexible pacing. Demo rules, fault models, puzzle labels, playback, and resets are verified. |
 | M6 — Part II | Approved M5 | Privacy history, MPC, FHE, and ZKP slides and demonstrations with speaker and source notes | All Part II topics are covered and claims, assumptions, and toy labels are reviewed. Part II is rehearsed with flexible pacing. Interactions work offline and reset cleanly. |
 | M7 — AMA, closing, references | Approved M6 | AMA prompt and notes, closing slide, readable references | Audience questions, closing, and references are planned with a flexible 30-minute guide. Citations are traceable without live network access. |
 | M8 — Rehearsal and delivery | Approved M7 | Browser test results, rehearsal and projector checks, offline package and launch instructions, static PDF | Full lecture is rehearsed in desktop Firefox with the nominal two-hour duration as guidance. The package starts with internet disconnected on the presentation machine. Fullscreen, dual-monitor speaker view, responsive scaling, animation performance, and projector readability are verified. Every slide has a readable PDF counterpart. |
+
+## Proposed issue-sized implementation queue
+
+These are planning briefs, not open issues or implementation authorization. Keep each PR owner-reviewed; M4 approval precedes M5.
+
+| Batch | Scope | Specific gate |
+| --- | --- | --- |
+| M4a (existing #8) | 1–2 | Title and shared power comic; owner visual review |
+| M4b | 7 | Two Generals checkpoints, notes and print | 
+| M5a | 3–6 | Distribution, control, rights-cleared CAP visual and both interactive bank outcomes |
+| M5b | 8 | OM model and three/four-general cases; fault assumptions and reset |
+| M5c | 9–13 | Café continuity, ledger arithmetic, medieval note/castle transformation |
+| M5d | 14–16 | SHA-256 vectors, avalanche count, responsive real binary mining, linked pages |
+| M5e | 17–21 | Separate economic beats, valid greatest-work fork selection, subtle reveal |
+| M5f | 22–25 | Bill/cameo, BFT threshold, fictional AI credits, IBC verification |
+| M5g | Integrated 1–25 | Full Part I rehearsal, notes, source/asset audit, browser tests, print stills |
+
+Shared acceptance: preserve diagnostics and presenter engine; offline local assets; deterministic playback, clean reset/seek/navigation; real hash and mining tests, explicit model labels, no fabricated outputs; print compositions and desktop Firefox screenshots for owner review. Parts II/III retain provisional scope and shifted numbering 26–45/46–48. Timing remains flexible within nominal two-hour talk.

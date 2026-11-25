@@ -25,7 +25,9 @@ Use this progression where it helps the lecture flow, from agreement and replica
 
 ## Production slide decisions
 
-[CONTINUATION.md](CONTINUATION.md) records the owner-approved slide 1–10 directions, superseding the historical review compositions below for production slides. Keep pure white and the approved M2 characters; vary heading treatment and composition to suit each slide. The title's bold integrated lettering is not a mandatory template for later slides.
+[CONTINUATION.md](CONTINUATION.md) records the owner-approved slide 1–25 directions, superseding the historical review compositions below for production slides. Keep pure white and the approved M2 characters; vary heading treatment and composition to suit each slide. The title's bold integrated lettering is not a mandatory template for later slides.
+
+Approved visual arcs: café notebook and signatures (9–13); same messenger note and rising central castle in 13; abstract hashing machine/bit grid (14), original 3Blue1Brown-inspired ledger pages and binary hashes (15–16), exhausted Charlie and split subsidy/fees (17–19), competing forks (20), restrained orange Bitcoin reveal (21), café electricity bill with small fictional Sam Altman RAM satire cameo (22), stake/vote diagram (23), escalating fictional AI credit cards (24), kingdoms and proof-carrying courier (25). Use recurring original props, not chat SVGs as production code. Keep abstract explanations uncluttered and controls hideable; real hash demos must compute real values. Slide 5 meme, slide 22 likeness and slide 24 brand marks require asset rights/provenance checks; no unauthorized images, alleged quotations, or remote runtime dependencies. Use approved rights-cleared alternatives where necessary.
 
 ## M1 archive · Candidates A–C
 
