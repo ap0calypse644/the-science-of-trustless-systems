@@ -1,3 +1,4 @@
+import { crown } from '../../illustration/props';
 import { character } from '../../illustration/character';
 import { client, outlet, plug, rack, stagingSheet } from './art';
 
@@ -51,8 +52,7 @@ function operator(person: Operator, x: number, crowned: boolean): string {
   return `<g data-operator="${person}">
     ${character(person, { x, y: crowned ? 328 : 293, scale: crowned ? .66 : .57,
       pose: person === 'charlie' ? 'hold' : 'point', expression: 'stand' })}
-    ${crowned ? `<path class="prop yellow" d="M${x - 25} 301 l-9-34 20 11 13-22 17 20 17-12-5 35Z"/>
-      <path class="fine" d="M${x - 21} 291 q23-6 45-2"/>` : ''}
+    ${crowned ? crown(x, 301) : ''}
   </g>`;
 }
 

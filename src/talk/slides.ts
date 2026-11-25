@@ -1,4 +1,5 @@
 import type { AnimatedScene } from '../engine/playback';
+import { m5cSlides } from './m5c/production';
 import { byzantineSlide } from './m5b/production';
 import { m5aSlides } from './m5a/production';
 import { baselineComposition, comparisonComposition, twoGenerals } from './two-generals/scene';
@@ -41,4 +42,5 @@ Final-message argument. Safety rules out unilateral attack in every possible run
 Source: Joseph Y. Halpern and Yoram Moses, Knowledge and Common Knowledge in a Distributed Environment, Journal of the ACM 37(3), 1990, §3. https://arxiv.org/abs/cs/0006009`,
   },
   byzantineSlide,
+  ...m5cSlides,
 ];

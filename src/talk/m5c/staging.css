@@ -1,0 +1,33 @@
+.talk-sheet.cafe-sheet h1 {
+  top: 37px;
+  left: 50%;
+  width: max-content;
+  transform: translateX(-50%);
+  font: 400 93px/1 Kalam, var(--support);
+}
+
+.cafe-sheet .art { --stroke: 4.1px; font-family: var(--font); }
+.cafe-sheet .art .room-line { stroke: #a49da4; stroke-width: 3px; }
+.cafe-sheet .art .cafe-detail { stroke: #8c8288; stroke-width: 2.8px; }
+.cafe-sheet .art .window-glass { fill: #eef5f9; stroke: #8b9faa; stroke-width: 2.8px; }
+.cafe-sheet .art .cafe-shadow { fill: #eee8ee; stroke: none; }
+.cafe-sheet .art .lamp { fill: #fff4d9; }
+.cafe-sheet .art .table-top { fill: #fbf2e5; }
+.cafe-sheet .art .table-edge { fill: #e8d4c5; }
+.cafe-sheet .art .cup { fill: #dfebf3; }
+.cafe-sheet .art .coffee { fill: #806451; }
+.cafe-sheet .art .bread { fill: #efcc91; }
+.cafe-sheet .art .leaf { fill: #92a983; }
+.cafe-sheet .art .paper { fill: #fffdf5; }
+.cafe-sheet .art .pencil { fill: var(--yellow); }
+.cafe-sheet .art .notebook-cover { fill: #7296b8; }
+.cafe-sheet .art .notebook-lines { stroke: #c6bfc1; stroke-width: 2.1px; }
+.cafe-sheet .art .spine { stroke: #5d7086; stroke-width: 3.2px; }
+.cafe-sheet .art .empty-ledger { stroke: #a797ab; stroke-dasharray: 10 12; }
+.cafe-sheet .art .signature { stroke: #42658a; stroke-width: 3.9px; }
+.cafe-sheet .art .dialogue { font-size: 36px; }
+.cafe-sheet .art .notebook-heading { font-size: 41px; }
+.cafe-sheet .art .entry { font-size: 39px; }
+.cafe-sheet .art .notebook-footer { font-size: 34px; fill: #4a4963; }
+.cafe-sheet .art .entry-rejected { fill: #9d3f47; text-decoration: line-through; }
+.cafe-sheet .art .small-label { font-size: 28px; }

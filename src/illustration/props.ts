@@ -65,3 +65,8 @@ export function flag(x: number, y: number, facing: 'left' | 'right' = 'right'): 
   return `<path class="detail" data-prop="flag" transform="translate(${x} ${y}) scale(${facing === 'left' ? -1 : 1} 1)"
     d="M0 0 V-178 Q49-195 64-177 L50-144 Q26-161 0-148"/>`;
 }
+
+export function crown(x: number, y: number): string {
+  return `<path class="prop yellow" d="M${x - 25} ${y} l-9-34 20 11 13-22 17 20 17-12-5 35Z"/>
+    <path class="fine" d="M${x - 21} ${y - 10} q23-6 45-2"/>`;
+}

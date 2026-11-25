@@ -175,3 +175,27 @@ receiver shows the opening still. The 16:9 print override compares the
 three-general tie and four-general decisions side by side.
 
 Reference: [Lamport, Shostak and Pease, The Byzantine Generals Problem, §§2–3](https://lamport.azurewebsites.net/pubs/byz.pdf).
+
+## M5c café and ledger production
+
+The independent `/talk/m5c/` route uses the static review shell. Its frames
+share original SVG café artwork, cast positions, a blue notebook and a
+signature motif. The staging ledger uses neutral units and checks
+authorization, replay of recorded IDs and available balance before posting.
+Slide 9 uses IOUs. Slides 10–12 share the café balance example and slide 13
+opens a separate run with Charlie holding 20 units.
+
+Slide 13 stages two independent local histories, the folding notebook shapes
+at a midpoint, and the final battlefield. The left and right notebook anchors
+line up with the same envelope geometry used in slides 7 and 8. The hills and
+castle reuse the slide 7 art. Owner-approved staging remains available.
+
+Production uses the same still artwork and the shared paused-entry scene
+contract. The segment renderer mounts artwork when a segment changes and
+derives transforms, ink reveals and opacity from absolute scene time.
+Slide 11 uses the static registry path. Slide 13 interpolates the outlines
+of two paper surfaces at each book’s fixed horizontal anchor. The paper
+contracts to the shared messenger-note outline while the café fades, the
+terrain rises and the generals arrive. Only the terminal frame changes the
+heading. The print composition holds on the two local histories. The
+accounting model remains independent of playback and the DOM.

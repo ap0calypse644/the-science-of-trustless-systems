@@ -16,7 +16,8 @@ const staging = root.hasAttribute('data-staging');
 const print = !staging && params.has('print');
 const stage = root.dataset.staging;
 const m5a = stage === 'm5a' ? await import('./m5a/stills') : undefined;
-const review = stage === 'm5b' ? await import('./m5b/stills')
+const review = stage === 'm5c' ? await import('./m5c/stills')
+  : stage === 'm5b' ? await import('./m5b/stills')
   : staging ? m5a ?? await import('./two-generals/stills') : undefined;
 const registry = new Map<string, SceneRegistration>();
 const entries: readonly TalkSlide[] = review?.stills ?? slides;

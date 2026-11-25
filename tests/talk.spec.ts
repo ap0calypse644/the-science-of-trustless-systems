@@ -5,6 +5,8 @@ const ids = [
   '01-title', '02-single-point-of-failure', '03-why-distribute',
   '04-centralized-distributed-decentralized', '05-cap-theorem',
   '06-consistency-or-availability', '07-two-generals', '08-byzantine-generals',
+  '09-shared-ledger', '10-unauthorized-transactions', '11-infinite-money-glitch',
+  '12-who-controls-the-ledger', '13-double-spend-problem',
 ];
 
 async function openTalk(page: Page): Promise<void> {
@@ -81,7 +83,7 @@ test('local fonts, assets and synchronized speaker notes work with external traf
   await expect(speaker.getByText(/why the devices stopped together/)).toBeVisible();
   await expect(speaker.frameLocator('iframe').first().locator('section.present')).toHaveAttribute('id', ids[1]);
   const preview = speaker.frameLocator('iframe').first();
-  for (const id of ids.slice(2, -1)) {
+  for (const id of ids.slice(2, 7)) {
     await page.keyboard.press('ArrowRight');
     await expect(preview.locator('section.present')).toHaveAttribute('id', id);
   }

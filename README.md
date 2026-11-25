@@ -12,7 +12,7 @@ The planning storyboard spans 48 slides (25 approved Part I concepts; 23 provisi
 
 ## Development status
 
-M0 is approved. The owner approved D — Expressive Minimalism on pure white. M1 merged in PR #3. The M2 illustration library merged in PR #5. The M3 playback engine and diagnostic deck merged in PR #7 after owner review. The owner approved M4a and PR #9 is merged. M4b is owner-approved and merged in PR #11, completing M4. The owner approved M5a and PR #13 is merged. The owner approved M5b staging. Scripted slide 8 is at owner production review in PR #15. All 25 Part I creative directions are approved. The other treatments remain archived for comparison. The project preserves the three-slide engineering diagnostic deck. The framework uses Reveal.js, TypeScript, Vite, Playwright, and npm. M2 uses deterministic authored SVG paths. M3 uses a local GSAP clock for presenter-paced diagnostics.
+M0 is approved. The owner approved D — Expressive Minimalism on pure white. M1 merged in PR #3. The M2 illustration library merged in PR #5. The M3 playback engine and diagnostic deck merged in PR #7 after owner review. The owner approved M4a and PR #9 is merged. M4b is owner-approved and merged in PR #11, completing M4. The owner approved M5a and PR #13 is merged. The owner approved M5b and PR #15 is merged. The owner approved M5c staging. Production slides 9–13 are in draft PR #17 for final review. All 25 Part I creative directions are approved. The other treatments remain archived for comparison. The project preserves the three-slide engineering diagnostic deck. The framework uses Reveal.js, TypeScript, Vite, Playwright, and npm. M2 uses deterministic authored SVG paths. M3 uses a local GSAP clock for presenter-paced diagnostics.
 
 The target is a 16:9 deck with responsive scaling, classroom-projector readability, independent slide and animation controls, and offline operation using bundled assets. A static PDF fallback is an M8 deliverable.
 
@@ -81,13 +81,13 @@ Run `npm ci`, `npm run build`, and `npm run preview -- --port 4173 --strictPort`
 - Check that the huge hands approach on a diagonal with clear space between them. Alice, Bob and Charlie operate the mechanism, and the title sits in the lower-right open space.
 - Trace each computer cable into its own receptacle in the shared strip. Follow the strip's single supply cord to the loose plug, then trace the phone cable to the charger in the wall. The large crosses show the simultaneous outages.
 - Use Left and Right to navigate, Escape for overview, F for fullscreen and S for speaker notes. Space leaves the current slide in place.
-- Open [the print compositions](http://127.0.0.1:4173/talk/?print) to print eight 16:9 sheets, including the CAP, final-reply and Byzantine report comparisons.
+- Open [the print compositions](http://127.0.0.1:4173/talk/?print) to print thirteen 16:9 sheets, including the CAP, final-reply and Byzantine report comparisons.
 
 The Firefox tests write review screenshots to `test-results/visual-review/m4a-reference-pass/<width>x<height>/`. The editable artwork was revised against the owner-supplied concept images, which are kept outside the repository.
 
 ## M4b production review
 
-The production deck orders slides 1–8. Open [slide 7](http://127.0.0.1:4173/talk/#/07-two-generals) in desktop Firefox. Space plays or pauses, and playback stops at the next named beat. J and K step backward and forward, R resets, and Minus and Plus adjust speed. H hides the controls. S opens notes with a baseline preview. The final checkpoint holds on both outcomes, with Charlie’s audience-only reaction in the lost-reply panel. The [print view](http://127.0.0.1:4173/talk/?print) shows the two outcomes and the generals’ evidence.
+Open [slide 7](http://127.0.0.1:4173/talk/#/07-two-generals) in desktop Firefox. Space plays or pauses, and playback stops at the next named beat. J and K step backward and forward, R resets, and Minus and Plus adjust speed. H hides the controls. S opens notes with a baseline preview. The final checkpoint holds on both outcomes, with Charlie’s audience-only reaction in the lost-reply panel. The [print view](http://127.0.0.1:4173/talk/?print) shows the two outcomes and the generals’ evidence.
 
 Firefox captures all eight beats and the print comparison at 1920×1080 under `test-results/visual-review/m4b-production/`, plus the final comparison at 1280×720 and 1024×768.
 
@@ -134,6 +134,42 @@ Firefox production captures are under
 Open [the slide 8 staging deck](http://127.0.0.1:4173/talk/m5b/) in desktop Firefox. Use Left and Right to review the battlefield, Bob’s direct order and Mallory’s report, the three-general tie, Charlie arriving in the foreground, and the [four-general report table](http://127.0.0.1:4173/talk/m5b/#/08-four-generals). These stills stage a scripted animation.
 
 Firefox screenshots are under `test-results/visual-review/m5b-scripted-staging/<width>x<height>/`. The 1920×1080 directory contains all six revised stills. The two smaller directories contain the three- and four-general report tables.
+
+## M5c staging review
+
+Open [the café and ledger stills](http://127.0.0.1:4173/talk/m5c/) in desktop
+Firefox. Use Left and Right to step through all 17 stills. Check Bob’s line in
+[Receipt chaos](http://127.0.0.1:4173/talk/m5c/#/09-receipt-chaos).
+**The Double-Spend Problem** starts with [a fresh 20-unit balance](http://127.0.0.1:4173/talk/m5c/#/13-fresh-balance),
+then shows [conflicting local histories](http://127.0.0.1:4173/talk/m5c/#/13-local-acceptance),
+the [morph midpoint](http://127.0.0.1:4173/talk/m5c/#/13-morph-keyframe),
+and the [battlefield callback](http://127.0.0.1:4173/talk/m5c/#/13-battlefield),
+where the title changes to **We Are Back to the Generals**.
+Firefox captures are under `test-results/visual-review/m5c-staging/<width>x<height>/`.
+The owner approved these 17 staging frames. The route remains available as a
+reference for the production review.
+
+## M5c production review
+
+After rebuilding and starting the preview, use desktop Firefox to open the
+[shared ledger](http://127.0.0.1:4173/talk/#/09-shared-ledger). Use Left and
+Right to navigate slides. Space plays to the next beat, J/K step, R resets,
+Minus/Plus adjust speed, and H hides the controls. S opens speaker notes with
+an opening-frame preview.
+
+| Slide | Duration at 1× | Checkpoints |
+| --- | ---: | --- |
+| [09 A Shared Ledger](http://127.0.0.1:4173/talk/#/09-shared-ledger) | 9 s | Café setup, Receipt chaos, Alice’s idea, Notebook reveal |
+| [10 Unauthorized transactions](http://127.0.0.1:4173/talk/#/10-unauthorized-transactions) | 11.5 s | Notebook open, Unsigned entry, Bob objects, Bob writes and signs, Authorization contrast |
+| [11 The Infinite Money Glitch](http://127.0.0.1:4173/talk/#/11-infinite-money-glitch) | Static | Signed order rejected against Charlie’s five units |
+| [12 Who Controls the Ledger?](http://127.0.0.1:4173/talk/#/12-who-controls-the-ledger) | 9 s | One shared notebook, Missing notebook, Access monopoly, Replicated copies |
+| [13 The Double-Spend Problem](http://127.0.0.1:4173/talk/#/13-double-spend-problem) | 11 s | Fresh balance, Two signatures, Local acceptance, Battlefield reveal |
+
+On slide 13, play from Local acceptance to watch the notebook pages fold into
+the messenger notes. Seek backward from the reveal to see the café and its
+opening title return. The [print view](http://127.0.0.1:4173/talk/?print)
+includes one evidence sheet per slide. Firefox captures are under
+`test-results/visual-review/m5c-production/<width>x<height>/`.
 
 ## Desktop Firefox verification
 
