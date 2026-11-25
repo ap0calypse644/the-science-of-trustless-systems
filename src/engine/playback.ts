@@ -4,11 +4,13 @@ import { SPEEDS, TIME_EPSILON, currentBeat, stepBeat, validateTiming, type Timin
 export interface SceneView {
   render(time: number): void;
   dispose?(): void;
+  reset?(): void;
+  limitTime?(): number;
 }
 
 export interface AnimatedScene extends Timing {
   readonly pauseAtCheckpoints?: boolean;
-  mount(root: HTMLElement, signal: AbortSignal): SceneView;
+  mount(root: HTMLElement, signal: AbortSignal, refresh?: () => void): SceneView;
 }
 
 export interface PlaybackState {
@@ -17,7 +19,7 @@ export interface PlaybackState {
     readonly time: number;
     readonly duration: number;
     readonly beat: string;
-    readonly status: 'paused' | 'playing' | 'ended';
+    readonly status: 'paused' | 'playing' | 'ended' | 'blocked';
   } | null;
 }
 
@@ -42,7 +44,9 @@ export class Playback {
     if (!definition) return;
     validateTiming(definition);
     const lifetime = new AbortController();
-    const view = definition.mount(root, lifetime.signal);
+    const view = definition.mount(root, lifetime.signal, () => {
+      if (this.active?.lifetime === lifetime) this.render();
+    });
     const timeline = gsap.timeline({ paused: true });
     const active: ActiveScene = { definition, root, lifetime, view, timeline };
     timeline.to({ elapsed: 0 }, { elapsed: definition.duration, duration: definition.duration, ease: 'none' });
@@ -74,9 +78,12 @@ export class Playback {
     }
     const { timeline, definition } = active;
     const time = timeline.time();
+    const limit = active.view.limitTime?.() ?? definition.duration;
     this.publish({ speed, scene: {
       time, duration: definition.duration, beat: currentBeat(definition, time).label,
-      status: time >= definition.duration - TIME_EPSILON ? 'ended' : timeline.paused() ? 'paused' : 'playing',
+      status: time >= definition.duration - TIME_EPSILON ? 'ended'
+        : time >= limit - TIME_EPSILON ? 'blocked'
+          : timeline.paused() ? 'paused' : 'playing',
     } });
   }
 
@@ -88,9 +95,12 @@ export class Playback {
   play(): void {
     const active = this.active;
     if (!active || this.overview || active.timeline.time() >= active.definition.duration - TIME_EPSILON) return;
-    if (active.definition.pauseAtCheckpoints) {
-      active.stopAt = stepBeat(active.definition, active.timeline.time(), 1).time;
-    }
+    const limit = active.view.limitTime?.() ?? active.definition.duration;
+    if (active.timeline.time() >= limit - TIME_EPSILON) return;
+    const next = active.definition.pauseAtCheckpoints
+      ? stepBeat(active.definition, active.timeline.time(), 1).time : active.definition.duration;
+    active.stopAt = active.definition.pauseAtCheckpoints || limit < active.definition.duration
+      ? Math.min(limit, next) : undefined;
     active.timeline.play();
     this.report();
   }
@@ -109,11 +119,15 @@ export class Playback {
     const active = this.active;
     if (!active || !Number.isFinite(time)) return;
     active.stopAt = undefined;
-    active.timeline.pause().time(Math.max(0, Math.min(active.definition.duration, time)), true);
+    const limit = active.view.limitTime?.() ?? active.definition.duration;
+    active.timeline.pause().time(Math.max(0, Math.min(limit, time)), true);
     this.render();
   }
 
-  reset(): void { this.seek(0); }
+  reset(): void {
+    this.active?.view.reset?.();
+    this.seek(0);
+  }
 
   checkpoint(direction: -1 | 1): void {
     const active = this.active;

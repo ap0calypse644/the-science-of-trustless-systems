@@ -1,4 +1,5 @@
 import type { AnimatedScene } from '../engine/playback';
+import { m5aSlides } from './m5a/production';
 import { baselineComposition, comparisonComposition, twoGenerals } from './two-generals/scene';
 import { failureComposition } from './failure-art';
 import { titleComposition } from './title-art';
@@ -22,6 +23,7 @@ export const slides: readonly TalkSlide[] = [
     composition: failureComposition,
     notes: 'Ask why the devices stopped together. Trace each computer to the strip, then follow the strip lead to the disconnected plug. Charlie’s charger draws power directly from the wall. The computers share a dependency. In this example the strip is their sole power source and none has a battery or backup supply.',
   },
+  ...m5aSlides,
   {
     id: '07-two-generals',
     composition: baselineComposition,

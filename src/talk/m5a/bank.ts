@@ -1,9 +1,9 @@
 import { character } from '../../illustration/character';
 import { svgText } from '../../illustration/svg';
 import { stagingSheet } from './art';
+import type { Response } from './bank-model';
 
-interface BankStill {
-  id: string;
+interface BankArt {
   label: string;
   partition: boolean;
   a: '1,000' | '0';
@@ -11,7 +11,12 @@ interface BankStill {
   charlie: 'a' | 'b';
   dialogue?: string;
   cash?: boolean;
-  response?: 'choice' | 'stale' | 'wait' | 'reconnected';
+  response?: Response;
+  walking?: boolean;
+}
+
+interface BankStill extends BankArt {
+  id: string;
   notes: string;
 }
 
@@ -74,6 +79,14 @@ function money(x: number): string {
 
 function response(kind: BankStill['response']): string {
   if (!kind) return '';
+  if (kind === 'print') return `<g data-response="print">
+    <path class="proposal gold-wash" d="M158 761 Q398 750 771 759 L770 855 Q408 861 160 853Z"/>
+    <path class="proposal blue-wash" d="M835 759 Q1130 752 1441 759 L1442 855 Q1121 861 835 853Z"/>
+    <text class="callout" x="463" y="801">Return 1,000 units</text>
+    <text class="minor-label" x="463" y="835">Stale answer after the withdrawal</text>
+    <text class="callout" x="1136" y="801">Wait for synchronization</text>
+    <text class="minor-label" x="1136" y="835">Read stays pending while partitioned</text>
+  </g>`;
   if (kind === 'choice') return `<g data-response="choice">
     <path class="proposal blue-wash" d="M415 784 Q570 776 759 783 L761 841 Q598 846 415 841Z"/>
     <path class="proposal green-wash" d="M839 784 Q1030 775 1185 784 L1183 841 Q1013 845 838 841Z"/>
@@ -84,6 +97,7 @@ function response(kind: BankStill['response']): string {
     stale: ['Returned: 1,000 units', 'Stale answer'],
     wait: ['Read pending', 'No answer while the link is down'],
     reconnected: ['Returned: 0 units', 'Waiting read completes'],
+    'reconnected-stale': ['Earlier answer: 1,000 units', 'Both stored balances now synced'],
   }[kind];
   return `<g data-response="${kind}">
     <path class="proposal ${kind === 'stale' ? 'gold-wash' : 'blue-wash'}" d="M494 743 Q771 731 1111 742
@@ -118,24 +132,30 @@ const beats: readonly BankStill[] = [
     notes: 'Following the waiting outcome, the link comes back, both replicas synchronize to 0, and B completes the pending read. Eventual convergence does not retroactively make a stale read linearizable. These stills illustrate a history, not a complete protocol or full guarantees.' },
 ];
 
-export const bankStills = beats.map(({ id, label, partition, a, b, charlie, dialogue, cash, response: answer, notes }) => {
+export function bankComposition({
+  label, partition, a, b, charlie, dialogue, cash, response: answer, walking,
+}: BankArt): string {
   const x = charlie === 'a' ? 431 : 1275;
-  return {
-    id: `06-${id}`,
-    notes: `${label}. ${notes}`,
-    composition: stagingSheet('Consistency or Availability?',
-      `${label}. Branch A stores ${a} units and branch B stores ${b} units.`, `
-      <path class="ground-line" d="M83 553 Q327 560 602 548 M996 551 Q1256 540 1522 552"/>
-      <path class="fine walkway" d="M180 714 Q417 736 607 724 M982 725 Q1229 734 1451 713"/>
-      ${connection(partition)}
-      ${branch(333, 'alice', a)}${branch(1267, 'bob', b)}
-      ${character('charlie', { x, y: 627, scale: .72, pose: cash ? 'point' : 'hold',
+  return stagingSheet('Consistency or Availability?',
+    `${label}. Branch A stores ${a} units and branch B stores ${b} units.`, `
+    <path class="ground-line" d="M83 553 Q327 560 602 548 M996 551 Q1256 540 1522 552"/>
+    <path class="fine walkway" d="M180 714 Q417 736 607 724 M982 725 Q1229 734 1451 713"/>
+    ${connection(partition)}
+    ${branch(333, 'alice', a)}${branch(1267, 'bob', b)}
+    <g data-walk>
+      ${character('charlie', { x, y: 627, scale: .72, pose: walking ? 'run' : cash ? 'point' : 'hold',
         facing: cash ? 'right' : 'left', expression: cash ? 'excited' : 'stand',
-        angles: cash ? { rightArm: 12 } : {} })}
-      ${dialogue ? inquiry(dialogue) : ''}
-      ${cash ? `${money(492)}
-        <text class="callout" x="800" y="678">Withdrawal complete</text>` : ''}
-      ${response(answer)}
-    `),
-  };
-});
+        angles: cash && !walking ? { rightArm: 12 } : {} })}
+      ${cash ? money(walking ? 468 : 492) : ''}
+    </g>
+    ${dialogue ? inquiry(dialogue) : ''}
+    ${cash && !walking ? '<text class="callout" x="800" y="678">Withdrawal complete</text>' : ''}
+    ${response(answer)}
+  `);
+}
+
+export const bankStills = beats.map(({ id, label, notes, ...art }) => ({
+  id: `06-${id}`,
+  notes: `${label}. ${notes}`,
+  composition: bankComposition({ ...art, label }),
+}));

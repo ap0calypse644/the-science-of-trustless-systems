@@ -1,3 +1,4 @@
+import { capNotes, distributionNotes, governanceNotes } from './notes';
 import { bankStills } from './bank';
 import { governance, resilience } from './distribution';
 import './staging.css';
@@ -19,9 +20,9 @@ const cap = `<div class="talk-sheet m5a-sheet cap-sheet">
 </div>`;
 
 export const stills = [
-  { id: '03-why-distribute', composition: resilience, notes: 'The two surviving clusters have independent power and replicas. Alice’s request is rerouted by the configured failover path while Bob continues working. Independent failure domains and replication make this possible. Distribution can also help spread load or reduce latency when serving from locations closer to users.' },
-  { id: '04-centralized-distributed-decentralized', composition: governance, notes: 'The purple dashed lines represent management. Solid blue lines represent network links. The same deployment can be governed centrally or by independent operators; operating separate servers alone does not settle who sets the rules or how control is distributed.' },
-  { id: '05-cap-theorem', composition: cap, notes: 'Use the meme to name the three terms. CAP is not “pick any two.” With a partition, an asynchronous read/write service cannot guarantee both linearizability and availability to every request at a non-failing node. Availability here is a property of responses in the model, rather than uptime. See Gilbert and Lynch, DOI 10.1145/564585.564601.' },
+  { id: '03-why-distribute', composition: resilience, notes: distributionNotes },
+  { id: '04-centralized-distributed-decentralized', composition: governance, notes: governanceNotes },
+  { id: '05-cap-theorem', composition: cap, notes: capNotes },
   ...bankStills,
 ];
 
