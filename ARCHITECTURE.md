@@ -112,3 +112,16 @@ For PDF, propose a print mode driven by reviewed stills or compact sequences fro
 - Use Playwright to cover initial load, independent slide and playback state, pause/resume/restart, seek and speed, checkpoint movement, focus and shortcuts, overview, and repeatable interaction resets. Run the shared production smoke suite in both browsers. Verify notes, fullscreen, dual-monitor placement, scaling, and future animation performance separately in desktop Firefox on rehearsal hardware.
 - Serve the production bundle locally during offline tests. Allow only the production preview origin for page requests, reject unexpected WebSockets, and fail on runtime errors or failed asset loads while exercising the deck and speaker view. Extend coverage to bundled fonts, animations, and interactions when available. Repeat with internet disconnected on the presentation machine.
 - Compare representative SVG states with fixed seeds, viewport, and timeline positions. Verify text, contrast, clipping, and PDF output visually and assess readability on classroom hardware.
+
+## M4a production lecture
+
+Vite builds the independent lecture at `/talk/`. Its ordered registry in
+`src/talk/slides.ts` supplies stable IDs, editable compositions and speaker notes.
+The static sheets reuse M2 artwork and fonts, and have no scene lifecycle or
+playback panel. The entry reuses the M3 Reveal shell and shortcut adapter,
+registering only the note command alongside navigation, fullscreen and overview.
+Reveal loads the same baseline compositions in the notes receiver.
+
+The `?print` view uses the same compositions with print layout applied before
+Reveal initializes. Each 16:9 sheet occupies one page. The two prototype stills
+are available for review here. Lecture-wide PDF delivery remains part of M8.

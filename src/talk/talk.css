@@ -1,0 +1,96 @@
+body { background: var(--paper); }
+.reveal .slides > section { padding: 0; }
+
+.talk-sheet {
+  position: relative;
+  width: 1920px;
+  height: 1080px;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font);
+  text-align: left;
+}
+
+.talk-sheet .art { position: absolute; inset: 0; }
+.talk-sheet .art .fine { stroke-width: 3.3px; }
+.talk-sheet .art .actor-line { stroke-width: 6px; }
+.talk-sheet .art .custom-arms [data-part$="-arm"] { display: none; }
+.failure-sheet .art .seated [data-part$="-leg"] { display: none; }
+.talk-sheet .art .skin { fill: #fffefa; stroke-width: 6.8px; }
+.talk-sheet .art .cuff { stroke-width: 7px; }
+.talk-sheet .art .contour { stroke-width: 3px; }
+.talk-sheet .art .giant-hand .hatch { stroke: var(--ink); stroke-width: 1.65px; }
+.talk-sheet .art .scaffold { stroke-width: 4.4px; }
+.talk-sheet .art .rope-edge { stroke-width: 7px; }
+.talk-sheet .art .rope { stroke: var(--yellow); stroke-width: 4.6px; }
+.talk-sheet .art .rope-twist { stroke: #6e563c; stroke-width: 1.4px; stroke-dasharray: 2 8; }
+.talk-sheet .art .blue-ink { stroke: var(--blue); }
+.talk-sheet .art .gear { stroke-width: 5.3px; }
+.talk-sheet .art .verification { stroke-width: 6.5px; }
+.talk-sheet .art .gold { stroke: var(--yellow); stroke-width: 9px; }
+.talk-sheet .art .brush-underline { stroke-width: 11px; }
+
+.failure-sheet .art .cable { stroke-width: 5.6px; }
+.failure-sheet .art .heavy-cable { stroke-width: 12px; }
+.failure-sheet .art .cable-glint { stroke: #c6c2ca; stroke-width: 3px; }
+.failure-sheet .art .lavender { fill: #e7deef; stroke: none; }
+.failure-sheet .art .blue-tint { fill: #d7e7ee; }
+.failure-sheet .art .outlined { stroke: currentColor; }
+.failure-sheet .art .dark-fill { fill: #41434b; stroke: none; }
+.failure-sheet .art .plug-fill { fill: #656270; }
+.failure-sheet .art .strip-fill { fill: #faf5eb; }
+.failure-sheet .art .screen-detail { stroke: #e5e7eb; stroke-width: 2.6px; }
+.failure-sheet .art .outage { stroke: #ee786e; stroke-width: 10px; }
+.failure-sheet .art .accent { stroke-width: 6.5px; }
+.failure-sheet .art .ink-fill { fill: var(--ink); stroke: none; }
+.failure-sheet .art .charge-mark { stroke: white; stroke-width: 4px; }
+
+.talk-sheet h1 { position: absolute; z-index: 1; margin: 0; }
+
+.title-sheet h1 {
+  left: 1001px;
+  top: 607px;
+  font: 400 85px/.86 Kalam, var(--support);
+  transform: rotate(-6deg);
+  transform-origin: left 50%;
+  white-space: nowrap;
+}
+
+.title-sheet h1 span { display: block; margin: 0 0 15px 215px; }
+
+.title-sheet h1 strong {
+  display: block;
+  font-size: 186px;
+  line-height: .89;
+  font-synthesis: weight;
+  letter-spacing: -5px;
+  -webkit-text-stroke: 4px var(--ink);
+}
+
+.title-sheet h1 strong:last-child { padding-left: 53px; }
+
+.failure-sheet h1 {
+  top: 6px;
+  left: 50%;
+  width: max-content;
+  transform: translateX(-50%);
+  text-align: center;
+  font: 400 124px/1.06 var(--font);
+}
+
+.print-deck > .slides > section {
+  container-type: inline-size;
+  width: min(1920px, 100%);
+  aspect-ratio: 16 / 9;
+  margin: 0 auto;
+}
+
+.print-deck .talk-sheet { transform: scale(calc(100cqw / 1920px)); transform-origin: top left; }
+.print-deck > .slides > section { overflow: hidden; }
+
+@page { size: 16in 9in; margin: 0; }
+@media print {
+  body { margin: 0; print-color-adjust: exact; }
+  .print-deck > .slides > section { break-inside: avoid; break-after: page; }
+  .print-deck > .slides > section:last-child { break-after: auto; }
+}
