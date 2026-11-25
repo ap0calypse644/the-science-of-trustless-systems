@@ -14,16 +14,11 @@ const supplies = [
 ];
 
 export const failureComposition = `<div class="talk-sheet failure-sheet">
-  <h1>Single Point of Failure</h1>
-  <p>One plug to rule them all</p>
+  <h1>One plug to rule them all</h1>
   <svg class="art" viewBox="0 0 1672 940.5" role="img"
        aria-label="Five devices show outage crosses. Their separate cords plug into the same power strip, whose supply plug lies disconnected. Charlie holds a charger in the wall socket, and its cord runs to a charging phone on his desk.">
-    <path class="gold" d="M409 136 Q567 111 684 119 M700 117 Q1041 94 1262 131
+    <path class="gold" d="M409 153 Q567 133 684 139 M700 138 Q1041 116 1262 148
       M352 62 l-33-20 m20 47-39-2 m44 26-29 10 M1318 62 l29-21 m-21 47 39-6 m-34 32 24 11"/>
-    <path class="lavender" d="M578 155 Q835 131 1086 152 Q1127 159 1117 183 Q1112 199 1085 197
-      Q845 187 582 202 Q554 203 556 181 Q557 164 578 155Z"/>
-    <path class="fine" d="M536 165 l-18-7 m16 27-23 2 m25 9-15 11 M1136 166 l17-9 m-15 23 23 2 m-24 10 15 11"/>
-
     <g class="lavender">
       <ellipse cx="259" cy="446" rx="123" ry="16"/>
       <ellipse cx="561" cy="420" rx="119" ry="14"/>

@@ -78,16 +78,6 @@ body { background: var(--paper); }
   font: 400 124px/1.06 var(--font);
 }
 
-.failure-sheet p {
-  position: absolute;
-  z-index: 1;
-  top: 164px;
-  width: 100%;
-  margin: 0;
-  text-align: center;
-  font: 54px/1.15 Kalam, var(--support);
-}
-
 .print-deck > .slides > section {
   container-type: inline-size;
   width: min(1920px, 100%);
