@@ -9,9 +9,11 @@ import './talk.css';
 const root = document.querySelector<HTMLElement>('main')!;
 const list = root.querySelector<HTMLElement>('.slides')!;
 const params = new URLSearchParams(location.search);
-const print = params.has('print');
+const staging = root.hasAttribute('data-staging');
+const print = !staging && params.has('print');
+const review = staging ? await import('./staging/stills') : undefined;
 
-for (const { id, composition, notes } of slides) {
+for (const { id, composition, notes } of review?.stills ?? slides) {
   const section = document.createElement('section');
   section.id = id;
   section.innerHTML = composition;

@@ -1,0 +1,33 @@
+.generals-sheet h1 {
+  top: 55px;
+  width: 100%;
+  text-align: center;
+  font: 400 93px/1 Kalam, var(--support);
+}
+
+.generals-sheet .art { --stroke: 4.2px; }
+.generals-sheet .art .crag { fill: #f2eef0; stroke: #b7b4b9; stroke-width: 2.6px; }
+.generals-sheet .art .ridge { stroke: #b7b4b9; stroke-width: 2.3px; }
+.generals-sheet .art .hill { stroke: #49464b; }
+.generals-sheet .art .blue-wash { fill: #edf4f8; }
+.generals-sheet .art .green-wash { fill: #eef5ec; }
+.generals-sheet .art .terrain { stroke: #868487; stroke-width: 2.1px; }
+.generals-sheet .art .road { stroke: #c0aba1; stroke-width: 3px; stroke-dasharray: 9 15; }
+.generals-sheet .art .castle-shadow { fill: #eae5e7; stroke: none; }
+.generals-sheet .art .castle-front { fill: #f6f2ed; }
+.generals-sheet .art .castle-side { fill: #d9d1ce; }
+.generals-sheet .art .gate { fill: #dfd4c9; }
+.generals-sheet .art .brick { stroke: #615b61; stroke-width: 2.2px; }
+.generals-sheet .art .slit { fill: #625c63; stroke-width: 2px; }
+.generals-sheet .art .fine,
+.generals-sheet .art .rank { stroke-width: 3.2px; }
+.generals-sheet .art .mark { stroke: white; stroke-width: 3px; }
+.generals-sheet .art .thought { stroke-width: 3.5px; }
+.generals-sheet .art .gesture { stroke: #785d93; stroke-width: 3px; }
+.generals-sheet .art text { font-family: var(--font); }
+.generals-sheet .art .thought-line { font-size: 43px; }
+.generals-sheet .art .camp-name { font-size: 39px; }
+.generals-sheet .art .alice-name { color: #315a80; }
+.generals-sheet .art .bob-name { color: #386643; }
+.generals-sheet .art .courier-name { color: #634582; font-size: 34px; }
+.generals-sheet .art .scene-caption { font-size: 48px; }

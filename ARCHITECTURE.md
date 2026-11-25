@@ -125,3 +125,15 @@ Reveal loads the same baseline compositions in the notes receiver.
 The `?print` view uses the same compositions with print layout applied before
 Reveal initializes. Each 16:9 sheet occupies one page. The two prototype stills
 are available for review here. Lecture-wide PDF delivery remains part of M8.
+
+## M4b staging review
+
+The separate `/talk/staging/` entry uses the same static shell to review four
+authored frames. They share the battlefield and keep Alice and Bob's evidence in
+separate thought bubbles. The last two frames pair the same final send with
+different delivery outcomes. The production deck and its print view continue to
+use the two M4a sheets. The M3 playback integration and slide 7 print composition
+follow the staging approval gate.
+
+Teaching reference for the later animation is Halpern and Moses,
+[Knowledge and Common Knowledge in a Distributed Environment](https://arxiv.org/abs/cs/0006009).
