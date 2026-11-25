@@ -14,8 +14,10 @@ const list = root.querySelector<HTMLElement>('.slides')!;
 const params = new URLSearchParams(location.search);
 const staging = root.hasAttribute('data-staging');
 const print = !staging && params.has('print');
-const m5a = root.dataset.staging === 'm5a' ? await import('./m5a/stills') : undefined;
-const review = staging ? m5a ?? await import('./two-generals/stills') : undefined;
+const stage = root.dataset.staging;
+const m5a = stage === 'm5a' ? await import('./m5a/stills') : undefined;
+const review = stage === 'm5b' ? await import('./m5b/stills')
+  : staging ? m5a ?? await import('./two-generals/stills') : undefined;
 const registry = new Map<string, SceneRegistration>();
 const entries: readonly TalkSlide[] = review?.stills ?? slides;
 

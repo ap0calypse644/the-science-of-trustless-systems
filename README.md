@@ -12,7 +12,7 @@ The planning storyboard spans 48 slides (25 approved Part I concepts; 23 provisi
 
 ## Development status
 
-M0 is approved. The owner approved D — Expressive Minimalism on pure white. M1 merged in PR #3. The M2 illustration library merged in PR #5. The M3 playback engine and diagnostic deck merged in PR #7 after owner review. The owner approved M4a and PR #9 is merged. M4b is owner-approved and merged in PR #11, completing M4. The owner approved M5a staging and the production implementation is at owner review in PR #13. All 25 Part I creative directions are approved. The other treatments remain archived for comparison. The project preserves the three-slide engineering diagnostic deck. The framework uses Reveal.js, TypeScript, Vite, Playwright, and npm. M2 uses deterministic authored SVG paths. M3 uses a local GSAP clock for presenter-paced diagnostics.
+M0 is approved. The owner approved D — Expressive Minimalism on pure white. M1 merged in PR #3. The M2 illustration library merged in PR #5. The M3 playback engine and diagnostic deck merged in PR #7 after owner review. The owner approved M4a and PR #9 is merged. M4b is owner-approved and merged in PR #11, completing M4. The owner approved M5a and PR #13 is merged. M5b staging is at owner review. All 25 Part I creative directions are approved. The other treatments remain archived for comparison. The project preserves the three-slide engineering diagnostic deck. The framework uses Reveal.js, TypeScript, Vite, Playwright, and npm. M2 uses deterministic authored SVG paths. M3 uses a local GSAP clock for presenter-paced diagnostics.
 
 The target is a 16:9 deck with responsive scaling, classroom-projector readability, independent slide and animation controls, and offline operation using bundled assets. A static PDF fallback is an M8 deliverable.
 
@@ -117,6 +117,12 @@ Firefox screenshots are in `test-results/visual-review/m5a-staging/<width>x<heig
 [Know Your Meme traces the original two-character frame](https://knowyourmeme.com/memes/spider-man-pointing-at-spider-man/) to the 1967 animated episode “Double Identity.” Production slide 5 bundles the distinct [three-character Imgflip template 206014687](https://imgflip.com/memetemplate/206014687/3-Spidermen-Pointing-at-each-other), served as [3enly7.jpg](https://i.imgflip.com/3enly7.jpg), a 600×551 JPEG listed as a user upload. The inspected file has SHA-256 `44e3d3465eea6ea9e51656ff0b7f5e326a3edd7f5d778aa43c4bb3db269ae823`. Its editor, first publication, and permission to redistribute the composited image and underlying cartoon art are unverified. The template page and [Imgflip’s terms](https://imgflip.com/terms) do not establish permission for this project to bundle it.
 
 The project owner authorized the exact file for this repository in issue #12. Public access to the template is distinct from a free license. This third-party image is excluded from the project’s original-art license claims. The production and print views load the local bundle. The historical staging route retains its labeled placeholder and local-only picker.
+
+## M5b staging review
+
+Open [the slide 8 staging deck](http://127.0.0.1:4173/talk/m5b/) in desktop Firefox. Use Left and Right to review the battlefield, each private direct order, forwarding, the fourth lieutenant, and loyal-commander validity. The [last still](http://127.0.0.1:4173/talk/m5b/#/08-protocol-layout) shows the proposed presenter controls. The controls are disabled in the mock.
+
+Firefox screenshots are under `test-results/visual-review/m5b-staging/<width>x<height>/`. The 1920×1080 directory contains all seven stills. The two smaller directories contain the four-general result, loyal-commander comparison and protocol layout.
 
 ## Desktop Firefox verification
 

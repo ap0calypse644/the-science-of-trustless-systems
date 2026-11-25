@@ -8,26 +8,26 @@
 }
 
 .generals-sheet .art { --stroke: 4.2px; }
-.generals-sheet .art .crag { fill: #f2eef0; stroke: #b7b4b9; stroke-width: 2.6px; }
-.generals-sheet .art .ridge { stroke: #b7b4b9; stroke-width: 2.3px; }
-.generals-sheet .art .hill { stroke: #49464b; }
-.generals-sheet .art .blue-wash { fill: #edf4f8; }
-.generals-sheet .art .green-wash { fill: #eef5ec; }
-.generals-sheet .art .terrain { stroke: #868487; stroke-width: 2.1px; }
-.generals-sheet .art .road { stroke: #c0aba1; stroke-width: 3px; stroke-dasharray: 9 15; }
-.generals-sheet .art .castle-shadow { fill: #eae5e7; stroke: none; }
-.generals-sheet .art .castle-front { fill: #f6f2ed; }
-.generals-sheet .art .castle-side { fill: #d9d1ce; }
-.generals-sheet .art .gate { fill: #dfd4c9; }
-.generals-sheet .art .brick { stroke: #615b61; stroke-width: 2.2px; }
-.generals-sheet .art .slit { fill: #625c63; stroke-width: 2px; }
+:is(.generals-sheet, .byz-sheet) .art .crag { fill: #f2eef0; stroke: #b7b4b9; stroke-width: 2.6px; }
+:is(.generals-sheet, .byz-sheet) .art .ridge { stroke: #b7b4b9; stroke-width: 2.3px; }
+:is(.generals-sheet, .byz-sheet) .art .hill { stroke: #49464b; }
+:is(.generals-sheet, .byz-sheet) .art .blue-wash { fill: #edf4f8; }
+:is(.generals-sheet, .byz-sheet) .art .green-wash { fill: #eef5ec; }
+:is(.generals-sheet, .byz-sheet) .art .terrain { stroke: #868487; stroke-width: 2.1px; }
+:is(.generals-sheet, .byz-sheet) .art .road { stroke: #c0aba1; stroke-width: 3px; stroke-dasharray: 9 15; }
+:is(.generals-sheet, .byz-sheet) .art .castle-shadow { fill: #eae5e7; stroke: none; }
+:is(.generals-sheet, .byz-sheet) .art .castle-front { fill: #f6f2ed; }
+:is(.generals-sheet, .byz-sheet) .art .castle-side { fill: #d9d1ce; }
+:is(.generals-sheet, .byz-sheet) .art .gate { fill: #dfd4c9; }
+:is(.generals-sheet, .byz-sheet) .art .brick { stroke: #615b61; stroke-width: 2.2px; }
+:is(.generals-sheet, .byz-sheet) .art .slit { fill: #625c63; stroke-width: 2px; }
 .generals-sheet .art .fine,
 .generals-sheet .art .rank { stroke-width: 3.2px; }
 .generals-sheet .art .mark { stroke: white; stroke-width: 3px; }
-.generals-sheet .art .thought { stroke-width: 3.5px; }
+:is(.generals-sheet, .byz-sheet) .art .thought { stroke-width: 3.5px; }
 .generals-sheet .art .gesture { stroke: #785d93; stroke-width: 3px; }
 .generals-sheet .art text { font-family: var(--font); }
-.generals-sheet .art .thought-line { font-size: 43px; }
+:is(.generals-sheet, .byz-sheet) .art .thought-line { font-size: 43px; }
 .generals-sheet .art .camp-name { font-size: 39px; }
 .generals-sheet .art .alice-name { color: #315a80; }
 .generals-sheet .art .bob-name { color: #386643; }
