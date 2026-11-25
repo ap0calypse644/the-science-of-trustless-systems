@@ -7,8 +7,10 @@ import { aliceView, bobView, fresh, line, toAlice, toBob } from './ledger-model'
 import { notebook } from './notebook';
 
 const title = 'The Double-Spend Problem';
-const cafe = cafeRoom + actor('alice', 'point', 'stand') + actor('bob', 'point', 'suspicious', 1295)
-  + actor('charlie', 'hold', 'suspicious', 800, 359) + cafeTable;
+const revealTitle = 'We Are Back to the Generals';
+const cafeCast = actor('alice', 'point', 'stand') + actor('bob', 'point', 'suspicious', 1295)
+  + actor('charlie', 'hold', 'suspicious', 800, 359);
+const cafe = cafeRoom + cafeCast + cafeTable;
 
 // Use the same sealed messenger note as slides 7 and 8, with the payment on its paper slip.
 function message(x: number, y: number, angle: number, words: string): string {
@@ -50,11 +52,13 @@ const rising = `<g data-transform="midpoint">
   ${foldingBook(positions.bob, line(toBob), 8)}
 </g>`;
 
-const battlefield = `<g data-transform="battlefield" class="generals-sheet"><g class="art">
-  ${landscape}${castle}
+const generals = `
   ${character('alice', { x: 371, y: 391, scale: .89, pose: 'point', expression: 'suspicious' })}
   ${character('bob', { x: 1229, y: 388, scale: .89, pose: 'suspicious', facing: 'left' })}
-  ${character('charlie', { x: 800, y: 693, scale: .76, pose: 'hold', expression: 'excited' })}
+  ${character('charlie', { x: 800, y: 693, scale: .76, pose: 'hold', expression: 'excited' })}`;
+
+const battlefield = `<g data-transform="battlefield" class="generals-sheet"><g class="art">
+  ${landscape}${castle}${generals}
   ${message(positions.alice, 596, -8, line(toAlice))}
   ${message(positions.bob, 596, 8, line(toBob))}
 </g></g>`;
@@ -75,7 +79,7 @@ const stages = [
   { id: '13-morph-keyframe', description: 'The café fades while the notebooks fold into messenger notes and the landscape rises.',
     art: rising,
     notes: 'Proposed midpoint. Fade the room and café tabletop, keep both notebook anchors aligned by side, fold their page silhouettes into the sealed messenger notes, and raise the shared hills and fortress from near the floor line. This is a still for staging review.' },
-  { id: '13-battlefield', title: 'We Are Back to the Generals', description: 'Alice and Bob return as generals with contradictory payment notes while Charlie grins.',
+  { id: '13-battlefield', title: revealTitle, description: 'Alice and Bob return as generals with contradictory payment notes while Charlie grins.',
     art: battlefield,
     notes: 'Visual callback only. The two contradictory messages are diegetic props. Do not imply that the earlier arbitrary-loss fault model is identical to the current history-selection problem. Leave the discussion to the presenter.' },
 ];
@@ -83,3 +87,82 @@ const stages = [
 export const transformationStills = stages.map(({ id, title: heading = title, description, art, notes }) => ({
   id, notes, composition: sheet(heading, description, art),
 }));
+
+// Animate two paper surfaces around a shared spine; the final outline matches
+// the body of the shared messenger note. Keep the same anchors throughout.
+const openPage = [-310, -111, -139, -131, -2, -108, 146, -128, 313, -108,
+  311, 91, 140, 93, 2, 114, -139, 95, -310, 103];
+const foldedPage = [-86, -52, -43, -55, 0, -53, 43, -54, 85, -48,
+  82, 49, 41, 51, 0, 51, -43, 50, -86, 47];
+
+function foldingPages(x: number, words: string): string {
+  return `<g data-morph-book transform="translate(${x} 691) scale(.94)">
+    <path data-fold="cover" class="notebook-cover"/>
+    <path data-fold="left" class="paper"/>
+    <path data-fold="right" class="paper"/>
+    <g data-fold="note">${message(0, 0, 0, words)}</g>
+  </g>`;
+}
+
+export const morphComposition = sheet(title, 'The café fades and the notebooks fold into sealed messenger notes.', `
+  <g data-morph-cafe>${cafeRoom}<g data-morph-cafe-cast>${cafeCast}</g>${cafeTable}</g>
+  <g class="generals-sheet"><g class="art">
+    <g data-rise="hills">${landscape}</g>
+    <g data-rise="castle">${castle}</g>
+    <g data-morph-generals>${generals}</g>
+  </g></g>
+  ${foldingPages(positions.alice, line(toAlice))}${foldingPages(positions.bob, line(toBob))}
+  <g data-morph-histories>${splitHistories()}</g>`);
+
+function lerp(from: number, to: number, progress: number): number {
+  return from + (to - from) * progress;
+}
+
+export function mountMorph(root: HTMLElement): (progress: number) => void {
+  const cafeLayer = root.querySelector('[data-morph-cafe]')!;
+  const cafeCastLayer = root.querySelector('[data-morph-cafe-cast]')!;
+  const hills = root.querySelector('[data-rise="hills"]')!;
+  const fortress = root.querySelector('[data-rise="castle"]')!;
+  const cast = root.querySelector('[data-morph-generals]')!;
+  const histories = root.querySelector('[data-morph-histories]')!;
+  const books = [...root.querySelectorAll('[data-morph-book]')].map((book) => ({
+    book,
+    cover: book.querySelector('[data-fold="cover"]')!,
+    left: book.querySelector('[data-fold="left"]')!,
+    right: book.querySelector('[data-fold="right"]')!,
+    note: book.querySelector('[data-fold="note"]')!,
+  }));
+
+  return (progress) => {
+    const close = Math.min(1, progress / .84);
+    const bend = Math.sin(close * Math.PI);
+    const [ax, ay, bx, by, cx, cy, dx, dy, ex, ey, fx, fy, gx, gy, hx, hy, ix, iy, jx, jy] =
+      openPage.map((value, i) => lerp(value, foldedPage[i], close));
+    const top = `M${ax} ${ay} Q${bx} ${by} ${cx} ${cy} Q${dx} ${dy} ${ex} ${ey}`;
+    const bottom = `L${fx} ${fy} Q${gx} ${gy} ${hx} ${hy} Q${ix} ${iy} ${jx} ${jy}Z`;
+    const revealed = Math.max(0, (progress - .72) / .28);
+    const paperOpacity = (1 - revealed) * Math.min(1, progress * 12);
+    books.forEach(({ book, cover, left, right, note }, index) => {
+      const x = index === 0 ? positions.alice : positions.bob;
+      const angle = index === 0 ? -8 : 8;
+      book.setAttribute('transform', `translate(${x} ${lerp(691, 596, progress)}) rotate(${angle * progress}) scale(${lerp(.94, 1, progress)})`);
+      cover.setAttribute('transform', `scale(${1 + .04 * (1 - close)} ${1 + .09 * (1 - close)})`);
+      cover.setAttribute('d', top + bottom);
+      left.setAttribute('d', `M${ax} ${ay} Q${bx} ${by - 64 * bend} ${cx} ${cy}
+        Q${cx + 34 * bend} ${(cy + hy) / 2} ${hx} ${hy}
+        Q${ix} ${iy + 24 * bend} ${jx} ${jy}Z`);
+      right.setAttribute('d', `M${cx} ${cy} Q${dx} ${dy + 45 * bend} ${ex} ${ey} L${fx} ${fy}
+        Q${gx} ${gy - 22 * bend} ${hx} ${hy} Q${cx + 34 * bend} ${(cy + hy) / 2} ${cx} ${cy}Z`);
+      for (const surface of [cover, left, right]) surface.setAttribute('opacity', String(paperOpacity));
+      note.setAttribute('opacity', String(revealed));
+    });
+    cafeLayer.setAttribute('opacity', String(1 - progress));
+    cafeCastLayer.setAttribute('opacity', String(Math.max(0, 1 - progress / .55)));
+    histories.setAttribute('opacity', String(Math.max(0, 1 - progress * 12)));
+    hills.setAttribute('transform', `translate(0 ${(1 - progress) * 810}) scale(1 ${lerp(.1, 1, progress)})`);
+    fortress.setAttribute('transform', `translate(0 ${(1 - progress) * 760}) scale(1 ${lerp(.15, 1, progress)})`);
+    for (const layer of [hills, fortress]) layer.setAttribute('opacity', String(Math.min(1, progress * 3)));
+    cast.setAttribute('opacity', String(Math.max(0, (progress - .55) / .45)));
+    cast.setAttribute('transform', `translate(0 ${(1 - progress) * 82})`);
+  };
+}

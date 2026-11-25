@@ -68,7 +68,7 @@ export function speech(x: number, y: number, width: number, text: string): strin
 }
 
 export function receipt(x: number, y: number, angle: number): string {
-  return `<g transform="translate(${x} ${y}) rotate(${angle})">
+  return `<g data-prop="receipt" transform="translate(${x} ${y}) rotate(${angle})">
     <path class="paper" d="M-34-46 H32 V48 l-12-8-10 7-11-6-12 7-11-8-10 5Z"/>
     <path class="cafe-detail" d="M-22-29 h42 m-42 17 h26 m-26 19 h31 m-31 18 h16"/>
   </g>`;

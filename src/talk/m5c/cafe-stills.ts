@@ -10,6 +10,12 @@ function still(id: string, title: string, description: string, art: string, note
 const shared = 'A Shared Ledger';
 const unauthorized = 'Unauthorized transactions';
 const control = 'Who Controls the Ledger?';
+export const emptyBalanceLedger = still('10-notebook-open', unauthorized, 'Charlie is about to write in the toy balance ledger.',
+  cafeRoom + actor('alice', 'stand', 'confused') + actor('bob', 'hold', 'stand')
+  + actor('charlie', 'point', 'suspicious', 1168, 453) + cafeTable
+  + notebook(800, 708, 1.08, 'Toy balance ledger', [], balances(cafeOpening)),
+  'Open the toy ledger at its starting balances.');
+
 const genuineRow = { text: line(genuine), signed: true };
 const ordinary = actor('alice', 'stand', 'stand') + actor('bob', 'hold', 'stand') + actor('charlie', 'hold', 'suspicious');
 
@@ -76,6 +82,10 @@ const eleven = still('11-infinite-money-glitch', 'The Infinite Money Glitch',
     `Signed · rejected · balance ${overspend.balances.Charlie}`),
   'No overdraft. Charlie starts with 5 and requests a signed payment of 500 to Bob. Insufficient balance rejects it before any posting; Charlie stays at 5 and Bob stays at 20. The mountain of food is the joke. Signing is authorization, not validity.');
 
+export const sharedCopy = still('12-one-copy', control, 'Alice has the only copy of the blue notebook.',
+  cafeRoom + ordinary + cafeTable + closedNotebook(480, 470, .47),
+  'There is one shared notebook. Start by asking what happens when its keeper leaves.');
+
 const twelve = [
   still('12-missing-ledger', control, 'Alice walks away carrying the only blue notebook.',
     cafeRoom + actor('alice', 'run', 'stand', 186, 439, 'left') + actor('bob', 'confused', 'confused') + actor('charlie', 'confused', 'confused')
@@ -84,7 +94,7 @@ const twelve = [
     'Alice takes the only notebook. Bob and Charlie cannot inspect the record. Access is a separate problem from signature checking.'),
   still('12-access-monopoly', control, 'Crowned Charlie offers access to the replacement notebook for a fee.',
     cafeRoom + actor('alice', 'suspicious', 'suspicious') + actor('bob', 'confused', 'confused') + actor('charlie', 'excited', 'excited')
-    + cafeTable + `<g transform="translate(1295 315) scale(1.3)">${crown(0, 0)}</g>`
+    + cafeTable + `<g data-prop="crown" transform="translate(1295 315) scale(1.3)">${crown(0, 0)}</g>`
     + speech(1281, 245, 350, 'Access costs 2 units.')
     + notebook(1085, 707, .93, 'Charlie’s copy', [genuineRow], 'Access fee proposed'),
     'Charlie uses the same crown artwork as slide 4. The 2-unit access fee is a proposal. No payment is posted. One steward can control who sees the ledger.'),
