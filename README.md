@@ -12,7 +12,7 @@ The planning storyboard spans 48 slides (25 approved Part I concepts; 23 provisi
 
 ## Development status
 
-M0 is approved. The owner approved D — Expressive Minimalism on pure white. M1 merged in PR #3. The M2 illustration library merged in PR #5. The M3 playback engine and diagnostic deck merged in PR #7 after owner review. The owner approved M4a and PR #9 is merged. The owner approved M4b staging and the slide 7 production prototype is at owner review. All 25 Part I creative directions are approved. The other treatments remain archived for comparison. The project preserves the three-slide engineering diagnostic deck. The framework uses Reveal.js, TypeScript, Vite, Playwright, and npm. M2 uses deterministic authored SVG paths. M3 uses a local GSAP clock for presenter-paced diagnostics.
+M0 is approved. The owner approved D — Expressive Minimalism on pure white. M1 merged in PR #3. The M2 illustration library merged in PR #5. The M3 playback engine and diagnostic deck merged in PR #7 after owner review. The owner approved M4a and PR #9 is merged. M4b is owner-approved and merged in PR #11, completing M4. Issue #12 is at M5a visual staging review. All 25 Part I creative directions are approved. The other treatments remain archived for comparison. The project preserves the three-slide engineering diagnostic deck. The framework uses Reveal.js, TypeScript, Vite, Playwright, and npm. M2 uses deterministic authored SVG paths. M3 uses a local GSAP clock for presenter-paced diagnostics.
 
 The target is a 16:9 deck with responsive scaling, classroom-projector readability, independent slide and animation controls, and offline operation using bundled assets. A static PDF fallback is an M8 deliverable.
 
@@ -94,6 +94,18 @@ Firefox captures all eight beats and the print comparison at 1920×1080 under `t
 ## M4b approved staging reference
 
 With the production preview running, open [the staging stills](http://127.0.0.1:4173/talk/staging/) in desktop Firefox. Use Left and Right to compare the opening, courier escalation, and the two possible outcomes of the final reply. Firefox captures are in `test-results/visual-review/m4b-staging/1920x1080/`.
+
+## M5a visual staging review
+
+With production preview running, open [the M5a stills](http://127.0.0.1:4173/talk/m5a/) in desktop Firefox. Use Left and Right to review the distribution, governance, and CAP scenes. The CAP bank scene has eight stills, including both responses and reconnection after the waiting outcome. The production deck keeps slides 1, 2, and 7 during review.
+
+Firefox screenshots are in `test-results/visual-review/m5a-staging/<width>x<height>/`. The 1920×1080 directory contains all eleven stills, named by their review IDs. The smaller directories contain the distribution, governance, asset-placeholder, and bank-choice stills.
+
+### Slide 5 asset provenance
+
+[Know Your Meme traces the original two-character frame](https://knowyourmeme.com/memes/spider-man-pointing-at-spider-man/) to the 1967 animated episode “Double Identity.” The candidate for this slide is the distinct [three-character Imgflip template 206014687](https://imgflip.com/memetemplate/206014687/3-Spidermen-Pointing-at-each-other), served as [3enly7.jpg](https://i.imgflip.com/3enly7.jpg), a 600×551 JPEG listed as a user upload. The inspected file has SHA-256 `44e3d3465eea6ea9e51656ff0b7f5e326a3edd7f5d778aa43c4bb3db269ae823`. Its editor, first publication, and permission to redistribute the composited image and underlying cartoon art are unverified. The template page and [Imgflip’s terms](https://imgflip.com/terms) do not establish permission for this project to bundle it.
+
+Slide 5 shows a labeled asset placeholder. For local review with an owner-supplied JPEG, PNG, or WebP, keep the file outside the checkout, open [slide 5](http://127.0.0.1:4173/talk/m5a/#/05-cap-theorem), and choose the file using the picker. The browser previews the file in memory. Public distribution of the image and screenshots that contain it requires confirmed rights. An original public fallback requires owner approval.
 
 ## Desktop Firefox verification
 

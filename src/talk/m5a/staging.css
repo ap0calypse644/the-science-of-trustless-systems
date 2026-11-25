@@ -1,0 +1,87 @@
+.m5a-sheet h1 {
+  top: 35px;
+  left: 50%;
+  width: max-content;
+  transform: translateX(-50%);
+  font: 400 84px/1 Kalam, var(--support);
+}
+
+.m5a-sheet .art { --stroke: 4.6px; }
+.m5a-sheet .art text { font-family: var(--font); }
+.m5a-sheet .art .callout { font-size: 42px; }
+.m5a-sheet .art .minor-label { font-size: 33px; }
+.m5a-sheet .art .ink { stroke: var(--ink); }
+.m5a-sheet .art .fine { stroke-width: 2.8px; }
+.m5a-sheet .art .gesture { stroke-width: 4px; }
+.m5a-sheet .art .ground-line,
+.m5a-sheet .art .walkway { stroke: #a1a1aa; }
+.m5a-sheet .art .ground-line { stroke-width: 3px; }
+.m5a-sheet .art .desk-edge { stroke-width: 3px; }
+.m5a-sheet .art .service-path { stroke: #356684; }
+.m5a-sheet .art .failed-service { stroke: #72737a; stroke-dasharray: 12 13; }
+.m5a-sheet .art .power-cord { stroke-width: 6px; }
+.m5a-sheet .art .screen { fill: #41434b; stroke: none; }
+.m5a-sheet .art .screen-line { stroke: #ece9ef; stroke-width: 2.6px; }
+.m5a-sheet .art .screen-edge { fill: #f9f8fc; stroke: #b6adbf; }
+.m5a-sheet .art .lamps { stroke: #a0cf9a; stroke-width: 5px; }
+.m5a-sheet .art .muted-lamps { stroke: #b0afb6; stroke-width: 5px; }
+.m5a-sheet .art .plug-fill { fill: #64616d; }
+.m5a-sheet .art .cluster-shadow { fill: #eee9f1; stroke: none; }
+.m5a-sheet .art .lavender { fill: #e8deef; }
+.m5a-sheet .art .blue-wash { fill: #eaf3fa; }
+.m5a-sheet .art .green-wash { fill: #edf6ed; }
+.m5a-sheet .art .gold-wash { fill: #fff5d9; }
+.m5a-sheet .art .state-mark { stroke-width: 7px; }
+.m5a-sheet .art .positive-text { fill: #326344; }
+.m5a-sheet .art .negative-text { fill: #a13933; }
+.m5a-sheet .art .availability { font-size: 43px; }
+.m5a-sheet .art .panel-paper { fill: #fcfbfd; stroke: #a3a0ac; stroke-width: 2.8px; }
+.m5a-sheet .art .panel-title { font-size: 49px; }
+.m5a-sheet .art .manage { stroke-width: 4px; stroke-dasharray: 8 11; }
+.m5a-sheet .art .network-line,
+.m5a-sheet .art .blue-line { stroke: #436f9b; }
+.m5a-sheet .art .green-line { stroke: #43784f; }
+.m5a-sheet .art .purple-line { stroke: #745091; }
+.m5a-sheet .art .branch-letter { font-size: 47px; }
+.m5a-sheet .art .amount { font-size: 77px; }
+.m5a-sheet .art .proposal { stroke-width: 3px; }
+
+.cap-sheet { text-align: center; }
+.meme-frame {
+  position: absolute;
+  top: 155px;
+  left: 50%;
+  width: 1270px;
+  height: 770px;
+  transform: translateX(-50%);
+  display: grid;
+  place-items: center;
+}
+.meme-frame img { width: 100%; height: 100%; object-fit: contain; }
+.meme-frame img[hidden], .meme-placeholder[hidden] { display: none; }
+.meme-placeholder {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  align-content: center;
+  padding: 100px;
+  border: 3px dashed #92869e;
+  background: #faf8fc;
+  font-size: 46px;
+}
+.meme-placeholder p { margin: 9px 0; }
+.meme-labels {
+  position: absolute;
+  inset: auto 28px 30px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  font-size: 43px;
+}
+.meme-frame:has(img:not([hidden])) .meme-labels { inset: auto 9px 30px; gap: 3px; font-size: 34px; }
+.meme-labels span { border: 2px solid currentColor; border-radius: 15px; background: white; padding: 6px 15px; }
+.meme-picker { position: absolute; inset: auto 0 74px; font-size: 28px; }
+.meme-picker input { margin-left: 15px; width: 290px; font: inherit; }
+.meme-error { position: absolute; inset: auto 0 29px; margin: 0; color: #a13933; font-size: 28px; }
+.m5a-sheet .art .brick-detail { stroke: #939197; }

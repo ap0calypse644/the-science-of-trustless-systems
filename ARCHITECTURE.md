@@ -117,7 +117,7 @@ For PDF, propose a print mode driven by reviewed stills or compact sequences fro
 
 Vite builds the independent lecture at `/talk/`. Its ordered registry supplies
 stable IDs, compositions, speaker notes, and optional scene definitions and
-print overrides. During M4b review the order is temporarily 1, 2, 7. M4a
+print overrides. The production order during M5a staging review is 1, 2, 7. M4a
 retains its static artwork and applicable shortcuts.
 
 The production route and `/engine/` share the presenter lifecycle, controls,
@@ -139,3 +139,12 @@ approved artwork stills. Lecture-wide PDF delivery remains part of M8.
 
 Teaching reference: Halpern and Moses,
 [Knowledge and Common Knowledge in a Distributed Environment](https://arxiv.org/abs/cs/0006009).
+
+
+## M5a staging review
+
+The independent `/talk/m5a/` route uses the static review shell for slides 3–5
+and eight illustrative bank states for slide 6. Bank choices are visual samples.
+The optional slide 5 picker uses a local object URL for a selected image, with
+no asset path in the build or remote fetch. Production integration and the
+interactive bank model follow owner staging approval.
