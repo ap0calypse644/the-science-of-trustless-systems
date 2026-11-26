@@ -56,3 +56,6 @@
 .stake-sheet .art .signed-label { font-size: 21px; }
 .stake-sheet .art .local-label { text-anchor: start; }
 .stake-sheet .art .folded-arms { stroke-width: 2.8px; }
+.stake-sheet .art .packet rect { fill: #e3eff9; stroke: #42698c; stroke-width: 2.5px; }
+.stake-sheet .art .packet.bob rect { fill: #e8f3e5; stroke: #557b5f; }
+.stake-sheet .art .packet path { stroke: #344a5e; stroke-width: 2px; }

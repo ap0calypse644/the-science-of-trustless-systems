@@ -4,7 +4,7 @@ M0.2 establishes the Reveal.js shell, local build, and shared Firefox and Chromi
 
 ## Presentation policy
 
-Owner decision (25 Nov 2026): the lecture uses static or presenter-paced scripted animated slides only. No live audience/presenter inputs that change the educational model, branching buttons, live cryptographic computations or worker searches are required. Preserve ordinary playback/navigation/seek/reset controls, verbal audience predictions, local offline operation and editable art. Use internally consistent authored examples. Identify simulated outputs in speaker notes and prompt the presenter to disclose them verbally. Keep substantive technical labels and essential toy-model caveats on slides. This supersedes earlier interactive and real-computation requirements. Issue #18 covers the separately reviewed scripted conversion of slide 6 and preserves archived diagnostic and staging routes. M5d is approved and merged in PR #21; #20 closed. M5e production is approved and merged in PR #23; #22 closed. M5f production (22–26) is owner-approved and merged in PR #25; #24 closed. Part I creative planning is complete (slides 1–32); production 1–26 remains merged. M5g visual staging (27–29) is owner-authorized; production and M5h (30–32) require separate approval. Later batches require separate authorization.
+Owner decision (25 Nov 2026): the lecture uses static or presenter-paced scripted animated slides only. No live audience/presenter inputs that change the educational model, branching buttons, live cryptographic computations or worker searches are required. Preserve ordinary playback/navigation/seek/reset controls, verbal audience predictions, local offline operation and editable art. Use internally consistent authored examples. Identify simulated outputs in speaker notes and prompt the presenter to disclose them verbally. Keep substantive technical labels and essential toy-model caveats on slides. This supersedes earlier interactive and real-computation requirements. Issue #18 covers the separately reviewed scripted conversion of slide 6 and preserves archived diagnostic and staging routes. M5d is approved and merged in PR #21; #20 closed. M5e production is approved and merged in PR #23; #22 closed. M5f production (22–26) is owner-approved and merged in PR #25; #24 closed. Part I creative planning is complete (slides 1–32); production 1–26 remains merged. M5g staging (27–29) is owner-approved. Production 27–29 awaits review in draft PR #27. M5h (30–32) requires separate approval. Later batches require separate authorization.
 
 ## Responsibilities
 
@@ -266,3 +266,14 @@ order. The final flag pose matches the opening callback on slide 25. The
 subsidy row precedes the attempts, and the independent checks precede the
 coins. The speaker receiver uses the scene baseline. Five print overrides
 present the evidence in the 26-sheet print deck. [Review checkpoints](README.md#m5f-production-motion-review)
+
+## M5g production review
+
+Draft PR #27 registers slides 27–29 and retains the independent
+`/talk/m5g/` staging route. Slide 27 uses the approved static SVG and bundled
+photo. Slides 28 and 29 reuse the exact approved holds. Between holds, scene
+views set the coin positions, locks, packet positions and local ledger
+entries from elapsed time. The presenter engine owns time and lifecycle.
+The recipient cards show local observations, with no centralized tally.
+The 29-slide print route selects the static, reveal and commit compositions.
+[Review times and screenshots](README.md#m5g-production-review)

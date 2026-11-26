@@ -10,6 +10,7 @@ const ids = [
   '14-data-fingerprint', '15-one-bit', '16-proof-of-work', '17-easy-verification',
   '18-growing-ledger', '19-pages-to-blocks', '20-changing-history', '21-conflicting-histories',
   '22-expensive-history', '23-which-history', '24-mining-work', '25-rewarding-miner', '26-bitcoin-reveal',
+  '27-electricity-bill', '28-proof-of-stake', '29-stake-weighted-voting',
 ];
 
 async function openTalk(page: Page): Promise<void> {
@@ -139,7 +140,7 @@ for (const size of [{ width: 1920, height: 1080 }, { width: 1280, height: 720 },
         expect(heading.x + heading.width).toBeLessThan(sheet.x + sheet.width);
         expect(heading.y + heading.height).toBeLessThan(sheet.y + sheet.height);
       } else {
-        expect(ids.slice(-3)).toContain(id);
+        expect(ids.slice(23, 26)).toContain(id);
       }
       if (browserName === 'firefox' && index < 2) {
         const dir = `test-results/visual-review/m4a-reference-pass/${size.width}x${size.height}`;

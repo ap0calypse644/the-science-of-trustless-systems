@@ -12,11 +12,11 @@ The current planning baseline is 55 slides if later scope remains unchanged: 32 
 
 ## Presentation policy
 
-Owner decision (25 Nov 2026): the lecture uses static or presenter-paced scripted animated slides only. No live audience/presenter inputs that change the educational model, branching buttons, live cryptographic computations or worker searches are required. Preserve ordinary playback/navigation/seek/reset controls, verbal audience predictions, local offline operation and editable art. Use internally consistent authored examples. Identify simulated outputs in speaker notes and prompt the presenter to disclose them verbally. Keep substantive technical labels and essential toy-model caveats on slides. This supersedes earlier interactive and real-computation requirements. Issue #18 covers the separately reviewed scripted conversion of slide 6 and preserves archived diagnostic and staging routes. M5d is approved and merged in PR #21; #20 closed. M5e production is approved and merged in PR #23; #22 closed. M5f production (22–26) is owner-approved and merged in PR #25; #24 closed. Part I creative planning is complete (slides 1–32); production 1–26 remains merged. M5g visual staging (27–29) is owner-authorized; production and M5h (30–32) require separate approval. Later batches require separate authorization.
+Owner decision (25 Nov 2026): the lecture uses static or presenter-paced scripted animated slides only. No live audience/presenter inputs that change the educational model, branching buttons, live cryptographic computations or worker searches are required. Preserve ordinary playback/navigation/seek/reset controls, verbal audience predictions, local offline operation and editable art. Use internally consistent authored examples. Identify simulated outputs in speaker notes and prompt the presenter to disclose them verbally. Keep substantive technical labels and essential toy-model caveats on slides. This supersedes earlier interactive and real-computation requirements. Issue #18 covers the separately reviewed scripted conversion of slide 6 and preserves archived diagnostic and staging routes. M5d is approved and merged in PR #21; #20 closed. M5e production is approved and merged in PR #23; #22 closed. M5f production (22–26) is owner-approved and merged in PR #25; #24 closed. Part I creative planning is complete (slides 1–32); production 1–26 remains merged. M5g staging (27–29) is owner-approved. Production 27–29 awaits review in draft PR #27. M5h (30–32) requires separate approval. Later batches require separate authorization.
 
 ## Development status
 
-M0 is approved. The owner approved D — Expressive Minimalism on pure white. M1 merged in PR #3. The M2 illustration library merged in PR #5. The M3 playback engine and diagnostic deck merged in PR #7 after owner review. The owner approved M4a and PR #9 is merged. M4b is owner-approved and merged in PR #11, completing M4. The owner approved M5a and PR #13 is merged. The owner approved M5b and PR #15 is merged. The owner approved M5c staging and production, and PR #17 is merged. M5d staging and production approved and merged in PR #21. Main contains production slides 1–26. M5e production approved and merged in PR #23; M5f production (22–26) is owner-approved and merged in PR #25; #24 closed. Part I creative planning is complete (slides 1–32); production 1–26 remains merged. M5g visual staging (27–29) is owner-authorized; production and M5h (30–32) require separate approval. Slides 1–32 creative directions approved; Parts II/III pending individual review. The other treatments remain archived for comparison. The project preserves the three-slide engineering diagnostic deck. The framework uses Reveal.js, TypeScript, Vite, Playwright, and npm. M2 uses deterministic authored SVG paths. M3 uses a local GSAP clock for presenter-paced diagnostics.
+M0 is approved. The owner approved D — Expressive Minimalism on pure white. M1 merged in PR #3. The M2 illustration library merged in PR #5. The M3 playback engine and diagnostic deck merged in PR #7 after owner review. The owner approved M4a and PR #9 is merged. M4b is owner-approved and merged in PR #11, completing M4. The owner approved M5a and PR #13 is merged. The owner approved M5b and PR #15 is merged. The owner approved M5c staging and production, and PR #17 is merged. M5d staging and production approved and merged in PR #21. Main contains production slides 1–26. M5e production approved and merged in PR #23; M5f production (22–26) is owner-approved and merged in PR #25; #24 closed. Part I creative planning is complete (slides 1–32); production 1–26 remains merged. M5g staging (27–29) is owner-approved. Production 27–29 awaits review in draft PR #27. M5h (30–32) requires separate approval. Slides 1–32 creative directions approved; Parts II/III pending individual review. The other treatments remain archived for comparison. The project preserves the three-slide engineering diagnostic deck. The framework uses Reveal.js, TypeScript, Vite, Playwright, and npm. M2 uses deterministic authored SVG paths. M3 uses a local GSAP clock for presenter-paced diagnostics.
 
 The target is a 16:9 deck with responsive scaling, classroom-projector readability, independent slide and animation controls, and offline operation using bundled assets. A static PDF fallback is an M8 deliverable.
 
@@ -331,10 +331,28 @@ Build and run `npm run preview -- --port 4173 --strictPort`, then open
 Use Left and Right to step through slides 27–29. The
 [still index](src/talk/m5g/REVIEW.md) lists direct URLs, intended motion and
 pauses, print compositions, speaker notes and sources. Production slides
-remain available at `/talk/`, with the 26-sheet print view at `/talk/?print`.
+remain available at `/talk/`, with the 29-sheet print view at `/talk/?print` on the M5g branch.
 
 Run `npm test -- tests/m5g-staging.spec.ts` for the scoped Firefox and
 Chromium checks. Firefox captures are under
 `test-results/visual-review/m5g-staging/<width>x<height>/<still-id>.png`.
 The 1920×1080 set contains all nine stills, and the 1280×720 and 1024×768 sets
 contain representative images.
+
+### M5g production review
+
+The owner approved the nine staging stills at `5e08573`. Production on
+[draft PR #27](https://github.com/ap0calypse644/the-science-of-trustless-systems/pull/27)
+uses the same holds. Slide 27 keeps the approved six server racks, fictional
+`$ 4972` bill and licensed photo-head cameo with the “More RAM?” bubble.
+Space plays to the next hold, J/K step between holds and R resets.
+
+| Slide | Checkpoints at elapsed seconds |
+| --- | --- |
+| [27 Electricity bill](http://127.0.0.1:4173/talk/#/27-electricity-bill) | Static |
+| [28 Proof of Stake](http://127.0.0.1:4173/talk/#/28-proof-of-stake) | 0 Coins · 4 Bonded · 6 Voting power · 8 Proof of Stake |
+| [29 Stake-weighted voting](http://127.0.0.1:4173/talk/#/29-stake-weighted-voting) | 0 Propose · 5 Prevote · 10.5 Precommit · 15 Commit |
+
+The [29-sheet print deck](http://127.0.0.1:4173/talk/?print) uses the static
+bill, the stake reveal and the commit view. Firefox production captures are
+under `test-results/visual-review/m5g-production/<width>x<height>/`.
