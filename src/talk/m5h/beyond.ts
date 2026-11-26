@@ -28,9 +28,9 @@ function iceberg(revealed: boolean): string {
   return `<path class="water" d="M90 393H1510V${revealed ? 814 : 666}Q1428 ${revealed ? 833 : 683} 1330 ${revealed ? 815 : 665}H90Z"/>
     ${depth}
     <g data-iceberg-tip${revealed ? '' : ' transform="translate(858 393) scale(1.16) translate(-858 -393)"'}>
-      <path class="ice-top" d="M603 393 710 344 800 320 893 219 962 180 1074 259 1130 322 1245 356 1290 393Z"/>
-      <path class="ice-facets" d="m800 320 138-22 24-118m-24 118 80 43 112-19m-192-24-62 95m142-52 83 52"/>
-      <image data-bitcoin-mark href="${bitcoinLogo}" x="931" y="245" width="91" height="91"/>
+      <path class="ice-top" d="M603 393 710 369 800 357 893 308 962 289 1074 327 1130 358 1245 375 1290 393Z"/>
+      <path class="ice-facets" d="m800 357 138-11 24-57m-24 57 80 21 112-9m-192-12-62 47m142-26 83 26"/>
+      <image data-bitcoin-mark href="${bitcoinLogo}" x="931" y="314" width="68" height="68"/>
     </g>
     <path class="water-line" d="M90 393q88 12 188 1t190 0t189 0t189 0t189 0t190 0t189 0l96 0"/>
     ${boat(revealed ? 320 : 335, 386, revealed ? .78 : .98)}`;
