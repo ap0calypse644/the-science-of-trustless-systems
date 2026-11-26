@@ -12,11 +12,11 @@ The current planning baseline is 62 provisional slides: 26 approved concepts, 13
 
 ## Presentation policy
 
-Owner decision (25 Nov 2026): the lecture uses static or presenter-paced scripted animated slides only. No live audience/presenter inputs that change the educational model, branching buttons, live cryptographic computations or worker searches are required. Preserve ordinary playback/navigation/seek/reset controls, verbal audience predictions, local offline operation and editable art. Use internally consistent authored examples. Identify simulated outputs in speaker notes and prompt the presenter to disclose them verbally. Keep substantive technical labels and essential toy-model caveats on slides. This supersedes earlier interactive and real-computation requirements. Issue #18 covers the separately reviewed scripted conversion of slide 6 and preserves archived diagnostic and staging routes. M5d is approved and merged in PR #21; #20 closed. M5e visual staging only (18–21) is authorized under #22. Production and later batches require separate authorization.
+Owner decision (25 Nov 2026): the lecture uses static or presenter-paced scripted animated slides only. No live audience/presenter inputs that change the educational model, branching buttons, live cryptographic computations or worker searches are required. Preserve ordinary playback/navigation/seek/reset controls, verbal audience predictions, local offline operation and editable art. Use internally consistent authored examples. Identify simulated outputs in speaker notes and prompt the presenter to disclose them verbally. Keep substantive technical labels and essential toy-model caveats on slides. This supersedes earlier interactive and real-computation requirements. Issue #18 covers the separately reviewed scripted conversion of slide 6 and preserves archived diagnostic and staging routes. M5d is approved and merged in PR #21; #20 closed. M5e staging is approved under #22 and production awaits final review in draft PR #23. Later batches require separate authorization.
 
 ## Development status
 
-M0 is approved. The owner approved D — Expressive Minimalism on pure white. M1 merged in PR #3. The M2 illustration library merged in PR #5. The M3 playback engine and diagnostic deck merged in PR #7 after owner review. The owner approved M4a and PR #9 is merged. M4b is owner-approved and merged in PR #11, completing M4. The owner approved M5a and PR #13 is merged. The owner approved M5b and PR #15 is merged. The owner approved M5c staging and production, and PR #17 is merged. M5d staging and production approved and merged in PR #21. Main contains production slides 1–17. M5e staging only authorized under #22. Slides 1–26 creative directions approved, later concepts pending individual review. The other treatments remain archived for comparison. The project preserves the three-slide engineering diagnostic deck. The framework uses Reveal.js, TypeScript, Vite, Playwright, and npm. M2 uses deterministic authored SVG paths. M3 uses a local GSAP clock for presenter-paced diagnostics.
+M0 is approved. The owner approved D — Expressive Minimalism on pure white. M1 merged in PR #3. The M2 illustration library merged in PR #5. The M3 playback engine and diagnostic deck merged in PR #7 after owner review. The owner approved M4a and PR #9 is merged. M4b is owner-approved and merged in PR #11, completing M4. The owner approved M5a and PR #13 is merged. The owner approved M5b and PR #15 is merged. The owner approved M5c staging and production, and PR #17 is merged. M5d staging and production approved and merged in PR #21. Main contains production slides 1–17. M5e staging is approved. Production slides 18–21 await final review in draft PR #23. Slides 1–26 creative directions approved, later concepts pending individual review. The other treatments remain archived for comparison. The project preserves the three-slide engineering diagnostic deck. The framework uses Reveal.js, TypeScript, Vite, Playwright, and npm. M2 uses deterministic authored SVG paths. M3 uses a local GSAP clock for presenter-paced diagnostics.
 
 The target is a 16:9 deck with responsive scaling, classroom-projector readability, independent slide and animation controls, and offline operation using bundled assets. A static PDF fallback is an M8 deliverable.
 
@@ -85,7 +85,7 @@ Run `npm ci`, `npm run build`, and `npm run preview -- --port 4173 --strictPort`
 - Check that the huge hands approach on a diagonal with clear space between them. Alice, Bob and Charlie operate the mechanism, and the title sits in the lower-right open space.
 - Trace each computer cable into its own receptacle in the shared strip. Follow the strip's single supply cord to the loose plug, then trace the phone cable to the charger in the wall. The large crosses show the simultaneous outages.
 - Use Left and Right to navigate, Escape for overview, F for fullscreen and S for speaker notes. Space leaves the current slide in place.
-- Open [the print compositions](http://127.0.0.1:4173/talk/?print) to print seventeen 16:9 sheets, including the CAP, final-reply and Byzantine report comparisons.
+- Open [the print compositions](http://127.0.0.1:4173/talk/?print) to print twenty-one 16:9 sheets, including the CAP, final-reply and Byzantine report comparisons.
 
 The Firefox tests write review screenshots to `test-results/visual-review/m4a-reference-pass/<width>x<height>/`. The editable artwork was revised against the owner-supplied concept images, which are kept outside the repository.
 
@@ -212,6 +212,45 @@ examples before showing them.
 Firefox captures are in `test-results/visual-review/m5d-production/<width>x<height>/`.
 The [17-sheet print view](http://127.0.0.1:4173/talk/?print) includes the proof
 and hash evidence. Production motion awaits final owner review.
+
+## M5e staging review
+
+Build and start the preview, then open [the 22 ledger-history stills](http://127.0.0.1:4173/talk/m5e/)
+in desktop Firefox. Left and Right step through the review stills. S opens notes,
+which identify the authored transactions and hash prefixes and give the
+assumptions to explain aloud. The 22 approved stills remain available for comparison.
+
+| Slide | Planned production transitions | Planned print evidence |
+| --- | --- | --- |
+| [18 The Growing Ledger](http://127.0.0.1:4173/talk/m5e/#/18-short-list) | Append transactions one at a time, extend the same sheet, then unroll the excess as Alice’s expression changes | Short list beside the final overflowing list |
+| [19 From Pages to Blocks](http://127.0.0.1:4173/talk/m5e/#/19-first-page) | Write each row, turn through four pages, detach them and fold each into a blue block before revealing the new title | Four detached pages beside their matching independent blocks |
+| [20 What If Charlie Changes History?](http://127.0.0.1:4173/talk/m5e/#/20-independent-blocks) | Start on the exact block layout from 19, edit and restore, write predecessor hashes in order, then show the immediate mismatch, repair and next mismatch | First mismatch and repaired first link beside the next mismatch, with the last matching link visible |
+| [21 Conflicting Histories](http://127.0.0.1:4173/talk/m5e/#/21-common-history) | Show common history and signed payments, extend both views, let Alice and Bob react, and merge the duplicated prefix into one fork | Shared prefix and both candidate blocks, with the unresolved question posed aloud |
+
+Firefox captures all 22 stills by ID in
+`test-results/visual-review/m5e-staging/1920x1080/`. The 1280×720 and
+1024×768 directories contain four representative stills. Regenerate with
+`npm test -- tests/m5e-staging.spec.ts --project=firefox`. The staging route is preserved for the final production review.
+
+## M5e production review
+
+Open the links below in desktop Firefox. Space plays to the next beat, J/K step,
+R resets, Minus/Plus adjust speed, H hides controls, and S opens notes with a
+baseline preview. Start slide 19 at “Detach pages” to watch the title reveal,
+then step into slide 20 to compare the exact block layout. On slide 21, pose
+the final question aloud from speaker notes.
+
+| Slide | Duration at 1× | Checkpoints |
+| --- | ---: | --- |
+| [18 The Growing Ledger](http://127.0.0.1:4173/talk/#/18-growing-ledger) | 10 s | Short list, Growing list, Concern, Overwhelmed |
+| [19 From Pages to Blocks](http://127.0.0.1:4173/talk/#/19-pages-to-blocks) | 17 s | First page, Next page, Four pages, Detach pages, Independent blocks |
+| [20 What If Charlie Changes History?](http://127.0.0.1:4173/talk/#/20-changing-history) | 29 s | Independent blocks, Unlinked edit, Restore, First link, Blockchain, Link mismatch, Repaired link, Next mismatch |
+| [21 Conflicting Histories](http://127.0.0.1:4173/talk/#/21-conflicting-histories) | 17 s | Common history, Conflicting payments, Competing blocks, Disagreement, Fork |
+
+The [21-sheet print view](http://127.0.0.1:4173/talk/?print) adds evidence sheets
+for the growing ledger, pages and blocks, link repair, and the unresolved fork.
+Firefox captures are under `test-results/visual-review/m5e-production/<width>x<height>/`.
+Owner motion and technical review are pending.
 
 ## Desktop Firefox verification
 
