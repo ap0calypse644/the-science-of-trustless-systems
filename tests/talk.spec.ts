@@ -9,6 +9,7 @@ const ids = [
   '12-who-controls-the-ledger', '13-double-spend-problem',
   '14-data-fingerprint', '15-one-bit', '16-proof-of-work', '17-easy-verification',
   '18-growing-ledger', '19-pages-to-blocks', '20-changing-history', '21-conflicting-histories',
+  '22-expensive-history', '23-which-history', '24-mining-work', '25-rewarding-miner', '26-bitcoin-reveal',
 ];
 
 async function openTalk(page: Page): Promise<void> {
@@ -127,14 +128,19 @@ for (const size of [{ width: 1920, height: 1080 }, { width: 1280, height: 720 },
       await expect(current).toHaveAttribute('id', id);
       await page.evaluate(() => document.fonts.ready);
       const sheet = (await current.locator('.talk-sheet:visible').boundingBox())!;
-      const heading = (await current.locator('h1:visible').boundingBox())!;
+      const title = current.locator('h1:visible');
+      const heading = await title.count() ? await title.boundingBox() : null;
       expect(sheet.x).toBeGreaterThanOrEqual(0);
       expect(sheet.y).toBeGreaterThanOrEqual(0);
       expect(sheet.x + sheet.width).toBeLessThanOrEqual(size.width);
       expect(sheet.y + sheet.height).toBeLessThanOrEqual(size.height);
       expect(sheet.width / sheet.height).toBeCloseTo(16 / 9);
-      expect(heading.x + heading.width).toBeLessThan(sheet.x + sheet.width);
-      expect(heading.y + heading.height).toBeLessThan(sheet.y + sheet.height);
+      if (heading) {
+        expect(heading.x + heading.width).toBeLessThan(sheet.x + sheet.width);
+        expect(heading.y + heading.height).toBeLessThan(sheet.y + sheet.height);
+      } else {
+        expect(ids.slice(-3)).toContain(id);
+      }
       if (browserName === 'firefox' && index < 2) {
         const dir = `test-results/visual-review/m4a-reference-pass/${size.width}x${size.height}`;
         await mkdir(dir, { recursive: true });

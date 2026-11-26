@@ -4,7 +4,7 @@ M0.2 establishes the Reveal.js shell, local build, and shared Firefox and Chromi
 
 ## Presentation policy
 
-Owner decision (25 Nov 2026): the lecture uses static or presenter-paced scripted animated slides only. No live audience/presenter inputs that change the educational model, branching buttons, live cryptographic computations or worker searches are required. Preserve ordinary playback/navigation/seek/reset controls, verbal audience predictions, local offline operation and editable art. Use internally consistent authored examples. Identify simulated outputs in speaker notes and prompt the presenter to disclose them verbally. Keep substantive technical labels and essential toy-model caveats on slides. This supersedes earlier interactive and real-computation requirements. Issue #18 covers the separately reviewed scripted conversion of slide 6 and preserves archived diagnostic and staging routes. M5d is approved and merged in PR #21; #20 closed. M5e production is approved and merged in PR #23; #22 closed. M5f staging only (22–26) is authorized in #24. Later batches require separate authorization.
+Owner decision (25 Nov 2026): the lecture uses static or presenter-paced scripted animated slides only. No live audience/presenter inputs that change the educational model, branching buttons, live cryptographic computations or worker searches are required. Preserve ordinary playback/navigation/seek/reset controls, verbal audience predictions, local offline operation and editable art. Use internally consistent authored examples. Identify simulated outputs in speaker notes and prompt the presenter to disclose them verbally. Keep substantive technical labels and essential toy-model caveats on slides. This supersedes earlier interactive and real-computation requirements. Issue #18 covers the separately reviewed scripted conversion of slide 6 and preserves archived diagnostic and staging routes. M5d is approved and merged in PR #21; #20 closed. M5e production is approved and merged in PR #23; #22 closed. M5f production (22–26) was authorized in draft PR #25 and awaits review. Later batches require separate authorization.
 
 ## Responsibilities
 
@@ -121,7 +121,7 @@ For PDF, propose a print mode driven by reviewed stills or compact sequences fro
 
 Vite builds the independent lecture at `/talk/`. Its ordered registry supplies
 stable IDs, compositions, speaker notes, and optional scene definitions and
-print overrides. The production order is 1–21. M4a
+print overrides. The M5f feature branch registers production slides 1–26. M4a
 retains its static artwork and applicable shortcuts.
 
 The production route and `/engine/` share the presenter lifecycle, controls,
@@ -240,3 +240,29 @@ they derive the growing sheet path, page geometry, moving reference text, link
 and expression states, and converging fork from absolute playback time.
 The shared controller owns pauses, reset and teardown. Four print compositions
 preserve the teaching evidence, and the final fork question is in the notes.
+
+## M5f visual staging
+
+The independent `/talk/m5f/` route uses the static review shell. Its fixture
+associates each authored digest prefix with ordered payments, the predecessor,
+the nonce and any first-row issuance. The view compares the four leading bits
+and the immediate predecessor reference without computing hashes. The race
+starts from a common mined prefix and uses the café ledger's authorized
+conflicting payments. The authored reward candidate extends the honest tip.
+The workstation and seeded box pile are editable SVG. Slides 24 and 25 share
+the same mountain and flag fragment. The approved staging route is preserved. The checkpoint,
+motion and print compositions are in [the review guide](README.md#m5f-visual-staging-review).
+
+### M5f production (draft PR #25)
+
+Five scenes reuse the approved stills for exact checkpoints. Each render
+selects its hold or transition from absolute time. Transition nodes are
+mounted on phase changes and reused between renders. Mining moves a digest
+into the successor before animating that successor’s nonce attempts. The race
+adds individual blocks to the corresponding valid branch. Pile transitions
+preserve the fixed workstation and assign surviving boxes to nearby approved
+destinations. Incoming boxes tumble to their fixed destinations in authored
+order. The final flag pose matches the opening callback on slide 25. The
+subsidy row precedes the attempts, and the independent checks precede the
+coins. The speaker receiver uses the scene baseline. Five print overrides
+present the evidence in the 26-sheet print deck. [Review checkpoints](README.md#m5f-production-motion-review)

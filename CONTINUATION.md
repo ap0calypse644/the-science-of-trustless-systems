@@ -6,7 +6,7 @@ This is the canonical restart point for a new ChatGPT or local Codex session. Re
 
 A live college guest lecture, **The Science of Trustless Systems**, nominally two hours: Trust (roughly 45 min), Privacy (roughly 45 min), AMA/closing (roughly 30 min). The living storyboard is accepted as a starting point, not a contract. Add, remove, split, combine and reorder as the teaching narrative develops. Timing is guidance, not an examination or hard acceptance threshold; prioritize understanding, discussion, humor and accuracy. Do not force every topic into its initial time allocation. Keep slides sparse, projector-readable and visually engaging; put rigor, assumptions, caveats and sources in speaker notes. Pick static or scripted animated treatment according to the teaching idea, not quotas.
 
-Owner decision (25 Nov 2026): the lecture uses static or presenter-paced scripted animated slides only. No live audience/presenter inputs that change the educational model, branching buttons, live cryptographic computations or worker searches are required. Preserve ordinary playback/navigation/seek/reset controls, verbal audience predictions, local offline operation and editable art. Use internally consistent authored examples. Identify simulated outputs in speaker notes and prompt the presenter to disclose them verbally. Keep substantive technical labels and essential toy-model caveats on slides. This supersedes earlier interactive and real-computation requirements. Issue #18 covers the separately reviewed scripted conversion of slide 6 and preserves archived diagnostic and staging routes. M5d is merged; M5e production is approved and merged in PR #23; #22 closed. M5f staging only (22–26) is authorized in #24. Subsequent batches remain separately gated.
+Owner decision (25 Nov 2026): the lecture uses static or presenter-paced scripted animated slides only. No live audience/presenter inputs that change the educational model, branching buttons, live cryptographic computations or worker searches are required. Preserve ordinary playback/navigation/seek/reset controls, verbal audience predictions, local offline operation and editable art. Use internally consistent authored examples. Identify simulated outputs in speaker notes and prompt the presenter to disclose them verbally. Keep substantive technical labels and essential toy-model caveats on slides. This supersedes earlier interactive and real-computation requirements. Issue #18 covers the separately reviewed scripted conversion of slide 6 and preserves archived diagnostic and staging routes. M5d is merged; M5e production is approved and merged in PR #23; #22 closed. M5f production (22–26) was authorized in draft PR #25 and awaits review. Subsequent batches remain separately gated.
 
 Owner approves creative direction, visual results and milestones. ChatGPT is the creative director, architecture/review partner and GitHub issue/PR coordinator. Local Codex implements and tests only explicitly authorized scopes. Use GitHub issues as implementation briefs and PR comments for build/test reports, review findings and corrections: do not require the owner to copy huge prompts, logs, diffs or reports between tools. After Codex posts a report and the owner says done, retrieve the issue/PR and inspect the actual code and results; request corrections in the PR if necessary; merge only after explicit owner review. Keep original issue scope and approval boundaries; do not start future work merely because it is documented. Keep repo documentation up to date so a fresh chat can recover state from GitHub. Warn the owner when chat context appears to be getting long, but do not claim access to an exact chat capacity meter.
 
@@ -196,7 +196,7 @@ Expanded outline previously agreed in principle; exact designs beyond 26 still n
 
 ## Implementation queue (planning only)
 
-See ROADMAP.md for dependencies and shared acceptance. M4 is approved and merged. M5a (#12) is approved and merged in PR #13. M5b (#14) is owner-approved and merged. M5c (#16) is owner-approved and merged in PR #17. M5d (#20) slides 14–17 are approved and merged. M5e (#22) slides 18–21 are approved and merged in PR #23. M5f (#24) 22–26 is authorized for visual staging only. Proposed subsequent batches M5g provisional 27–31, M5h provisional 32–39, M5i integrated Part I review. These labels are proposed issue-sized batches, not yet opened issues or permissions. Review each rendered batch and PR before merging. Preserve existing diagnostics and approved M3 controls.
+See ROADMAP.md for dependencies and shared acceptance. M4 is approved and merged. M5a (#12) is approved and merged in PR #13. M5b (#14) is owner-approved and merged. M5c (#16) is owner-approved and merged in PR #17. M5d (#20) slides 14–17 are approved and merged. M5e (#22) slides 18–21 are approved and merged in PR #23. M5f (#24) production for 22–26 awaits review in draft PR #25. Proposed subsequent batches M5g provisional 27–31, M5h provisional 32–39, M5i integrated Part I review. These labels are proposed issue-sized batches, not yet opened issues or permissions. Review each rendered batch and PR before merging. Preserve existing diagnostics and approved M3 controls.
 
 Each brief must specify scene IDs, visual references, original/local asset plan, initial/hold/final frames, named checkpoints, state/playback/reset behavior, notes/source references, print still, test cases, screenshot paths, and exact permitted files. Include deterministic test coverage, browser compatibility, no external runtime dependencies, playback reset/backwards seek/fast navigation and input focus checks. For illustrative scenes verify fixed example relationships and labels; do not claim simulated digests are real. Test and inspect actual Firefox screenshots, including audience-size readable text. M8 retains manual projector/dual monitor/offline rehearsal.
 
@@ -206,7 +206,7 @@ Issue #18 converts the existing production slide 6 to eight scripted checkpoints
 
 ## Next session
 
-Read this checkpoint and issue #24. Slides 1–26 concept-approved, production 1–21 merged. Resume creative planning at 27 after the current production batch review. Later Part I designs and Parts II/III provisional. No automatic implementation of later batches.
+Read this checkpoint, issue #24 and draft PR #25. Production 1–21 is merged. Review production 22–26 on the M5f feature branch before continuing creative planning at 27. Later Part I designs and Parts II/III provisional. No automatic implementation of later batches.
 
 
 ## Historical handover — M5c complete (25 Nov 2026)
@@ -221,8 +221,28 @@ Read this checkpoint and issue #24. Slides 1–26 concept-approved, production 1
 - Local review: build with `npm run build` and start `npm run preview -- --port 4173 --strictPort`. Open [production slide 9](http://127.0.0.1:4173/talk/#/09-shared-ledger) or [slide 13](http://127.0.0.1:4173/talk/#/13-double-spend-problem). The staging route remains at `/talk/m5c/`. See README for all checkpoint names, durations, and capture locations.
 - Future batches: M5d 14–16, M5e 17–21, M5f 22–25, M5g Part I integration; M6 privacy, M7 AMA/closing, M8 offline delivery/rehearsal. Canonical approved concepts are above. No need to reconstruct chat. Exact remaining context is not visible; restart ChatGPT and Codex independently as needed.
 
-## Active handover - M5e complete, M5f staging authorized (26 November 2026)
+## Historical handover - M5e complete, M5f staging authorized (26 November 2026)
 
 - M5d merged in PR #21 at `a0ded8571995e10a71fc5b072d4d77aa8a66ca91`; #20 closed; 166/166 reported tests. Staging `/talk/m5d/` preserved.
 - M5e revised 22 stills approved at `698348a`; production approved at `d3fac5f55efd4c7fafbcdd2f2f146491073e8d5b`. PR #23 merged at `8602075989cdee0e6562a2b0bc77881c6efda017`; #22 closed. Main production slides 1–21. Codex reported 200/200 Firefox/Chromium regression and desktop Firefox checks; ChatGPT reviewed source, not local renders. No independent workflow runs returned. Projector/dual-monitor rehearsal pending. Preserve `/talk/m5e/` and earlier staging/diagnostic routes. Owner corrections: slide 19 retains The Growing Ledger until final complete blocks, coherent overflow on 18, speech bubbles on 21, no explanatory fork captions; question aloud. Slide 19 starts with filled first-page hold.
 - M5f visual staging only authorized in [issue #24](https://github.com/ap0calypse644/the-science-of-trustless-systems/issues/24): slides 22–26, proposed 32 stills, branch `feature/m5f-bitcoin-reveal`, route `/talk/m5f/`. Read exact brief, preserve 1–21 and previous routes. Production separately gated; no 27+ implementation. Creative planning resumes at 27 after M5f approval. Earlier handovers historical where conflicting.
+
+## M5f staging review
+
+The 32 editable stills for [issue #24](https://github.com/ap0calypse644/the-science-of-trustless-systems/issues/24)
+are in `/talk/m5f/` on `feature/m5f-bitcoin-reveal`. The three confirmation
+holds are interleaved with forward branch growth. The last hold of slide 24
+and the first hold of slide 25 use the same flag and mountain geometry.
+See [the review guide](README.md#m5f-visual-staging-review) for navigation,
+motion and print planning and local Firefox captures. The owner approved
+these stills at `08b2d74` and authorized production in PR #25.
+
+## Active handover — M5f production awaiting review
+
+Draft [PR #25](https://github.com/ap0calypse644/the-science-of-trustless-systems/pull/25)
+on `feature/m5f-bitcoin-reveal` contains presenter-paced production slides
+22–26. The branch includes the owner-approved 32 holds and the static
+`/talk/m5f/` route. The [production review guide](README.md#m5f-production-motion-review)
+lists elapsed times, review URLs, print and capture locations. Main contains
+the approved production slides 1–21. Await owner motion approval and technical
+review. Issue #24 stays open and subsequent batches remain separately gated.
