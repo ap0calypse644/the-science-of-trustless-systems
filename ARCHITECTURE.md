@@ -4,7 +4,7 @@ M0.2 establishes the Reveal.js shell, local build, and shared Firefox and Chromi
 
 ## Presentation policy
 
-Owner decision (25 Nov 2026): the lecture uses static or presenter-paced scripted animated slides only. No live audience/presenter inputs that change the educational model, branching buttons, live cryptographic computations or worker searches are required. Preserve ordinary playback/navigation/seek/reset controls, verbal audience predictions, local offline operation and editable art. Use internally consistent authored examples. Identify simulated outputs in speaker notes and prompt the presenter to disclose them verbally. Keep substantive technical labels and essential toy-model caveats on slides. This supersedes earlier interactive and real-computation requirements. Issue #18 covers the separately reviewed scripted conversion of slide 6 and preserves archived diagnostic and staging routes. M5d is approved and merged in PR #21; #20 closed. M5e staging is approved under #22 and production awaits final review in draft PR #23. Later batches require separate authorization.
+Owner decision (25 Nov 2026): the lecture uses static or presenter-paced scripted animated slides only. No live audience/presenter inputs that change the educational model, branching buttons, live cryptographic computations or worker searches are required. Preserve ordinary playback/navigation/seek/reset controls, verbal audience predictions, local offline operation and editable art. Use internally consistent authored examples. Identify simulated outputs in speaker notes and prompt the presenter to disclose them verbally. Keep substantive technical labels and essential toy-model caveats on slides. This supersedes earlier interactive and real-computation requirements. Issue #18 covers the separately reviewed scripted conversion of slide 6 and preserves archived diagnostic and staging routes. M5d is approved and merged in PR #21; #20 closed. M5e production is approved and merged in PR #23; #22 closed. M5f staging only (22–26) is authorized in #24. Later batches require separate authorization.
 
 ## Responsibilities
 
@@ -121,7 +121,7 @@ For PDF, propose a print mode driven by reviewed stills or compact sequences fro
 
 Vite builds the independent lecture at `/talk/`. Its ordered registry supplies
 stable IDs, compositions, speaker notes, and optional scene definitions and
-print overrides. The production order is 1–17. M4a
+print overrides. The production order is 1–21. M4a
 retains its static artwork and applicable shortcuts.
 
 The production route and `/engine/` share the presenter lifecycle, controls,
@@ -233,7 +233,7 @@ the ordered rows and predecessor reference. The fork uses the existing pure
 café ledger rules and the same two signed transfers. The staging deck never
 computes a digest.
 
-### M5e production on the review branch
+### M5e production (merged PR #23)
 
 The production scenes use the same staged SVG at the 22 holds. Between stops
 they derive the growing sheet path, page geometry, moving reference text, link
