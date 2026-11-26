@@ -234,11 +234,11 @@ test('production works offline with baseline notes, speed, checkpoint pause and 
   expect(failures).toEqual([]);
 });
 
-test('all 26 print sheets render and the five M5f compositions preserve the teaching evidence', async ({ page, browserName }) => {
+test('all 29 print sheets render and the five M5f compositions preserve the teaching evidence', async ({ page, browserName }) => {
   await page.setViewportSize({ width: 1920, height: 1080 });
   await page.goto('/talk/?print');
   await page.emulateMedia({ media: 'print' });
-  await expect(page.locator('.print-deck .talk-sheet')).toHaveCount(26);
+  await expect(page.locator('.print-deck .talk-sheet')).toHaveCount(29);
   const evidence = ['Edited payment lacks authorization', 'cumulative work', 'Why Would Anybody',
     'Independently validated', 'You’ve invented Bitcoin'];
   for (const [index, id] of ids.entries()) {

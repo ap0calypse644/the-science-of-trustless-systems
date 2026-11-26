@@ -3,6 +3,7 @@ import { m5cSlides } from './m5c/production';
 import { m5dSlides } from './m5d/production';
 import { m5eSlides } from './m5e/production';
 import { m5fSlides } from './m5f/production';
+import { m5gSlides } from './m5g/production';
 import { byzantineSlide } from './m5b/production';
 import { m5aSlides } from './m5a/production';
 import { baselineComposition, comparisonComposition, twoGenerals } from './two-generals/scene';
@@ -49,4 +50,5 @@ Source: Joseph Y. Halpern and Yoram Moses, Knowledge and Common Knowledge in a D
   ...m5dSlides,
   ...m5eSlides,
   ...m5fSlides,
+  ...m5gSlides,
 ];
