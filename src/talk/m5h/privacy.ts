@@ -4,7 +4,7 @@ import { notebook } from '../m5c/notebook';
 import { card, still, text } from './art';
 
 const title = "But There's a Catch...";
-const notes = 'Tell the audience the transcript and examples are authored. The full transcript is a choice in this fictional exchange, not a requirement for verifying graduation. The café reuses the two authored IOUs from slide 9; they are amounts owed, not balances. Charlie’s line jokes about the visible coffee record without assigning a new amount. The same two records are visible to all three in this transparent toy ledger. Other ledgers can disclose different information. The glass house is a metaphor for oversharing. It does not suggest these records are actually on-chain. Ask aloud: Can we verify information without revealing it? W3C privacy discussion: https://www.w3.org/TR/vc-data-model-2.0/#privacy-considerations.';
+const notes = 'Tell the audience the transcript and examples are authored. The full transcript is a choice in this fictional exchange, not a requirement for verifying graduation. The café shows two fictional spending records. They are separate from slide 9’s IOUs and do not represent balances. Everyone can read both records in this transparent toy ledger. Charlie highlights Alice’s coffee spending in his own copy. Other ledgers can disclose different information. The glass house is a metaphor for oversharing. It does not suggest these records are actually on-chain. Ask aloud: Can we verify information without revealing it? W3C privacy discussion: https://www.w3.org/TR/vc-data-model-2.0/#privacy-considerations.';
 
 const rows = [
   ['Name', 'Alice'], ['Degree', 'B.Tech'], ['Graduated', 'Yes'], ['Algorithms', 'A'],
@@ -47,7 +47,7 @@ function interview(beat: number): string {
   </g>`;
 }
 
-const ious = [{ text: 'Charlie owes Alice 4' }, { text: 'Bob owes Charlie 3' }];
+const spending = [{ text: 'Bob spent $2 on donuts' }, { text: 'Alice spent $345 on coffee' }];
 
 function cafe(): string {
   return `<g data-cafe-callback>${cafeRoom}
@@ -55,7 +55,14 @@ function cafe(): string {
     ${character('bob', { x: 802, y: 419, scale: 1.22, pose: 'hold', expression: 'stand' })}
     ${character('charlie', { x: 1291, y: 419, scale: 1.22, pose: 'point', expression: 'excited', facing: 'left' })}
     ${cafeTable}
-    ${[305, 800, 1295].map((x) => `<g data-cafe-copy>${notebook(x, 697, .68, 'Café IOUs', ious, 'Amounts owed · units')}</g>`).join('')}
+    ${(['alice', 'bob', 'charlie'] as const).map((owner, index) => {
+      const x = 305 + index * 495;
+      return `<g data-cafe-copy="${owner}">
+        ${notebook(x, 697, .68, 'Café ledger', spending)}
+        ${owner === 'charlie' ? `<rect class="spending-highlight" data-highlight-entry="alice-coffee"
+          x="${x - 166}" y="703" width="332" height="33" rx="5"/>` : ''}
+      </g>`;
+    }).join('')}
     ${speech(1243, 297, 468, 'You spent HOW MUCH on coffee?!')}
   </g>`;
 }
@@ -84,6 +91,6 @@ export const privacyStills = [
   still('32-transcript-handoff', title, 'Alice gladly hands Bob her full transcript.', interview(1), notes),
   still('32-oversharing', title, 'The transcript reveals a degree and unnecessary details. Bob notices two failed mathematics attempts.', interview(2), notes),
   still('32-question', title, 'Alice asks whether she can prove she graduated without revealing the rest.', interview(3), notes),
-  still('32-transparent-ledger', title, 'In the original café, Alice realizes Bob and Charlie can inspect the same IOUs.', cafe(), notes),
+  still('32-transparent-ledger', title, 'In the original café, Alice realizes Bob and Charlie can inspect the same spending records.', cafe(), notes),
   still('32-glass-house', title, 'Alice stands inside a glass house while Bob and Charlie look in from outside.', glassHouse(), notes),
 ];

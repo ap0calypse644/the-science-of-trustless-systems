@@ -45,9 +45,9 @@ The sequence assumes a college audience with mixed familiarity with distributed 
 | 27 | Do We Really Need to Do All This Work? | Motivate alternatives to PoW | Server racks, fictional $ 4972 bill, discarded flag and licensed photo-head RAM cameo | Ask whether costly computation is the only option | Static | TBD |
 | 28 | What If We Put Something at Stake? | Bonded stake | Coins 35/35/30, individual lockboxes, voting weights, PoS reveal | Explain stake as resource at risk | Animated | TBD |
 | 29 | Let's Vote on It | Stake-weighted BFT | Triangle, propose, prevote, precommit, commit; Charlie silent | Independent observation of 70% >2/3; one successful round | Animated | TBD |
-| 30 | Blockchain ≠ Cryptocurrency | Infrastructure vs application | Iceberg → Internet/email analogy → replicated non-payment records | Convey distinction verbally, no slogan | Animated | TBD |
+| 30 | Blockchain ≠ Cryptocurrency | Infrastructure vs application | Iceberg → parallel Internet and blockchain examples | Convey distinction verbally, no slogan | Animated | TBD |
 | 31 | What Else Could We Agree On? | Non-financial applications and engineering judgment | Four examples → graduation credential → when blockchain is useful | Explain conditional value of shared verifiable state | Animated | TBD |
-| 32 | But There's a Catch... | Bridge to privacy | Interview oversharing → café transparent ledger → glass house | Ask verbally whether verification can avoid disclosure | Animated | TBD |
+| 32 | But There's a Catch... | Bridge to privacy | Interview oversharing → matching café spending records with Alice’s entry highlighted in Charlie’s copy → glass house | Ask verbally whether verification can avoid disclosure | Animated | TBD |
 
 Individual approved checkpoints, staging and acceptance criteria for slides 11–26 are in [CONTINUATION.md](CONTINUATION.md#approved-slide-decisions-1126-current-numbering). Timing remains flexible; fit and rehearse rather than enforcing a slide quota.
 

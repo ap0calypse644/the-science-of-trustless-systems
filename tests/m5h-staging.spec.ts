@@ -3,16 +3,16 @@ import { expect, test } from '@playwright/test';
 const route = '/talk/m5h/';
 const folder = 'test-results/visual-review/m5h-staging';
 const ids = [
-  '30-iceberg-tip', '30-iceberg-reveal', '30-internet', '30-parallel', '30-shared-records',
+  '30-iceberg-tip', '30-iceberg-reveal', '30-internet', '30-parallel',
   '31-credentials', '31-provenance', '31-timestamping', '31-infrastructure', '31-graduation',
   '31-verification', '31-question', '31-answer', '32-interview', '32-transcript-handoff',
   '32-oversharing', '32-question', '32-transparent-ledger', '32-glass-house',
 ];
 const representative = ['30-iceberg-reveal', '30-parallel', '31-infrastructure', '31-verification',
-  '31-answer', '32-oversharing', '32-glass-house'];
+  '31-answer', '32-oversharing', '32-transparent-ledger', '32-glass-house'];
 
 for (const [width, height] of [[1920, 1080], [1280, 720], [1024, 768]]) {
-  test(`all 19 holds navigate offline and fit at ${width} × ${height}`, async ({ page, context, baseURL, browserName }) => {
+  test(`all 18 holds navigate offline and fit at ${width} × ${height}`, async ({ page, context, baseURL, browserName }) => {
     const origin = new URL(baseURL!).origin;
     const failures: string[] = [];
     await context.route('**/*', (route) => {
@@ -64,12 +64,7 @@ for (const [width, height] of [[1920, 1080], [1280, 720], [1024, 768]]) {
       }
       if (id === '30-iceberg-reveal') await expect(sheet.locator('.ice-label')).toHaveCount(4);
       if (id === '30-parallel') await expect(sheet.locator('[data-application]')).toHaveCount(8);
-      if (id === '30-shared-records') {
-        await expect(sheet.locator('[data-replica]')).toHaveCount(3);
-        await expect(sheet.locator('.entry')).toHaveText(
-          Array(3).fill(['Certificate C-17', 'Parcel P-42 · Joint ownership', 'Handoff H-08 · Received']).flat());
-      }
-      if (index >= 5 && index <= 8) await expect(sheet.locator('[data-application-panel]')).toHaveCount(index - 4);
+      if (index >= 4 && index <= 7) await expect(sheet.locator('[data-application-panel]')).toHaveCount(index - 3);
       if (id === '31-verification') {
         await expect(sheet).toContainText('Job application abroad');
         await expect(sheet).toContainText('Signature valid');
@@ -87,8 +82,19 @@ for (const [width, height] of [[1920, 1080], [1280, 720], [1024, 768]]) {
       }
       if (id === '32-transparent-ledger') {
         await expect(sheet.locator('[data-cafe-callback] [data-set="cafe"]')).toHaveCount(1);
-        await expect(sheet.locator('[data-cafe-copy] .entry')).toHaveText(
-          Array(3).fill(['Charlie owes Alice 4', 'Bob owes Charlie 3']).flat());
+        for (const owner of ['alice', 'bob', 'charlie']) {
+          const copy = sheet.locator(`[data-cafe-copy="${owner}"]`);
+          await expect(copy.locator('.entry')).toHaveText(['Bob spent $2 on donuts', 'Alice spent $345 on coffee']);
+          await expect(copy.locator('[data-highlight-entry]')).toHaveCount(owner === 'charlie' ? 1 : 0);
+        }
+        const selected = sheet.locator('[data-cafe-copy="charlie"]');
+        const highlight = (await selected.locator('[data-highlight-entry="alice-coffee"]').boundingBox())!;
+        const rows = selected.locator('.entry');
+        const bob = (await rows.first().boundingBox())!;
+        const alice = (await rows.last().boundingBox())!;
+        expect(highlight.y).toBeGreaterThan(bob.y + bob.height);
+        expect(highlight.y).toBeLessThan(alice.y + alice.height / 2);
+        expect(highlight.y + highlight.height).toBeGreaterThan(alice.y + alice.height / 2);
       }
       if (id === '32-glass-house') {
         await expect(sheet.locator('[data-glass-house]')).toHaveCount(1);

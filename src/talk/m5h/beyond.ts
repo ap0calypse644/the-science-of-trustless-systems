@@ -1,11 +1,10 @@
 import { character } from '../../illustration/character';
 import { speech } from '../m5c/art';
-import { notebook } from '../m5c/notebook';
 import bitcoinLogo from '../m5f/bitcoin.svg?url';
 import { arrow, card, still, text } from './art';
 
 const title = 'Blockchain ≠ Cryptocurrency';
-const notes = 'Disclose that the scenarios and records are authored examples. The iceberg shows conceptual breadth. Its areas do not represent relative adoption. The analogy separates infrastructure from applications. These applications can also use other systems. Agreement on recorded certificates, handoffs and ownership claims does not establish that an external claim is true. Ask aloud what all three ledgers now have in common.';
+const notes = 'Disclose that the scenarios and records are authored examples. The iceberg shows conceptual breadth. Its areas do not represent relative adoption. The analogy separates infrastructure from applications. These applications can also use other systems. Ask aloud how the two infrastructure rows are alike.';
 
 function boat(x: number, y: number, scale: number): string {
   return `<g transform="translate(${x} ${y}) scale(${scale})" data-boat>
@@ -55,23 +54,9 @@ function applications(parallel: boolean): string {
     }).join('');
 }
 
-function records(): string {
-  const entries = [{ text: 'Certificate C-17' }, { text: 'Parcel P-42 · Joint ownership' }, { text: 'Handoff H-08 · Received' }];
-  return (['alice', 'bob', 'charlie'] as const).map((person, i) => {
-    const x = 307 + i * 493;
-    const name = person[0].toUpperCase() + person.slice(1);
-    return `<g data-replica="${person}">
-      ${text(x, 228, name, 'diagram-heading')}
-      ${character(person, { x, y: 322, scale: 1.32, pose: 'hold', expression: 'stand' })}
-      ${notebook(x, 630, .71, 'Ledger', entries)}
-    </g>`;
-  }).join('');
-}
-
 export const beyondStills = [
   still('30-iceberg-tip', title, 'Charlie spots Bitcoin from his boat.', iceberg(false), notes),
   still('30-iceberg-reveal', title, 'Below the waterline are credentials, provenance, timestamping and coordination.', iceberg(true), notes),
   still('30-internet', title, 'The Internet supports email, games, websites and video calls.', applications(false), notes),
   still('30-parallel', title, 'Compare infrastructure and applications across the two rows.', applications(true), notes),
-  still('30-shared-records', title, 'Alice, Bob and Charlie each open their own ledger to matching records.', records(), notes),
 ];

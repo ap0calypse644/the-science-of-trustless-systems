@@ -45,3 +45,4 @@
 .beyond-sheet .art .glass-seam { stroke: #7ba6c0; stroke-width: 2.4px; }
 .beyond-sheet .art .glass-label { fill: #284f68; font-size: 32px; }
 .beyond-sheet .art .house-ground { stroke: #c0d2df; stroke-width: 3px; }
+.beyond-sheet .art .spending-highlight { fill: #ffe4a1; stroke: none; mix-blend-mode: multiply; }
