@@ -13,9 +13,9 @@ function still(id: string, title: string, description: string, art: string, styl
 }
 
 const bill = still('27-electricity-bill', billTitle,
-  'In the café, Alice holds an oversized electricity bill while Bob checks the numbers and Charlie mines another block.',
+  'In front of stacked server racks, Alice holds an oversized electricity bill while Bob checks the numbers and Charlie mines another block.',
   electricity(), 'electricity-sheet',
-  'Tell the audience the 99,999 units are fictional and chosen for the joke. The Sam Altman cameo and its “More RAM?” line are fictional satire. Ask whether making participants expend computation is the only way to make attacks costly.');
+  'Tell the audience the $ 4972 bill is fictional and chosen for the joke. The Sam Altman cameo and its “More RAM?” line are fictional satire. Photo head adapted from “Sam Altman” by Village Global, CC BY 2.0 (https://www.flickr.com/photos/villageglobal/52530764101/). Ask whether making participants expend computation is the only way to make attacks costly.');
 
 const stakeNotes = `Disclose the authored amounts. These separate boxes are a metaphor for protocol bonding. Bonded funds need not be spent or handed to a custodian. In this example voting power is proportional to bonded stake. Proposer selection, vote weighting and the rules by which nodes agree are separate decisions. Some protocols put bonded funds at risk for provable faults. Leave that as a verbal aside. See CometBFT's description of proposer selection and voting power (${consensus}).`;
 

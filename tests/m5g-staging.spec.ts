@@ -74,9 +74,11 @@ for (const [width, height] of [[1920, 1080], [1280, 720], [1024, 768]]) {
       expect(bounds.art[3], id).toBeLessThan(885);
       expect(bounds.background).toBe('rgb(255, 255, 255)');
       if (id.startsWith('27')) {
-        await expect(sheet.locator('[data-electricity-bill]')).toContainText('99,999');
+        await expect(sheet.locator('[data-electricity-bill]')).toContainText('$ 4972');
         await expect(sheet.locator('[data-satire]')).toContainText('Fictional cameo');
-        await expect(sheet.locator('image')).toHaveCount(0);
+        await expect(sheet.locator('[data-server-racks] .rack-face')).toHaveCount(6);
+        await expect(sheet.locator('[data-set="cafe"]')).toHaveCount(0);
+        await expect(sheet.locator('[data-cameo-photo]')).toHaveCount(1);
       }
       if (id.startsWith('28')) {
         const stake = sheet.locator('[data-stake]');

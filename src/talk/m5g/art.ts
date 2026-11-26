@@ -1,9 +1,10 @@
 import { character } from '../../illustration/character';
 import { svgText } from '../../illustration/svg';
-import { cafeRoom, cafeTable, signature, speech } from '../m5c/art';
+import { cafeTable, signature, speech } from '../m5c/art';
 import { box, goldUnits } from '../m5f/art';
 import { candidate, matchingPower, observations, proposal, totalPower, validators, type Phase, type Validator,
   type ValidatorId, type Vote } from './fixtures';
+import portrait from './sam-altman-village-global.jpg?url';
 import './staging.css';
 
 export function sheet(title: string, description: string, art: string, kind: string): string {
@@ -21,10 +22,11 @@ function cameo(): string {
   return `<g data-satire="sam-altman" transform="translate(1442 346) scale(.77)">
     <g class="person">
       <path d="M-3 41q-6 42 7 79m-7-56-29 24m29-23 28 21m-22 34-19 34m19-34 21 33"/>
-      <path class="head" d="M-31-13q3-30 33-30 29 2 34 28 3 29-13 49-18 19-39 5-18-13-15-52Z"/>
-      <path class="cameo-hair" d="M-31-9q-4-27 13-35 19-10 37-4l18 12-7 5 6 13Q18-15 4-32q-12 19-35 23Z"/>
-      <path d="m-17 4 7-2m20 0 9 1m-6 15q-10 9-18 5"/>
-      <circle class="pupil" cx="-12" cy="12" r="1.6"/><circle class="pupil" cx="15" cy="10" r="1.6"/>
+      <clipPath id="m5g-cameo-head">
+        <path d="M-32-9Q-34-45-3-48Q26-50 34-21L32-7l-6 3-4 24Q9 43-8 39q-11-5-18-26l-3-15Z"/>
+      </clipPath>
+      <image data-cameo-photo href="${portrait}" x="-110" y="-118" width="197" height="296"
+        clip-path="url(#m5g-cameo-head)" aria-label="Sam Altman, photographed by Village Global"/>
     </g>
     ${speech(-42, -97, 205, 'More RAM?')}
     ${label(0, 184, 'Sam Altman', 'cameo-caption')}
@@ -32,8 +34,23 @@ function cameo(): string {
   </g>`;
 }
 
+function serverRacks(): string {
+  const racks = [[102, 179], [323, 156], [598, 185], [818, 163], [1084, 187], [1305, 163]];
+  return `<g data-server-racks opacity=".53">${racks.map(([x, y]) => `
+    <g transform="translate(${x} ${y})">
+      <path class="rack-side" d="M0 19L26 0H205V425l-26 19H0Z"/>
+      <rect class="rack-face" y="19" width="179" height="425" rx="5"/>
+      ${Array.from({ length: 8 }, (_, index) => `<g transform="translate(11 ${31 + index * 50})">
+        <rect class="rack-unit" width="157" height="42" rx="4"/>
+        <path class="rack-vent" d="M15 13h79m-79 7h79m-79 7h79"/>
+        <circle class="rack-light" cx="121" cy="20" r="3.3"/>
+        <circle class="rack-light standby" cx="135" cy="20" r="3.3"/>
+      </g>`).join('')}
+    </g>`).join('')}</g>`;
+}
+
 export function electricity(): string {
-  return `<g opacity=".50" transform="translate(30 43) scale(.93)">${cafeRoom}</g>
+  return `${serverRacks()}
     ${cameo()}
     ${character('alice', { x: 304, y: 482, pose: 'hold', expression: 'frustrated', scale: 1.54 })}
     ${character('bob', { x: 780, y: 468, pose: 'hold', expression: 'confused', scale: 1.38 })}
@@ -43,8 +60,8 @@ export function electricity(): string {
       <path class="bill" d="M-114-137H115V132l-16-8-14 8-16-8-14 8-17-8-14 8-17-8-16 8-13-8-15 8-16-8-15 8-16-8-15 8-15-8-15 8Z"/>
       ${label(0, -87, 'Electricity bill', 'bill-title')}
       <path class="bill-rule" d="M-87-62H87M-64 61H64M-64 78H41"/>
-      ${label(0, 12, '99,999', 'bill-total')}
-      ${label(0, 43, 'units due', 'bill-units')}
+      ${label(0, 12, '$ 4972', 'bill-total')}
+      ${label(0, 43, 'due', 'bill-units')}
     </g>
     <path class="actor-line" d="M318 557q30 13 63-31m-70 27q10 35 67 22"/>
     <path data-prop="calculator" class="calculator" d="m713 600 106-6 21 38-111 8Zm21 5 69-4 6 8-72 5Zm6 16 12-1m12-1 12-1m12-1 12-1"/>
