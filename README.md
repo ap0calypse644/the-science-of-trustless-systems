@@ -12,11 +12,11 @@ The current planning baseline is 55 slides if later scope remains unchanged: 32 
 
 ## Presentation policy
 
-Owner decision (25 Nov 2026): the lecture uses static or presenter-paced scripted animated slides only. No live audience/presenter inputs that change the educational model, branching buttons, live cryptographic computations or worker searches are required. Preserve ordinary playback/navigation/seek/reset controls, verbal audience predictions, local offline operation and editable art. Use internally consistent authored examples. Identify simulated outputs in speaker notes and prompt the presenter to disclose them verbally. Keep substantive technical labels and essential toy-model caveats on slides. This supersedes earlier interactive and real-computation requirements. Issue #18 covers the separately reviewed scripted conversion of slide 6 and preserves archived diagnostic and staging routes. M5d is approved and merged in PR #21; #20 closed. M5e production is approved and merged in PR #23; #22 closed. M5f production (22–26) is owner-approved and merged in PR #25; #24 closed. Part I creative planning is complete (slides 1–32); production 1–29 is owner-approved and merged. M5g merged in PR #27 at `899e3529f4b80b33bbc0d4bceb5d6e258311079d`; #26 closed. M5h (30–32) visual staging only authorized in issue #28; production and later milestones remain separately gated. Later batches require separate authorization.
+Owner decision (25 Nov 2026): the lecture uses static or presenter-paced scripted animated slides only. No live audience/presenter inputs that change the educational model, branching buttons, live cryptographic computations or worker searches are required. Preserve ordinary playback/navigation/seek/reset controls, verbal audience predictions, local offline operation and editable art. Use internally consistent authored examples. Identify simulated outputs in speaker notes and prompt the presenter to disclose them verbally. Keep substantive technical labels and essential toy-model caveats on slides. This supersedes earlier interactive and real-computation requirements. Issue #18 covers the separately reviewed scripted conversion of slide 6 and preserves archived diagnostic and staging routes. M5d is approved and merged in PR #21; #20 closed. M5e production is approved and merged in PR #23; #22 closed. M5f production (22–26) is owner-approved and merged in PR #25; #24 closed. Part I creative planning is complete (slides 1–32); production 1–29 is owner-approved and merged. M5g merged in PR #27 at `899e3529f4b80b33bbc0d4bceb5d6e258311079d`; #26 closed. M5h staging (30–32) is owner-approved at `0c70d1d`. Production awaits review in draft PR #29. M5i and Part II require separate authorization. Later batches require separate authorization.
 
 ## Development status
 
-M0 is approved. The owner approved D — Expressive Minimalism on pure white. M1 merged in PR #3. The M2 illustration library merged in PR #5. The M3 playback engine and diagnostic deck merged in PR #7 after owner review. The owner approved M4a and PR #9 is merged. M4b is owner-approved and merged in PR #11, completing M4. The owner approved M5a and PR #13 is merged. The owner approved M5b and PR #15 is merged. The owner approved M5c staging and production, and PR #17 is merged. M5d staging and production approved and merged in PR #21. Main contains production slides 1–29. M5e production approved and merged in PR #23; M5f production (22–26) is owner-approved and merged in PR #25; #24 closed. Part I creative planning is complete (slides 1–32); production 1–29 is owner-approved and merged. M5g merged in PR #27 at `899e3529f4b80b33bbc0d4bceb5d6e258311079d`; #26 closed. M5h (30–32) visual staging only authorized in issue #28; production and later milestones remain separately gated. Slides 1–32 creative directions approved; Parts II/III pending individual review. The other treatments remain archived for comparison. The project preserves the three-slide engineering diagnostic deck. The framework uses Reveal.js, TypeScript, Vite, Playwright, and npm. M2 uses deterministic authored SVG paths. M3 uses a local GSAP clock for presenter-paced diagnostics.
+M0 is approved. The owner approved D — Expressive Minimalism on pure white. M1 merged in PR #3. The M2 illustration library merged in PR #5. The M3 playback engine and diagnostic deck merged in PR #7 after owner review. The owner approved M4a and PR #9 is merged. M4b is owner-approved and merged in PR #11, completing M4. The owner approved M5a and PR #13 is merged. The owner approved M5b and PR #15 is merged. The owner approved M5c staging and production, and PR #17 is merged. M5d staging and production approved and merged in PR #21. Main contains production slides 1–29. M5e production approved and merged in PR #23; M5f production (22–26) is owner-approved and merged in PR #25; #24 closed. Part I creative planning is complete (slides 1–32); production 1–29 is owner-approved and merged. M5g merged in PR #27 at `899e3529f4b80b33bbc0d4bceb5d6e258311079d`; #26 closed. M5h staging (30–32) is owner-approved at `0c70d1d`. Production awaits review in draft PR #29. M5i and Part II require separate authorization. Slides 1–32 creative directions approved; Parts II/III pending individual review. The other treatments remain archived for comparison. The project preserves the three-slide engineering diagnostic deck. The framework uses Reveal.js, TypeScript, Vite, Playwright, and npm. M2 uses deterministic authored SVG paths. M3 uses a local GSAP clock for presenter-paced diagnostics.
 
 The target is a 16:9 deck with responsive scaling, classroom-projector readability, independent slide and animation controls, and offline operation using bundled assets. A static PDF fallback is an M8 deliverable.
 
@@ -353,8 +353,8 @@ Space plays to the next hold, J/K step between holds and R resets.
 | [28 Proof of Stake](http://127.0.0.1:4173/talk/#/28-proof-of-stake) | 0 Coins · 4 Bonded · 6 Voting power · 8 Proof of Stake |
 | [29 Stake-weighted voting](http://127.0.0.1:4173/talk/#/29-stake-weighted-voting) | 0 Propose · 5 Prevote · 10.5 Precommit · 15 Commit |
 
-The [29-sheet print deck](http://127.0.0.1:4173/talk/?print) uses the static
-bill, the stake reveal and the commit view. Firefox production captures are
+The M5g print compositions use the static bill, the stake reveal and the
+commit view. Firefox production captures are
 under `test-results/visual-review/m5g-production/<width>x<height>/`.
 
 ## M5h visual staging review
@@ -368,4 +368,21 @@ Run `npm test -- tests/m5h-staging.spec.ts` for the scoped browser checks.
 Firefox captures are under
 `test-results/visual-review/m5h-staging/<width>x<height>/<still-id>.png`.
 All 18 are captured at 1920×1080, with representative views at 1280×720 and
-1024×768. The production route and its print view still contain 29 slides.
+1024×768. The M5h branch has 32 production slides and print sheets.
+
+### M5h production review
+
+The owner approved all 18 holds at `0c70d1d`. [Draft PR #29](https://github.com/ap0calypse644/the-science-of-trustless-systems/pull/29)
+contains production slides 30–32 for visual and motion review. Run the local
+preview on port 4173. Space plays to the next hold, J/K step between holds,
+and R resets. The speaker preview stays on the opening composition.
+
+| Slide | Checkpoints at elapsed seconds |
+| --- | --- |
+| [30 Blockchain ≠ Cryptocurrency](http://127.0.0.1:4173/talk/#/30-blockchain-beyond-currency) | 0 Iceberg tip · 4 Iceberg reveal · 7.5 Internet analogy · 11 Parallel comparison |
+| [31 What Else Could We Agree On?](http://127.0.0.1:4173/talk/#/31-agree-on) | 0 Credentials · 2 Provenance · 4 Timestamping · 6 Shared infrastructure · 10 Graduation · 14 Employer verification · 17.5 Design question · 20.5 Decision |
+| [32 But There's a Catch...](http://127.0.0.1:4173/talk/#/32-privacy-bridge) | 0 Interview · 3.5 Transcript handoff · 6.5 Oversharing · 9 Alice’s question · 13 Transparent café ledger · 17.5 Glass house |
+
+The [32-sheet print deck](http://127.0.0.1:4173/talk/?print) uses the parallel
+comparison, conditional decision and glass house. Firefox production captures
+are under `test-results/visual-review/m5h-production/<width>x<height>/`.

@@ -115,13 +115,13 @@ for (const [width, height] of [[1920, 1080], [1280, 720], [1024, 768]]) {
   });
 }
 
-test('production and print remain 29 slides and prior staging still loads', async ({ page }) => {
+test('production and print contain 32 slides and prior staging still loads', async ({ page }) => {
   await page.goto('/talk/?print');
-  await expect(page.locator('.print-deck .talk-sheet')).toHaveCount(29);
-  await expect(page.locator('.print-deck section').last()).toHaveAttribute('id', '29-stake-weighted-voting');
+  await expect(page.locator('.print-deck .talk-sheet')).toHaveCount(32);
+  await expect(page.locator('.print-deck section').last()).toHaveAttribute('id', '32-privacy-bridge');
   await page.goto('/talk/#/29-stake-weighted-voting');
   await expect(page.locator('section.present')).toHaveAttribute('id', '29-stake-weighted-voting');
-  await expect(page.locator('.slides > section')).toHaveCount(29);
+  await expect(page.locator('.slides > section')).toHaveCount(32);
   await page.goto('/talk/m5g/#/29-commit');
   await expect(page.locator('section.present')).toHaveAttribute('id', '29-commit');
 });
