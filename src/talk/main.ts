@@ -16,7 +16,8 @@ const staging = root.hasAttribute('data-staging');
 const print = !staging && params.has('print');
 const stage = root.dataset.staging;
 const m5a = stage === 'm5a' ? await import('./m5a/stills') : undefined;
-const review = stage === 'm5g' ? await import('./m5g/stills')
+const review = stage === 'm5h' ? await import('./m5h/stills')
+  : stage === 'm5g' ? await import('./m5g/stills')
   : stage === 'm5f' ? await import('./m5f/stills')
   : stage === 'm5e' ? await import('./m5e/stills')
   : stage === 'm5d' ? await import('./m5d/stills')

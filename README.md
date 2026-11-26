@@ -356,3 +356,16 @@ Space plays to the next hold, J/K step between holds and R resets.
 The [29-sheet print deck](http://127.0.0.1:4173/talk/?print) uses the static
 bill, the stake reveal and the commit view. Firefox production captures are
 under `test-results/visual-review/m5g-production/<width>x<height>/`.
+
+## M5h visual staging review
+
+Build and run `npm run preview -- --port 4173 --strictPort`, then open
+[the 19 M5h stills](http://127.0.0.1:4173/talk/m5h/) in desktop Firefox.
+Use Left and Right to navigate. The [still index](src/talk/m5h/REVIEW.md)
+includes direct URLs, planned movement and pauses, print candidates and sources.
+
+Run `npm test -- tests/m5h-staging.spec.ts` for the scoped browser checks.
+Firefox captures are under
+`test-results/visual-review/m5h-staging/<width>x<height>/<still-id>.png`.
+All 19 are captured at 1920×1080, with representative views at 1280×720 and
+1024×768. The production route and its print view still contain 29 slides.
