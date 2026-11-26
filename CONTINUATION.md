@@ -226,3 +226,13 @@ Read this checkpoint and issue #24. Slides 1–26 concept-approved, production 1
 - M5d merged in PR #21 at `a0ded8571995e10a71fc5b072d4d77aa8a66ca91`; #20 closed; 166/166 reported tests. Staging `/talk/m5d/` preserved.
 - M5e revised 22 stills approved at `698348a`; production approved at `d3fac5f55efd4c7fafbcdd2f2f146491073e8d5b`. PR #23 merged at `8602075989cdee0e6562a2b0bc77881c6efda017`; #22 closed. Main production slides 1–21. Codex reported 200/200 Firefox/Chromium regression and desktop Firefox checks; ChatGPT reviewed source, not local renders. No independent workflow runs returned. Projector/dual-monitor rehearsal pending. Preserve `/talk/m5e/` and earlier staging/diagnostic routes. Owner corrections: slide 19 retains The Growing Ledger until final complete blocks, coherent overflow on 18, speech bubbles on 21, no explanatory fork captions; question aloud. Slide 19 starts with filled first-page hold.
 - M5f visual staging only authorized in [issue #24](https://github.com/ap0calypse644/the-science-of-trustless-systems/issues/24): slides 22–26, proposed 32 stills, branch `feature/m5f-bitcoin-reveal`, route `/talk/m5f/`. Read exact brief, preserve 1–21 and previous routes. Production separately gated; no 27+ implementation. Creative planning resumes at 27 after M5f approval. Earlier handovers historical where conflicting.
+
+## M5f staging review
+
+The 32 editable stills for [issue #24](https://github.com/ap0calypse644/the-science-of-trustless-systems/issues/24)
+are in `/talk/m5f/` on `feature/m5f-bitcoin-reveal`. The three confirmation
+holds are interleaved with forward branch growth. The last hold of slide 24
+and the first hold of slide 25 use the same flag and mountain geometry.
+See [the review guide](README.md#m5f-visual-staging-review) for navigation,
+motion and print proposals and local Firefox captures. Await owner visual
+approval and technical review before production work.

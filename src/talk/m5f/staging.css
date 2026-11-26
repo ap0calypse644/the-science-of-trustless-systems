@@ -1,0 +1,39 @@
+.talk-sheet.mining-sheet h1 {
+  top: 43px;
+  left: 50%;
+  width: max-content;
+  transform: translateX(-50%);
+  font: 400 83px/1 Kalam, var(--support);
+}
+
+.history-sheet.mining-sheet .art {
+  --stroke: 3.6px;
+  font-family: var(--font);
+}
+
+.mining-sheet .art .code { font-size: 23px; }
+.mining-sheet .art .tx { font-size: 25px; }
+.mining-sheet .art .body { font-size: 32px; }
+.mining-sheet .art .rule-label { font-size: 39px; }
+.mining-sheet .art .mini-hash { font: 700 18px ui-monospace, monospace; }
+.mining-sheet .art .warning-label { fill: #92372f; font-size: 30px; }
+.mining-sheet .art .pass { fill: #325e40; }
+.mining-sheet .art .fork-line { fill: none; stroke: #456687; stroke-width: 4px; }
+.mining-sheet .art .focus-ring { fill: #fff1c7; stroke: #a57627; stroke-width: 3px; }
+.mining-sheet .art .confirmation-bracket { fill: none; stroke: #896323; stroke-width: 3px; }
+.mining-sheet .art .reward-row { fill: #ffe9a4; stroke: #ac842e; stroke-width: 1.5px; }
+.mining-sheet .art .subsidy { fill: #614416; }
+.mining-sheet .art .ground { fill: #eef2f6; stroke: none; }
+.mining-sheet .art .furniture { fill: #e8ded1; stroke: #55514c; }
+.mining-sheet .art .desk-top { fill: #f4eae0; stroke: #55514c; }
+.mining-sheet .art .monitor { fill: #364d63; stroke: #263646; }
+.mining-sheet .art .screen { fill: #dceef7; stroke: none; }
+.mining-sheet .art .screen-line { fill: none; stroke: #467b87; stroke-width: 4px; }
+.mining-sheet .art .seated [data-part$="-leg"] { display: none; }
+.mining-sheet .art .flag-cloth { fill: white; stroke-width: 4px; }
+.mining-sheet .art .coin { fill: #f6cd59; stroke: #99702a; stroke-width: 2.6px; }
+.mining-sheet .art .reveal-watermark { opacity: .095; }
+.mining-sheet .art .reveal-first { font: 400 65px Kalam, var(--support); }
+.mining-sheet .art .reveal-last { font: 400 84px Kalam, var(--support); }
+.mining-sheet .art .lane-label { text-anchor: start; }
+.mining-sheet .art .flag-hand { fill: #fffefa; stroke-width: 3.8px; }

@@ -240,3 +240,16 @@ they derive the growing sheet path, page geometry, moving reference text, link
 and expression states, and converging fork from absolute playback time.
 The shared controller owns pauses, reset and teardown. Four print compositions
 preserve the teaching evidence, and the final fork question is in the notes.
+
+## M5f visual staging
+
+The independent `/talk/m5f/` route uses the static review shell. Its fixture
+associates each authored digest prefix with ordered payments, the predecessor,
+the nonce and any first-row issuance. The view compares the four leading bits
+and the immediate predecessor reference without computing hashes. The race
+starts from a common mined prefix and uses the café ledger's authorized
+conflicting payments. The authored reward candidate extends the honest tip.
+The workstation and seeded box pile are editable SVG. Slides 24 and 25 share
+the same mountain and flag fragment. The production registration stays with
+slides 1–21. The planned checkpoint, motion and print compositions are in
+[the review guide](README.md#m5f-visual-staging-review).

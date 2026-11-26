@@ -281,3 +281,23 @@ Desktop Firefox, dual-monitor operation, an internet-disconnected rehearsal, and
 - [Architecture](ARCHITECTURE.md) proposes implementation boundaries and verification.
 - [Storyboard](STORYBOARD.md) describes the provisional lecture sequence and timing.
 - [Roadmap](ROADMAP.md) defines milestone dependencies and acceptance criteria.
+
+## M5f visual staging review
+
+Build the bundle and start the preview server, then open [slides 22–26 in desktop Firefox](http://127.0.0.1:4173/talk/m5f/).
+Use Left and Right to review the 32 stills. A still's URL can be opened directly.
+The route is the visual review for [issue #24](https://github.com/ap0calypse644/the-science-of-trustless-systems/issues/24).
+Production motion and print are proposed for a separate review.
+
+| Slide | Planned checkpoints and movement | Proposed print composition |
+| --- | --- | --- |
+| 22 | Restore the linked history, add nonce and target, and hold after the first successful attempt and after mining all four blocks. In between, move each winning digest into its successor before showing that successor's nonce search. Keep the original above Charlie's copy. Hold at the edit, first successful re-mine, and first successor update. Move the mismatch through blocks 3 and 4 as their inputs change, and end with exhausted Charlie and the authorization warning. | Use the first re-mined comparison with the stale link and mark the edited payment as unauthorized. |
+| 23 | Build both branches from the same three-block prefix. Add blocks independently so Charlie can catch up at 2/2 before falling behind. Mark the payment and extend its confirmation bracket at 1/1, 3/2 and 6/3, then hold the final 9/4 comparison. | Use both final branches and the cumulative-work rule with an inset highlighting the payment and its six-confirmation hold. |
+| 24 | Hold the camera fixed. Accelerate tumbling boxes through the three visible workstation holds, then bury the workstation. Pause in silence, raise and gently wave the flag, and reveal the title last. Aim for 15–20 seconds. | Use the final flag and title. |
+| 25 | Open on the same mountain, zoom into one block, and insert the reward before advancing through two misses and a success. Hold for the independent checks before showing ten gold units. Alice emerges, discards the flag, and resumes mining. Show two more accepted rewards. | Pair the candidate's gold first row and successful target with the acceptance checks and ten earned units. |
+| 26 | Settle the orange mark with a subtle scale and rotation, pause, then fade in each line separately. Hold within a sequence of about 3–4 seconds. | Use the completed reveal. |
+
+Firefox captures from `npm test -- tests/m5f-staging.spec.ts --project=firefox` are saved under
+`test-results/visual-review/m5f-staging/<width>x<height>/<still-id>.png`.
+The 1920×1080 set includes all stills. The 1280×720 and 1024×768 sets include five representative stills each.
+See the [M5f still index and asset credits](src/talk/m5f/REVIEW.md).
