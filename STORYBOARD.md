@@ -1,6 +1,6 @@
 # Living storyboard
 
-The sequence assumes a college audience with mixed familiarity with distributed systems and cryptography. Times include setup, speaker explanation, and brief audience responses. A static slide can still prompt discussion. Animated slides use presenter-controlled checkpoints. All demonstrations are static or scripted animations; audience predictions are verbal, with no live model inputs. The owner accepted this sequence as a flexible starting point on 25 November 2026. Slide count, order, treatment and timing may evolve; the times are rough guides, not hard acceptance criteria. Make room for audience questions and understanding. [CONTINUATION.md](CONTINUATION.md) records approved visual decisions for approved slides 1–26 and the restart point.
+The sequence assumes a college audience with mixed familiarity with distributed systems and cryptography. Times include setup, speaker explanation, and brief audience responses. A static slide can still prompt discussion. Animated slides use presenter-controlled checkpoints. All demonstrations are static or scripted animations; audience predictions are verbal, with no live model inputs. The owner accepted this sequence as a flexible starting point on 25 November 2026. Slide count, order, treatment and timing may evolve; the times are rough guides, not hard acceptance criteria. Make room for audience questions and understanding. [CONTINUATION.md](CONTINUATION.md) records approved visual decisions for slides 1–32 and the restart point.
 
 ## Part I — The Problem of Trust (flexible timing)
 
@@ -11,9 +11,8 @@ The sequence assumes a college audience with mixed familiarity with distributed 
 | Two Generals Problem | 7 | 5 |
 | Byzantine Generals Problem | 8 | 5 |
 | Inventing Bitcoin | 9–26 | Flexible |
-| Proof of Stake and BFT (provisional) | 27–31 | TBD |
-| State, smart contracts, Merkle proofs (provisional) | 32–35 | TBD |
-| Inter-blockchain communication (provisional) | 36–39 | TBD |
+| Proof of Stake and BFT | 27–29 | TBD |
+| Beyond cryptocurrency and privacy bridge | 30–32 | TBD |
 
 | # | Topic | Purpose | Visual idea | Speaker objective | Type | Min |
 | ---: | --- | --- | --- | --- | --- | ---: |
@@ -43,19 +42,12 @@ The sequence assumes a college audience with mixed familiarity with distributed 
 | 24 | Why Would Anybody Do All This Work? | Motivate incentives | Alice buried under hundreds of mined block boxes; white flag | Why spend resources? | Animated | 1 |
 | 25 | Rewarding the Miner | Subsidy | Permitted reward before mining; Alice emerges and resumes | New issuance, fees verbally | Animated | 1.5 |
 | 26 | Congratulations, You've Invented Bitcoin | Reveal | Orange logo, faint chain, gentle entrance | Qualify simplified reconstruction | Animated | 0.5 |
-| 27 | Do We Really Need to Do All This Work? | Provisional | Electricity bill and fictional RAM cameo | Individual creative review pending | TBD | TBD |
-| 28 | What If We Put Something at Stake? | Provisional | Bonded coins and stake-weighted voting | Individual creative review pending | TBD | TBD |
-| 29 | Let's Vote on It | Provisional | Propose, prevote, precommit, commit | Individual creative review pending | TBD | TBD |
-| 30 | What If Charlie Votes Twice? | Provisional | Equivocation and stake at risk | Individual creative review pending | TBD | TBD |
-| 31 | When Is a Transaction Really Final? | Provisional | PoW vs BFT finality | Individual creative review pending | TBD | TBD |
-| 32 | A Ledger Is More Than Its History | Provisional | History vs current state | Individual creative review pending | TBD | TBD |
-| 33 | What If We Could Program the Ledger? | Provisional | Replicated smart contract execution | Individual creative review pending | TBD | TBD |
-| 34 | A Fingerprint of Thousands of Transactions | Provisional | Merkle tree | Individual creative review pending | TBD | TBD |
-| 35 | Prove It Without Sending Me Everything | Provisional | Merkle proof | Individual creative review pending | TBD | TBD |
-| 36 | Why Can't They Talk to Each Other? | Provisional | Fictional AI credit fragmentation | Individual creative review pending | TBD | TBD |
-| 37 | What If They Could Talk? | Provisional | Independent kingdoms and courier | Individual creative review pending | TBD | TBD |
-| 38 | Why Should I Trust the Messenger? | Provisional | Authenticated light client and packet proof | Individual creative review pending | TBD | TBD |
-| 39 | An Internet of Blockchains | Provisional | Sovereign IBC network | Individual creative review pending | TBD | TBD |
+| 27 | Do We Really Need to Do All This Work? | Motivate alternatives to PoW | Café electricity bill, discarded flag, fictional RAM cameo | Ask whether costly computation is the only option | Static | TBD |
+| 28 | What If We Put Something at Stake? | Bonded stake | Coins 35/35/30, individual lockboxes, voting weights, PoS reveal | Explain stake as resource at risk | Animated | TBD |
+| 29 | Let's Vote on It | Stake-weighted BFT | Triangle, propose, prevote, precommit, commit; Charlie silent | Independent observation of 70% >2/3; one successful round | Animated | TBD |
+| 30 | Blockchain ≠ Cryptocurrency | Infrastructure vs application | Iceberg → Internet/email analogy → replicated non-payment records | Convey distinction verbally, no slogan | Animated | TBD |
+| 31 | What Else Could We Agree On? | Non-financial applications and engineering judgment | Four examples → graduation credential → when blockchain is useful | Explain conditional value of shared verifiable state | Animated | TBD |
+| 32 | But There's a Catch... | Bridge to privacy | Interview oversharing → café transparent ledger → glass house | Ask verbally whether verification can avoid disclosure | Animated | TBD |
 
 Individual approved checkpoints, staging and acceptance criteria for slides 11–26 are in [CONTINUATION.md](CONTINUATION.md#approved-slide-decisions-1126-current-numbering). Timing remains flexible; fit and rehearse rather than enforcing a slide quota.
 
@@ -95,48 +87,48 @@ Speaker notes and later demonstrations should preserve these details.
 - **Pages and hash linking (18–20).** No carried balances, no links until Alice adds predecessor hash. Sequential mismatch on repair; hash links alone do not prevent rewriting.
 - **Competing histories and PoW (21–23).** Forks, sequential re-mining, race between honest majority hash power and Charlie, cumulative work, probabilistic confirmations. Invalid blocks rejected regardless of work. Majority attack explained verbally.
 - **Incentives and reveal (24–26).** Alice buried in blocks; protocol-defined reward included before mining; fees verbally; Bitcoin reveal.
-- **Later Part I (27–39).** Provisional expanded outline, individual creative gates pending. See CONTINUATION.md for earlier approved reference concepts.
+- **Closing Part I (27–32).** Approved stake/BFT and non-financial applications, ending on the privacy problem; see CONTINUATION.md.
 
 ## Part II — The Problem of Privacy (45 minutes)
 
 | # | Topic | Purpose | Visual idea | Speaker objective | Type | Min |
 | ---: | --- | --- | --- | --- | --- | ---: |
-| 40 | Why blockchain privacy matters | Make exposure concrete | A public payment board makes an individual's routine visible | Ask what observers infer from the data and metadata | Static | 2 |
-| 41 | Anonymity, pseudonymity, confidentiality | Distinguish privacy properties | An unmarked mask, a reusable alias, and a sealed envelope | Ask which observer can identify participants, link records, or read content | Static | 2 |
-| 42 | Ancient ciphers | Begin the historical thread | A courier carries a message written using a toy substitution wheel | Explain the shared rule and where secrecy resides in this example | Static | 2 |
-| 43 | Frequency analysis | Show how structure survives substitution | Letter counts accumulate beside a sample ciphertext | Explain why a long enough monoalphabetic sample can leak useful language patterns | Animated | 2 |
-| 44 | Mechanical encryption | Show how transformations can change | A rotor machine turns one step as a letter is entered | Illustrate changing substitutions and distinguish mechanism from security guarantees | Animated | 2 |
-| 45 | Public-key cryptography | Change the key-distribution model | A public padlock and a private key sit beside the earlier shared wheel | Explain public-key encryption roles and distinguish them from signing roles | Static | 2 |
-| 46 | Computing with private inputs | Set up the comparison | Three students want an aggregate while keeping individual values private | Ask who holds inputs, what output is allowed, and who should learn it | Static | 2 |
-| 47 | Multiparty computation (MPC) | Introduce joint computation | Participants pass sealed slips and assemble a shared result | Frame privacy relative to the protocol, adversary model, and revealed output | Static | 2 |
-| 48 | Shamir's Secret Sharing | Explain a threshold | Points appear on a line in a labeled toy finite-field example | Explain reconstruction in a two-of-three example and connect it to threshold sharing | Animated | 3 |
-| 49 | Reconstruct the secret | Let students test the threshold | Scripted one-share and two-share reconstruction of a fixed toy example | Contrast one share with two distinct shares and explain that sharing is a building block for MPC | Animated | 3 |
-| 50 | Homomorphic encryption | Introduce ciphertext computation | A sealed calculator returns an encrypted result | Trace encryption, evaluation of a supported operation, and decryption | Static | 2 |
-| 51 | From homomorphic operations to FHE | Explain expressiveness | Encrypted values move through several circuit gates | Explain evaluation of general circuits and introduce supported operations and practical cost | Animated | 2 |
-| 52 | Outsourced private computation | Ground FHE in a workflow | An analyst sends encrypted records to a compute service and receives encrypted output | Identify key ownership, authorized decryption, and what the workflow needs to reveal | Static | 2 |
-| 53 | Zero-knowledge proofs | Introduce proof without revealing the witness | A prover and verifier stand beside a public claim card and a private witness card | Define statement and witness, then distinguish completeness, soundness, and zero knowledge | Static | 3 |
-| 54 | Challenge and response | Build intuition for verification | A prover who knows a secret door route answers a random challenge in an illustrative cave | Explain what repeated challenges illustrate and state the limits of the analogy | Animated | 2 |
-| 55 | Test a proof analogy | Let students predict a verification outcome | Fixed challenge-response sequence comparing honest and dishonest prover behaviors | Explain why an unpredictable challenge matters in this illustrative model | Animated | 3 |
-| 56 | Proofs in a ledger | Tie the primitive back to blockchains | A ledger checks a proof of a private eligibility condition against a public statement | Identify what is proven, what remains public, and what separate metadata may reveal | Static | 2 |
-| 57 | MPC, FHE, ZKP compared | Choose by problem and trust model | Three illustrated workflows show who holds data, computes, decrypts, or verifies | Compare information flow, assumptions, and outputs | Static | 2 |
-| 58 | Combining primitives | Show complementary roles | A threshold keyholder group, an encrypted tally, and a proof of input validity | Walk through an illustrative voting design and explain that each component serves a distinct purpose | Static | 3 |
-| 59 | Privacy recap | Connect to Part I and hand off | A shared ledger sits beside a diagram showing who learns which fields | Ask which trust and disclosure assumptions remain after choosing a technique | Static | 2 |
+| 33 | Why blockchain privacy matters | Make exposure concrete | A public payment board makes an individual's routine visible | Ask what observers infer from the data and metadata | Static | 2 |
+| 34 | Anonymity, pseudonymity, confidentiality | Distinguish privacy properties | An unmarked mask, a reusable alias, and a sealed envelope | Ask which observer can identify participants, link records, or read content | Static | 2 |
+| 35 | Ancient ciphers | Begin the historical thread | A courier carries a message written using a toy substitution wheel | Explain the shared rule and where secrecy resides in this example | Static | 2 |
+| 36 | Frequency analysis | Show how structure survives substitution | Letter counts accumulate beside a sample ciphertext | Explain why a long enough monoalphabetic sample can leak useful language patterns | Animated | 2 |
+| 37 | Mechanical encryption | Show how transformations can change | A rotor machine turns one step as a letter is entered | Illustrate changing substitutions and distinguish mechanism from security guarantees | Animated | 2 |
+| 38 | Public-key cryptography | Change the key-distribution model | A public padlock and a private key sit beside the earlier shared wheel | Explain public-key encryption roles and distinguish them from signing roles | Static | 2 |
+| 39 | Computing with private inputs | Set up the comparison | Three students want an aggregate while keeping individual values private | Ask who holds inputs, what output is allowed, and who should learn it | Static | 2 |
+| 40 | Multiparty computation (MPC) | Introduce joint computation | Participants pass sealed slips and assemble a shared result | Frame privacy relative to the protocol, adversary model, and revealed output | Static | 2 |
+| 41 | Shamir's Secret Sharing | Explain a threshold | Points appear on a line in a labeled toy finite-field example | Explain reconstruction in a two-of-three example and connect it to threshold sharing | Animated | 3 |
+| 42 | Reconstruct the secret | Let students test the threshold | Scripted one-share and two-share reconstruction of a fixed toy example | Contrast one share with two distinct shares and explain that sharing is a building block for MPC | Animated | 3 |
+| 43 | Homomorphic encryption | Introduce ciphertext computation | A sealed calculator returns an encrypted result | Trace encryption, evaluation of a supported operation, and decryption | Static | 2 |
+| 44 | From homomorphic operations to FHE | Explain expressiveness | Encrypted values move through several circuit gates | Explain evaluation of general circuits and introduce supported operations and practical cost | Animated | 2 |
+| 45 | Outsourced private computation | Ground FHE in a workflow | An analyst sends encrypted records to a compute service and receives encrypted output | Identify key ownership, authorized decryption, and what the workflow needs to reveal | Static | 2 |
+| 46 | Zero-knowledge proofs | Introduce proof without revealing the witness | A prover and verifier stand beside a public claim card and a private witness card | Define statement and witness, then distinguish completeness, soundness, and zero knowledge | Static | 3 |
+| 47 | Challenge and response | Build intuition for verification | A prover who knows a secret door route answers a random challenge in an illustrative cave | Explain what repeated challenges illustrate and state the limits of the analogy | Animated | 2 |
+| 48 | Test a proof analogy | Let students predict a verification outcome | Fixed challenge-response sequence comparing honest and dishonest prover behaviors | Explain why an unpredictable challenge matters in this illustrative model | Animated | 3 |
+| 49 | Proofs in a ledger | Tie the primitive back to blockchains | A ledger checks a proof of a private eligibility condition against a public statement | Identify what is proven, what remains public, and what separate metadata may reveal | Static | 2 |
+| 50 | MPC, FHE, ZKP compared | Choose by problem and trust model | Three illustrated workflows show who holds data, computes, decrypts, or verifies | Compare information flow, assumptions, and outputs | Static | 2 |
+| 51 | Combining primitives | Show complementary roles | A threshold keyholder group, an encrypted tally, and a proof of input validity | Walk through an illustrative voting design and explain that each component serves a distinct purpose | Static | 3 |
+| 52 | Privacy recap | Connect to Part I and hand off | A shared ledger sits beside a diagram showing who learns which fields | Ask which trust and disclosure assumptions remain after choosing a technique | Static | 2 |
 
 ## Part III — Ask Me Anything (30 minutes)
 
 | # | Topic | Purpose | Visual idea | Speaker objective | Type | Min |
 | ---: | --- | --- | --- | --- | --- | ---: |
-| 60 | Ask Me Anything | Invite and sustain discussion | Three stick figures holding question bubbles about agreement, privacy, and applications | Take audience questions and use prompts to seed discussion if needed | Static | 27 |
-| 61 | Closing | Leave a practical design question | The notebook and envelope from the title return | Ask students to name who must agree and what each participant needs to learn | Static | 2 |
-| 62 | References | Leave paths for follow-up | Readable grouped citations for distributed agreement, ledgers and interoperability, and cryptography | Point students to primary papers and specifications | Static | 1 |
+| 53 | Ask Me Anything | Invite and sustain discussion | Three stick figures holding question bubbles about agreement, privacy, and applications | Take audience questions and use prompts to seed discussion if needed | Static | 27 |
+| 54 | Closing | Leave a practical design question | The notebook and envelope from the title return | Ask students to name who must agree and what each participant needs to learn | Static | 2 |
+| 55 | References | Leave paths for follow-up | Readable grouped citations for distributed agreement, ledgers and interoperability, and cryptography | Point students to primary papers and specifications | Static | 1 |
 
 ## Review notes
 
-Owner decision (25 Nov 2026): the lecture uses static or presenter-paced scripted animated slides only. No live audience/presenter inputs that change the educational model, branching buttons, live cryptographic computations or worker searches are required. Preserve ordinary playback/navigation/seek/reset controls, verbal audience predictions, local offline operation and editable art. Use internally consistent authored examples. Identify simulated outputs in speaker notes and prompt the presenter to disclose them verbally. Keep substantive technical labels and essential toy-model caveats on slides. This supersedes earlier interactive and real-computation requirements. Slide 6 scripted correction merged in PR #19; preserve archived diagnostic/staging routes. M5d is approved and merged in PR #21; #20 closed. M5e production is approved and merged in PR #23; #22 closed. M5f production (22–26) is owner-approved and merged in PR #25; #24 closed. Creative planning resumes at slide 27; implementation remains gated. Later batches require separate authorization.
+Owner decision (25 Nov 2026): the lecture uses static or presenter-paced scripted animated slides only. No live audience/presenter inputs that change the educational model, branching buttons, live cryptographic computations or worker searches are required. Preserve ordinary playback/navigation/seek/reset controls, verbal audience predictions, local offline operation and editable art. Use internally consistent authored examples. Identify simulated outputs in speaker notes and prompt the presenter to disclose them verbally. Keep substantive technical labels and essential toy-model caveats on slides. This supersedes earlier interactive and real-computation requirements. Slide 6 scripted correction merged in PR #19; preserve archived diagnostic/staging routes. M5d is approved and merged in PR #21; #20 closed. M5e production is approved and merged in PR #23; #22 closed. M5f production (22–26) is owner-approved and merged in PR #25; #24 closed. Part I creative planning is complete (slides 1–32); production 1–26 remains merged. M5g visual staging (27–29) is owner-authorized; production and M5h (30–32) require separate approval. Later batches require separate authorization.
 
-Current provisional planning baseline: 62 slides if later scope remains unchanged, with slides 1–26 concept-approved, 27–39 provisional and Parts II/III provisional (40–59, 60–62). No interactive production slides. M4 prototype gate unchanged. See CONTINUATION.md for canonical briefs. M5f is merged; slide 27 onward requires individual creative review and explicit staging authorization.
+Current baseline: 32 approved Part I concepts (1–26 production merged), provisional Part II 33–52 and Part III 53–55, 55 overall if unchanged. No interactive production slides. M5g staging authorized, production and later batches separately gated. See CONTINUATION.md.
 
-Confirm the precise CAP failure model, the Two Generals progress requirement, the oral-message protocol and boundary examples, Bitcoin's security assumptions, the CometBFT example, IBC client assumptions, and the privacy guarantees of later toy models. The complete lecture bibliography belongs to M7.
+Confirm the precise CAP failure model, the Two Generals progress requirement, the oral-message protocol and boundary examples, Bitcoin's security assumptions, the CometBFT example, and the privacy guarantees of later toy models. The complete lecture bibliography belongs to M7.
 
 ### Pedagogical references
 
