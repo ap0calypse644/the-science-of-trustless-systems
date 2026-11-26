@@ -323,3 +323,18 @@ branch. Firefox review captures are under
 files include all 32 holds, intermediate motion samples, and five
 `<production-slide-id>-print.png` sheets. The smaller sets show representative
 frames of each slide.
+
+## M5g visual staging review
+
+Build and run `npm run preview -- --port 4173 --strictPort`, then open
+[the nine M5g stills](http://127.0.0.1:4173/talk/m5g/) in desktop Firefox.
+Use Left and Right to step through slides 27–29. The
+[still index](src/talk/m5g/REVIEW.md) lists direct URLs, intended motion and
+pauses, print compositions, speaker notes and sources. Production slides
+remain available at `/talk/`, with the 26-sheet print view at `/talk/?print`.
+
+Run `npm test -- tests/m5g-staging.spec.ts` for the scoped Firefox and
+Chromium checks. Firefox captures are under
+`test-results/visual-review/m5g-staging/<width>x<height>/<still-id>.png`.
+The 1920×1080 set contains all nine stills, and the 1280×720 and 1024×768 sets
+contain representative images.

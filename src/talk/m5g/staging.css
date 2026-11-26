@@ -1,0 +1,54 @@
+.talk-sheet.stake-sheet h1 {
+  top: 43px;
+  font: 400 80px/1 Kalam, var(--support);
+  white-space: nowrap;
+}
+
+.stake-sheet .art .bill { fill: #fffdf2; stroke-width: 4px; }
+.stake-sheet .art .bill-title { font-size: 35px; }
+.stake-sheet .art .bill-total { fill: #943e32; font: 700 49px system-ui, sans-serif; }
+.stake-sheet .art .bill-units { font-size: 31px; }
+.stake-sheet .art .bill-rule { stroke: #aa9680; stroke-width: 2px; }
+.stake-sheet .art .calculator { fill: #dce8ee; stroke: #475d6e; }
+.stake-sheet .art .cameo-hair { fill: #64534b; }
+.stake-sheet .art .cameo-caption { font-size: 26px; fill: #534b54; }
+.stake-sheet .art .heat { stroke: #b25b3d; stroke-width: 4px; }
+.stake-sheet .art .owner { font-size: 49px; }
+.stake-sheet .art .amount { font-size: 43px; }
+.stake-sheet .art .weight { fill: #335c78; font: 600 29px system-ui, sans-serif; }
+.stake-sheet .art .stake-reveal { font: 400 63px Kalam, var(--support); }
+.stake-sheet .art .lockbox-back { fill: #e5f1f7; fill-opacity: .58; stroke: #63849d; }
+.stake-sheet .art .lockbox-face { fill: #deeff8; fill-opacity: .18; stroke: #63849d; }
+.stake-sheet .art .glass-line { stroke: #8daebf; stroke-width: 2.5px; }
+.stake-sheet .art .lock { stroke: #49667c; }
+.stake-sheet .art .lock rect { fill: #d2e5f1; }
+.stake-sheet .art .phase { font-size: 36px; }
+.stake-sheet .art .round-note { font-size: 31px; }
+.stake-sheet .art .threshold { font: 650 30px system-ui, sans-serif; }
+.stake-sheet .art .node-card { fill: #fff; stroke: #8593a0; stroke-width: 2.7px; }
+.stake-sheet .art .node-card.alice { stroke: #6687a3; }
+.stake-sheet .art .node-card.bob { stroke: #678b70; }
+.stake-sheet .art .node-card.charlie { stroke: #907ea6; }
+.stake-sheet .art .node-name { font-size: 41px; }
+.stake-sheet .art .node-state { font-size: 29px; }
+.stake-sheet .art .count-total { fill: #294e68; font: 700 27px system-ui, sans-serif; }
+.stake-sheet .art .count-sources { font-size: 24px; }
+.stake-sheet .art .count-kind { font-size: 22px; }
+.stake-sheet .art .ledger-cover { fill: #96b4cd; stroke: #3b5870; stroke-width: 2.8px; }
+.stake-sheet .art .ledger-paper { fill: #f8fbfe; stroke: #3b5870; stroke-width: 2.8px; }
+.stake-sheet .art .ledger-lines { stroke: #8197a8; stroke-width: 1.8px; }
+.stake-sheet .art .ledger-entry { fill: #dfeddf; stroke: #638369; stroke-width: 2px; }
+.stake-sheet .art .ledger-label { font-size: 25px; }
+.stake-sheet .art .edge { stroke: #527da8; stroke-width: 3.3px; }
+.stake-sheet .art .edge-tip { fill: #527da8; stroke: none; }
+.stake-sheet .art .edge.bob { stroke: #577e60; stroke-dasharray: 9 8; }
+.stake-sheet .art .edge.bob .edge-tip { fill: #577e60; }
+.stake-sheet .art .message-card { fill: #edf5fb; stroke: #587e9e; stroke-width: 2.6px; }
+.stake-sheet .art .message-card.bob { fill: #f0f6ed; stroke: #577e60; }
+.stake-sheet .art .message-card.proposal { fill: #fff6dd; stroke: #8e7544; }
+.stake-sheet .art .message-card.precommit { stroke-width: 4px; }
+.stake-sheet .art .message-title { font-size: 32px; }
+.stake-sheet .art .message-route { font-size: 29px; }
+.stake-sheet .art .signed-label { font-size: 21px; }
+.stake-sheet .art .local-label { text-anchor: start; }
+.stake-sheet .art .folded-arms { stroke-width: 2.8px; }
