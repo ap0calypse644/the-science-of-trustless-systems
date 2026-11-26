@@ -75,7 +75,9 @@ for (const [width, height] of [[1920, 1080], [1280, 720], [1024, 768]]) {
       expect(bounds.background).toBe('rgb(255, 255, 255)');
       if (id.startsWith('27')) {
         await expect(sheet.locator('[data-electricity-bill]')).toContainText('$ 4972');
-        await expect(sheet.locator('[data-satire]')).toContainText('Fictional cameo');
+        await expect(sheet.locator('[data-satire] text')).toHaveText('More RAM?');
+        await expect(current.locator('.notes')).toContainText('fictional satire');
+        await expect(current.locator('.notes')).toContainText('Village Global, CC BY 2.0');
         await expect(sheet.locator('[data-server-racks] .rack-face')).toHaveCount(6);
         await expect(sheet.locator('[data-set="cafe"]')).toHaveCount(0);
         await expect(sheet.locator('[data-cameo-photo]')).toHaveCount(1);

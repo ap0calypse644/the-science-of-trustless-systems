@@ -29,8 +29,6 @@ function cameo(): string {
         clip-path="url(#m5g-cameo-head)" aria-label="Sam Altman, photographed by Village Global"/>
     </g>
     ${speech(-42, -97, 205, 'More RAM?')}
-    ${label(0, 184, 'Sam Altman', 'cameo-caption')}
-    ${label(0, 214, 'Fictional cameo', 'cameo-caption')}
   </g>`;
 }
 

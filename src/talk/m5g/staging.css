@@ -16,7 +16,6 @@
 .stake-sheet .art .rack-vent { stroke: #9baab8; stroke-width: 1.6px; }
 .stake-sheet .art .rack-light { fill: #538565; stroke: none; }
 .stake-sheet .art .rack-light.standby { fill: #b98441; }
-.stake-sheet .art .cameo-caption { font-size: 26px; fill: #534b54; }
 .stake-sheet .art .heat { stroke: #b25b3d; stroke-width: 4px; }
 .stake-sheet .art .owner { font-size: 49px; }
 .stake-sheet .art .amount { font-size: 43px; }
