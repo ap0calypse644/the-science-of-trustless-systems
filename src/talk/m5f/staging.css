@@ -37,3 +37,5 @@
 .mining-sheet .art .reveal-last { font: 400 84px Kalam, var(--support); }
 .mining-sheet .art .lane-label { text-anchor: start; }
 .mining-sheet .art .flag-hand { fill: #fffefa; stroke-width: 3.8px; }
+.mining-sheet .art .digest-chip { fill: #fff7dc; stroke: #956b2c; stroke-width: 2px; }
+.mining-sheet .art .race-ink { fill: none; stroke: #725589; stroke-width: 2.8px; }

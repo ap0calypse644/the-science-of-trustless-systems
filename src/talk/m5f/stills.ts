@@ -11,10 +11,10 @@ import bitcoinLogo from './bitcoin.svg?url';
 const disclosure = 'Tell the audience that the nonce attempts, digest prefixes and race outcomes are authored teaching examples.';
 const paper = 'https://bitcoin.org/bitcoin.pdf';
 const hashStandard = 'https://csrc.nist.gov/pubs/fips/180-4/upd1/final';
-const workTitle = 'Making History Expensive to Rewrite';
-const raceTitle = 'Which History Do We Believe?';
+export const workTitle = 'Making History Expensive to Rewrite';
+export const raceTitle = 'Which History Do We Believe?';
 const pileTitle = 'Why Would Anybody Do All This Work?';
-const rewardTitle = 'Rewarding the Miner';
+export const rewardTitle = 'Rewarding the Miner';
 
 function still(id: string, title: string, description: string, art: string, notes: string, variant = ''): TalkSlide {
   return { id, composition: sheet(title, description, art, variant), notes };
@@ -30,29 +30,29 @@ function work(id: string, desc: string, art: string): TalkSlide {
   return still(`22-${id}`, workTitle, desc, art, `${desc}\n\n${workNotes}`);
 }
 
-function aliceMining(blocks: readonly MiningBlock[], trials: readonly MiningBlock[]): string {
-  return chain(blocks, 276, 1.02)
+export function aliceMining(blocks: readonly MiningBlock[], trials: readonly MiningBlock[]): string {
+  return `<g data-work-chain>${chain(blocks, 276, 1.02)}</g>`
     + character('alice', { x: 262, y: 674, pose: 'point', expression: trials.length > 1 ? 'excited' : 'stand', scale: .95 })
     + target(985, 170) + (trials.length ? attempts(910, 650, trials) : '');
 }
 
-const pending = restored.map((entry, index) => ({ ...entry, digest: undefined,
+export const pending = restored.map((entry, index) => ({ ...entry, digest: undefined,
   previous: index === 0 ? null : index === 1 ? original[0].digest! : null,
 }));
 const firstOnly = [original[0], ...pending.slice(1)];
 
-function compareRewrite(step: number, solved: boolean, trials: readonly MiningBlock[]): string {
-  const expression = step >= 3 ? 'frustrated' : solved ? 'excited' : 'suspicious';
+export function compareRewrite(step: number, solved: boolean, trials: readonly MiningBlock[], blocks = rewritten(step, solved)): string {
+  const expression = step >= 2 ? 'frustrated' : solved ? 'excited' : 'suspicious';
   return text(800, 163, 'Original history', 'body')
-    + chain(original, 202, .88)
+    + `<g data-original-chain>${chain(original, 202, .88)}</g>`
     + text(800, 489, 'Charlie’s edited copy', 'body')
-    + chain(rewritten(step, solved), 524, .88)
+    + `<g data-edited-chain>${chain(blocks, 524, .88)}</g>`
     + character('charlie', { x: 135, y: 660, pose: step >= 3 ? 'facepalm' : 'point', expression, scale: 1.03 })
     + attempts(800, 802, trials)
     + text(1350, 822, 'Target 0000', 'code');
 }
 
-const slide22 = [
+export const slide22 = [
   work('linked-history', 'Restore the original linked history from slide 20. This is a fresh example after the unresolved fork.',
     chain(restored, 350, 1.05, false)),
   work('nonce-target', 'Alice adds a nonce field. The first attempt misses. The later blocks await their mined predecessors.',
@@ -79,10 +79,10 @@ function tile(entry: MiningBlock, x: number, y: number, focus = false): string {
   </g>`;
 }
 
-function race(countIndex: number, confirmations?: number): string {
+export function race(countIndex: number, confirmations?: number, counts: readonly [number, number] = raceCounts[countIndex]): string {
   // Both lanes begin at the same tip. The annotated payment is in the first
   // block after the shared prefix at every count.
-  const [raceHonestCount, otherCount] = raceCounts[countIndex];
+  const [raceHonestCount, otherCount] = counts;
   const honestCount = confirmations ?? raceHonestCount;
   const prefix = common.map((entry, i) => tile(entry, 55 + i * 110, 448)).join('');
   const lanes = [
@@ -93,8 +93,9 @@ function race(countIndex: number, confirmations?: number): string {
   const connectors = [316, 603].map((y, i) => {
     const count = i === 0 ? honestCount : otherCount;
     const level = y + 24;
-    return `<path class="fork-line" d="M375 472H391Q403 472 403 460V${level}H425"/>
-      ${Array.from({ length: count - 1 }, (_, j) => `<path class="fork-line" d="M${525 + j * 111} ${level}h11"/>`).join('')}`;
+    const lane = i === 0 ? honest : alternate;
+    return `<path class="fork-line" data-race-link="${lane[0].digest}" d="M375 472H391Q403 472 403 460V${level}H425"/>
+      ${Array.from({ length: count - 1 }, (_, j) => `<path class="fork-line" data-race-link="${lane[j + 1].digest}" d="M${525 + j * 111} ${level}h11"/>`).join('')}`;
   }).join('');
   const rule = countIndex >= 3 ? text(800, 822, 'Choose the valid chain with the greatest cumulative work', 'rule-label') : '';
   const confirmation = confirmations === undefined ? '' :
@@ -127,7 +128,7 @@ function raceStill(id: string, index: number, desc: string, confirmations?: numb
   return still(`23-${id}`, raceTitle, desc, race(index, confirmations), `${desc}\n\n${raceNotes}`);
 }
 
-const slide23 = [
+export const slide23 = [
   raceStill('race-start', 0, 'Both valid branches start one block beyond a common three-block prefix.'),
   raceStill('one-confirmation', 0, 'Alice sees the honest payment in its containing block. It has one confirmation on that branch, which is still tied.', 1),
   raceStill('honest-lead', 1, 'The honest branch takes a two-to-one lead.'),
@@ -148,7 +149,7 @@ const pileBeats = [
 ] as const;
 const mountain = pile(4);
 
-const slide24 = pileBeats.map(([id, desc], index) => still(`24-${id}`, index === 4 ? pileTitle : '', desc,
+export const slide24 = pileBeats.map(([id, desc], index) => still(`24-${id}`, index === 4 ? pileTitle : '', desc,
   index === 4 ? mountain : pile(index as 0 | 1 | 2 | 3), `${desc}
 
 Keep the viewpoint fixed. Over roughly 15–20 seconds, accelerate arrivals, let boxes tumble and settle, then pause before the hand rises and waves gently. Fade in the title only after the flag. The pile represents repeated mining work. Actual mining does not require retaining a pile of physical boxes.`));
@@ -163,7 +164,7 @@ function rewardStill(id: string, desc: string, art: string, title = rewardTitle)
   return still(`25-${id}`, title, desc, art, `${desc}\n\n${rewardNotes}`);
 }
 
-function candidate(entry: MiningBlock, mined = false): string {
+export function candidate(entry: MiningBlock, mined = false): string {
   return block(entry, 180, 255, 1.76) + target(1070, 285)
     + (mined ? attempts(1100, 490, [...rewardMisses, rewardMined]) : '');
 }
@@ -174,7 +175,7 @@ function earned(count: number, standing = false): string {
     + goldUnits(991, 536, count) + text(1109, 331, `${count} units earned`, 'rule-label');
 }
 
-const slide25 = [
+export const slide25 = [
   rewardStill('mountain', 'Open on the same flag and mountain from the previous slide.', mountain, ''),
   rewardStill('candidate', 'Zoom into the next candidate, linked to the tip of the honest branch.', candidate(rewardBeforeRow)),
   rewardStill('reward-row', 'Add the permitted reward as the first row, before hashing with a nonce.', candidate(rewardCandidate)),
@@ -199,7 +200,7 @@ function reveal(beat: number): string {
   ${beat > 1 ? text(800, 758, 'You’ve invented Bitcoin.', 'reveal-last') : ''}`;
 }
 
-const slide26 = ['logo', 'congratulations', 'bitcoin'].map((id, index) => still(`26-${id}`, '',
+export const slide26 = ['logo', 'congratulations', 'bitcoin'].map((id, index) => still(`26-${id}`, '',
   ['Orange Bitcoin symbol over a faint linked ledger.', 'Congratulations.', 'Congratulations. You’ve invented Bitcoin.'][index],
   reveal(index), `Plan a subtle scale and rotation settle, then fade in each line separately over about 3–4 seconds. Hold the final composition.
 

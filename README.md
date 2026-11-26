@@ -12,11 +12,11 @@ The current planning baseline is 62 provisional slides: 26 approved concepts, 13
 
 ## Presentation policy
 
-Owner decision (25 Nov 2026): the lecture uses static or presenter-paced scripted animated slides only. No live audience/presenter inputs that change the educational model, branching buttons, live cryptographic computations or worker searches are required. Preserve ordinary playback/navigation/seek/reset controls, verbal audience predictions, local offline operation and editable art. Use internally consistent authored examples. Identify simulated outputs in speaker notes and prompt the presenter to disclose them verbally. Keep substantive technical labels and essential toy-model caveats on slides. This supersedes earlier interactive and real-computation requirements. Issue #18 covers the separately reviewed scripted conversion of slide 6 and preserves archived diagnostic and staging routes. M5d is approved and merged in PR #21; #20 closed. M5e production is approved and merged in PR #23; #22 closed. M5f staging only (22–26) is authorized in #24. Later batches require separate authorization.
+Owner decision (25 Nov 2026): the lecture uses static or presenter-paced scripted animated slides only. No live audience/presenter inputs that change the educational model, branching buttons, live cryptographic computations or worker searches are required. Preserve ordinary playback/navigation/seek/reset controls, verbal audience predictions, local offline operation and editable art. Use internally consistent authored examples. Identify simulated outputs in speaker notes and prompt the presenter to disclose them verbally. Keep substantive technical labels and essential toy-model caveats on slides. This supersedes earlier interactive and real-computation requirements. Issue #18 covers the separately reviewed scripted conversion of slide 6 and preserves archived diagnostic and staging routes. M5d is approved and merged in PR #21; #20 closed. M5e production is approved and merged in PR #23; #22 closed. M5f production (22–26) was authorized in draft PR #25 and awaits review. Later batches require separate authorization.
 
 ## Development status
 
-M0 is approved. The owner approved D — Expressive Minimalism on pure white. M1 merged in PR #3. The M2 illustration library merged in PR #5. The M3 playback engine and diagnostic deck merged in PR #7 after owner review. The owner approved M4a and PR #9 is merged. M4b is owner-approved and merged in PR #11, completing M4. The owner approved M5a and PR #13 is merged. The owner approved M5b and PR #15 is merged. The owner approved M5c staging and production, and PR #17 is merged. M5d staging and production approved and merged in PR #21. Main contains production slides 1–21. M5e production approved and merged in PR #23; M5f staging only authorized in #24. Slides 1–26 creative directions approved, later concepts pending individual review. The other treatments remain archived for comparison. The project preserves the three-slide engineering diagnostic deck. The framework uses Reveal.js, TypeScript, Vite, Playwright, and npm. M2 uses deterministic authored SVG paths. M3 uses a local GSAP clock for presenter-paced diagnostics.
+M0 is approved. The owner approved D — Expressive Minimalism on pure white. M1 merged in PR #3. The M2 illustration library merged in PR #5. The M3 playback engine and diagnostic deck merged in PR #7 after owner review. The owner approved M4a and PR #9 is merged. M4b is owner-approved and merged in PR #11, completing M4. The owner approved M5a and PR #13 is merged. The owner approved M5b and PR #15 is merged. The owner approved M5c staging and production, and PR #17 is merged. M5d staging and production approved and merged in PR #21. Main contains production slides 1–21. M5e production approved and merged in PR #23; M5f production (22–26) was authorized in draft PR #25 and awaits review. Slides 1–26 creative directions approved, later concepts pending individual review. The other treatments remain archived for comparison. The project preserves the three-slide engineering diagnostic deck. The framework uses Reveal.js, TypeScript, Vite, Playwright, and npm. M2 uses deterministic authored SVG paths. M3 uses a local GSAP clock for presenter-paced diagnostics.
 
 The target is a 16:9 deck with responsive scaling, classroom-projector readability, independent slide and animation controls, and offline operation using bundled assets. A static PDF fallback is an M8 deliverable.
 
@@ -247,7 +247,7 @@ the final question aloud from speaker notes.
 | [20 What If Charlie Changes History?](http://127.0.0.1:4173/talk/#/20-changing-history) | 29 s | Independent blocks, Unlinked edit, Restore, First link, Blockchain, Link mismatch, Repaired link, Next mismatch |
 | [21 Conflicting Histories](http://127.0.0.1:4173/talk/#/21-conflicting-histories) | 17 s | Common history, Conflicting payments, Competing blocks, Disagreement, Fork |
 
-The [21-sheet print view](http://127.0.0.1:4173/talk/?print) adds evidence sheets
+The [print view](http://127.0.0.1:4173/talk/?print) adds evidence sheets
 for the growing ledger, pages and blocks, link repair, and the unresolved fork.
 Firefox captures are under `test-results/visual-review/m5e-production/<width>x<height>/`.
 Owner motion and technical review are pending.
@@ -287,12 +287,12 @@ Desktop Firefox, dual-monitor operation, an internet-disconnected rehearsal, and
 Build the bundle and start the preview server, then open [slides 22–26 in desktop Firefox](http://127.0.0.1:4173/talk/m5f/).
 Use Left and Right to review the 32 stills. A still's URL can be opened directly.
 The route is the visual review for [issue #24](https://github.com/ap0calypse644/the-science-of-trustless-systems/issues/24).
-Production motion and print are proposed for a separate review.
+The owner approved these stills and authorized production in draft PR #25.
 
-| Slide | Planned checkpoints and movement | Proposed print composition |
+| Slide | Checkpoints and movement | Print composition |
 | --- | --- | --- |
 | 22 | Restore the linked history, add nonce and target, and hold after the first successful attempt and after mining all four blocks. In between, move each winning digest into its successor before showing that successor's nonce search. Keep the original above Charlie's copy. Hold at the edit, first successful re-mine, and first successor update. Move the mismatch through blocks 3 and 4 as their inputs change, and end with exhausted Charlie and the authorization warning. | Use the first re-mined comparison with the stale link and mark the edited payment as unauthorized. |
-| 23 | Build both branches from the same three-block prefix. Add blocks independently so Charlie can catch up at 2/2 before falling behind. Mark the payment and extend its confirmation bracket at 1/1, 3/2 and 6/3, then hold the final 9/4 comparison. | Use both final branches and the cumulative-work rule with an inset highlighting the payment and its six-confirmation hold. |
+| 23 | Build both branches from the same three-block prefix. Add blocks independently so Charlie can catch up at 2/2 before falling behind. Mark the payment and extend its confirmation bracket at 1/1, 3/2 and 6/3, then hold the final 9/4 comparison. | Use both final branches and the cumulative-work rule with a bracket showing the six-confirmation point. |
 | 24 | Hold the camera fixed. Accelerate tumbling boxes through the three visible workstation holds, then bury the workstation. Pause in silence, raise and gently wave the flag, and reveal the title last. Aim for 15–20 seconds. | Use the final flag and title. |
 | 25 | Open on the same mountain, zoom into one block, and insert the reward before advancing through two misses and a success. Hold for the independent checks before showing ten gold units. Alice emerges, discards the flag, and resumes mining. Show two more accepted rewards. | Pair the candidate's gold first row and successful target with the acceptance checks and ten earned units. |
 | 26 | Settle the orange mark with a subtle scale and rotation, pause, then fade in each line separately. Hold within a sequence of about 3–4 seconds. | Use the completed reveal. |
@@ -301,3 +301,25 @@ Firefox captures from `npm test -- tests/m5f-staging.spec.ts --project=firefox` 
 `test-results/visual-review/m5f-staging/<width>x<height>/<still-id>.png`.
 The 1920×1080 set includes all stills. The 1280×720 and 1024×768 sets include five representative stills each.
 See the [M5f still index and asset credits](src/talk/m5f/REVIEW.md).
+
+### M5f production motion review
+
+[Draft PR #25](https://github.com/ap0calypse644/the-science-of-trustless-systems/pull/25)
+contains production slides 22–26 for review. Build and start the local preview
+as above. Use Space to play to the next hold, J/K to step across holds, and R
+to reset. The speaker preview stays on the opening composition.
+
+| Slide | Checkpoints at elapsed time in seconds |
+| --- | --- |
+| [22 Making History Expensive to Rewrite](http://127.0.0.1:4173/talk/#/22-expensive-history) | 0 Linked history · 2.4 Nonce target · 5 First block mined · 13.4 Mined chain · 16 Tampered copy · 20 First block re-mined · 23.5 Next re-mine · 33.5 Exhausted |
+| [23 Which History Do We Believe?](http://127.0.0.1:4173/talk/#/23-which-history) | 0 Race start · 1.8 One confirmation · 3.8 Honest lead · 5.8 Charlie catches up · 8 Three confirmations · 9.8 Gap opens · 13 Gap widens · 14.8 Six confirmations · 19.4 Final honest lead |
+| [24 Why Would Anybody Do All This Work?](http://127.0.0.1:4173/talk/#/24-mining-work) | 0 Neat stack · 4.6 Messy stack · 8.8 Overwhelmed · 14.2 Buried · 19 Surrender |
+| [25 Rewarding the Miner](http://127.0.0.1:4173/talk/#/25-rewarding-miner) | 0 Mountain · 2.6 Candidate · 5 Reward row · 9.6 Mined · 13.4 Accepted · 17.2 Back to work · 23.2 Growing rewards |
+| [26 Bitcoin reveal](http://127.0.0.1:4173/talk/#/26-bitcoin-reveal) | 0 Logo · 2 Congratulations · 3.8 Bitcoin |
+
+The [print route](http://127.0.0.1:4173/talk/?print) has 26 sheets on this
+branch. Firefox review captures are under
+`test-results/visual-review/m5f-production/<width>x<height>/`. Full-size
+files include all 32 holds, intermediate motion samples, and five
+`<production-slide-id>-print.png` sheets. The smaller sets show representative
+frames of each slide.

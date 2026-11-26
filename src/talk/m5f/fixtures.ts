@@ -40,6 +40,12 @@ const second = attempt(extend(pages[1], first), 18, '02f5c1');
 const third = attempt(extend(pages[2], second), 31, '0b672d');
 const fourth = attempt(extend(pages[3], third), 42, '07e39a');
 export const original = [first, second, third, fourth];
+export const initialTrials = [
+  [firstMiss, first],
+  [attempt(extend(pages[1], first), 17, 'bd382e'), second],
+  [attempt(extend(pages[2], second), 30, 'ae716d'), third],
+  [attempt(extend(pages[3], third), 41, '39c8b4'), fourth],
+];
 
 const changed = { ...first, rows: [{ ...first.rows[0], amount: 9, signed: false }, ...first.rows.slice(1)] };
 const firstRepair = [attempt(changed, 7, '9e72ac'), attempt(changed, 8, 'c378d5'), attempt(changed, 9, '0d91ab')];
