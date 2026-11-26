@@ -1,0 +1,48 @@
+.talk-sheet.beyond-sheet h1 {
+  top: 41px;
+  left: 50%;
+  width: max-content;
+  transform: translateX(-50%);
+  font: 400 80px/1 Kalam, var(--support);
+  white-space: nowrap;
+}
+
+.beyond-sheet .art .label { font-size: 31px; }
+.beyond-sheet .art .diagram-heading { font-size: 45px; }
+.beyond-sheet .art .application { font-size: 35px; }
+.beyond-sheet .art .panel-label { text-anchor: start; }
+.beyond-sheet .art .panel-label.label { font-size: 27px; }
+.beyond-sheet .art .record-card { fill: #fff; stroke: #8395a0; stroke-width: 2.6px; }
+.beyond-sheet .art .record-card.blue { fill: #f1f7fc; }
+.beyond-sheet .art .record-card.lavender { fill: #f2eef7; }
+.beyond-sheet .art .record-card.paper { fill: #f9fafb; }
+.beyond-sheet .art .record-card.cream { fill: #fffdf4; stroke: #a29a7f; }
+.beyond-sheet .art .flow-arrow { stroke: #506e86; }
+.beyond-sheet .art .water { fill: #edf6fc; stroke: none; }
+.beyond-sheet .art .water-line { stroke: #78a1bf; }
+.beyond-sheet .art .ice-top { fill: #f8fcff; stroke: #6c8fa9; }
+.beyond-sheet .art .ice-below { fill: #cee6f4; stroke: #709ab6; }
+.beyond-sheet .art .ice-facets { stroke: #87a7bd; stroke-width: 2px; }
+.beyond-sheet .art .ice-label { fill: #254962; font-size: 37px; paint-order: stroke; stroke: #deeff7; stroke-width: 5px; }
+.beyond-sheet .art .boat { fill: #e3c49c; stroke: #6e5a45; }
+.beyond-sheet .art .boat-rim { stroke: #6e5a45; stroke-width: 3px; }
+.beyond-sheet .art .icon-fill { fill: #e0edf8; stroke: #527590; }
+.beyond-sheet .art .app-icon { stroke: #527590; }
+.beyond-sheet .art .gold-fill { fill: #f6dfa1; stroke: #8e743c; }
+.beyond-sheet .art .cap { fill: #3f5068; stroke: #303a4a; }
+.beyond-sheet .art .ground-line { stroke: #c5d0d9; }
+.beyond-sheet .art .query-line { stroke: #527590; stroke-dasharray: 8 5; }
+.beyond-sheet .art .mark { font: 700 60px system-ui, sans-serif; }
+.beyond-sheet .art .yes { fill: #36724c; }
+.beyond-sheet .art .no { fill: #a44940; }
+.beyond-sheet .art .desk { fill: #f4e7d7; stroke: #76675b; }
+.beyond-sheet .art .paper-lines { stroke: #8c8371; stroke-width: 2.8px; }
+.beyond-sheet .art .needed .field-band { fill: #e0f0dd; stroke: #7ea67e; stroke-width: 2px; }
+.beyond-sheet .art .extra .field-band { fill: #f2e6e4; stroke: none; }
+.beyond-sheet .art .glass-front { fill: #cce8f6; fill-opacity: .32; stroke: #5484a5; }
+.beyond-sheet .art .glass-side { fill: #b6dbef; fill-opacity: .42; stroke: #5484a5; }
+.beyond-sheet .art .glass-roof { fill: #e7f4fb; fill-opacity: .68; stroke: #5484a5; }
+.beyond-sheet .art .glass-seam { stroke: #7ba6c0; stroke-width: 2.4px; }
+.beyond-sheet .art .glass-label { fill: #284f68; font-size: 32px; }
+.beyond-sheet .art .house-ground { stroke: #c0d2df; stroke-width: 3px; }
+.beyond-sheet .art .spending-highlight { fill: #ffe4a1; stroke: none; mix-blend-mode: multiply; }

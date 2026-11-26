@@ -153,7 +153,7 @@ test('offline speaker baseline, presenter playback, rapid navigation and print',
   await expect(page.locator('[id="28-proof-of-stake"] .scene-root')).toBeEmpty();
   await page.goto('/talk/?print');
   await page.emulateMedia({ media: 'print' });
-  await expect(page.locator('.print-deck .talk-sheet')).toHaveCount(29);
+  await expect(page.locator('.print-deck .talk-sheet')).toHaveCount(32);
   for (const [index, id] of ids.entries()) {
     const sheet = page.locator(`[id="${id}"] .talk-sheet`);
     await expect(sheet).toContainText(['$ 4972', 'Proof of Stake', 'matching precommits'][index]);

@@ -11,6 +11,7 @@ const ids = [
   '18-growing-ledger', '19-pages-to-blocks', '20-changing-history', '21-conflicting-histories',
   '22-expensive-history', '23-which-history', '24-mining-work', '25-rewarding-miner', '26-bitcoin-reveal',
   '27-electricity-bill', '28-proof-of-stake', '29-stake-weighted-voting',
+  '30-blockchain-beyond-currency', '31-agree-on', '32-privacy-bridge',
 ];
 
 async function openTalk(page: Page): Promise<void> {

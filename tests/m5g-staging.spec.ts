@@ -139,13 +139,13 @@ for (const [width, height] of [[1920, 1080], [1280, 720], [1024, 768]]) {
   });
 }
 
-test('production contains 29 sheets and the prior staging route is available', async ({ page }) => {
+test('production contains 32 sheets and the prior staging route is available', async ({ page }) => {
   await page.goto('/talk/?print');
-  await expect(page.locator('.print-deck .talk-sheet')).toHaveCount(29);
-  await expect(page.locator('.print-deck section').last()).toHaveAttribute('id', '29-stake-weighted-voting');
+  await expect(page.locator('.print-deck .talk-sheet')).toHaveCount(32);
+  await expect(page.locator('.print-deck section').last()).toHaveAttribute('id', '32-privacy-bridge');
   await page.goto('/talk/#/26-bitcoin-reveal');
   await expect(page.locator('section.present')).toHaveAttribute('id', '26-bitcoin-reveal');
-  await expect(page.locator('.slides > section')).toHaveCount(29);
+  await expect(page.locator('.slides > section')).toHaveCount(32);
   await page.goto('/talk/m5f/#/26-bitcoin');
   await expect(page.locator('section.present')).toHaveAttribute('id', '26-bitcoin');
 });

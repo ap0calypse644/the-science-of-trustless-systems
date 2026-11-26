@@ -4,7 +4,7 @@ M0.2 establishes the Reveal.js shell, local build, and shared Firefox and Chromi
 
 ## Presentation policy
 
-Owner decision (25 Nov 2026): the lecture uses static or presenter-paced scripted animated slides only. No live audience/presenter inputs that change the educational model, branching buttons, live cryptographic computations or worker searches are required. Preserve ordinary playback/navigation/seek/reset controls, verbal audience predictions, local offline operation and editable art. Use internally consistent authored examples. Identify simulated outputs in speaker notes and prompt the presenter to disclose them verbally. Keep substantive technical labels and essential toy-model caveats on slides. This supersedes earlier interactive and real-computation requirements. Issue #18 covers the separately reviewed scripted conversion of slide 6 and preserves archived diagnostic and staging routes. M5d is approved and merged in PR #21; #20 closed. M5e production is approved and merged in PR #23; #22 closed. M5f production (22–26) is owner-approved and merged in PR #25; #24 closed. Part I creative planning is complete (slides 1–32); production 1–29 is owner-approved and merged. M5g merged in PR #27 at `899e3529f4b80b33bbc0d4bceb5d6e258311079d`; #26 closed. M5h (30–32) visual staging only authorized in issue #28; production and later milestones remain separately gated. Later batches require separate authorization.
+Owner decision (25 Nov 2026): the lecture uses static or presenter-paced scripted animated slides only. No live audience/presenter inputs that change the educational model, branching buttons, live cryptographic computations or worker searches are required. Preserve ordinary playback/navigation/seek/reset controls, verbal audience predictions, local offline operation and editable art. Use internally consistent authored examples. Identify simulated outputs in speaker notes and prompt the presenter to disclose them verbally. Keep substantive technical labels and essential toy-model caveats on slides. This supersedes earlier interactive and real-computation requirements. Issue #18 covers the separately reviewed scripted conversion of slide 6 and preserves archived diagnostic and staging routes. M5d is approved and merged in PR #21; #20 closed. M5e production is approved and merged in PR #23; #22 closed. M5f production (22–26) is owner-approved and merged in PR #25; #24 closed. Part I creative planning is complete (slides 1–32); production 1–29 is owner-approved and merged. M5g merged in PR #27 at `899e3529f4b80b33bbc0d4bceb5d6e258311079d`; #26 closed. M5h staging (30–32) is owner-approved at `0c70d1d`. Production awaits review in draft PR #29. M5i and Part II require separate authorization. Later batches require separate authorization.
 
 ## Responsibilities
 
@@ -121,7 +121,7 @@ For PDF, propose a print mode driven by reviewed stills or compact sequences fro
 
 Vite builds the independent lecture at `/talk/`. Its ordered registry supplies
 stable IDs, compositions, speaker notes, and optional scene definitions and
-print overrides. Main registers production slides 1–26. M4a
+print overrides. Main registers production slides 1–29. Draft PR #29 extends the registry to 32. M4a
 retains its static artwork and applicable shortcuts.
 
 The production route and `/engine/` share the presenter lifecycle, controls,
@@ -277,3 +277,13 @@ entries from elapsed time. The presenter engine owns time and lifecycle.
 The recipient cards show local observations, with no centralized tally.
 The 29-slide print route selects the static, reveal and commit compositions.
 [Review times and screenshots](README.md#m5g-production-review)
+
+## M5h production review
+
+Draft PR #29 adds the final three Part I scenes to the 32-slide deck.
+Production reuses the 18 approved still compositions from `/talk/m5h/`
+at checkpoints. Between them, elapsed time controls the iceberg pullback,
+panels and credential, transcript and field emphasis, replicated café books
+and glass walls. Replacements keep both vector compositions mounted while
+their groups move. The presenter engine still owns playback and teardown.
+[Production checkpoints and print](README.md#m5h-production-review)
