@@ -280,6 +280,7 @@ Desktop Firefox, dual-monitor operation, an internet-disconnected rehearsal, and
 - [Design](DESIGN.md) defines the visual language and illustration constraints.
 - [Architecture](ARCHITECTURE.md) proposes implementation boundaries and verification.
 - [Storyboard](STORYBOARD.md) describes the provisional lecture sequence and timing.
+- [M5i integrated Part I review](docs/m5i-part-i-review.md) records browser, print, and content verification and the presenter rehearsal checklist.
 - [Roadmap](ROADMAP.md) defines milestone dependencies and acceptance criteria.
 
 ## M5f visual staging review
