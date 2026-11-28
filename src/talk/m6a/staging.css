@@ -1,0 +1,78 @@
+.talk-sheet.m6a-sheet h1 {
+  top: 39px;
+  font-size: 84px;
+  white-space: nowrap;
+}
+
+.m6a-sheet .art .start { text-anchor: start; }
+.m6a-sheet .art .end { text-anchor: end; }
+.m6a-sheet .art .annotation { font-size: 36px; }
+.m6a-sheet .art .caveat { fill: #49454a; font-size: 32px; }
+.m6a-sheet .art .takeaway { font: 400 66px Kalam, var(--support); }
+.m6a-sheet .art .m6-arrow { stroke: #4a5d72; stroke-width: 3.5px; }
+.m6a-sheet .art .detective-hat { fill: #d4b58e; stroke: #654e3b; }
+.m6a-sheet .art .lens { fill: #e4f3f8; fill-opacity: .78; stroke: #354e66; stroke-width: 5px; }
+.m6a-sheet .art .lens-handle { fill: #735741; }
+.m6a-sheet .art .lens-glint { stroke: #6091aa; stroke-width: 2.5px; }
+.m6a-sheet .art .board { fill: #f1e5d5; stroke: #8b7261; stroke-width: 5px; }
+.m6a-sheet .art .ledger-slip { fill: #fffefa; stroke: #9f8e80; stroke-width: 2.5px; }
+.m6a-sheet .art .inference-slip { fill: #fff4cf; stroke: #a38d64; stroke-width: 2.5px; }
+.m6a-sheet .art .column-title { font: 400 45px Kalam, var(--support); }
+.m6a-sheet .art .record-time { font: 400 29px var(--support); fill: #55515a; }
+.m6a-sheet .art .record-name { font-size: 42px; }
+.m6a-sheet .art .record-amount { font: 600 35px var(--support); }
+.m6a-sheet .art .inference { font-size: 44px; }
+.m6a-sheet .art .inference-line { stroke: #8a7467; stroke-dasharray: 7 10; stroke-width: 3px; }
+.m6a-sheet .art .red-string { stroke: #a94741; stroke-width: 4px; }
+.m6a-sheet .art .pin { fill: #a94741; stroke: #fff; stroke-width: 2px; }
+.m6a-sheet .art .ledger-backing { fill: #d9e8f3; stroke: #6f8ba2; }
+.m6a-sheet .art .table-heading { font: 600 28px var(--support); }
+.m6a-sheet .art .record-address { font: 600 35px var(--support); fill: #304961; }
+.m6a-sheet .art .match-band { fill: #fff0c3; stroke: #b49448; stroke-width: 2px; }
+.m6a-sheet .art .table-rule { stroke: #d8cec4; stroke-width: 2px; }
+
+.m6a-sheet .art .eve-hood { fill: #c6d5d7; stroke: #374f56; }
+.m6a-sheet .art .eve-clasp { fill: #f2ce72; stroke-width: 3px; }
+.m6a-sheet .art .medieval { stroke: #7d7374; }
+.m6a-sheet .art .castle-shadow { fill: #eee8e7; stroke: none; }
+.m6a-sheet .art .castle-front { fill: #f7f2e9; }
+.m6a-sheet .art .castle-side { fill: #e5dad0; }
+.m6a-sheet .art .gate, .m6a-sheet .art .slit { fill: #d4c6ba; }
+.m6a-sheet .art .brick { stroke-width: 2.5px; }
+.m6a-sheet .art .hedge { fill: #edf3e7; stroke: #758669; }
+.m6a-sheet .art .hedge-detail { stroke: #758669; stroke-width: 2.8px; }
+.m6a-sheet .art .trail { stroke: #c7b7a7; stroke-width: 3.5px; }
+.m6a-sheet .art .parchment { fill: #fff4d6; stroke: #82694b; }
+.m6a-sheet .art .lettering { fill: #473b31; font-size: 42px; }
+.m6a-sheet .art .quill { fill: #d9e7ee; stroke: #506779; stroke-width: 3px; }
+.m6a-sheet .art .writing-desk { stroke: #806a59; stroke-width: 7px; }
+.m6a-sheet .art .name-tag { font-size: 38px; }
+.m6a-sheet .art .bird { stroke: #536c7e; stroke-width: 3.5px; }
+
+.m6a-sheet .art .outer-rim { fill: #e5eff6; stroke: #476b8b; }
+.m6a-sheet .art .inner-rim { fill: #f9edc9; stroke: #a18447; }
+.m6a-sheet .art .hub-ring { fill: white; stroke: #a18447; stroke-width: 2.5px; }
+.m6a-sheet .art .wheel-sector { fill: #fffefa; stroke: #837e77; stroke-width: 1.5px; }
+.m6a-sheet .art .marked-sector { fill: #f2cf78; stroke: #6d5525; stroke-width: 2.4px; }
+.m6a-sheet .art .wheel-index { fill: #604f34; stroke: none; }
+.m6a-sheet .art .wheel-letter {
+  font: 600 27px var(--support);
+  dominant-baseline: central;
+}
+.m6a-sheet .art .wheel-key { font: 400 60px Kalam, var(--support); }
+.m6a-sheet .art .legend { font: 500 34px var(--support); }
+.m6a-sheet .art .legend-out { stroke: #527da8; stroke-width: 9px; }
+.m6a-sheet .art .legend-in { stroke: #b58d36; stroke-width: 9px; }
+.m6a-sheet .art .mapping { font: 600 39px var(--support); }
+.m6a-sheet .art .strip-top { fill: #edf5fb; stroke: #869aaa; stroke-width: 1.6px; }
+.m6a-sheet .art .strip-bottom { fill: #fff8e6; stroke: #9e916f; stroke-width: 1.6px; }
+.m6a-sheet .art .strip-selected { fill: #f7da91; stroke: #745c32; stroke-width: 2.3px; }
+.m6a-sheet .art .strip-letter { font: 600 29px var(--support); }
+.m6a-sheet .art .strip-rule { stroke: #c2bac0; stroke-width: 1.6px; }
+.m6a-sheet .art .strip-guide { stroke: #765f32; stroke-width: 2.8px; }
+.m6a-sheet .art .message { font: 700 49px var(--support); letter-spacing: .065em; }
+.m6a-sheet .art .direction { font: 600 31px var(--support); }
+.m6a-sheet .art .solved-slip { fill: #eaf3e7; stroke: #638761; stroke-width: 3px; }
+.m6a-sheet .art .trial-pass, .m6a-sheet .art .trial-fail { font: 600 43px var(--support); }
+.m6a-sheet .art .trial-pass { fill: #376342; }
+.m6a-sheet .art .trial-fail { fill: #a14038; }
