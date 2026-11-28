@@ -1,15 +1,12 @@
 # M6a visual review · slides 33–36
 
-Scope is [issue #32](https://github.com/ap0calypse644/the-science-of-trustless-systems/issues/32) and the [canonical M6 creative checkpoint](../../../docs/m6-creative-checkpoint.md). The 19 editable stills use the existing white Expressive Minimalism canvas. Four holds each cover the two privacy slides and the messenger story. Seven cipher holds separate dial alignment, the shifted endpoint, the open strips, each direction of conversion, and the two stages of Eve’s search.
+Scope is [issue #32](https://github.com/ap0calypse644/the-science-of-trustless-systems/issues/32) and the [canonical M6 creative checkpoint](../../../docs/m6-creative-checkpoint.md). The 16 editable stills use the existing white Expressive Minimalism canvas. Slide 33 is a single static evidence board. Slides 34 and 35 have four holds each. Seven cipher holds separate dial alignment, the shifted endpoint, the open strips, each direction of conversion, and the two stages of Eve’s search.
 
-Run `npm run build` and `npm run preview -- --port 4175 --strictPort`. Open [the deck](http://127.0.0.1:4175/talk/m6a/) in installed Firefox. Left/Right changes holds and S opens speaker notes. Each URL selects the specified still. The motion column describes proposed production checkpoints for review.
+Run `npm run build` and `npm run preview -- --port 4175 --strictPort`. Open [the deck](http://127.0.0.1:4175/talk/m6a/) in installed Firefox. Left/Right changes holds and S opens speaker notes. Each URL selects the specified still. The table describes the static composition and proposed production checkpoints for review.
 
-| Hold | Intended motion and pause |
+| Hold | Composition or intended motion |
 | --- | --- |
-| [33A · Charlie’s copy](http://127.0.0.1:4175/talk/m6a/#/33-charlies-copy) | Pick up from slide 32’s café, pull toward Charlie’s personal copy, bring in his hat and magnifier. |
-| [33B · Records](http://127.0.0.1:4175/talk/m6a/#/33-records) | Enlarge Alice’s fictional records and introduce their possible connections. |
-| [33C · Evidence board](http://127.0.0.1:4175/talk/m6a/#/33-evidence-board) | Pull back to the full board and trace the strings from each record to a tentative inference. |
-| [33D · Reaction](http://127.0.0.1:4175/talk/m6a/#/33-reaction) | Alice arrives horrified. Pause for Charlie’s line and ask what removing names would change. |
+| [33 · Evidence board](http://127.0.0.1:4175/talk/m6a/#/33-evidence-board) | Hold on Charlie and his board. Each time and amount connects to a tentative inference. Ask what removing names would change. |
 | [34A · Names](http://127.0.0.1:4175/talk/m6a/#/34-names) | Start with the named ledger and Alice’s excitement. Replace the name column in place. |
 | [34B · Reused address](http://127.0.0.1:4175/talk/m6a/#/34-reused-address) | Land on the address ledger and highlight the three appearances of 0x7F3A…. |
 | [34C · Coffee clue](http://127.0.0.1:4175/talk/m6a/#/34-coffee-clue) | Bring in the known purchase from outside the address ledger and connect it to the $345 row. |
@@ -28,14 +25,14 @@ Run `npm run build` and `npm run preview -- --port 4175 --strictPort`. Open [the
 
 ## Print candidates
 
-- **33** · The investigation board with the fictional ledger caveat and the reaction.
+- **33** · The static investigation board with its records, red strings and tentative inferences.
 - **34** · The final linked ledger and Alice, with the $345 clue retained in the composition.
 - **35** · A chronological strip showing the first message and Eve’s first interception, then the changed message and Bob’s recovery.
 - **36** · The shifted strips, encryption/decryption example and abbreviated brute-force results.
 
 ## Teaching notes and sources
 
-- The café’s two original entries match slide 32. The extended entries, times, address labels and external coffee clue are authored. The address labels are schematic. Merchant details in the toy ledger are illustrative. State that real ledgers expose different fields and that turning records into a personal profile depends on assumptions and outside information. [Bitcoin whitepaper, §10](https://bitcoin.org/bitcoin.pdf#page=6)
+- Slide 33 continues the toy ledger from slide 32 with authored board entries and tentative inferences. Slide 34 carries forward the original coffee and donut purchases and uses authored address labels and an external coffee clue. The address labels are schematic. Merchant details in the toy ledger are illustrative. State that real ledgers expose different fields and that turning records into a personal profile depends on assumptions and outside information. [Bitcoin whitepaper, §10](https://bitcoin.org/bitcoin.pdf#page=6)
 - Disclose that the castle story is fictional and the 26-letter cipher examples are authored. The toy alphabet shifts by three, wraps at Z and preserves spaces. The inverse trial outputs are `OGGV CV FCYP`, `NFFU BU EBXO`, and `MEET AT DAWN`. Key zero leaves the alphabet unchanged. The remaining 25 distinct shifts are the nontrivial keyspace. The short message was chosen so the correct result is recognizable. [Suetonius, Life of Julius Caesar 56.6](https://penelope.uchicago.edu/thayer/e/roman/texts/suetonius/12caesars/julius%2A.html#56)
 
 ## Art and files

@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 
 const route = '/talk/m6a/';
 const ids = [
-  '33-charlies-copy', '33-records', '33-evidence-board', '33-reaction',
+  '33-evidence-board',
   '34-names', '34-reused-address', '34-coffee-clue', '34-linked-records',
   '35-first-message', '35-eve-reads', '35-second-message', '35-caesar-reveal',
   '36-wheel-aligned', '36-wheel-shifted', '36-alphabet-strips', '36-encryption',
@@ -13,7 +13,7 @@ const plaintext = 'MEET AT DAWN';
 const ciphertext = 'PHHW DW GDZQ';
 
 for (const [width, height] of [[1920, 1080], [1280, 720], [1024, 768]]) {
-  test(`all 19 stills fit and navigate offline at ${width} × ${height}`, async ({ page, context, baseURL }) => {
+  test(`all 16 stills fit and navigate offline at ${width} × ${height}`, async ({ page, context, baseURL }) => {
     const origin = new URL(baseURL!).origin;
     const failures: string[] = [];
     await context.route('**/*', (request) => {
@@ -78,16 +78,21 @@ for (const [width, height] of [[1920, 1080], [1280, 720], [1024, 768]]) {
   });
 }
 
-test('reuses the café records and separates inference, address reuse and outside evidence', async ({ page }) => {
-  await page.goto(route);
-  await expect(page.locator('[id="33-charlies-copy"] [data-copy="charlie"] .entry')).toHaveText([
-    'Bob spent $2 on donuts', 'Alice spent $345 on coffee',
-  ]);
-  await expect(page.locator('[id="33-records"] [data-record] .record-name')).toHaveText([
-    'Coffee', 'Transport', 'Lunch', 'Pharmacy', 'Salary',
-  ]);
-  await expect(page.locator('[id="33-evidence-board"] .red-string')).toHaveCount(5);
-  await expect(page.locator('[id="33-reaction"] .dialogue').last()).toHaveText('What? It’s all public information!');
+test('the static evidence board separates public records from inferences and the address ledger keeps the coffee clue', async ({ page }) => {
+  await page.goto(`${route}#/33-evidence-board`);
+  const board = page.locator('section.present[id="33-evidence-board"]');
+  const art = board.locator('.m6a-sheet');
+  const records = art.locator('[data-record]');
+  await expect(art.locator('.column-title')).toHaveText(['Alice’s records', 'Charlie’s theory']);
+  await expect(records.locator('.record-time')).toHaveText(['08:10', '08:32', '12:05', '18:09', '09:00']);
+  await expect(records.locator('.record-amount')).toHaveText(['$345', '$12', '$18', '$24', '+$3000']);
+  await expect(records.locator('.record-name')).toHaveCount(0);
+  await expect(art.locator('.red-string')).toHaveCount(5);
+  await expect(art).toContainText('A routine inferred from records and context');
+  await expect(art).not.toContainText('Fictional café ledger. Real ledgers can expose different fields.');
+  const notes = board.locator('aside.notes');
+  await expect(notes).toContainText('Charlie’s tentative guesses based on records and outside context');
+  await expect(notes).toContainText('Real ledgers expose different fields.');
   for (const id of ['34-reused-address', '34-coffee-clue', '34-linked-records']) {
     const matched = page.locator(`[id="${id}"] [data-match="alice"]`);
     await expect(matched.locator('.record-address')).toHaveText(['0x7F3A…', '0x7F3A…', '0x7F3A…']);

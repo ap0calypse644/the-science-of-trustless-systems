@@ -1,10 +1,9 @@
 import { character } from '../../illustration/character';
-import { cafeRoom, cafeTable, coffee, speech } from '../m5c/art';
-import { notebook } from '../m5c/notebook';
+import { coffee } from '../m5c/art';
 import { arrow, magnifier, still, text } from './art';
 
 const privacySource = 'Source: Satoshi Nakamoto, Bitcoin whitepaper §10, https://bitcoin.org/bitcoin.pdf#page=6';
-const transparencyNotes = `Disclose aloud that the café ledger, times and profile are authored. The named café ledger is continued from slide 32. Transaction metadata plus external context can support inferences. Merchant categories and transaction times are fields of this fictional ledger. They are not universally available on-chain, and public records do not automatically identify a person or disclose their location. No account intrusion occurs.\n\n${privacySource}`;
+const transparencyNotes = `Disclose aloud that the café ledger, times and profile are authored. The example continues from slide 32. The entries on the left show only times and amounts from the fictional public ledger. The cards on the right are Charlie’s tentative guesses based on records and outside context. Real ledgers expose different fields. Merchant categories and exact transaction times are not universally available on-chain, and public records do not automatically identify a person or disclose their location.\n\nAsk aloud: What if we remove the names?\n\n${privacySource}`;
 const addressNotes = `Disclose aloud that the records and shortened addresses are authored; the addresses are schematic labels, not literal Bitcoin address formats. The example assumes reuse of one address and sufficiently distinctive external information about the coffee purchase. Linking transactions to a shared address and identifying its owner are distinct steps. Neither identification nor address reuse is universal.\n\n${privacySource}`;
 
 const aliceAddress = '0x7F3A…';
@@ -35,34 +34,24 @@ function detective(x: number, y: number, scale: number, facing: 'left' | 'right'
   </g>`;
 }
 
-const ledgerCopy = `<g data-copy="charlie">${notebook(779, 658, 1.32, 'Café ledger', [
-  { text: 'Bob spent $2 on donuts' }, { text: 'Alice spent $345 on coffee' },
-])}</g>`;
-
-function investigation(full: boolean): string {
-  const x = full ? 438 : 109;
-  const y = full ? 187 : 218;
-  return `<g data-investigation transform="translate(${x} ${y}) scale(${full ? .75 : 1})">
-    ${full ? '<path class="board" d="M-27-27 Q576-37 1373-25 L1370 648 Q745 657-27 646Z"/>' : ''}
-    ${text(266, 54, 'Alice’s café ledger records', 'column-title')}
-    ${text(1050, 54, full ? 'Charlie’s theory' : 'Possible connections', 'column-title')}
-    ${purchases.map(({ id, time, detail, amount, inference }, index) => {
+function investigation(): string {
+  return `<g data-investigation transform="translate(438 187) scale(.75)">
+    <path class="board" d="M-27-27 Q576-37 1373-25 L1370 648 Q745 657-27 646Z"/>
+    ${text(266, 54, 'Alice’s records', 'column-title')}
+    ${text(1050, 54, 'Charlie’s theory', 'column-title')}
+    ${purchases.map(({ id, time, amount, inference }, index) => {
       const row = 116 + index * 111;
       const target = [126, 208, 326, 453, 556][index];
-      const line = full
-        ? `<path class="red-string" d="M570 ${row} L817 ${target}"/>`
-        : `<path class="inference-line" d="M587 ${row} H794"/>`;
       return `<g data-record="${id}">
         <path class="ledger-slip" d="M12 ${row - 33} Q230 ${row - 38} 570 ${row - 33} L570 ${row + 37} Q298 ${row + 41} 12 ${row + 35}Z"/>
         ${text(85, row + 13, time, 'record-time')}
-        ${text(159, row + 13, detail, 'record-name start')}
         ${text(497, row + 13, amount, 'record-amount end')}
-        ${line}
-        <g transform="translate(1040 ${target}) rotate(${full ? [2, -4, 3, -3, 2][index] : 0})">
+        <path class="red-string" d="M570 ${row} L817 ${target}"/>
+        <g transform="translate(1040 ${target}) rotate(${[2, -4, 3, -3, 2][index]})">
           <path class="inference-slip" d="M-223-32 L222-34 224 33 -222 35Z"/>
           ${text(0, 13, inference, 'inference')}
         </g>
-        ${full ? `<circle class="pin" cx="570" cy="${row}" r="7"/><circle class="pin" cx="817" cy="${target}" r="7"/>` : ''}
+        <circle class="pin" cx="570" cy="${row}" r="7"/><circle class="pin" cx="817" cy="${target}" r="7"/>
       </g>`;
     }).join('')}
   </g>`;
@@ -96,33 +85,13 @@ function addressLedger(mode: 'names' | 'matches' | 'clue' | 'linked'): string {
   </g>`;
 }
 
-const fiction = 'Fictional café ledger. Real ledgers can expose different fields.';
-const title33 = 'Nothing to Hide?';
 const title34 = "What's in a Name?";
 
 export const privacyStills = [
-  still('33-charlies-copy', title33, 'At the café Charlie puts on his detective hat and points a magnifier at his own copy of the ledger.',
-    `${cafeRoom}${detective(798, 331, 1.45, 'left')}${cafeTable}${ledgerCopy}
-      ${text(800, 860, 'Charlie’s copy', 'annotation')}`,
+  still('33-evidence-board', 'Nothing to Hide?', 'Charlie admires his detective board, with red string from each record to a possible part of Alice’s routine.',
+    `${investigation()}${detective(248, 482, 1.48)}
+      ${text(922, 750, 'A routine inferred from records and context', 'annotation')}`,
     transparencyNotes),
-  still('33-records', title33, 'Alice’s fictional spending and salary records expand into view beside Charlie’s tentative inferences.',
-    investigation(false) + text(800, 847, fiction, 'caveat'), transparencyNotes),
-  still('33-evidence-board', title33, 'Charlie admires his detective board, with red string from each record to a possible part of Alice’s routine.',
-    `${investigation(true)}${detective(248, 482, 1.48)}
-      ${text(922, 750, 'A routine inferred from records and context', 'annotation')}
-      ${text(922, 808, fiction, 'caveat')}`,
-    transparencyNotes),
-  still('33-reaction', title33, 'Alice walks in horrified. Charlie proudly says it is all public information.',
-    `${investigation(true)}
-      ${character('alice', { x: 207, y: 352, scale: 1.55, pose: 'frustrated', expression: 'run' })}
-      ${speech(238, 227, 195, 'Charlie!')}
-      ${detective(1404, 712, .88, 'left')}
-      <path class="head" d="M718 689Q717 664 746 665H1261Q1285 666 1285 690V714
-        L1336 727 1280 724Q1274 735 1255 735H748Q719 735 718 714Z"/>
-      ${text(1001, 712, 'What? It’s all public information!', 'dialogue')}
-      ${text(423, 772, 'Charlie inferred the routine.', 'annotation')}
-      ${text(800, 846, fiction, 'caveat')}`,
-    `${transparencyNotes}\n\nAsk aloud: What if we remove the names?`),
   still('34-names', title34, 'Alice is delighted by the idea of replacing the names in the café ledger with addresses.',
     `${addressLedger('names')}
       ${character('alice', { x: 157, y: 494, scale: 1.13, pose: 'excited' })}
