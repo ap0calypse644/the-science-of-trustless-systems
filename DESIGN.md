@@ -1,5 +1,8 @@
 # Visual design
 
+> **Active M6 checkpoint (28 Nov 2026):** [Approved slides 33–48 and scoped implementation queue](docs/m6-creative-checkpoint.md) is canonical for Part II. Owner removed standalone privacy vocabulary slide, removed transition-to-computation slide, rejected proposed slide 49 (Shamir/finite-field treatment), and ends MPC at slide 48. Acts IV–VI remain provisional. Slides 33–48 concepts approved; begin M6a visual staging only, with owner review before motion or later batches. Prior Part II numbering and “no Part II implementation authorized” statements below describe historical checkpoints, superseded only within this explicit scope. Part I unchanged.
+
+
 The slides support a live speaker. Give each slide one visual question, reveal, or takeaway. Put derivations, caveats, and extended explanations in speaker notes. Use a comic beat or pop-culture reference when it reinforces the concept and works for students unfamiliar with the reference.
 
 ## Problem-driven storytelling

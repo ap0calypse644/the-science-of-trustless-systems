@@ -1,5 +1,8 @@
 # Living storyboard
 
+> **Active M6 checkpoint (28 Nov 2026):** [Approved slides 33–48 and scoped implementation queue](docs/m6-creative-checkpoint.md) is canonical for Part II. Owner removed standalone privacy vocabulary slide, removed transition-to-computation slide, rejected proposed slide 49 (Shamir/finite-field treatment), and ends MPC at slide 48. Acts IV–VI remain provisional. Slides 33–48 concepts approved; begin M6a visual staging only, with owner review before motion or later batches. Prior Part II numbering and “no Part II implementation authorized” statements below describe historical checkpoints, superseded only within this explicit scope. Part I unchanged.
+
+
 The sequence assumes a college audience with mixed familiarity with distributed systems and cryptography. Times include setup, speaker explanation, and brief audience responses. A static slide can still prompt discussion. Animated slides use presenter-controlled checkpoints. All demonstrations are static or scripted animations; audience predictions are verbal, with no live model inputs. The owner accepted this sequence as a flexible starting point on 25 November 2026. Slide count, order, treatment and timing may evolve; the times are rough guides, not hard acceptance criteria. Make room for audience questions and understanding. [CONTINUATION.md](CONTINUATION.md) records approved visual decisions for slides 1–32 and the restart point.
 
 ## Part I — The Problem of Trust (flexible timing)

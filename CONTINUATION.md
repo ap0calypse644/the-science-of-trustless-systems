@@ -1,5 +1,8 @@
 # Project continuation - 26 November 2026
 
+> **Active M6 checkpoint (28 Nov 2026):** [Approved slides 33–48 and scoped implementation queue](docs/m6-creative-checkpoint.md) is canonical for Part II. Owner removed standalone privacy vocabulary slide, removed transition-to-computation slide, rejected proposed slide 49 (Shamir/finite-field treatment), and ends MPC at slide 48. Acts IV–VI remain provisional. Slides 33–48 concepts approved; begin M6a visual staging only, with owner review before motion or later batches. Prior Part II numbering and “no Part II implementation authorized” statements below describe historical checkpoints, superseded only within this explicit scope. Part I unchanged.
+
+
 This is the canonical restart point for a new ChatGPT or local Codex session. Read [AGENTS.md](AGENTS.md), [README.md](README.md), [ROADMAP.md](ROADMAP.md), [DESIGN.md](DESIGN.md), [ARCHITECTURE.md](ARCHITECTURE.md), and [STORYBOARD.md](STORYBOARD.md). This file records owner-approved creative decisions and supersedes conflicting older prototype visual ideas. It is a planning checkpoint, not permission to implement everything.
 
 ## Goal and workflow
