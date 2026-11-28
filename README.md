@@ -390,3 +390,10 @@ and R resets. The speaker preview stays on the opening composition.
 The [32-sheet print deck](http://127.0.0.1:4173/talk/?print) uses the parallel
 comparison, conditional decision and glass house. Firefox production captures
 are under `test-results/visual-review/m5h-production/<width>x<height>/`.
+
+## M6a visual staging review
+
+Build locally with `npm run build`, then serve with `npm run preview -- --port 4175 --strictPort`.
+Open [the M6a staging deck](http://127.0.0.1:4175/talk/m6a/) in desktop Firefox. Use Left/Right to move through the 19 stills and S for speaker notes. The address bar follows the current hold for direct review links. These stills cover slides 33–36 for the owner’s visual review.
+
+See [the M6a review guide](src/talk/m6a/REVIEW.md) for direct hold links, source notes, motion checkpoints and print candidates. Run the two-browser staging checks with `npm test -- tests/m6a-staging.spec.ts`.
